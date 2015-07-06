@@ -38,7 +38,7 @@ std::string formatWord(std::string word){
 /*Prints the vector elements to an output file
  *Parameters: vector of words and frequencys, name of the output file
  */
-void printWords(std::vector<std::pair<std::string,int>> wordFrequency, std::string outFileName){
+void printWords(std::vector< std::pair<std::string,int> > wordFrequency, std::string outFileName){
 	//Find the length of the longest word
 	int maxSize = wordFrequency[0].first.size();
 	for(int i = 1; i < wordFrequency.size(); i++){
@@ -79,7 +79,7 @@ int main(int, char *argv[]){
 	}
 
 	/*Variable set up*/
-	std::vector<std::pair<std::string, int>> wordFrequency;
+	std::vector< std::pair<std::string, int> > wordFrequency;
 	std::string word;
 
 	/*Add first word and matching frequency initially*/
