@@ -3,11 +3,20 @@
  */
 #include <iostream>
 #include <string>
+#include "square.h"
+
+//int main(int, char **)
+
 int main()
 {
-	std:: cout << "Hello World";
-	std:: string file;
-	std:: cin >> file;
+	int side;
+
+	cout << "enter the square side ") << endl;
+	cin >> side;
+
+	cout << "your square 
+
 	return 0;
 
 }//
+
