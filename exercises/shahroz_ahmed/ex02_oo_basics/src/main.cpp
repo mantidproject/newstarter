@@ -14,7 +14,7 @@ int main()
 	cout << "enter the square side ") << endl;
 	cin >> side;
 
-	cout << "your square 
+	cout << "the area and perimeter is << 
 
 	return 0;
 
