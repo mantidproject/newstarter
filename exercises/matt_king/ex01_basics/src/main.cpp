@@ -12,6 +12,7 @@
 * each word and the frequency at which it appears in the textfile.
 */
 #include <iostream>
+#include <algorithm>
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -69,7 +70,7 @@ map<string, int> loadFileAndCountWords(string inputFileName)
 
 		while (currentLine >> currentWord)
 		{
-			int wordLengthMinusPunctuation = currentWord.size(); // will be equal before we remove punct.
+			std::string::size_type wordLengthMinusPunctuation = currentWord.size(); // will be equal before we remove punct.
 			if (wordLengthMinusPunctuation > 4)
 			{
 				for (int i = 0; i < wordLengthMinusPunctuation; i++)
@@ -120,7 +121,6 @@ int writeWordsAndFrequenciesToFile(string outputFilePath, map<string,int> wordsA
 	return 0;
 }
 
-
 int main(int argc, char **argv)
 {
 	if (argc < 3)
@@ -134,7 +134,6 @@ int main(int argc, char **argv)
 
 	string inputFileName(argv[1]); //convert char* to a string
 	map<string, int> wordsAndFrequencies = loadFileAndCountWords(inputFileName);
-
 	string outputFilePath(argv[2]);
 	writeWordsAndFrequenciesToFile(outputFilePath, wordsAndFrequencies);
 	return 0;
