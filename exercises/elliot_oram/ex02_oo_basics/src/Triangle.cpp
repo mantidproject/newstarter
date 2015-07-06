@@ -1,25 +1,26 @@
 /********************************INCLUDES***********************************/
-#include "Square.h"
+#include "Triangle.h"
 #include <string>
 #include <iostream>
+#include <math.h>
 
 
 /********************************CONSTRUCTORS*******************************/
-Square::Square(){}
+Triangle::Triangle(){}
 
-Square::Square(double h, double w):Shape(){
-	setType("Square");
-	setSides(4);
+Triangle::Triangle(double h, double w):Shape(){
+	setType("Triangle");
+	setSides(3);
 	setHeight(h);
 	setWidth(w);
-	setPerimeter(h*4);
-	setArea(h*h);
+	setPerimeter(h + w + sqrt((h*h) + (w*w))); //Assumed to be right angled triangle
+	setArea(0.5 * (h*w));
 }
 
-Square::~Square(){}
+Triangle::~Triangle(){}
 
 /*******************************MEMBER FUNCTIONS****************************/
-void Square::print(){
+void Triangle::print(){
 	std::cout << "=========================" << std::endl;
 	std::cout << "Type: " << getType() << std::endl;
 	std::cout << "Area: " << getArea() << std::endl;

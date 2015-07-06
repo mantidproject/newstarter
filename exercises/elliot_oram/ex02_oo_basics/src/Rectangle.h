@@ -1,14 +1,14 @@
-#ifndef SQUARE_H
-#define	SQUARE_H
+#ifndef RECTANGLE_H
+#define	RECTANGLE_H
 /********************************INCLUDES***********************************/
 #include "Shape.h"
 
 /*******************************CLASS HEADER********************************/
-class Square : public Shape{
+class Rectangle : public Shape{
 public:
-	Square();
-	Square(double h, double w);
-	~Square();
+	Rectangle();
+	Rectangle(double h, double w);
+	~Rectangle();
 	void print();
 private:
 
@@ -16,4 +16,4 @@ private:
 
 /**********************************END OF FILE******************************/
 
-#endif SQUARE_H 
+#endif RECTANGLE_H

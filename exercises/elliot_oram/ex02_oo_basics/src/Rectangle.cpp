@@ -1,25 +1,26 @@
 /********************************INCLUDES***********************************/
-#include "Square.h"
+#include "Rectangle.h"
 #include <string>
 #include <iostream>
 
 
-/********************************CONSTRUCTORS*******************************/
-Square::Square(){}
 
-Square::Square(double h, double w):Shape(){
-	setType("Square");
+/********************************CONSTRUCTORS*******************************/
+Rectangle::Rectangle(){}
+
+Rectangle::Rectangle(double h, double w):Shape(){
+	setType("Rectangle");
 	setSides(4);
 	setHeight(h);
 	setWidth(w);
-	setPerimeter(h*4);
-	setArea(h*h);
+	setPerimeter((2*h) + (2*w));
+	setArea(h*w);
 }
 
-Square::~Square(){}
+Rectangle::~Rectangle(){}
 
 /*******************************MEMBER FUNCTIONS****************************/
-void Square::print(){
+void Rectangle::print(){
 	std::cout << "=========================" << std::endl;
 	std::cout << "Type: " << getType() << std::endl;
 	std::cout << "Area: " << getArea() << std::endl;

@@ -1,14 +1,14 @@
-#ifndef SQUARE_H
-#define	SQUARE_H
+#ifndef CIRCLE_H
+#define	CIRCLE_H
 /********************************INCLUDES***********************************/
 #include "Shape.h"
 
 /*******************************CLASS HEADER********************************/
-class Square : public Shape{
+class Circle : public Shape{
 public:
-	Square();
-	Square(double h, double w);
-	~Square();
+	Circle();
+	Circle(double h, double w);
+	~Circle();
 	void print();
 private:
 
