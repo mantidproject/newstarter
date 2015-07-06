@@ -40,9 +40,9 @@ std::string formatWord(std::string word){
  */
 void printWords(std::vector< std::pair<std::string,int> > wordFrequency, std::string outFileName){
 	//Find the length of the longest word
-	int maxSize = wordFrequency[0].first.size();
+	size_t maxSize = wordFrequency[0].first.size();
 	for(int i = 1; i < wordFrequency.size(); i++){
-		int currentSize = wordFrequency[i].first.size();
+		size_t currentSize = wordFrequency[i].first.size();
 		if(currentSize > maxSize){
 			maxSize = currentSize;
 		}
@@ -96,7 +96,7 @@ int main(int, char *argv[]){
 		file >> word;
 		word = formatWord(word);
 		if(word.size() >= 4){
-			int const VEC_SIZE = wordFrequency.size();	//size of the vector before adding
+			size_t const VEC_SIZE = wordFrequency.size();	//size of the vector before adding
 			int checks = 0;	//counter to ensure all words are checked for matches before adding
 			if(VEC_SIZE == 0){
 				std::pair<std::string,int> nextWord(word, 1);
