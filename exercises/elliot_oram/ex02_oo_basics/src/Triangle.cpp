@@ -20,6 +20,10 @@ Triangle::Triangle(double h, double w) : Shape("Triangle", 3) {
 Triangle::~Triangle() {}
 
 // Member Functions
+
+/**
+ *Prints the height, base and footer of the Triangle Object
+ */
 void Triangle::print() {
   Shape::print();
   std::cout << std::setw(12) << std::left << "Height: " << std::setw(10)
