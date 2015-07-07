@@ -1,8 +1,8 @@
 // Includes
 #include "Triangle.h"
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <math.h>
 #include <string>
 

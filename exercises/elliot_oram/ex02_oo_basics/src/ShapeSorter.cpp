@@ -41,47 +41,6 @@ void ShapeSorter::showingShapesBy(const std::string &set,
 }
 
 /**
- *Prints all the shapes of a given Type
- *@param type The type of shapes that are being searched
- */
-void ShapeSorter::printByType(const std::string &type) {
-  showingShapesBy("Type", type);
-  std::vector<Shape *> allShapes = getShapes();
-  int printed = 0;
-  const size_t size = allShapes.size();
-  for (int i = 0; i < size; i++) {
-    if ((allShapes[i]->getType().compare(type)) == 0) {
-      allShapes[i]->print();
-      printed++;
-    }
-  }
-  if (printed == 0) {
-    noMatchFound("Type");
-  }
-}
-
-/**
- *Prints all the shapes that have a given number of sides
- *@param sides The number of sides that are being searched for
- */
-void ShapeSorter::printBySide(const int &sides) {
-  const std::string sidesString = std::to_string(sides);
-  showingShapesBy("Sides", sidesString);
-  std::vector<Shape *> allShapes = getShapes();
-  int printed = 0;
-  const size_t size = allShapes.size();
-  for (int i = 0; i < size; i++) {
-    if (allShapes[i]->getSides() == sides) {
-      allShapes[i]->print();
-      printed++;
-    }
-  }
-  if (printed == 0) {
-    noMatchFound("Sides");
-  }
-}
-
-/**
  *Compares the volume of two shapes
  *@param first The first Shape to be compared
  *@param second The second Shape to be compared
@@ -99,6 +58,51 @@ bool ShapeSorter::compareVolume(Shape *first, Shape *second) {
  */
 bool ShapeSorter::comparePerimeter(Shape *first, Shape *second) {
   return first->getPerimeter() > second->getPerimeter();
+}
+
+/**
+ *Prints all the shapes of a given Type
+ *@param type The type of shapes that are being searched
+ */
+void ShapeSorter::printByType(const std::string &type) {
+  showingShapesBy("Type", type);
+
+  const std::vector<Shape *> allShapes = getShapes();
+  const size_t size = allShapes.size();
+  int printed = 0;
+  for (int i = 0; i < size; i++) {
+    if ((allShapes[i]->getType().compare(type)) == 0) {
+      allShapes[i]->print();
+      printed++;
+    }
+  }
+
+  if (printed == 0) {
+    noMatchFound("Type");
+  }
+}
+
+/**
+ *Prints all the shapes that have a given number of sides
+ *@param sides The number of sides that are being searched for
+ */
+void ShapeSorter::printBySide(const int &sides) {
+  const std::string sidesString = std::to_string(sides);
+  showingShapesBy("Sides", sidesString);
+
+  const std::vector<Shape *> allShapes = getShapes();
+  const size_t size = allShapes.size();
+  int printed = 0;
+  for (int i = 0; i < size; i++) {
+    if (allShapes[i]->getSides() == sides) {
+      allShapes[i]->print();
+      printed++;
+    }
+  }
+
+  if (printed == 0) {
+    noMatchFound("Sides");
+  }
 }
 
 /**

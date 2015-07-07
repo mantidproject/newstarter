@@ -1,8 +1,10 @@
 // Includes
 #include "Rectangle.h"
-#include <string>
+
 #include <iomanip>
 #include <iostream>
+#include <string>
+
 
 // Constructors
 Rectangle::Rectangle() {}

@@ -1,8 +1,9 @@
 // Includes
 #include "Shape.h"
-#include <string>
+
 #include <iomanip>
 #include <iostream>
+#include <string>
 
 // Constructors
 Shape::Shape() {}

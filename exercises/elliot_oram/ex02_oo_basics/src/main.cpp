@@ -12,8 +12,8 @@
 #include "Square.h"
 #include "Triangle.h"
 
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 #include <vector>
 
 // Member Functions
