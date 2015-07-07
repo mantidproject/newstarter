@@ -16,7 +16,7 @@ int main(int, char **)
 	//Circle circle("Circle", 5);
 	//Square square("Square", 3);
 	//new Rectangle("Rectangle", 7, 2);
-	Circle circ(2);
+	Circle circ(6);
 	Square square(7);
 	Rectangle rect(23.3, 3.2);
 	Triangle tri(5, 7);

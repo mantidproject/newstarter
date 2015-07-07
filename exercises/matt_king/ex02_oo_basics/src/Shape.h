@@ -11,11 +11,15 @@ public:
 	virtual std::string getType();
 	virtual double calculateArea();
 	virtual double calculatePerimeter();
-	virtual double getArea();
-	virtual double getPerimeter();
+	virtual void print();
+	//NOT SURE IF THESE ARE NEEDED
+
+	//virtual double getArea();
+	//virtual double getPerimeter();
 
 	double area;
 	double perimeter;
+	int noOfSides;
 
 private:
 	std::string shapeType;

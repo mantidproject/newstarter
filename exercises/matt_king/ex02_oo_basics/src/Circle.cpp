@@ -9,6 +9,7 @@ Circle::Circle(double radius) : Shape("Circle"){
 	Circle::radius = radius;
 	area = calculateArea();
 	perimeter = calculatePerimeter();
+	noOfSides = 1;
 };
 
 double Circle::getRadius()

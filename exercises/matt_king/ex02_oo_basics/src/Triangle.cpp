@@ -6,6 +6,7 @@ Triangle::Triangle(double width, double height) : Shape("Triangle")
 	Triangle::height = height;
 	area = calculateArea();
 	perimeter = calculatePerimeter();
+	noOfSides = 3;
 };
 
 double Triangle::calculateArea()

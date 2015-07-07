@@ -5,6 +5,7 @@ Square::Square(double side) : Shape("Square")
 	Square::side = side;
 	area = calculateArea();
 	perimeter = calculatePerimeter();
+	noOfSides = 4;
 }
 double Square::getSide()
 {
