@@ -1,12 +1,13 @@
 #ifndef SHAPE_H
 #define SHAPE_H
+
 #include <iostream>
 
 class Shape
 {
 public:
 	Shape();
-	Shape(std::string type);
+	Shape(const std::string& type);
 	virtual ~Shape();
 	virtual std::string getType();
 	virtual double calculateArea();

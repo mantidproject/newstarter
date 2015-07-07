@@ -1,5 +1,5 @@
 #include "Square.h"
-
+#include <cmath>
 Square::Square(double side) : Shape("Square")
 {
 	Square::side = side;

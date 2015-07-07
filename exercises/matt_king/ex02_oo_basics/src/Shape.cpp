@@ -1,10 +1,10 @@
 #include "Shape.h"
-#include <iostream>
+
 Shape::Shape(){
 	Shape undefinedShape("Undefined");
 }
 
-Shape::Shape(std::string type)
+Shape::Shape(const std::string& type)
 {
 	shapeType = type;
 }

@@ -7,9 +7,9 @@
 
 class ShapeSorter{
 public:
-	ShapeSorter(std::vector<Shape> shapes);
+	ShapeSorter(const std::vector<Shape>& shapes);
 	std::vector<Shape> getShapes() const;
-	int printShapesThatMatchType(std::string type) const;
+	int printShapesThatMatchType(const std::string& type) const;
 	int printShapesThatMatchNumberOfSides(int numberOfSides) const;
 	int printAreasDesc() const;
 	int printPerimeterDesc() const;

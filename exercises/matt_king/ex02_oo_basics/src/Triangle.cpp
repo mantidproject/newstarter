@@ -1,4 +1,5 @@
 #include "Triangle.h"
+#include <cmath>
 
 Triangle::Triangle(double width, double height) : Shape("Triangle")
 { 
