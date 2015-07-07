@@ -61,7 +61,6 @@ int main(int, char **) {
   shapeSort->printByPerimeter();
   shapeSort->printByVolume();
 
-  std::system("PAUSE");
 }
 
 // End of file
