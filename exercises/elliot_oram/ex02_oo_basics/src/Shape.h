@@ -32,4 +32,4 @@ private:
 
 // End of File
 
-#endif SHAPE_H
+#endif

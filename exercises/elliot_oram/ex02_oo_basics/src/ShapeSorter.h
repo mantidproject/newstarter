@@ -27,5 +27,5 @@ public:
 private:
   std::vector<Shape *> allShapes;
 };
-#endif SHAPESORTER_H
+#endif
 // End of File

@@ -14,6 +14,6 @@ public:
 private:
 };
 
-#endif RECTANGLE_H
+#endif
 
 // End of File

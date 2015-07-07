@@ -19,6 +19,6 @@ public:
 
 private:
 };
-#endif SHAPEFACTORY_H
+#endif
 
 // End of File

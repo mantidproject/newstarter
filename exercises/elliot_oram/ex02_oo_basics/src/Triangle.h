@@ -15,6 +15,6 @@ public:
 private:
 };
 
-#endif TRIANGLE_H
+#endif
 
 // End of file

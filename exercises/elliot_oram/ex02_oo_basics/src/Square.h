@@ -14,6 +14,6 @@ public:
 private:
 };
 
-#endif SQUARE_H
+#endif
 
 // End of File
