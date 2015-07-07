@@ -14,7 +14,7 @@ Triangle::Triangle() {}
  *@param h The height of the Triangle
  *@param w The base width of the Triangle
  */
-Triangle::Triangle(double h, double w) : Shape("Triangle", 3) {
+Triangle::Triangle(const double &h, const double &w) : Shape("Triangle", 3) {
   setHeight(h);
   setWidth(w);
   setPerimeter(

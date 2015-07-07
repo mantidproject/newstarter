@@ -7,7 +7,7 @@
 class Circle : public Shape {
 public:
   Circle();
-  Circle(double r);
+  Circle(const double &r);
   ~Circle();
   void print();
 

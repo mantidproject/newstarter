@@ -13,7 +13,7 @@ Square::Square() {}
  *@param h The height of the Square
  *@param w The width of the Square
  */
-Square::Square(double h, double w) : Shape("Square", 4) {
+Square::Square(const double &h, const double &w) : Shape("Square", 4) {
   setHeight(h);
   setWidth(w);
   setPerimeter(h * 4);

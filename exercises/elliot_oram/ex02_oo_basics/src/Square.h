@@ -7,7 +7,7 @@
 class Square : public Shape {
 public:
   Square();
-  Square(double h, double w);
+  Square(const double &h, const double &w);
   ~Square();
   void print();
 

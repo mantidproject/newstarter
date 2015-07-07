@@ -8,7 +8,7 @@
 class Triangle : public Shape {
 public:
   Triangle();
-  Triangle(double h, double w);
+  Triangle(const double &h, const double &w);
   ~Triangle();
   void print();
 

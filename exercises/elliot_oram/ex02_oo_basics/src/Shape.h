@@ -7,7 +7,7 @@
 class Shape {
 public:
   Shape();
-  Shape(std::string t, int s); // Default constructor
+  Shape(const std::string &t, const int &s);
   ~Shape();
 
   std::string getType();

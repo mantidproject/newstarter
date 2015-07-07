@@ -12,7 +12,7 @@ Rectangle::Rectangle() {}
  *@param h The height of the rectangle
  *@param w The width of the rectangle
  */
-Rectangle::Rectangle(double h, double w) : Shape("Rectangle", 4) {
+Rectangle::Rectangle(const double &h, const double &w) : Shape("Rectangle", 4) {
   setHeight(h);
   setWidth(w);
   setPerimeter((2 * h) + (2 * w));

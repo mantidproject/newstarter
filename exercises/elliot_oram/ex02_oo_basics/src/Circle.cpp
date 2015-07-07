@@ -15,7 +15,7 @@ Circle::Circle() {}
  *Sets the height, width, perimeter and area of a Circle
  *@param r The radius of the Circle
  */
-Circle::Circle(double r) : Shape("Circle", 1) {
+Circle::Circle(const double &r) : Shape("Circle", 1) {
   setHeight(r);
   setPerimeter(2 * M_PI * r);
   setArea(M_PI * (r * r));

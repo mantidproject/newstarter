@@ -7,7 +7,7 @@
 class Rectangle : public Shape {
 public:
   Rectangle();
-  Rectangle(double h, double w);
+  Rectangle(const double &h, const double &w);
   ~Rectangle();
   void print();
 

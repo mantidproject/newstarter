@@ -12,7 +12,7 @@ Shape::Shape() {}
  *@param t The type of the shape
  *@param s The number of sides of the shape
  */
-Shape::Shape(std::string t, int s) {
+Shape::Shape(const std::string &t, const int &s) {
   type = t;
   sides = s;
 }
