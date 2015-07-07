@@ -16,12 +16,22 @@ ShapeSorter::ShapeSorter(std::vector<Shape *> s) { allShapes = s; }
 ShapeSorter::~ShapeSorter() {}
 
 // Member Fuctions
+
+/**
+ *Called when no matching criteria is found for a search
+ *@param search The criteria for the search
+ */
 void ShapeSorter::noMatchFound(const std::string &search) {
   std::cout << std::endl
             << "No shapes were found that match your search for \"" << search
             << "\"" << std::endl;
 }
 
+/**
+ *Informs user of the current search Criteria
+ *@param set The set of shapes being searched
+ *@param feature The exact feature within that set being searched
+ */
 void ShapeSorter::showingShapesBy(const std::string &set,
                                   const std::string &feature) {
   std::cout << std::endl
@@ -30,6 +40,10 @@ void ShapeSorter::showingShapesBy(const std::string &set,
             << std::endl;
 }
 
+/**
+ *Prints all the shapes of a given Type
+ *@param type The type of shapes that are being searched
+ */
 void ShapeSorter::printByType(const std::string &type) {
   showingShapesBy("Type", type);
   std::vector<Shape *> allShapes = getShapes();
@@ -46,6 +60,10 @@ void ShapeSorter::printByType(const std::string &type) {
   }
 }
 
+/**
+ *Prints all the shapes that have a given number of sides
+ *@param sides The number of sides that are being searched for
+ */
 void ShapeSorter::printBySide(const int &sides) {
   const std::string sidesString = std::to_string(sides);
   showingShapesBy("Sides", sidesString);
