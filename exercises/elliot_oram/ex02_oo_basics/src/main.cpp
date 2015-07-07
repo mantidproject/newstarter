@@ -60,7 +60,7 @@ int main(int, char **) {
   shapes = addShape(shapes, r);
 
   // Sort shapes using ShapeSorter
-  ShapeSorter * shapeSort = new ShapeSorter(shapes);
+  ShapeSorter *shapeSort = new ShapeSorter(shapes);
   shapeSort->printByType("Rectangle");
   shapeSort->printBySide(4);
   shapeSort->printByPerimeter();
