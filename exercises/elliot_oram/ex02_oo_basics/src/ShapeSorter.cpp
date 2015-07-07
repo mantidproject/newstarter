@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 
 // Constructors
@@ -87,7 +88,9 @@ void ShapeSorter::printByType(const std::string &type) {
  *@param sides The number of sides that are being searched for
  */
 void ShapeSorter::printBySide(const int &sides) {
-  const std::string sidesString = std::to_string(sides);
+  std::ostringstream convert;
+  convert << sides;
+  const std::string sidesString = convert.str();
   showingShapesBy("Sides", sidesString);
 
   const std::vector<Shape *> allShapes = getShapes();
