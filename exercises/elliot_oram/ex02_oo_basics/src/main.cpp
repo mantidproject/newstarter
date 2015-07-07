@@ -46,7 +46,7 @@ void printAllShapes(std::vector<Shape *> shapes) {
 int main(int, char **) {
 
   // Create shapes using ShapeFactory
-  std::unique_ptr<ShapeFactory> factory(new ShapeFactory());
+  ShapeFactory *factory = new ShapeFactory();
   Square *s = factory->createSquare(2);
   Circle *c = factory->createCircle(3);
   Triangle *t = factory->createTriangle(5, 2);
@@ -60,7 +60,7 @@ int main(int, char **) {
   shapes = addShape(shapes, r);
 
   // Sort shapes using ShapeSorter
-  std::unique_ptr<ShapeSorter> shapeSort(new ShapeSorter(shapes));
+  ShapeSorter * shapeSort = new ShapeSorter(shapes);
   shapeSort->printByType("Rectangle");
   shapeSort->printBySide(4);
   shapeSort->printByPerimeter();
