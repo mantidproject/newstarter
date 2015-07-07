@@ -2,65 +2,47 @@
 * Skeleton main routine
 */
 #include <iostream>
+#include <vector>
+#include <string>
+
+#include "Circle.h"
+#include "Rectangle.h"
+#include "Square.h"
+#include "Triangle.h"
 
 template <class S>class ShapeSorter{
 public:
 	ShapeSorter();
-	std::string printShapesThatMatchType(std::string type) const{};
-	std::string printShapesThatMatchSides(int sides) const{};
-	std::string printAreasDesc() const{};
-	std::string printPerimeterDesc() const{};
+	std::string printShapesThatMatchType(std::string type, std::vector shapes) const{};
+	std::string printShapesThatMatchSides(int sides, std::vector shapes) const{};
+	std::string printAreasDesc(std::vector shapes) const{};
+	std::string printPerimeterDesc(std::vector shapes) const{};
 private:
 	bool compare(S thisShape, S anotherShape){};
 };
 
-class Shape{
-public:
-	Shape();
-	Shape(std::string type){shapeType = type;};
-private:
-	std::string shapeType;
-	double area;
-	double perimeter;
-};
-
-class Square: public Shape{
-public:
-	Square();
-	Square(std::string type, int side);
-private:
-	int side;
-};
-
-class Rectangle: public Shape{
-public:
-	Rectangle();
-	Rectangle(std::string type, int sideOne, int sideTwo);
-private:
-	int sideOne;
-	int sideTwo;
-};
-
-class Circle: public Shape{
-public:
-	Circle();
-	Circle(std::string type, int radius);
-private:
-	int radius;
-};
-
-
-class Triangle: public Shape{
-public:
-	Triangle();
-	Triangle(std::string type, int base, int height);
-private:
-	int base;
-	int height;
-};
 
 int main(int, char **)
 {
-	Shape s("Circle");
-	std::cout << "Hello";
+	//Circle circle("Circle", 5);
+	//Square square("Square", 3);
+	//new Rectangle("Rectangle", 7, 2);
+	Triangle tri(4, 2);
+	Circle circ(7);
+	Square square(23.3);
+	Rectangle rect(4, 5);
+	
+	std::vector<Shape> shapes;
+
+	shapes.push_back(tri);
+	shapes.push_back(circ);
+	shapes.push_back(square);
+	shapes.push_back(rect);
+
+	for (auto it = shapes.begin(); it != shapes.end(); ++it)
+	{
+		std::cout << it->getType().c_str() << std::endl;
+	}
+	
+	
 }
