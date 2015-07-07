@@ -1,11 +1,12 @@
-/********************************INCLUDES***********************************/
+//Includes
 #include "Triangle.h"
-#include <string>
+
 #include <iostream>
 #include <math.h>
+#include <string>
 
 
-/********************************CONSTRUCTORS*******************************/
+//Constructors
 Triangle::Triangle(){}
 
 Triangle::Triangle(double h, double w):Shape(){
@@ -19,7 +20,7 @@ Triangle::Triangle(double h, double w):Shape(){
 
 Triangle::~Triangle(){}
 
-/*******************************MEMBER FUNCTIONS****************************/
+//Member Functions
 void Triangle::print(){
 	std::cout << "=========================" << std::endl;
 	std::cout << "Type: " << getType() << std::endl;
@@ -30,4 +31,4 @@ void Triangle::print(){
 	std::cout << "=========================" <<std::endl;
 }
 
-/*********************************END OF FILE*******************************/
+//End of File

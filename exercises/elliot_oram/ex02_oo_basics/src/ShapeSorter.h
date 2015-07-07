@@ -1,13 +1,13 @@
 #ifndef SHAPESORTER_H
 #define	SHAPESORTER_H
 
-/********************************INCLUDES***********************************/
+//Includes
 #include "Shape.h"
-
 
 #include <vector>
 
-/*******************************CLASS HEADER********************************/
+
+//Class definition
 class ShapeSorter{
 public:
 	ShapeSorter();
@@ -20,13 +20,11 @@ public:
 	void updateShapes(const std::vector<Shape*> &s);
 	void printAll();
 	std::vector<Shape*> getShapes();
-	static bool compareVolume(Shape* first, Shape* second);
-	static bool comparePerimeter(Shape* first, Shape* second);
+	static bool compareVolume(Shape * first, Shape * second);
+	static bool comparePerimeter(Shape * first, Shape * second);
 
 private:
 	std::vector<Shape*> allShapes;
 };
-
-/**********************************END OF FILE******************************/
-
 #endif SHAPESORTER_H 
+//End of File

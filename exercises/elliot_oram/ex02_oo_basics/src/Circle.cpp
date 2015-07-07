@@ -1,12 +1,13 @@
-/********************************INCLUDES***********************************/
+//Includes
 #include "Circle.h"
 
 #define _USE_MATH_DEFINES
+#include <iomanip>
 #include <iostream>
 #include <math.h>
 #include <string>
 
-/********************************CONSTRUCTORS*******************************/
+//Constructors
 Circle::Circle(){}
 
 Circle::Circle(double h, double w):Shape(){
@@ -19,14 +20,11 @@ Circle::Circle(double h, double w):Shape(){
 
 Circle::~Circle(){}
 
-/*******************************MEMBER FUNCTIONS****************************/
+//Member Fuctions
 void Circle::print(){
-	std::cout << "=========================" << std::endl;
-	std::cout << "Type: " << getType() << std::endl;
-	std::cout << "Area: " << getArea() << std::endl;
-	std::cout << "Perimeter: " << getPerimeter() << std::endl;
-	std::cout << "Radius: " << getHeight() << std::endl;
-	std::cout << "=========================" <<std::endl;
+	Shape::print();
+	std::cout << std::setw(12) << std::left << "Radius: " << std::setw(10) << std::left << getHeight() << std::endl;
+	std::cout << "============================================" <<std::endl;
 }
 
-/*********************************END OF FILE*******************************/
+//End of File

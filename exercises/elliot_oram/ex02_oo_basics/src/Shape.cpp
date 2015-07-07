@@ -1,6 +1,7 @@
 /*****************************INCLUDES**********************************/
 #include "Shape.h"
 #include <string>
+#include <iomanip>
 #include <iostream>
 
 
@@ -12,7 +13,10 @@ Shape::~Shape(){}
 /****************************MEMBER FUNCTIONS****************************/
 
 void Shape::print(){
-	std::cout << "Generic Shape print called" << std::endl;
+	std::cout << "============================================" << std::endl;
+	std::cout << std::setw(12) << std::left << "Type: " << std::setw(10) << std::left << getType() << std::endl;
+	std::cout << std::setw(12) << std::left << "Area: " << std::setw(10) << std::left << getArea() << std::endl;
+	std::cout << std::setw(12) << std::left <<"Perimeter: " << std::setw(10) << std::left << getPerimeter() << std::endl;
 }
 
 /******************************ACCESSORS*********************************/

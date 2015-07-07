@@ -1,12 +1,15 @@
+//Includes
 #include "Circle.h"
 #include "Rectangle.h"
 #include "ShapeFactory.h"
 #include "Square.h"
 #include "Triangle.h"
 
-
+//Constructors
 ShapeFactory::ShapeFactory(){}
 ShapeFactory::~ShapeFactory(){}
+
+//Member Functions
 
 /**
  *Creates a new Shape of type Square
