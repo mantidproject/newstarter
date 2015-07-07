@@ -7,6 +7,11 @@
 // Constructors
 Rectangle::Rectangle() {}
 
+/**
+ *Sets the height, width, perimeter and area of a Rectangle
+ *@param h The height of the rectangle
+ *@param w The width of the rectangle
+ */
 Rectangle::Rectangle(double h, double w) : Shape("Rectangle", 4) {
   setHeight(h);
   setWidth(w);

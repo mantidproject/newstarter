@@ -6,6 +6,12 @@
 
 // Constructors
 Shape::Shape() {}
+
+/**
+ *Sets the type and number of sides of a shape
+ *@param t The type of the shape
+ *@param s The number of sides of the shape
+ */
 Shape::Shape(std::string t, int s) {
   type = t;
   sides = s;

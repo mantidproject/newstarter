@@ -9,6 +9,11 @@
 // Constructors
 Triangle::Triangle() {}
 
+/**
+ *Sets the height, width, perimeter and area of a Triangle
+ *@param h The height of the Triangle
+ *@param w The base width of the Triangle
+ */
 Triangle::Triangle(double h, double w) : Shape("Triangle", 3) {
   setHeight(h);
   setWidth(w);

@@ -8,6 +8,11 @@
 // Constructors
 Square::Square() {}
 
+/**
+ *Sets the height, width, perimeter and area of a Square
+ *@param h The height of the Square
+ *@param w The width of the Square
+ */
 Square::Square(double h, double w) : Shape("Square", 4) {
   setHeight(h);
   setWidth(w);
@@ -18,6 +23,10 @@ Square::Square(double h, double w) : Shape("Square", 4) {
 Square::~Square() {}
 
 // Member Functions
+
+/**
+ *Prints the height, base and footer of the Square Object
+ */
 void Square::print() {
   Shape::print();
   std::cout << std::setw(12) << std::left << "Height: " << std::setw(10)
