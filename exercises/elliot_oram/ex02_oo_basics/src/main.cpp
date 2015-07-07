@@ -14,6 +14,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <memory>
 #include <vector>
 
 // Member Functions
@@ -45,7 +46,7 @@ void printAllShapes(std::vector<Shape *> shapes) {
 int main(int, char **) {
 
   // Create shapes using ShapeFactory
-  ShapeFactory *factory = new ShapeFactory();
+  std::unique_ptr<ShapeFactory> factory(new ShapeFactory());
   Square *s = factory->createSquare(2);
   Circle *c = factory->createCircle(3);
   Triangle *t = factory->createTriangle(5, 2);
@@ -59,7 +60,7 @@ int main(int, char **) {
   shapes = addShape(shapes, r);
 
   // Sort shapes using ShapeSorter
-  ShapeSorter *shapeSort = new ShapeSorter(shapes);
+  std::unique_ptr<ShapeSorter> shapeSort(new ShapeSorter(shapes));
   shapeSort->printByType("Rectangle");
   shapeSort->printBySide(4);
   shapeSort->printByPerimeter();
