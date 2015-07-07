@@ -43,24 +43,28 @@ void printAllShapes(std::vector<Shape *> shapes) {
 // Main
 int main(int, char **) {
 
+  // Create shapes using ShapeFactory
   ShapeFactory *factory = new ShapeFactory();
   Square *s = factory->createSquare(2);
   Circle *c = factory->createCircle(3);
   Triangle *t = factory->createTriangle(5, 2);
   Rectangle *r = factory->createRectangle(3, 4);
 
+  // Add shapes to vector of Shapes
   std::vector<Shape *> shapes;
   shapes = addShape(shapes, s);
   shapes = addShape(shapes, c);
   shapes = addShape(shapes, t);
   shapes = addShape(shapes, r);
 
+  // Sort shapes using ShapeSorter
   ShapeSorter *shapeSort = new ShapeSorter(shapes);
   shapeSort->printByType("Rectangle");
   shapeSort->printBySide(4);
   shapeSort->printByPerimeter();
   shapeSort->printByVolume();
 
+  system("PAUSE");
 }
 
 // End of file
