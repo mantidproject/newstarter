@@ -1,19 +1,19 @@
 #ifndef SQUARE_H
-#define	SQUARE_H
-/********************************INCLUDES***********************************/
+#define SQUARE_H
+// Includes
 #include "Shape.h"
 
-/*******************************CLASS HEADER********************************/
-class Square : public Shape{
+// Class definition
+class Square : public Shape {
 public:
-	Square();
-	Square(double h, double w);
-	~Square();
-	void print();
-private:
+  Square();
+  Square(double h, double w);
+  ~Square();
+  void print();
 
+private:
 };
 
-/**********************************END OF FILE******************************/
+#endif SQUARE_H
 
-#endif SQUARE_H 
+// End of File

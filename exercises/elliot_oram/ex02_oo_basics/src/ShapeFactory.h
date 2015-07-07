@@ -1,26 +1,24 @@
 #ifndef SHAPEFACTORY_H
-#define	SHAPEFACTORY_H
-/********************************INCLUDES***********************************/
+#define SHAPEFACTORY_H
+// Includes
 #include "Circle.h"
 #include "Rectangle.h"
 #include "Square.h"
 #include "Triangle.h"
 
-/*******************************CLASS HEADER********************************/
-class ShapeFactory{
+// Class definition
+class ShapeFactory {
 public:
-	ShapeFactory();		//Default constructor
-	~ShapeFactory();
-	
-	Circle* createCircle(const double &radius);	
-	Rectangle* createRectangle(const double &height, const double &width);
-	Square* createSquare(const double &length);
-	Triangle* createTriangle(const double &height, const double &base); 
+  ShapeFactory(); // Default constructor
+  ~ShapeFactory();
+
+  Circle *createCircle(const double &radius);
+  Rectangle *createRectangle(const double &height, const double &width);
+  Square *createSquare(const double &length);
+  Triangle *createTriangle(const double &height, const double &base);
 
 private:
-
 };
-
-/**********************************END OF FILE*******************************/
-
 #endif SHAPEFACTORY_H
+
+// End of File

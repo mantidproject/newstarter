@@ -1,19 +1,19 @@
 #ifndef CIRCLE_H
-#define	CIRCLE_H
-/********************************INCLUDES***********************************/
+#define CIRCLE_H
+// Includes
 #include "Shape.h"
 
-/*******************************CLASS HEADER********************************/
-class Circle : public Shape{
+// Class definition
+class Circle : public Shape {
 public:
-	Circle();
-	Circle(double h, double w);
-	~Circle();
-	void print();
-private:
+  Circle();
+  Circle(double r);
+  ~Circle();
+  void print();
 
+private:
 };
 
-/**********************************END OF FILE******************************/
+#endif SQUARE_H
 
-#endif SQUARE_H 
+// End of File

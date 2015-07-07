@@ -1,20 +1,20 @@
 #ifndef TRIANGLE_H
-#define	TRIANGLE_H
+#define TRIANGLE_H
 
-//Includes
+// Includes
 #include "Shape.h"
 
-//Class definition
-class Triangle : public Shape{
+// Class definition
+class Triangle : public Shape {
 public:
-	Triangle();
-	Triangle(double h, double w);
-	~Triangle();
-	void print();
-private:
+  Triangle();
+  Triangle(double h, double w);
+  ~Triangle();
+  void print();
 
+private:
 };
 
 #endif TRIANGLE_H
 
-//End of file
+// End of file

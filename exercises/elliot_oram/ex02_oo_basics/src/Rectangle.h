@@ -1,19 +1,19 @@
 #ifndef RECTANGLE_H
-#define	RECTANGLE_H
-/********************************INCLUDES***********************************/
+#define RECTANGLE_H
+// Includes
 #include "Shape.h"
 
-/*******************************CLASS HEADER********************************/
-class Rectangle : public Shape{
+// Class definition
+class Rectangle : public Shape {
 public:
-	Rectangle();
-	Rectangle(double h, double w);
-	~Rectangle();
-	void print();
-private:
+  Rectangle();
+  Rectangle(double h, double w);
+  ~Rectangle();
+  void print();
 
+private:
 };
 
-/**********************************END OF FILE******************************/
-
 #endif RECTANGLE_H
+
+// End of File
