@@ -12,6 +12,8 @@ public:
   ShapeSorter();
   ShapeSorter(std::vector<Shape *> s);
   ~ShapeSorter();
+  void noMatchFound(const std::string &search);
+  void showingShapesBy(const std::string &set, const std::string &feature);
   void printByType(const std::string &type);
   void printBySide(const int &sides);
   void printByVolume();

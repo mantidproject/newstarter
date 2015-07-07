@@ -17,6 +17,9 @@ Rectangle::Rectangle(double h, double w) : Shape("Rectangle", 4) {
 Rectangle::~Rectangle() {}
 
 // Member Functions
+/**
+ *Prints the height, width and footer of the Rectangle Object
+ */
 void Rectangle::print() {
   Shape::print();
   std::cout << std::setw(12) << std::left << "Height: " << std::setw(10)

@@ -20,6 +20,10 @@ Circle::Circle(double r) : Shape("Circle", 1) {
 Circle::~Circle() {}
 
 // Member Fuctions
+
+/**
+ *Prints the radius and footer of the Circle Object
+ */
 void Circle::print() {
   Shape::print();
   std::cout << std::setw(12) << std::left << "Radius: " << std::setw(10)

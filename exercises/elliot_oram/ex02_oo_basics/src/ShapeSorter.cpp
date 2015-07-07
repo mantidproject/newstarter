@@ -16,10 +16,22 @@ ShapeSorter::ShapeSorter(std::vector<Shape *> s) { allShapes = s; }
 ShapeSorter::~ShapeSorter() {}
 
 // Member Fuctions
-void ShapeSorter::printByType(const std::string &type) {
+void ShapeSorter::noMatchFound(const std::string &search) {
   std::cout << std::endl
-            << "Sorting shapes by type: \"" << type << "\"..." << std::endl
+            << "No shapes were found that match your search for \"" << search
+            << "\"" << std::endl;
+}
+
+void ShapeSorter::showingShapesBy(const std::string &set,
+                                  const std::string &feature) {
+  std::cout << std::endl
+            << "Showing Shapes sorted by \"" << set << " - " << feature << "\""
+            << std::endl
             << std::endl;
+}
+
+void ShapeSorter::printByType(const std::string &type) {
+  showingShapesBy("Type", type);
   std::vector<Shape *> allShapes = getShapes();
   int printed = 0;
   const size_t size = allShapes.size();
@@ -30,15 +42,13 @@ void ShapeSorter::printByType(const std::string &type) {
     }
   }
   if (printed == 0) {
-    std::cout << "No shapes were found that match the type: \"" << type << "\""
-              << std::endl;
+    noMatchFound("Type");
   }
 }
 
 void ShapeSorter::printBySide(const int &sides) {
-  std::cout << std::endl
-            << "Sorting shapes with \"" << sides << "\" sides..." << std::endl
-            << std::endl;
+  const std::string sidesString = std::to_string(sides);
+  showingShapesBy("Sides", sidesString);
   std::vector<Shape *> allShapes = getShapes();
   int printed = 0;
   const size_t size = allShapes.size();
@@ -49,8 +59,7 @@ void ShapeSorter::printBySide(const int &sides) {
     }
   }
   if (printed == 0) {
-    std::cout << "No shapes were found that have \"" << sides
-              << "\" number of sides" << std::endl;
+    noMatchFound("Sides");
   }
 }
 
@@ -81,9 +90,7 @@ void ShapeSorter::printByVolume() {
   std::vector<Shape *> sortByV = getShapes();
   std::sort(sortByV.begin(), sortByV.end(), compareVolume);
   updateShapes(sortByV);
-  std::cout << std::endl
-            << "Showing Shapes sorted by Area" << std::endl
-            << std::endl;
+  showingShapesBy("Area", "Descending");
   printAll();
 }
 
@@ -94,9 +101,7 @@ void ShapeSorter::printByPerimeter() {
   std::vector<Shape *> sortByP = getShapes();
   std::sort(sortByP.begin(), sortByP.end(), comparePerimeter);
   updateShapes(sortByP);
-  std::cout << std::endl
-            << "Showing Shapes sorted by Perimeter" << std::endl
-            << std::endl;
+  showingShapesBy("Perimeter", "Descending");
   printAll();
 }
 

@@ -12,6 +12,7 @@
 #include "Square.h"
 #include "Triangle.h"
 
+#include <iostream>
 #include <vector>
 
 // Member Functions
@@ -24,6 +25,8 @@
  */
 std::vector<Shape *> addShape(std::vector<Shape *> shapes, Shape *s) {
   shapes.push_back(s);
+  std::cout << "A " << s->getType() << " has been added to the list."
+            << std::endl;
   return shapes;
 }
 
@@ -51,7 +54,6 @@ int main(int, char **) {
   shapes = addShape(shapes, c);
   shapes = addShape(shapes, t);
   shapes = addShape(shapes, r);
-  printAllShapes(shapes);
 
   ShapeSorter *shapeSort = new ShapeSorter(shapes);
   shapeSort->printByType("Rectangle");

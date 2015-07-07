@@ -14,11 +14,15 @@ Shape::Shape(std::string t, int s) {
 Shape::~Shape() {}
 
 // Member Functions
-
+/**
+ *Prints the Type, Sides, Area and Perimeter common to any Shape Object
+ */
 void Shape::print() {
   std::cout << "============================================" << std::endl;
   std::cout << std::setw(12) << std::left << "Type: " << std::setw(10)
             << std::left << getType() << std::endl;
+  std::cout << std::setw(12) << std::left << "Sides: " << std::setw(10)
+            << std::left << getSides() << std::endl;
   std::cout << std::setw(12) << std::left << "Area: " << std::setw(10)
             << std::left << getArea() << std::endl;
   std::cout << std::setw(12) << std::left << "Perimeter: " << std::setw(10)
