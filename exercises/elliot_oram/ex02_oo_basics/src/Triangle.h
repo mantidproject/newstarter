@@ -4,7 +4,10 @@
 // Includes
 #include "Shape.h"
 
-// Class definition
+/**
+ *A Class used to model a Triangle 
+ *Triangle inherits from the Shape super class
+ */
 class Triangle : public Shape {
 public:
   Triangle();

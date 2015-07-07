@@ -6,7 +6,9 @@
 #include "Square.h"
 #include "Triangle.h"
 
-// Class definition
+/**
+ *A Factory Class used to encapsulate the creation of new shapes
+ */
 class ShapeFactory {
 public:
   ShapeFactory(); // Default constructor

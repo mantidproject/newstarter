@@ -3,7 +3,10 @@
 // Includes
 #include "Shape.h"
 
-// Class definition
+/**
+ *A Class used to model a Circle 
+ *Circle inherits from the Shape super class
+ */
 class Circle : public Shape {
 public:
   Circle();

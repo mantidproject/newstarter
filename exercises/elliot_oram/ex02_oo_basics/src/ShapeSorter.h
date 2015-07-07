@@ -6,7 +6,9 @@
 
 #include <vector>
 
-// Class definition
+/**
+ *A Class used to allow the sorting of a vector of shapes in various ways
+ */
 class ShapeSorter {
 public:
   ShapeSorter();

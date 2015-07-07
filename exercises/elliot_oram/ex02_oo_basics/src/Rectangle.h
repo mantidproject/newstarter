@@ -3,7 +3,10 @@
 // Includes
 #include "Shape.h"
 
-// Class definition
+/**
+ *A Class used to model a Rectangle 
+ *Rectangle inherits from the Shape super class
+ */
 class Rectangle : public Shape {
 public:
   Rectangle();

@@ -3,7 +3,9 @@
 // Includes
 #include <string>
 
-// Class Defintion
+/**
+ *A Class used to model a generic shape
+ */
 class Shape {
 public:
   Shape();
