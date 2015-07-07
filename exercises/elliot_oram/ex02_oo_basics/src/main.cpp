@@ -13,6 +13,7 @@
 #include "Triangle.h"
 
 #include <iostream>
+#include <cstdlib>
 #include <vector>
 
 // Member Functions
