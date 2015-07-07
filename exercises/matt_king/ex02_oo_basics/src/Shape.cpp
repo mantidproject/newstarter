@@ -6,22 +6,32 @@ Shape::Shape(){
 
 Shape::Shape(std::string type)
 {
-	Shape::shapeType = type;
+	shapeType = type;
 }
 
-double Shape::calculateArea()
-{
-	//default area calculation 
-	return 0;
-}
-
-double Shape::calculatePerimeter()
-{
-   //default perimeter calculation
-	return 0;
+Shape::~Shape(){
 }
 
 std::string Shape::getType(){
 	return shapeType;
+}
+
+double Shape::calculateArea()
+{
+	return 0;
+}
+double Shape::calculatePerimeter()
+{
+	return 0;
+}
+
+double Shape::getArea()
+{
+	return area;
+}
+
+double Shape::getPerimeter()
+{
+	return perimeter;
 }
 

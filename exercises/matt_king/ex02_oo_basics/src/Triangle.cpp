@@ -1,10 +1,11 @@
 #include "Triangle.h"
-#include <string>
 
 Triangle::Triangle(double width, double height) : Shape("Triangle")
-{
+{ 
 	base = width;
 	Triangle::height = height;
+	area = calculateArea();
+	perimeter = calculatePerimeter();
 };
 
 double Triangle::calculateArea()

@@ -3,6 +3,8 @@
 Square::Square(double side) : Shape("Square")
 {
 	Square::side = side;
+	area = calculateArea();
+	perimeter = calculatePerimeter();
 }
 double Square::getSide()
 {

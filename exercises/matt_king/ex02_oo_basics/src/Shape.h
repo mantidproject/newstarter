@@ -7,10 +7,15 @@ class Shape
 public:
 	Shape();
 	Shape(std::string type);
-	//~Shape();
+	virtual ~Shape();
 	virtual std::string getType();
 	virtual double calculateArea();
 	virtual double calculatePerimeter();
+	virtual double getArea();
+	virtual double getPerimeter();
+
+	double area;
+	double perimeter;
 
 private:
 	std::string shapeType;

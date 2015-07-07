@@ -4,6 +4,8 @@ Rectangle::Rectangle(double thisSide, double anotherSide) : Shape("Rectangle")
 {
 	Rectangle::oneSide = thisSide;
 	Rectangle::theOtherSide = anotherSide;
+	area = calculateArea();
+	perimeter = calculatePerimeter();
 }
 
 double Rectangle::calculateArea()
