@@ -53,27 +53,6 @@ void SaveRandomShapes(){
 int main()
 {
 
-	//Base class to dervice class
-	
-	//std::vector<Shape> shapes; 
-
-	//dwed
-
-	//format:: vector<DataType> nameOfVector
-
-	/*vector<Shape> 
-
-	double side;
-
-	cout << "enter the square side " << endl;
-	cin >> side;
-
-	Square square2(side);
-
-	//Square square1(side); 
-
-
-
 
 	/*for (auto i = shapes.begin(); i != shapes.end(); ++i){
 		cout << (*i) << endl;
