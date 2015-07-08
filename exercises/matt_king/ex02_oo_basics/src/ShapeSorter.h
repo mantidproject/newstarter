@@ -1,8 +1,10 @@
 #ifndef SHAPESORTER_H
 #define SHAPESORTER_H
 
-#include "Shape.h"
-
+#include "Circle.h"
+#include "Rectangle.h"
+#include "Square.h"
+#include "Triangle.h"
 #include <vector>
 
 class ShapeSorter{

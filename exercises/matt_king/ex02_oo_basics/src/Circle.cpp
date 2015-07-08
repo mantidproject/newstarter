@@ -8,7 +8,7 @@
 
 
 
-const double pi = 3.1415926;
+static const double PI = 3.1415926;
 
 Circle::Circle(double radius) : Shape("Circle", 1){
 	Circle::radius = radius;
@@ -22,9 +22,9 @@ double Circle::getRadius()
 };
 
 double Circle::calculateArea(){
-	return pow(getRadius(),2)*pi;
+	return pow(getRadius(),2)*PI;
 };
 double Circle::calculatePerimeter(){
-	return 2*getRadius()*pi;
+	return 2*getRadius()*PI;
 };
 

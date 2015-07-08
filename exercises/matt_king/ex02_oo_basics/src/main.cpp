@@ -6,10 +6,7 @@
 #include <string>
 
 #include "ShapeSorter.h"
-#include "Circle.h"
-#include "Rectangle.h"
-#include "Square.h"
-#include "Triangle.h"
+
 
 std::vector<Shape> creatShapesAndInsertIntoVector()
 {
