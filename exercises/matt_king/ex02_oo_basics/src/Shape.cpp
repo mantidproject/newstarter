@@ -31,23 +31,21 @@ std::string Shape::getType(){
 
 double Shape::calculateArea()
 {
-	area = 0;
-	return area;
+	return 0;
 }
 double Shape::calculatePerimeter()
 {
-	perimeter = 0;
-	return perimeter;
+	return 0;
 }
 
 double Shape::getArea()
 {
-	return area;
+	return calculateArea();
 }
 
 double Shape::getPerimeter()
 {
-	return perimeter;
+	return calculatePerimeter();
 }
 
 int Shape::getNoOfSides()
