@@ -1,13 +1,16 @@
+/**
+* Contains method definitions that are stated in Triangle.h
+*/
+
 #include "Triangle.h"
 #include <cmath>
 
-Triangle::Triangle(double width, double height) : Shape("Triangle")
+Triangle::Triangle(double width, double height) : Shape("Triangle", 3)
 { 
 	base = width;
 	Triangle::height = height;
 	area = calculateArea();
 	perimeter = calculatePerimeter();
-	noOfSides = 3;
 };
 
 double Triangle::calculateArea()

@@ -1,12 +1,18 @@
+/**
+* Contains method definitions that are stated in Shape.h
+*/
+
+
 #include "Shape.h"
 
 Shape::Shape(){
-	Shape undefinedShape("Undefined");
+	Shape undefinedShape("Undefined", 0);
 }
 
-Shape::Shape(const std::string& type)
+Shape::Shape(const std::string& type, int sides)
 {
 	shapeType = type;
+	noOfSides = sides;
 }
 
 Shape::~Shape(){
@@ -25,16 +31,15 @@ std::string Shape::getType(){
 
 double Shape::calculateArea()
 {
-	return 0;
+	area = 0;
+	return area;
 }
 double Shape::calculatePerimeter()
 {
-	return 0;
+	perimeter = 0;
+	return perimeter;
 }
 
-// NOT SURE IF I NEED THESE.
-
-/* 
 double Shape::getArea()
 {
 	return area;
@@ -44,4 +49,9 @@ double Shape::getPerimeter()
 {
 	return perimeter;
 }
-*/
+
+int Shape::getNoOfSides()
+{
+	return noOfSides;
+}
+

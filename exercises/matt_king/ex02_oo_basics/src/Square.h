@@ -1,3 +1,7 @@
+/**
+*  Contains methods whose bodies are contained in Square.cpp
+*/
+
 #ifndef SQUARE_H
 #define SQUARE_H
 #include "Shape.h"

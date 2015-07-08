@@ -1,3 +1,7 @@
+/**
+* Contains method definitions that are stated in ShapeSorter.h
+*/
+
 #include "ShapeSorter.h"
 
 #include <iostream>
@@ -51,7 +55,7 @@ int ShapeSorter::printShapesThatMatchNumberOfSides(int noOfSides) const{
 	std::cout << "SHAPES WITH " << noOfSides << " SIDE(s): " << std::endl;
 	for (auto it = shapes.begin(); it != shapes.end(); ++it)
 	{
-		if (it->noOfSides == noOfSides)
+		if (it->getNoOfSides() == noOfSides)
 		{
 			it->print();
 			amountOfMatchingShapes++;

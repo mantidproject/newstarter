@@ -1,3 +1,7 @@
+/**
+*  Contains methods whose bodies are contained in Rectangle.cpp
+*/
+
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 

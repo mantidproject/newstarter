@@ -1,11 +1,15 @@
+/**
+* Contains method definitions that are stated in Square.h
+*/
+
 #include "Square.h"
 #include <cmath>
-Square::Square(double side) : Shape("Square")
+
+Square::Square(double side) : Shape("Square", 4)
 {
 	Square::side = side;
 	area = calculateArea();
 	perimeter = calculatePerimeter();
-	noOfSides = 4;
 }
 double Square::getSide()
 {

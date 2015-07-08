@@ -1,12 +1,15 @@
+/**
+* Contains method definitions that are stated in Rectangle.h
+*/
+
 #include "Rectangle.h"
 
-Rectangle::Rectangle(double thisSide, double anotherSide) : Shape("Rectangle")
+Rectangle::Rectangle(double thisSide, double anotherSide) : Shape("Rectangle", 4)
 {
 	Rectangle::oneSide = thisSide;
 	Rectangle::theOtherSide = anotherSide;
 	area = calculateArea();
 	perimeter = calculatePerimeter();
-	noOfSides = 4;
 }
 
 double Rectangle::calculateArea()

@@ -1,15 +1,19 @@
+/**
+* Contains method definitions that are stated in Circle.h
+*/
+
 #include "Circle.h"
 
 #include <cmath>
 
 
+
 const double pi = 3.1415926;
 
-Circle::Circle(double radius) : Shape("Circle"){
+Circle::Circle(double radius) : Shape("Circle", 1){
 	Circle::radius = radius;
 	area = calculateArea();
 	perimeter = calculatePerimeter();
-	noOfSides = 1;
 };
 
 double Circle::getRadius()

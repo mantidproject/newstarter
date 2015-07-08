@@ -1,3 +1,7 @@
+/**
+*  Contains methods whose bodies are contained in Circle.cpp
+*/
+
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
