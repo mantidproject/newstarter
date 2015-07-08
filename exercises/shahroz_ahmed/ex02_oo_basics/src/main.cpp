@@ -36,13 +36,10 @@ void SaveRandomShapes(){
 	shapes.push_back(new Circle(6));
 	shapes.push_back(new Circle(8));
 
-	//Rectangle r = dynamic_cast<Rectangle*>(shapes[0]);
-	//shapes[0]Area();
 
-
+	//print for testing
 	for(int i=0; i<shapes.size(); ++i){
-		//std::cout << shapes[i]->getType() << " --> Perimeter: " << shapes[i]->getPerimeter() << endl;
-
+		
 		std:: cout << " Shape type: " << shapes[i]->getType() << ", Number of sides: " << shapes[i]->getSides() << ", Perimeter: " << shapes[i]->getPerimeter() << ", Area: " << shapes[i]->getArea() << endl;
 	}
 
@@ -53,16 +50,15 @@ void SaveRandomShapes(){
 int main()
 {
 
-
-	/*for (auto i = shapes.begin(); i != shapes.end(); ++i){
-		cout << (*i) << endl;
-		}
-	*.//cout << "area " << square1.Perimeter() << endl;
-	*/
-	SaveRandomShapes();
-
+	SaveRandomShapes(); //Save the shapes 
+	printChosenType("Square"); //prints all square type shapes
+	printChosenNumber(3); //print sides with three sides
+	printVolumeDecending(); //print area in decending order
+	printPerimeterDecending(); //print perimeter in decending order
+	
+	
 	string por;
-	cin >> por;
+	cin >> por;//to view results in terminal
 	
 	return 0;
 }//
