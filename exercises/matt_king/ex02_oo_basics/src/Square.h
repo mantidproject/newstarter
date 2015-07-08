@@ -11,7 +11,6 @@ class Square : public Shape
 public:
 	Square();
 	Square(double side);
-	~Square(){};
 	double calculateArea();
 	double calculatePerimeter();
 	double getSide();
