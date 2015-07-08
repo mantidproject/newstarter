@@ -48,15 +48,10 @@ void ShapeSorter:: printVolumeDecending(){
 
 };
 
+
 void ShapeSorter:: printPerimeterDecending(){
-	printf("[Perimeter: ");
+	std::vector<Shape*> shapesort = getVShape();
+	std::sort(shapesort.begin(), shapesort.end(), wayToSort);
+	 for (Shape* n : shapesort)
+		 cout << n.perimeter() << " ";
 };
-
-
-
-
-/**
-*formula used: 
-*0 < p < sqrt ( 2 x width x width) + (4 x height x height)
-*returns the aproximate perimeter of the triangle
-*/
