@@ -19,7 +19,7 @@ public:
 	double getPerimeter();
 	virtual double calculateArea();
 	virtual double calculatePerimeter();
-	virtual void print();
+	void print();
 
 	double area;
 	double perimeter;
