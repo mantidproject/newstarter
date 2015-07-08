@@ -14,7 +14,12 @@ ShapeSorter::ShapeSorter() {}
 
 ShapeSorter::ShapeSorter(std::vector<Shape *> s) { allShapes = s; }
 
-ShapeSorter::~ShapeSorter() {}
+ShapeSorter::~ShapeSorter() {
+  const size_t size = allShapes.size();
+  for (int i = 0; i < size; i++) {
+    delete (allShapes[i]);
+  }
+}
 
 // Member Fuctions
 

@@ -68,6 +68,10 @@ int main(int, char **) {
   shapeSort->printByVolume();
 
   system("PAUSE");
+
+  delete(factory);
+  delete(shapeSort);
+
 }
 
 // End of file
