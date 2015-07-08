@@ -37,7 +37,8 @@ std::vector<Shape *> addShape(std::vector<Shape *> shapes, Shape *s) {
  *@param shapes A vector of all the shapes
  */
 void printAllShapes(std::vector<Shape *> shapes) {
-  for (int i = 0; i < shapes.size(); i++) {
+  const size_t size = shapes.size();
+  for (int i = 0; i < size; i++) {
     shapes[i]->print();
   }
 }
