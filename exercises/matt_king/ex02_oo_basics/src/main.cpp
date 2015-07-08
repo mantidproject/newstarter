@@ -26,6 +26,8 @@ std::vector<Shape> creatShapesAndInsertIntoVector()
 	shapes.push_back(rect);
 	shapes.push_back(square);
 	shapes.push_back(tri);
+
+	return shapes;
 }
 
 void sortShapes(const ShapeSorter& sorter)
