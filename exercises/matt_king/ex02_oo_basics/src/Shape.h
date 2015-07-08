@@ -12,7 +12,7 @@ class Shape
 public:
 	Shape();
 	Shape(const std::string& type, int sides);
-	~Shape();
+	virtual ~Shape();
 	std::string getType();
 	int getNoOfSides();
 	double getArea();

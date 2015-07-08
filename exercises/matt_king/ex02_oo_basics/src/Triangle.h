@@ -11,6 +11,7 @@ class Triangle : public Shape
 public:
 	Triangle();
 	Triangle(double base, double height);
+	~Triangle(){};
 	double getBase();
 	double getHeight();
 	double calculateArea();

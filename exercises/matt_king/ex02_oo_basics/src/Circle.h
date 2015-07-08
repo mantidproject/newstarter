@@ -12,6 +12,7 @@ class Circle : public Shape
 public:
 	Circle();
 	Circle(double radius);
+	~Circle(){};
 	double getRadius();
 	double calculateArea();
 	double calculatePerimeter();

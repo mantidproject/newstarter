@@ -12,6 +12,7 @@ class Rectangle : public Shape
 public:
 	Rectangle();
 	Rectangle(double oneSide, double anotherSide);
+	~Rectangle(){};
 	double calculateArea();
 	double calculatePerimeter();
 	double getOneSide();
