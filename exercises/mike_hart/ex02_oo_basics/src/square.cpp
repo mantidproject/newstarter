@@ -33,7 +33,7 @@ Square::~Square()
  */
 double Square::calcPerimeter()
 {
-	return m_sideLength * m_sideCount;
+	return m_sideLength * getSideCount();
 }
 
 /**

@@ -14,34 +14,40 @@
 class Shape;
 typedef std::unique_ptr<Shape> ShapeUPtr;
 typedef std::vector<ShapeUPtr> ShapeVector;
+typedef std::shared_ptr<ShapeVector> ShapeVectorSPtr;
 
 
 
 /**
-	
+	Utility class that can sort and print a vector of shapes.
 */
 class ShapeSorter
 {
 public:
 	/// Constructor
-	ShapeSorter(const ShapeVector& shapes);
+	ShapeSorter(const ShapeVectorSPtr& shapes);
+
+	/// Destructor
+	~ShapeSorter();
 	
 	/// Print out Shapes that match the chosen type
-	void printByTypeMatch(std::string type);
+	void printByTypeMatch(const std::string& type);
 
 	/// Print out Shapes that match the chosen number of sides
 	void printBySideCount(int sidecount);
 	
-	/// Print out Shapes in order of area descending
+	/// Sort and print Shapes in order of area, descending
 	void printByArea();
 
-	/// Print out Shapes that match the chosen type
+	/// Sort and print Shapes in order of perimeter, descending
 	void printByPerimeter();
 
-
 private:
-	/// 
-	const ShapeVector& m_shapes;
+	/// Shared pointer to vector of shapes to be sorted/printed
+	ShapeVectorSPtr m_shapes;
+
+	/// Helper function to print out a single shape
+	void printShape(const ShapeUPtr& shape);
 };
 
 #endif // SHAPESORTER_H_

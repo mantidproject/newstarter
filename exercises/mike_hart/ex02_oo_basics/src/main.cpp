@@ -13,42 +13,8 @@
 #include "rectangle.h"
 #include "circle.h"
 #include "triangle.h"
+#include "shapesorter.h"
 
-//----------------------------------------------------------------------
-// Typedefs
-//----------------------------------------------------------------------
-typedef std::unique_ptr<Shape> ShapeUPtr;
-typedef std::vector<ShapeUPtr> ShapeVector;
-
-/**
- *
- */
-void PrintAllShapes(const ShapeVector& shapes)
-{
-	std::cout << "List all available shapes:" << std::endl;
-	std::cout << "--------------------------" << std::endl;
-	
-	for (const auto& shape : shapes)
-	{
-		std::string column;
-
-		column = "Shape[" + shape->getType() + "]:";
-		std::cout << std::setw(20) << std::left << column;
-
-		column = "Sides = " + std::to_string(shape->getSideCount());
-		std::cout << std::setw(15) << std::left << column;
-
-		column = "Perim = " + std::to_string(shape->calcPerimeter());
-		std::cout << std::setw(20) << std::left << column;
-
-		column = "Area = " + std::to_string(shape->calcArea());
-		std::cout << std::setw(20) << std::left << column;
-
-		std::cout << std::endl;
-	}
-
-	std::cout << std::endl;
-}
 
 
 /**
@@ -57,14 +23,24 @@ void PrintAllShapes(const ShapeVector& shapes)
 int main(int, char **)
 {
 	// Create some shapes in a generic vector
-	ShapeVector shapes;
-	shapes.push_back(ShapeUPtr(new Square(3.0)));
-	shapes.push_back(ShapeUPtr(new Rectangle(4.0, 5.0)));
-	shapes.push_back(ShapeUPtr(new Circle(4.0)));
-	shapes.push_back(ShapeUPtr(new Triangle(6.0, 8.0)));
+	auto shapes = std::make_shared<ShapeVector>();
+	shapes->emplace_back(new Square(3.0));
+	shapes->emplace_back(new Rectangle(1.0, 20.0));
+	shapes->emplace_back(new Circle(4.0));
+	shapes->emplace_back(new Triangle(3.0, 14.0));
+	shapes->emplace_back(new Square(7.5));
 
-	// Print shape info to stdout
-	PrintAllShapes(shapes);
+	// Create ShapeSorter that operates on our shape vector
+	ShapeSorter sorter(shapes);
+
+	// Test member functions
+	sorter.printByTypeMatch("Square");
+	sorter.printByTypeMatch("Circle");
+	sorter.printBySideCount(2);
+	sorter.printBySideCount(3);
+	sorter.printBySideCount(4);
+	sorter.printByArea();
+	sorter.printByPerimeter();
 
 	system("pause");
 }

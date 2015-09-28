@@ -30,12 +30,12 @@ public:
 	virtual double calcArea() = 0;
 
 	/// Get type of shape
-	virtual std::string getType() { return m_type; }
+	virtual std::string getType() const { return m_type; }
 
 	/// Get the number of sides this shape has
-	virtual int getSideCount() { return m_sideCount; }
+	virtual int getSideCount() const { return m_sideCount; }
 
-protected:
+private:
 	/// String that represents the type of this shape
 	std::string m_type;
 
