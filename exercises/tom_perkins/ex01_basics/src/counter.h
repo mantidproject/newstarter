@@ -1,0 +1,28 @@
+#ifndef COUNTER_H_
+#define COUNTER_H_
+
+//----------------------------------------------------------------------
+// Includes
+//----------------------------------------------------------------------
+#include <string>
+#include <map>
+#include <iostream>
+
+/**
+ * The Counter object keeps track of words that it has seen
+ * and can report on how many times it has seen each.
+ */
+class Counter
+{
+public:
+	void add(const std::string& word);
+	void generateReport(std::ostream& stream);
+
+private:
+	std::map<std::string, int> m_dictionary;
+
+};
+
+
+
+#endif
