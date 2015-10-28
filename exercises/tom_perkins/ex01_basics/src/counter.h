@@ -13,6 +13,7 @@
 /**
  * The Counter object keeps track of words that it has seen
  * and can report on how many times it has seen each.
+ * Currently works for ASCII only (char not wchar_t).
  */
 class Counter
 {
