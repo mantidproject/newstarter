@@ -10,26 +10,33 @@
 int main(int argc, char ** argv)
 {
 	// parse command-line arguments
-	if (argc == 2)
+	if (argc == 3)
 	{
-		std::cout << "Reading " << argv[1] << "..." << std::endl;
+		Counter counter;
 
-		// Open file
+		// Open input file
+		std::cout << "Reading " << argv[1] << "..." << std::endl;
 		std::ifstream file(argv[1]);
+
+		// Count words
 		if (!file.bad())
 		{
-			Counter counter;
 			std::string str;
 			while (file >> str) 
 			{
 				counter.add(str);
 			}
-			counter.generateReport(std::cout);
 		}
+
+		// Open output file
+		std::ofstream outfile(argv[2]);
+		if (!outfile.bad())
+			counter.generateReport(outfile);
+
 	}
 	else
 	{
-		std::cout << "Usage: WordCounter.exe <filename>" << std::endl;
+		std::cout << "Usage: WordCounter.exe <input-filename> <output-filename>" << std::endl;
 	}
 
 	return 0;
