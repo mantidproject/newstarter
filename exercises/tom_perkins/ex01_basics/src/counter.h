@@ -6,7 +6,9 @@
 //----------------------------------------------------------------------
 #include <string>
 #include <map>
+#include <vector>
 #include <iostream>
+#include <algorithm>
 
 /**
  * The Counter object keeps track of words that it has seen
@@ -19,7 +21,7 @@ public:
 	void generateReport(std::ostream& stream);
 
 private:
-	std::map<std::string, int> m_dictionary;
+	std::map<std::string, int> m_dictionary; 
 
 };
 
