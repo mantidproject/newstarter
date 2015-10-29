@@ -4,6 +4,7 @@
 #include "circle.h"
 #include "triangle.h"
 #include "square.h"
+#include "shapesorter.h"
 
 /**
  * Shape: Create a selection of shapes in a vector.
@@ -18,10 +19,17 @@ int main(int argc, char ** argv)
 	shapes.push_back(std::make_shared<Rectangle>(1.0, 2.0));
 	shapes.push_back(std::make_shared<Square>(1.0));
 
+	// Check that we have the correct shapes in the vector
+	std::cout << "Shapes in vector are:" << std::endl;
 	for (auto iter = shapes.begin(); iter != shapes.end(); iter++)
 	{
 		std::cout << (*iter)->type << std::endl;
 	}
+	std::cout << std::endl;
+
+	ShapeSorter sorter(std::cout);
+	sorter.selectByType(shapes, "Triangle");
+
 
 	return 0;
 }
