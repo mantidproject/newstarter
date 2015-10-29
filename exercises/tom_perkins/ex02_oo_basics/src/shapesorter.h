@@ -5,6 +5,7 @@
 // Includes
 //----------------------------------------------------------------------
 #include "shape.h"
+#include "typetester.h"
 #include <vector>
 #include <memory>
 #include <iosfwd>
@@ -28,6 +29,9 @@ public:
 	std::vector<std::shared_ptr<Shape> > selectBySides(const std::vector<std::shared_ptr<Shape> > &shapes, const int numSides) const;
 	std::vector<std::shared_ptr<Shape> > sortByArea(const std::vector<std::shared_ptr<Shape> > &shapes) const;
 	std::vector<std::shared_ptr<Shape> > sortByPerimeter(const std::vector<std::shared_ptr<Shape> > &shapes) const;
+
+private:
+	std::vector<std::shared_ptr<Shape> > select(const std::vector<std::shared_ptr<Shape> > &shapes, const ShapeTester &tester) const;
 };
 
 #endif

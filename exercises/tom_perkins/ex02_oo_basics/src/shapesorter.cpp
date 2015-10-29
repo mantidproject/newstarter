@@ -6,11 +6,33 @@ typedef std::vector<std::shared_ptr<Shape> > vecShape;
 // Free functions
 //----------------------------------------------------------------------
 
-//bool compareAreas(
+//bool isOfType
 
 //----------------------------------------------------------------------
 // Member functions
 //----------------------------------------------------------------------
+
+/**
+ * \brief Selects all shapes in the given vector that satisfy the given predicate
+ *
+ * \param shapes Vector of shared_ptr's to Shape objects, to select from
+ * \param predicate Pointer to a function returning a bool, that determines if the given 
+ * shape should be selected or not
+ */
+vecShape ShapeSorter::select(const vecShape &shapes, const ShapeTester &tester) const
+{
+	vecShape selected;
+	
+	for (auto iter = shapes.begin(); iter != shapes.end(); iter++)
+	{
+		if (tester.match(*iter))
+		{
+			selected.push_back(*iter);
+		}
+	}
+
+	return selected;
+}
 
 /**
  * \brief Selects all shapes in the given vector that have the given type
@@ -27,15 +49,8 @@ vecShape ShapeSorter::selectByType(const vecShape &shapes, const std::string &ty
 	std::string typeLower(type);
 	std::transform(type.begin(), type.end(), typeLower.begin(), tolower);
 
-	for (auto iter = shapes.begin(); iter != shapes.end(); iter++)
-	{
-		if ((*iter)->type == typeLower)
-		{
-			selected.push_back(*iter);
-		}
-	}
-
-	return selected;
+	TypeTester isOfType(typeLower);
+	return select(shapes, isOfType);
 }
 
 ///**
