@@ -19,7 +19,7 @@ class Counter
 {
 public:
 	void add(const std::string& word);
-	void generateReport(std::ostream& stream);
+	void generateReport(std::ostream& stream) const;
 
 private:
 	std::map<std::string, int> m_dictionary; 
