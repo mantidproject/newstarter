@@ -9,7 +9,7 @@
  *
  * Converts to lower-case for case-insensitive comparisons.
  *
- * \param Type of shape to compare to
+ * \param typeIn Type of shape to compare to
  */
 TypeTester::TypeTester(const std::string &typeIn)
 {

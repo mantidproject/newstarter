@@ -1,6 +1,6 @@
 #include "shapesorter.h"
 
-typedef std::vector<std::shared_ptr<Shape> > vecShape;
+typedef std::vector<std::shared_ptr<Shape> > vecShape; ///< To save typing in this implementation file
 
 //----------------------------------------------------------------------
 // Free functions
@@ -53,23 +53,18 @@ vecShape ShapeSorter::selectByType(const vecShape &shapes, const std::string &ty
 	return select(shapes, isOfType);
 }
 
-///**
-// * \brief Selects all shapes in the given vector that have the given number of sides
-// *
-// * \param shapes Vector of shared_ptr's to Shape objects, to select from
-// * \param numSides Number of sides to match
-// */
-//void ShapeSorter::selectBySides(const std::vector<std::shared_ptr<Shape> > &shapes, const int numSides) const
-//{
-//	m_stream << std::endl << "Shapes with " << numSides << " sides are:" << std::endl;
-//	for (auto iter = shapes.begin(); iter != shapes.end(); iter++)
-//	{
-//		if ((*iter)->sides == numSides)
-//		{
-//			m_stream << (*iter)->name << std::endl;
-//		}
-//	}
-//}
+/**
+ * \brief Selects all shapes in the given vector that have the given number of sides
+ *
+ * \param shapes Vector of shared_ptr's to Shape objects, to select from
+ * \param numSides Number of sides to match
+ * \returns Vector of shared_ptr's to matching Shapes
+ */
+vecShape ShapeSorter::selectBySides(const vecShape &shapes, const int numSides) const
+{
+	SidesTester hasNumberOfSides(numSides);
+	return select(shapes, hasNumberOfSides);
+}
 //
 ///**
 // * \brief Sorts the given shapes by area, descending.

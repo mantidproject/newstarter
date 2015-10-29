@@ -34,7 +34,13 @@ int main(int argc, char ** argv)
 	{
 		std::cout << (*iter)->name << std::endl;
 	}
-	
+	auto foursides = sorter.selectBySides(shapes, 4);
+	std::cout << std::endl << "Shapes with 4 sides are: " << std::endl;
+	for (auto iter = foursides.begin(); iter != foursides.end(); iter++)
+	{
+		std::cout << (*iter)->name << std::endl;
+	}
+
 
 	return 0;
 }

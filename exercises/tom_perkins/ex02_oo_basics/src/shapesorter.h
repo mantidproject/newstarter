@@ -6,6 +6,7 @@
 //----------------------------------------------------------------------
 #include "shape.h"
 #include "typetester.h"
+#include "sidestester.h"
 #include <vector>
 #include <memory>
 #include <iosfwd>
