@@ -7,6 +7,18 @@
 #include "shapesorter.h"
 
 /**
+ * \brief Utility function to print out a vector of shapes to screen
+ * \param shapes Vector of shared_ptrs to shapes to print
+ */
+void printShapes(const std::vector<std::shared_ptr<Shape> > &shapes)
+{
+	for (auto iter = shapes.begin(); iter != shapes.end(); iter++)
+	{
+		std::cout << (*iter)->name << std::endl;
+	}
+}
+
+/**
  * Shape: Create a selection of shapes in a vector.
  * Use these to test the ShapeSorter's methods.
  */
@@ -28,32 +40,23 @@ int main(int argc, char ** argv)
 	}
 	
 	ShapeSorter sorter;
-	auto triangles = sorter.selectByType(shapes, "Triangle");
+
+	// 1. Print out the shapes that match a chosen type
 	std::cout << std::endl << "Triangles are: " << std::endl;
-	for (auto iter = triangles.begin(); iter != triangles.end(); iter++)
-	{
-		std::cout << (*iter)->name << std::endl;
-	}
-	auto foursides = sorter.selectBySides(shapes, 4);
+	printShapes(sorter.selectByType(shapes, "Triangle"));
+
+	// 2. Print out the shapes that match a chosen number of sides
 	std::cout << std::endl << "Shapes with 4 sides are: " << std::endl;
-	for (auto iter = foursides.begin(); iter != foursides.end(); iter++)
-	{
-		std::cout << (*iter)->name << std::endl;
-	}
-	auto sortedArea = sorter.sortByArea(shapes);
+	printShapes(sorter.selectBySides(shapes, 4));
+
+	// 3. Print out the shapes in order of area, descending
 	std::cout << std::endl << "Shapes sorted by area: " << std::endl;
-	for (auto iter = sortedArea.begin(); iter != sortedArea.end(); iter++)
-	{
-		std::cout << (*iter)->name << ": " << (*iter)->area() << std::endl;
-	}
-	auto sortedPerimeter = sorter.sortByPerimeter(shapes);
+	printShapes(sorter.sortByArea(shapes));
+
+	// 4. Print out the shapes in order of perimeter, descending
 	std::cout << std::endl << "Shapes sorted by perimeter: " << std::endl;
-	for (auto iter = sortedPerimeter.begin(); iter != sortedPerimeter.end(); iter++)
-	{
-		std::cout << (*iter)->name << ": " << (*iter)->perimeter() << std::endl;
-	}
-
-
+	printShapes(sorter.sortByPerimeter(shapes));
 
 	return 0;
 }
+

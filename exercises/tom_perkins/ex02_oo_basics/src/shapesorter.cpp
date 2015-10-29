@@ -75,8 +75,6 @@ vecShape ShapeSorter::sort(const vecShape &shapes, bool predicate(const std::sha
  */
 vecShape ShapeSorter::selectByType(const vecShape &shapes, const std::string &type) const
 {
-	vecShape selected;
-
 	// Convert supplied type to lower-case to match the built-in type strings
 	std::string typeLower(type);
 	std::transform(type.begin(), type.end(), typeLower.begin(), tolower);
