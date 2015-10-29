@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------
 // Includes
 //----------------------------------------------------------------------
-#include "shapetester.h"
+#include "ShapeTester.h"
 
 /**
  * \brief Tests Shapes against the given number of sides
