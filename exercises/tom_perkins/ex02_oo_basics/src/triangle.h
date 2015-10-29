@@ -9,7 +9,7 @@
 /**
  * \brief Triangle represents an isoceles triangle
  */
-class Triangle : Shape
+class Triangle : public Shape
 {
 public:
 	Triangle(double heightIn, double baseIn);

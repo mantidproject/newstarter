@@ -11,7 +11,7 @@
 /**
  * \brief Circle represents a circle.
  */
-class Circle : Shape
+class Circle : public Shape
 {
 public:
 	Circle(double radiusIn);

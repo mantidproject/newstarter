@@ -9,7 +9,7 @@
 /**
  * \brief Rectangle represents a rectangle
  */
-class Rectangle : Shape
+class Rectangle : public Shape
 {
 public:
 	Rectangle(double xIn, double yIn);

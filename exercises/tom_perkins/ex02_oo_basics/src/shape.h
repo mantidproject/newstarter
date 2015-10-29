@@ -17,10 +17,10 @@ class Shape
 public:
 	virtual double perimeter() const = 0; 
 	virtual double area() const = 0;
-
-protected:
 	const int sides;
 	const std::string type; 
+
+protected:
 	Shape(int sidesIn, std::string typeIn) : sides(sidesIn), type(typeIn) { };
 };
 
