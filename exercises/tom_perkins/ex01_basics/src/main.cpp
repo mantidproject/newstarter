@@ -4,6 +4,8 @@
 #include "counter.h"
 
 /**
+ * WordCounter: produces a table of word frequencies from a text document
+ *
  * Main routine for WordCounter
  * Get filename from arguments and create a Counter to count words
  */
