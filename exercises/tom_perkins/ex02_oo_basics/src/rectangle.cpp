@@ -8,8 +8,9 @@
  * \brief Construct a new Rectangle with given sides x, y
  * \param xIn Length of one side of rectangle
  * \param yIn Length of other side of rectangle
+ * \param nameIn Name to give the shape
  */
-Rectangle::Rectangle(double xIn, double yIn) : Shape(4, "Rectangle")
+Rectangle::Rectangle(double xIn, double yIn, std::string nameIn) : Shape(4, "rectangle", nameIn)
 {
 	x = xIn;
 	y = yIn;
@@ -20,11 +21,12 @@ Rectangle::Rectangle(double xIn, double yIn) : Shape(4, "Rectangle")
  * \param xIn Length of one side of rectangle
  * \param yIn Length of other side of rectangle
  * \param typeIn Name of type of shape e.g. "square" 
+ * \param nameIn Name to give the shape
  *
  * Intended to be used by derived classes of Rectangle
  *
  */
-Rectangle::Rectangle(double xIn, double yIn, std::string typeIn) : Shape(4, typeIn)
+Rectangle::Rectangle(double xIn, double yIn, std::string nameIn, std::string typeIn) : Shape(4, typeIn, nameIn)
 {
 	x = xIn;
 	y = yIn;

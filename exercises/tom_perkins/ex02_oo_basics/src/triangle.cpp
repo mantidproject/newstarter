@@ -8,8 +8,9 @@
  * \brief Construct a new Triangle with given base, height
  * \param heightIn Height of isosceles triangle
  * \param baseIn Base of isosceles triangle
+ * \param nameIn Name to give the shape
  */
-Triangle::Triangle(double heightIn, double baseIn) : Shape(3, "Triangle")
+Triangle::Triangle(double heightIn, double baseIn, std::string nameIn) : Shape(3, "triangle", nameIn)
 {
 	height = heightIn;
 	base = baseIn;

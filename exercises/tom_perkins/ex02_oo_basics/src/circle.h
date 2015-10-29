@@ -14,7 +14,7 @@
 class Circle : public Shape
 {
 public:
-	Circle(double radiusIn);
+	Circle(double radiusIn, std::string nameIn);
 	double perimeter() const;
     double area() const;
 

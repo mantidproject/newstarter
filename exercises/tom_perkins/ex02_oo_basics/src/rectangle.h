@@ -12,8 +12,8 @@
 class Rectangle : public Shape
 {
 public:
-	Rectangle(double xIn, double yIn);
-	Rectangle(double xIn, double yIn, std::string typeIn);
+	Rectangle(double xIn, double yIn, std::string nameIn);
+	Rectangle(double xIn, double yIn, std::string nameIn, std::string typeIn);
 	virtual double perimeter() const;
     virtual double area() const;
 

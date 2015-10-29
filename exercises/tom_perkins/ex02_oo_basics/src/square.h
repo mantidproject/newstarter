@@ -13,7 +13,7 @@
 class Square : public Rectangle
 {
 public:
-	Square(double sideIn);
+	Square(double sideIn, std::string nameIn);
 };
 
 #endif

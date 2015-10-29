@@ -5,8 +5,8 @@
 //----------------------------------------------------------------------
 
 /**
- * \brief Construct a new Rectangle with given sides x, y
- * \param xIn Length of one side of rectangle
- * \param yIn Length of other side of rectangle
+ * \brief Construct a new Square with given side
+ * \param sideIn Length of side of square
+ * \param nameIn Name to give the shape
  */
-Square::Square(double sideIn) : Rectangle(sideIn, sideIn, "Square") { }
+Square::Square(double sideIn, std::string nameIn) : Rectangle(sideIn, sideIn, nameIn, "square") { }

@@ -7,8 +7,9 @@
 /**
  * \brief Construct a new Circle with given radius.
  * \param radiusIn Radius of the circle.
+ * \param nameIn Name to give the shape
  */
-Circle::Circle(double radiusIn) : Shape(1, "Circle")
+Circle::Circle(double radiusIn, std::string nameIn) : Shape(1, "circle", nameIn)
 {
 	radius = radiusIn;
 }

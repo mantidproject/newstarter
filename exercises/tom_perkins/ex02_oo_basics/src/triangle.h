@@ -12,7 +12,7 @@
 class Triangle : public Shape
 {
 public:
-	Triangle(double heightIn, double baseIn);
+	Triangle(double heightIn, double baseIn, std::string nameIn);
 	double perimeter() const;
     double area() const;
 
