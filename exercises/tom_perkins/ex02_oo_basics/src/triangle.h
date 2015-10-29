@@ -5,6 +5,7 @@
 // Includes
 //----------------------------------------------------------------------
 #include "shape.h"
+#include <cmath>
 
 /**
  * \brief Triangle represents an isoceles triangle
