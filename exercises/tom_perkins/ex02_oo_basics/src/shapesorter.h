@@ -33,6 +33,7 @@ public:
 
 private:
 	std::vector<std::shared_ptr<Shape> > select(const std::vector<std::shared_ptr<Shape> > &shapes, const ShapeTester &tester) const;
+	std::vector<std::shared_ptr<Shape> > sort(const std::vector<std::shared_ptr<Shape> > &shapes, bool predicate(const std::shared_ptr<Shape> &x, const std::shared_ptr<Shape> &y)) const;
 };
 
 #endif

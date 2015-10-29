@@ -5,9 +5,7 @@
 // Includes
 //----------------------------------------------------------------------
 #include "shapetester.h"
-#include "shape.h"
 #include <string>
-#include <memory>
 #include <algorithm>
 
 /**

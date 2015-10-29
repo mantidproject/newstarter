@@ -5,8 +5,6 @@
 // Includes
 //----------------------------------------------------------------------
 #include "shapetester.h"
-#include "shape.h"
-#include <memory>
 
 /**
  * \brief Tests Shapes against the given number of sides

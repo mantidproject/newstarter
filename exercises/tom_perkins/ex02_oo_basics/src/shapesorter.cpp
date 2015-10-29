@@ -6,7 +6,24 @@ typedef std::vector<std::shared_ptr<Shape> > vecShape; ///< To save typing in th
 // Free functions
 //----------------------------------------------------------------------
 
-//bool isOfType
+namespace
+{
+	/**
+	 * \brief Compares two Shapes by area, for sorting
+	 */
+	bool compareAreas(const std::shared_ptr<Shape> &x, const std::shared_ptr<Shape> &y) 
+	{
+		return x->area() < y->area();
+	}
+
+	/**
+	 * \brief Compares two Shapes by perimeter, for sorting
+	 */
+	bool comparePerimeters(const std::shared_ptr<Shape> &x, const std::shared_ptr<Shape> &y) 
+	{
+		return x->perimeter() < y->perimeter();
+	}
+}
 
 //----------------------------------------------------------------------
 // Member functions
@@ -16,8 +33,8 @@ typedef std::vector<std::shared_ptr<Shape> > vecShape; ///< To save typing in th
  * \brief Selects all shapes in the given vector that satisfy the given predicate
  *
  * \param shapes Vector of shared_ptr's to Shape objects, to select from
- * \param predicate Pointer to a function returning a bool, that determines if the given 
- * shape should be selected or not
+ * \param tester ShapeTester that determines if the given shape should be selected or not
+ * \returns Vector of selected shapes
  */
 vecShape ShapeSorter::select(const vecShape &shapes, const ShapeTester &tester) const
 {
@@ -32,6 +49,21 @@ vecShape ShapeSorter::select(const vecShape &shapes, const ShapeTester &tester) 
 	}
 
 	return selected;
+}
+
+/**
+ * \brief Sorts the shapes in the given vector according to the given comparator, 
+ * returning a new sorted vector and leaving the original untouched
+ * 
+ * \param shapes Vector of shared_ptr's to Shape objects, to select from
+ * \param predicate Pointer to function that determines sort order
+ * \returns Vector of sorted shapes
+ */
+vecShape ShapeSorter::sort(const vecShape &shapes, bool predicate(const std::shared_ptr<Shape> &x, const std::shared_ptr<Shape> &y)) const
+{
+	vecShape sorted(shapes);
+	std::sort(sorted.begin(), sorted.end(), predicate);
+	return sorted;
 }
 
 /**
@@ -65,13 +97,25 @@ vecShape ShapeSorter::selectBySides(const vecShape &shapes, const int numSides) 
 	SidesTester hasNumberOfSides(numSides);
 	return select(shapes, hasNumberOfSides);
 }
-//
-///**
-// * \brief Sorts the given shapes by area, descending.
-// * 
-// * \param shapes Vector of shared_ptr's to Shape objects, to sort
-// */
-//void ShapeSorter::sortByArea(const std::vector<std::shared_ptr<Shape> > &shapes) const
-//{
-//	m_stream << std::endl << "Shapes sorted by area:" << std::endl;
-//}
+
+/**
+ * \brief Sorts the given shapes by area, descending.
+ * 
+ * \param shapes Vector of shared_ptr's to Shape objects, to sort
+ */
+vecShape ShapeSorter::sortByArea(const vecShape &shapes) const
+{
+	return sort(shapes, compareAreas);
+}
+
+/**
+ * \brief Sorts the given shapes by perimeter, descending.
+ * 
+ * \param shapes Vector of shared_ptr's to Shape objects, to sort
+ */
+vecShape ShapeSorter::sortByPerimeter(const vecShape &shapes) const
+{
+	return sort(shapes, comparePerimeters);
+}
+
+

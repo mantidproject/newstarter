@@ -40,6 +40,19 @@ int main(int argc, char ** argv)
 	{
 		std::cout << (*iter)->name << std::endl;
 	}
+	auto sortedArea = sorter.sortByArea(shapes);
+	std::cout << std::endl << "Shapes sorted by area: " << std::endl;
+	for (auto iter = sortedArea.begin(); iter != sortedArea.end(); iter++)
+	{
+		std::cout << (*iter)->name << ": " << (*iter)->area() << std::endl;
+	}
+	auto sortedPerimeter = sorter.sortByPerimeter(shapes);
+	std::cout << std::endl << "Shapes sorted by perimeter: " << std::endl;
+	for (auto iter = sortedPerimeter.begin(); iter != sortedPerimeter.end(); iter++)
+	{
+		std::cout << (*iter)->name << ": " << (*iter)->perimeter() << std::endl;
+	}
+
 
 
 	return 0;
