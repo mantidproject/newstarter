@@ -19,7 +19,6 @@ include ( CommonSetup )
 set ( SRC_FILES
   src/main.cpp
   # add any additional source files here
-  src/shape.cpp
   src/rectangle.cpp 
   src/square.cpp
   src/circle.cpp 
