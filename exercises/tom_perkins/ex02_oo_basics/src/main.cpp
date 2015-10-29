@@ -26,11 +26,10 @@ int main(int argc, char ** argv)
 	{
 		std::cout << (*iter)->name << ": " << (*iter)->type << std::endl;
 	}
-	std::cout << std::endl;
-
+	
 	ShapeSorter sorter(std::cout);
-	sorter.selectByType(shapes, "triangle");
-
+	sorter.selectByType(shapes, "Triangle");
+	sorter.selectBySides(shapes, 4);
 
 	return 0;
 }

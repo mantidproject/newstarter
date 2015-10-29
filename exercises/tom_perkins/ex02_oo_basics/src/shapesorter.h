@@ -9,6 +9,7 @@
 #include <memory>
 #include <iosfwd>
 #include <string>
+#include <algorithm>
 
 /**
  * \brief Selects shapes from a vector according
@@ -26,14 +27,14 @@
 class ShapeSorter 
 {
 public:
-	ShapeSorter(std::ostream& stream);
-	void selectByType(const std::vector<std::shared_ptr<Shape> >& shapes, const std::string& type) const;
-	void selectBySides(const std::vector<std::shared_ptr<Shape> >& shapes, const int numSides) const;
-	void sortByArea(const std::vector<std::shared_ptr<Shape> >& shapes) const;
-	void sortByPerimeter(const std::vector<std::shared_ptr<Shape> >& shapes) const;
+	ShapeSorter(std::ostream &stream);
+	void selectByType(const std::vector<std::shared_ptr<Shape> > &shapes, const std::string &type) const;
+	void selectBySides(const std::vector<std::shared_ptr<Shape> > &shapes, const int numSides) const;
+	void sortByArea(const std::vector<std::shared_ptr<Shape> > &shapes) const;
+	void sortByPerimeter(const std::vector<std::shared_ptr<Shape> > &shapes) const;
 
 private:
-	std::ostream& m_stream;
+	std::ostream &m_stream;
 };
 
 #endif
