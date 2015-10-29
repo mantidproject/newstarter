@@ -20,21 +20,14 @@
  * selecting by type/number of sides, or sorting
  * in order of volume/perimeter.
  *
- * It is initialised with a stream to which the 
- * output of each filtering command will be written.
- *
  */
 class ShapeSorter 
 {
 public:
-	ShapeSorter(std::ostream &stream);
-	void selectByType(const std::vector<std::shared_ptr<Shape> > &shapes, const std::string &type) const;
-	void selectBySides(const std::vector<std::shared_ptr<Shape> > &shapes, const int numSides) const;
-	void sortByArea(const std::vector<std::shared_ptr<Shape> > &shapes) const;
-	void sortByPerimeter(const std::vector<std::shared_ptr<Shape> > &shapes) const;
-
-private:
-	std::ostream &m_stream;
+	std::vector<std::shared_ptr<Shape> > selectByType(const std::vector<std::shared_ptr<Shape> > &shapes, const std::string &type) const;
+	std::vector<std::shared_ptr<Shape> > selectBySides(const std::vector<std::shared_ptr<Shape> > &shapes, const int numSides) const;
+	std::vector<std::shared_ptr<Shape> > sortByArea(const std::vector<std::shared_ptr<Shape> > &shapes) const;
+	std::vector<std::shared_ptr<Shape> > sortByPerimeter(const std::vector<std::shared_ptr<Shape> > &shapes) const;
 };
 
 #endif

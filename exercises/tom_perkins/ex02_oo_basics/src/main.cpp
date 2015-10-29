@@ -27,9 +27,14 @@ int main(int argc, char ** argv)
 		std::cout << (*iter)->name << ": " << (*iter)->type << std::endl;
 	}
 	
-	ShapeSorter sorter(std::cout);
-	sorter.selectByType(shapes, "Triangle");
-	sorter.selectBySides(shapes, 4);
+	ShapeSorter sorter;
+	auto triangles = sorter.selectByType(shapes, "Triangle");
+	std::cout << std::endl << "Triangles are: " << std::endl;
+	for (auto iter = triangles.begin(); iter != triangles.end(); iter++)
+	{
+		std::cout << (*iter)->name << std::endl;
+	}
+	
 
 	return 0;
 }
