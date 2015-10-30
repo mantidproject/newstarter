@@ -15,12 +15,14 @@ namespace Shapes
 	public:
 		Triangle(double base, double height);
 		~Triangle();
-		virtual double calculateArea();
-		virtual double calculatePerimeter();
+		virtual const double calculateArea();
+		virtual const double calculatePerimeter();
+		virtual const ShapeType getType();
+		virtual const int getNumSides();
 
 	private:
-		double base;
-		double height;
+		const double m_base;
+		const double m_height;
 	};
 };
 

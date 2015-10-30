@@ -7,12 +7,8 @@ namespace Shapes
 	@param length Length of the rectangle
 	@param width Width of the rectangle
 	*/
-	Rectangle::Rectangle(double length, double width)
+	Rectangle::Rectangle(double length, double width): m_length(length), m_width(width)
 	{
-		this->width = width;
-		this->length = length;
-		this->type = ShapeType::RECTANGLE;
-		this->numSides = 4;
 	}
 
 	Rectangle::~Rectangle()
@@ -21,17 +17,27 @@ namespace Shapes
 
 	/** Calculate and return the area of the rectangle.
 	*/
-	double Rectangle::calculateArea()
+	const double Rectangle::calculateArea()
 	{
-		return width * length;
+		return m_width * m_length;
 	}
 
 	/** Calculate and return the perimeter of the rectangle
 
 	*/
-	double Rectangle::calculatePerimeter()
+	const double Rectangle::calculatePerimeter()
 	{
-		return ( (2 * width) + (2 * length) );
+		return ( (2 * m_width) + (2 * m_length) );
+	}
+
+	const ShapeType Rectangle::getType()
+	{
+		return RECTANGLE;
+	}
+
+	const int Rectangle::getNumSides()
+	{
+		return 4;
 	}
 
 };

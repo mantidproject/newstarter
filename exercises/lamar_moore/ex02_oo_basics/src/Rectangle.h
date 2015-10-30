@@ -15,12 +15,14 @@ namespace Shapes
 	public:
 		Rectangle(double length, double width);
 		~Rectangle();
-		virtual double calculateArea();
-		virtual double calculatePerimeter();
+		virtual const double calculateArea();
+		virtual const double calculatePerimeter();
+		virtual const ShapeType getType();
+		virtual const int getNumSides();
 
 	protected:
-		double length;
-		double width;
+		const double m_length;
+		const double m_width;
 	};
 };
 

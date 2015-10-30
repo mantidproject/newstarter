@@ -15,11 +15,13 @@ namespace Shapes
 	public:
 		Circle(double radius);
 		~Circle();
-		virtual double calculateArea();
-		virtual double calculatePerimeter();
+		virtual const double calculateArea();
+		virtual const double calculatePerimeter();
+		virtual const ShapeType getType();
+		virtual const int getNumSides();
 
 	private:
-		double radius;
+		const double m_radius;
 	};
 
 	static const double PI = 3.14159265359;

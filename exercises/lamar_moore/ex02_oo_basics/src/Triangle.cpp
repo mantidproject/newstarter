@@ -9,26 +9,32 @@ namespace Shapes
 	@param base Length of the base of the isosceles triangle
 	@param height Height of the isosceles triangle
 	*/
-	Triangle::Triangle(double base, double height)
+	Triangle::Triangle(double base, double height): m_base(base), m_height(height)
 	{
-		this->base = base;
-		this->height = height;
-		this->type = ShapeType::TRIANGLE;
-		this->numSides = 3;
 	}
 
 	Triangle::~Triangle()
 	{
 	}
 
-	double Triangle::calculateArea()
+	const double Triangle::calculateArea()
 	{
-		return ( (base * height) / 2 );
+		return ( (m_base * m_height) / 2 );
 	}
 
-	double Triangle::calculatePerimeter()
+	const double Triangle::calculatePerimeter()
 	{
-		return ( base + (2 * sqrt( pow(height, 2) + (pow(base, 2) / 4 ) ) ) );
+		return ( m_base + (2 * sqrt( pow(m_height, 2) + (pow(m_base, 2) / 4 ) ) ) );
+	}
+
+	const ShapeType Triangle::getType()
+	{
+		return TRIANGLE;
+	}
+
+	const int Triangle::getNumSides()
+	{
+		return 3;
 	}
 
 };

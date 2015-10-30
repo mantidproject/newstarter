@@ -3,24 +3,31 @@
 
 namespace Shapes
 {
-	Circle::Circle(double radius)
+	Circle::Circle(double radius): m_radius(radius)
 	{
-		this->radius = radius;
-		type = ShapeType::CIRCLE;
-		this->numSides = 0;
 	}
 
 	Circle::~Circle()
 	{
 	}
 
-	double Circle::calculateArea()
+	const double Circle::calculateArea()
 	{
-		return PI * radius * radius;
+		return PI * m_radius * m_radius;
 	}
 
-	double Circle::calculatePerimeter()
+	const double Circle::calculatePerimeter()
 	{
-		return 2 * PI * radius;
+		return 2 * PI * m_radius;
+	}
+
+	const ShapeType Circle::getType()
+	{
+		return CIRCLE;
+	}
+
+	const int Circle::getNumSides()
+	{
+		return 0;
 	}
 };

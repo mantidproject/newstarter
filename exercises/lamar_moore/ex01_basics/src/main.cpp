@@ -37,9 +37,9 @@ namespace
 	{
 		bool isPunc = false;
 
-		static const char chars[] = ".,?\'\"!():";
+		static const string chars(".,?\'\"!():");
 
-		for(int i=0; i<strlen(chars); i++)
+		for(int i=0; i<chars.size(); i++)
 		{
 			if(c == chars[i])
 			{

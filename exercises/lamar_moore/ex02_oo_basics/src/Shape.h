@@ -21,13 +21,10 @@ namespace Shapes
 	class Shape
 	{
 	public:
-		virtual double calculateArea()=0;
-		virtual double calculatePerimeter()=0;
-		virtual ShapeType getType();
-		virtual int getNumSides();
-	protected:
-		int numSides;
-		ShapeType type;
+		virtual const double calculateArea()=0;
+		virtual const double calculatePerimeter()=0;
+		virtual const ShapeType getType()=0;
+		virtual const int getNumSides()=0;
 	};
 };
 

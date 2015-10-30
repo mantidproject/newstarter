@@ -27,7 +27,7 @@ namespace Shapes
 		void printOrderPerimeter(vector<shared_ptr<Shape>> &shapes);
 
 	private:
-		static void ShapeSorter::printShape(shared_ptr<Shape> shape);
+		static void ShapeSorter::printShape(const shared_ptr<Shape> &shape);
 
 	};
 };

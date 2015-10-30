@@ -6,8 +6,10 @@
 
 using namespace std;
 
-namespace Shapes
+namespace
 {
+	using namespace Shapes;
+
 	/** Functor which is used to compare shape types with a matching value in std::remove_if
 	*/
 	class MatchTypeFunctor
@@ -18,7 +20,7 @@ namespace Shapes
 		{
 		}
 
-		bool operator()(shared_ptr<Shape> shape) const 
+		bool operator()(const shared_ptr<Shape> &shape) const 
 		{
 			bool isMatch = true;
 
@@ -39,7 +41,7 @@ namespace Shapes
 		{
 		}
 
-		bool operator()(shared_ptr<Shape> shape) const 
+		bool operator()(const shared_ptr<Shape> &shape) const 
 		{
 			bool isMatch = true;
 
@@ -55,7 +57,7 @@ namespace Shapes
 	class AreaFunctor
 	{
 	public:
-		bool operator() (shared_ptr<Shape> first, shared_ptr<Shape> second)
+		bool operator() (const shared_ptr<Shape> &first, const shared_ptr<Shape>& second)
 		{
 			return first->calculateArea() < second->calculateArea();
 		}
@@ -66,12 +68,15 @@ namespace Shapes
 	class PerimeterFunctor
 	{
 	public:
-		bool operator() (shared_ptr<Shape> first, shared_ptr<Shape> second)
+		bool operator() (const shared_ptr<Shape> &first, const shared_ptr<Shape> &second)
 		{
 			return first->calculatePerimeter() < second->calculatePerimeter();
 		}
 	};
+};
 
+namespace Shapes
+{
 	/** Constructor
 	*/
 	ShapeSorter::ShapeSorter()
@@ -145,7 +150,7 @@ namespace Shapes
 
 	@param shape Shape whose properties are printed to screen.
 	*/
-	void ShapeSorter::printShape(shared_ptr<Shape> shape)
+	void ShapeSorter::printShape(const shared_ptr<Shape> &shape)
 	{
 		cout<<"Shape: ";
 
