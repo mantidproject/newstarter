@@ -10,7 +10,6 @@
 #include <vector>
 #include <memory>
 #include <iosfwd>
-#include <string>
 #include <algorithm>
 
 /**

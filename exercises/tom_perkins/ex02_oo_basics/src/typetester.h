@@ -5,7 +5,6 @@
 // Includes
 //----------------------------------------------------------------------
 #include "ShapeTester.h"
-#include <string>
 #include <algorithm>
 
 /**
