@@ -42,7 +42,7 @@ vecShape ShapeSorter::select(const vecShape &shapes, const ShapeTester &tester) 
 	
 	for (auto iter = shapes.begin(); iter != shapes.end(); iter++)
 	{
-		if (tester.match(*iter))
+		if (tester.match(*iter->get()))
 		{
 			selected.push_back(*iter);
 		}

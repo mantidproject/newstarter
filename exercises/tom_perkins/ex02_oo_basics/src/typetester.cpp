@@ -19,10 +19,10 @@ TypeTester::TypeTester(const std::string &typeIn)
 
 /**
  * \brief Tests if the given shape matches the chosen type
- * \param toCompare Reference to a shared_ptr to the Shape to compare to
+ * \param toCompare Reference to the Shape to compare to
  * \returns True for a match of types, else false
  */
-bool TypeTester::match(const std::shared_ptr<Shape> &toCompare) const 
+bool TypeTester::match(const Shape &toCompare) const 
 { 
-	return type == toCompare->type; 
+	return type == toCompare.type; 
 }

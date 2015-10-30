@@ -15,7 +15,7 @@ class TypeTester : public ShapeTester
 {
 public:
 	TypeTester(const std::string &typeIn);
-	bool match(const std::shared_ptr<Shape> &toCompare) const;
+	bool match(const Shape &toCompare) const;
 
 private:
 	std::string type;

@@ -13,7 +13,7 @@
 class ShapeTester  
 {
 public:
-	virtual bool match(const std::shared_ptr<Shape> &toCompare) const = 0;
+	virtual bool match(const Shape &toCompare) const = 0;
 };
 
 #endif

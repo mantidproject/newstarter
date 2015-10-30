@@ -13,7 +13,7 @@ class SidesTester : public ShapeTester
 {
 public:
 	SidesTester(const int numSidesIn);
-	bool match(const std::shared_ptr<Shape> &toCompare) const;
+	bool match(const Shape &toCompare) const;
 
 private:
 	int numSides;
