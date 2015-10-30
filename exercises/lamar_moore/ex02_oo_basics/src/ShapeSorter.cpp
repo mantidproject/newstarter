@@ -22,10 +22,10 @@ namespace
 
 		bool operator()(const shared_ptr<Shape> &shape) const 
 		{
-			bool isMatch = true;
+			bool isMatch = false;
 
 			if(shape->getType().compare(type) == 0)
-				isMatch = false;
+				isMatch = true;
 
 			return isMatch;
 		}
@@ -43,10 +43,10 @@ namespace
 
 		bool operator()(const shared_ptr<Shape> &shape) const 
 		{
-			bool isMatch = true;
+			bool isMatch = false;
 
 			if(shape->getNumSides() == numSides)
-				isMatch = false;
+				isMatch = true;
 
 			return isMatch;
 		}
@@ -96,9 +96,9 @@ namespace Shapes
 	*/
 	void ShapeSorter::printByType(string type, vector<shared_ptr<Shape>> &shapes)
 	{
-		vector<shared_ptr<Shape>> copy = shapes;
+		vector<shared_ptr<Shape>> copy;
 
-		copy.erase(std::remove_if(copy.begin(), copy.end(), MatchTypeFunctor(type)), copy.end());
+		copy_if(shapes.begin(), shapes.end(), back_inserter(copy), MatchTypeFunctor(type));
 
 		for_each(copy.begin(), copy.end(), printShape);
 	}
@@ -110,9 +110,9 @@ namespace Shapes
 	*/
 	void ShapeSorter::printBySides(int numSides, vector<shared_ptr<Shape>> &shapes)
 	{
-		vector<shared_ptr<Shape>> copy = shapes;
+		vector<shared_ptr<Shape>> copy;
 
-		copy.erase(std::remove_if(copy.begin(), copy.end(), MatchSideFunctor(numSides)), copy.end());
+		copy_if(shapes.begin(), shapes.end(), back_inserter(copy), MatchSideFunctor(numSides));
 
 		for_each(copy.begin(), copy.end(), printShape);
 	}
