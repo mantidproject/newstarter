@@ -15,7 +15,7 @@ namespace Shapes
 	public:
 		Square(double sideLength);
 		~Square();
-		virtual const ShapeType getType();
+		virtual const string getType();
 	};
 };
 

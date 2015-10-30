@@ -21,9 +21,9 @@ namespace Shapes
 		return 2 * PI * m_radius;
 	}
 
-	const ShapeType Circle::getType()
+	const string Circle::getType()
 	{
-		return CIRCLE;
+		return "Circle";
 	}
 
 	const int Circle::getNumSides()

@@ -14,9 +14,9 @@ namespace
 	*/
 	class MatchTypeFunctor
 	{
-		ShapeType type;
+		string type;
 	public:
-		MatchTypeFunctor(ShapeType t): type(t)
+		MatchTypeFunctor(string t): type(t)
 		{
 		}
 
@@ -24,7 +24,7 @@ namespace
 		{
 			bool isMatch = true;
 
-			if(shape->getType() == type)
+			if(shape->getType().compare(type) == 0)
 				isMatch = false;
 
 			return isMatch;
@@ -94,7 +94,7 @@ namespace Shapes
 	@param type Shape type for comparison with list of shapes
 	@param shapes List of shapes for which types will be selectively printed
 	*/
-	void ShapeSorter::printByType(ShapeType type, vector<shared_ptr<Shape>> &shapes)
+	void ShapeSorter::printByType(string type, vector<shared_ptr<Shape>> &shapes)
 	{
 		vector<shared_ptr<Shape>> copy = shapes;
 
@@ -152,26 +152,9 @@ namespace Shapes
 	*/
 	void ShapeSorter::printShape(const shared_ptr<Shape> &shape)
 	{
-		cout<<"Shape: ";
-
-		switch(shape->getType())
-		{
-		case SQUARE:
-			cout<<"Square ";
-			break;
-		case RECTANGLE:
-			cout<<"Rectangle ";
-			break;
-		case CIRCLE:
-			cout<<"Circle ";
-			break;
-		case TRIANGLE:
-			cout<<"Triangle ";
-			break;
-		}
-
-		cout<<" Number of Sides: "<<shape->getNumSides();
-		cout<<" Perimeter: "<<shape->calculatePerimeter();
-		cout<<" Area: "<<shape->calculateArea()<<endl;
+		cout << "Shape: " << shape->getType();
+		cout << " Number of Sides: " << shape->getNumSides();
+		cout << " Perimeter: " << shape->calculatePerimeter();
+		cout << " Area: " << shape->calculateArea()<<endl;
 	}
 };

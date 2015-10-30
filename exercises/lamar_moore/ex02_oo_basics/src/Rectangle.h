@@ -17,7 +17,7 @@ namespace Shapes
 		~Rectangle();
 		virtual const double calculateArea();
 		virtual const double calculatePerimeter();
-		virtual const ShapeType getType();
+		virtual const string getType();
 		virtual const int getNumSides();
 
 	protected:

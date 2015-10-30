@@ -27,9 +27,9 @@ namespace Shapes
 		return ( m_base + (2 * sqrt( pow(m_height, 2) + (pow(m_base, 2) / 4 ) ) ) );
 	}
 
-	const ShapeType Triangle::getType()
+	const string Triangle::getType()
 	{
-		return TRIANGLE;
+		return "Triangle";
 	}
 
 	const int Triangle::getNumSides()

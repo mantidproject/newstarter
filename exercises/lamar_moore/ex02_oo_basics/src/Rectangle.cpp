@@ -30,9 +30,9 @@ namespace Shapes
 		return ( (2 * m_width) + (2 * m_length) );
 	}
 
-	const ShapeType Rectangle::getType()
+	const string Rectangle::getType()
 	{
-		return RECTANGLE;
+		return "Rectangle";
 	}
 
 	const int Rectangle::getNumSides()

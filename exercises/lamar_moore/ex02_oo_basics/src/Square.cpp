@@ -11,8 +11,8 @@ namespace Shapes
 	{
 	}
 
-	const ShapeType Square::getType()
+	const string Square::getType()
 	{
-		return SQUARE;
+		return "Square";
 	}
 };

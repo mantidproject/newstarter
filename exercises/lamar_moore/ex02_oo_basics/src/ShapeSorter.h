@@ -21,7 +21,7 @@ namespace Shapes
 		ShapeSorter();
 		~ShapeSorter();
 
-		void printByType(ShapeType type, vector<shared_ptr<Shape>> &shapes);
+		void printByType(string type, vector<shared_ptr<Shape>> &shapes);
 		void printBySides(int numSides, vector<shared_ptr<Shape>> &shapes);
 		void printOrderArea(vector<shared_ptr<Shape>> &shapes);
 		void printOrderPerimeter(vector<shared_ptr<Shape>> &shapes);

@@ -16,9 +16,9 @@ namespace
 {
 	/** Obtains a random number between 0 and 3 which corresponds to ShapesTypes.
 	*/
-	ShapeType getRandomShape()
+	int getRandomShape()
 	{
-		return (ShapeType)((int)floor( 4 * (double)rand() / RAND_MAX ));
+		return ((int)floor( 4 * (double)rand() / RAND_MAX ));
 	}
 
 	/** Obtains a random number between 0 and 120 which corresponds to a side.
@@ -45,16 +45,16 @@ int main(int, char **)
 	{
 		switch(getRandomShape())
 		{
-		case ShapeType::RECTANGLE:
+		case 0:
 			shapeList.push_back(std::make_shared<Rectangle>(getRandomSide(), getRandomSide()));
 			break;
-		case ShapeType::SQUARE:
+		case 1:
 			shapeList.push_back(std::make_shared<Square>(getRandomSide()));
 			break;
-		case ShapeType::CIRCLE:
+		case 2:
 			shapeList.push_back(std::make_shared<Circle>(getRandomSide()));
 			break;
-		case ShapeType::TRIANGLE:
+		case 3:
 			shapeList.push_back(std::make_shared<Triangle>(getRandomSide(), getRandomSide()));
 			break;
 		default:
@@ -66,6 +66,7 @@ int main(int, char **)
 	int option;
 	int type;
 	int sides;
+	string typeStr;
 	ShapeSorter sorter;
 
 	//Application loop
@@ -87,7 +88,24 @@ int main(int, char **)
 			cout << "\nSelect Shape:\n\n0 - Square\n1 - Rectangle\n2 - Circle\n3 - Iso Triangle" <<endl;
 			cin >> type;
 
-			sorter.printByType((ShapeType)type, shapeList);
+			switch(type)
+			{
+			case 0:
+				typeStr = "Square";
+				break;
+			case 1:
+				typeStr = "Rectangle";
+				break;
+			case 2:
+				typeStr = "Circle";
+				break;
+			case 3:
+				typeStr = "Triangle";
+				break;
+			}
+
+			sorter.printByType(typeStr, shapeList);
+
 			break;
 		case 1:
 			cout << "\nEnter number of sides." <<endl;
