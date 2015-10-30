@@ -13,7 +13,7 @@ namespace {
  */
 bool compareAreas(const std::shared_ptr<Shape> &x,
                   const std::shared_ptr<Shape> &y) {
-  return x->area() < y->area();
+  return x->area() > y->area();
 }
 
 /**
@@ -21,7 +21,7 @@ bool compareAreas(const std::shared_ptr<Shape> &x,
  */
 bool comparePerimeters(const std::shared_ptr<Shape> &x,
                        const std::shared_ptr<Shape> &y) {
-  return x->perimeter() < y->perimeter();
+  return x->perimeter() > y->perimeter();
 }
 }
 
