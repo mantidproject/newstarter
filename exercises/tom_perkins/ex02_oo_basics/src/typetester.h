@@ -10,14 +10,13 @@
 /**
  * \brief Tests Shapes against the given type
  */
-class TypeTester : public ShapeTester  
-{
+class TypeTester : public ShapeTester {
 public:
-	TypeTester(const std::string &typeIn);
-	bool match(const Shape &toCompare) const;
+  TypeTester(const std::string &typeIn);
+  bool match(const Shape &toCompare) const;
 
 private:
-	std::string type;
+  std::string type;
 };
 
 #endif

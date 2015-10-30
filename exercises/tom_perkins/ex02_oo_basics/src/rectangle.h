@@ -9,17 +9,16 @@
 /**
  * \brief Rectangle represents a rectangle
  */
-class Rectangle : public Shape
-{
+class Rectangle : public Shape {
 public:
-	Rectangle(double xIn, double yIn, std::string nameIn);
-	Rectangle(double xIn, double yIn, std::string nameIn, std::string typeIn);
-	virtual double perimeter() const;
-    virtual double area() const;
+  Rectangle(double xIn, double yIn, std::string nameIn);
+  Rectangle(double xIn, double yIn, std::string nameIn, std::string typeIn);
+  virtual double perimeter() const;
+  virtual double area() const;
 
 private:
-	double x; 
-	double y;
+  double x;
+  double y;
 };
 
 #endif

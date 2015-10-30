@@ -11,15 +11,14 @@
 /**
  * \brief Circle represents a circle.
  */
-class Circle : public Shape
-{
+class Circle : public Shape {
 public:
-	Circle(double radiusIn, std::string nameIn);
-	double perimeter() const;
-    double area() const;
+  Circle(double radiusIn, std::string nameIn);
+  double perimeter() const;
+  double area() const;
 
 private:
-	double radius; 
+  double radius;
 };
 
 #endif

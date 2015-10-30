@@ -11,10 +11,9 @@
  *
  * \param typeIn Type of shape to compare to
  */
-TypeTester::TypeTester(const std::string &typeIn)
-{
-	type = std::string(typeIn);
-	std::transform(type.begin(), type.end(), type.begin(), tolower);
+TypeTester::TypeTester(const std::string &typeIn) {
+  type = std::string(typeIn);
+  std::transform(type.begin(), type.end(), type.begin(), tolower);
 }
 
 /**
@@ -22,7 +21,6 @@ TypeTester::TypeTester(const std::string &typeIn)
  * \param toCompare Reference to the Shape to compare to
  * \returns True for a match of types, else false
  */
-bool TypeTester::match(const Shape &toCompare) const 
-{ 
-	return type == toCompare.type; 
+bool TypeTester::match(const Shape &toCompare) const {
+  return type == toCompare.type;
 }

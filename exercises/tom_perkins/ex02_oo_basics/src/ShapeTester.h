@@ -10,10 +10,9 @@
 /**
  * \brief Abstract base class for testing Shape objects
  */
-class ShapeTester  
-{
+class ShapeTester {
 public:
-	virtual bool match(const Shape &toCompare) const = 0;
+  virtual bool match(const Shape &toCompare) const = 0;
 };
 
 #endif

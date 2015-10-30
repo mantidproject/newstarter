@@ -9,14 +9,13 @@
 /**
  * \brief Tests Shapes against the given number of sides
  */
-class SidesTester : public ShapeTester  
-{
+class SidesTester : public ShapeTester {
 public:
-	SidesTester(const int numSidesIn);
-	bool match(const Shape &toCompare) const;
+  SidesTester(const int numSidesIn);
+  bool match(const Shape &toCompare) const;
 
 private:
-	int numSides;
+  int numSides;
 };
 
 #endif
