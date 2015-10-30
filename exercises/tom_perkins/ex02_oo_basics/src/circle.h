@@ -18,7 +18,7 @@ public:
   double area() const;
 
 private:
-  double radius;
+  const double radius;
 };
 
 #endif

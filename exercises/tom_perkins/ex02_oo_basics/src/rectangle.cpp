@@ -11,10 +11,7 @@
  * \param nameIn Name to give the shape
  */
 Rectangle::Rectangle(double xIn, double yIn, std::string nameIn)
-    : Shape(4, "rectangle", nameIn) {
-  x = xIn;
-  y = yIn;
-}
+    : x(xIn), y(yIn), Shape(4, "rectangle", nameIn) {}
 
 /**
  * \brief Construct a new Rectangle with given sides x, y and type name
@@ -28,10 +25,7 @@ Rectangle::Rectangle(double xIn, double yIn, std::string nameIn)
  */
 Rectangle::Rectangle(double xIn, double yIn, std::string nameIn,
                      std::string typeIn)
-    : Shape(4, typeIn, nameIn) {
-  x = xIn;
-  y = yIn;
-}
+    : x(xIn), y(yIn), Shape(4, typeIn, nameIn) {}
 
 /**
  * \brief Calculates the perimeter of this rectangle.

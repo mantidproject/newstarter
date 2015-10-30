@@ -17,8 +17,8 @@ public:
   virtual double area() const;
 
 private:
-  double x;
-  double y;
+  const double x;
+  const double y;
 };
 
 #endif

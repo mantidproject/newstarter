@@ -19,7 +19,7 @@ public:
   virtual double area() const = 0;
   const int sides;
   const std::string type;
-  std::string name;
+  const std::string name;
 
 protected:
   Shape(int sidesIn, std::string typeIn, std::string nameIn)

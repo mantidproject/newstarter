@@ -17,8 +17,8 @@ public:
   double area() const;
 
 private:
-  double height;
-  double base;
+  const double height;
+  const double base;
 };
 
 #endif

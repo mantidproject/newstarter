@@ -11,10 +11,7 @@
  * \param nameIn Name to give the shape
  */
 Triangle::Triangle(double heightIn, double baseIn, std::string nameIn)
-    : Shape(3, "triangle", nameIn) {
-  height = heightIn;
-  base = baseIn;
-}
+    : height(heightIn), base(baseIn), Shape(3, "triangle", nameIn) {}
 
 /**
  * \brief Calculates the perimeter of this triangle.

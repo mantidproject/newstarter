@@ -10,9 +10,7 @@
  * \param nameIn Name to give the shape
  */
 Circle::Circle(double radiusIn, std::string nameIn)
-    : Shape(1, "circle", nameIn) {
-  radius = radiusIn;
-}
+    : radius(radiusIn), Shape(1, "circle", nameIn) {}
 
 /**
  * \brief Calculates the perimeter of this circle.
