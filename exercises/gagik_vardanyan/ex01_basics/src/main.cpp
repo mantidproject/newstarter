@@ -23,7 +23,7 @@ int main (int argc, char ** argv)
     std::string word;
     std::map<std::string,int> wordCounts;
     std::map<int, std::string> counts;
-    int maxlength = 0;
+    std::string::size_type maxlength = 0;
 
     //check if the input file name is specified
     if (argc < 2)
