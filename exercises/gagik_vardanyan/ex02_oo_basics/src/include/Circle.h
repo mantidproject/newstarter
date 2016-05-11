@@ -1,7 +1,9 @@
 #ifndef CLASS_CIRCLE
 #define CLASS_CIRCLE
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include "ShapeBase.h"
+
 
 class Circle: public ShapeBase {
 private:
