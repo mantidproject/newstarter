@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+typedef std::vector<std::pair<std::string, int> > pair_vec;
+
 //checks if the character is among allowed punctuation characters
 bool isNotSpecialCharacter(const char & c)
 {
@@ -16,13 +18,32 @@ bool isNotSpecialCharacter(const char & c)
            == specialCharacters.end();
 }
 
+//builds a vector of pairs out of map
+pair_vec MapToPairVector(const std::map<std::string,int> & map)
+{
+    pair_vec ret;
+
+    for(std::map<std::string,int>::const_iterator it = map.begin();
+        it != map.end(); ++it)
+    {
+        ret.push_back(std::make_pair(it->first,it->second));
+    }
+
+    return ret;
+}
+
+//compares pairs by the value
+bool CompareCount(const std::pair<std::string, int> & p1, const std::pair<std::string, int> & p2)
+{
+    return p1.second < p2.second;
+}
+
 int main (int argc, char ** argv)
 {
     std::ifstream infile;
     std::ofstream outfile;
     std::string word;
     std::map<std::string,int> wordCounts;
-    std::map<int, std::string> counts;
     std::string::size_type maxlength = 0;
 
     //check if the input file name is specified
@@ -61,22 +82,21 @@ int main (int argc, char ** argv)
 
     infile.close();
 
-    //build the flipped map to sort by counts
-    for(std::map<std::string,int>::const_iterator it = wordCounts.begin();
-        it != wordCounts.end(); ++it)
-    {
-        counts[it->second] = it->first;
-    }
+    //sort the map by value
+    pair_vec counts = MapToPairVector(wordCounts);
+
+    sort(counts.begin(),counts.end(),CompareCount);
 
     outfile.open("output.txt",std::ios::out);
 
     outfile << "Word" << std::string(maxlength-4,' ') << "\t" << "Usage\n\n";
 
     //print out the results
-    for(std::map<int, std::string>::const_reverse_iterator it = counts.rbegin();
+    for(pair_vec::const_reverse_iterator it = counts.rbegin();
         it != counts.rend(); ++it)
     {
-        outfile << it->second << std::string(maxlength-it->second.size(),' ') << "\t" << it->first << "\n";
+        outfile << it->first << std::string(maxlength-it->first.size(),' ')
+                << "\t" << it->second << "\n";
     }
 
     outfile.close();
