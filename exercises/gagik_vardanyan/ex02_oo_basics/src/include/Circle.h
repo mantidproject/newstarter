@@ -1,6 +1,7 @@
 #ifndef CLASS_CIRCLE
 #define CLASS_CIRCLE
 #define _USE_MATH_DEFINES
+const double PI = 3.14; //Windows builds don't recognise M_PI
 #include <cmath>
 #include "ShapeBase.h"
 
@@ -23,8 +24,8 @@ public:
         nSides = 0;
         radius = s;
     }
-    double ComputeArea() const {return M_PI*radius*radius;}
-    double ComputePerimeter() const {return 2*M_PI*radius;}
+    double ComputeArea() const {return PI*radius*radius;}
+    double ComputePerimeter() const {return 2*PI*radius;}
 };
 
 #endif
