@@ -1,6 +1,6 @@
 #ifndef CLASS_TRIANGLE
 #define CLASS_TRIANGLE
-#include <math.h>
+#include <cmath>
 #include "ShapeBase.h"
 
 class Triangle: public ShapeBase {

@@ -1,6 +1,6 @@
 #ifndef CLASS_CIRCLE
 #define CLASS_CIRCLE
-#include <math.h>
+#include <cmath>
 #include "ShapeBase.h"
 
 class Circle: public ShapeBase {
