@@ -38,13 +38,13 @@ public:
     //computes the area
     double ComputeArea() const {
         if(cp) return cp->ComputeArea();
-        else throw std::runtime_error("Uninitialized Shape");
+        else return 0;
     }
 
     //computes the perimeter
     double ComputePerimeter() const {
         if(cp) return cp->ComputePerimeter();
-        else throw std::runtime_error("Uninitialized Shape");
+        else return 0;
     }
 
     //binary predicate for area comparison
