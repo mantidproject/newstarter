@@ -30,25 +30,23 @@ int main(int argc, char ** argv)
     shapes.push_back(sh3);
     shapes.push_back(sh4);
 
+    ShapeSorter ss(shapes);
+
     std::cout << "++++++++Original++++++++\n";
 
-    ShapeSorter ss(shapes);
-    ss.Print(std::cout);
+    ss.PrintAll(std::cout);
 
     std::cout << "+++Sorted By Perimeter++\n";
 
-    ss.SortByPerimeter();
-    ss.Print(std::cout);
+    ss.PrintSortByPerimeter(std::cout);
 
     std::cout << "+++++Sorted By Area+++++\n";
 
-    ss.SortByArea();
-    ss.Print(std::cout);
+    ss.PrintSortByArea(std::cout);
 
     std::cout << "+++++++Triangles++++++++\n";
 
-    ss.SelectByType(std::string("Triangle"));
-    ss.Print(std::cout);
+    ss.PrintSelectByType(std::cout, std::string("Triangle"));
 
     return 0;
 }

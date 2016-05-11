@@ -10,25 +10,56 @@ class ShapeSorter {
 private:
     std::vector<Shape> & shapes;
 public:
+    //default constructor
     ShapeSorter();
+
+    //constructor from vector
     ShapeSorter(std::vector<Shape> & sh) : shapes(sh) {}
-    void SortByArea() { sort(this->shapes.begin(),this->shapes.end(),Shape::CompareArea); }
-    void SortByPerimeter() { sort(this->shapes.begin(),this->shapes.end(),Shape::ComparePerimeter);}
-    void SelectByType(const std::string & type)
+
+    //sorts by area, prints
+    void PrintSortByArea(std::ostream& out)
     {
+        sort(this->shapes.begin(),this->shapes.end(),Shape::CompareArea);
+        PrintAll(out);
+    }
+
+    //sorts by perimeter, prints
+    void PrintSortByPerimeter(std::ostream& out)
+    {
+        sort(this->shapes.begin(),this->shapes.end(),Shape::ComparePerimeter);
+        PrintAll(out);
+    }
+
+    //prints the shapes of the given type
+    void PrintSelectByType(std::ostream& out, const std::string & type) const
+    {
+        out << "Type\tArea\tPerimeter\n";
         for(std::vector<Shape>::iterator it = shapes.begin(); it != shapes.end(); ++it)
         {
-            if(it->GetType() != type) {shapes.erase(it);--it;}
+            if(it->GetType() == type)
+            {
+                out << it->GetType() << "\t" << it->ComputeArea() << "\t"
+                    << it->ComputePerimeter() << std::endl;
+            }
         }
     }
-    void SelectByNSides(const int & ns)
+
+    //prints the shapes with given number of sides
+    void PrintSelectByNSides(std::ostream& out, const int & ns) const
     {
+        out << "Type\tArea\tPerimeter\n";
         for(std::vector<Shape>::iterator it = shapes.begin(); it != shapes.end(); ++it)
         {
-            if(it->GetNSides() != ns) {shapes.erase(it);--it;}
+            if(it->GetNSides() == ns)
+            {
+                out << it->GetType() << "\t" << it->ComputeArea() << "\t"
+                    << it->ComputePerimeter() << std::endl;
+            }
         }
     }
-    void Print(std::ostream& out) const
+
+    //prints out all the shapes to the stream
+    void PrintAll(std::ostream& out) const
     {
         out << "Type\tArea\tPerimeter\n";
         for(std::vector<Shape>::iterator it = shapes.begin(); it != shapes.end(); ++it)

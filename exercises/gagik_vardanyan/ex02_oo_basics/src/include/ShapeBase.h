@@ -15,7 +15,6 @@ public:
     virtual double ComputeArea() const {return 0;}
     virtual double ComputePerimeter() const {return 0;}
     virtual ~ShapeBase() {}
-
 };
 
 #endif
