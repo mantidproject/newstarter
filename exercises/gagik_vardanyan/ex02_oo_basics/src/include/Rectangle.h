@@ -12,14 +12,14 @@ public:
     Rectangle()
     {
         type = "Rectangle";
-        nSides = 2;
+        nSides = 4;
         side1 = 0;
         side2 = 0;
     }
     Rectangle(double s1, double s2)
     {
         type = "Rectanlge";
-        nSides = 2;
+        nSides = 4;
         side1 = s1;
         side2 = s2;
     }

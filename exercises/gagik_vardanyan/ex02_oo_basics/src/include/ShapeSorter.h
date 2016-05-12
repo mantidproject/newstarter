@@ -19,14 +19,14 @@ public:
     //sorts by area, prints
     void PrintSortByArea(std::ostream& out)
     {
-        sort(this->shapes.begin(),this->shapes.end(),Shape::CompareArea);
+        sort(shapes.begin(),shapes.end(),Shape::CompareArea);
         PrintAll(out);
     }
 
     //sorts by perimeter, prints
     void PrintSortByPerimeter(std::ostream& out)
     {
-        sort(this->shapes.begin(),this->shapes.end(),Shape::ComparePerimeter);
+        sort(shapes.begin(),shapes.end(),Shape::ComparePerimeter);
         PrintAll(out);
     }
 

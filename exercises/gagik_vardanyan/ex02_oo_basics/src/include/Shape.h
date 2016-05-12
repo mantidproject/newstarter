@@ -11,7 +11,7 @@ public:
     Shape(const Shape& s) : cp(0) {if(s.cp) cp = s.cp->clone();}
 
     //constructor from shapebase pointer
-    Shape(ShapeBase * sh) {cp = sh;}
+    Shape(ShapeBase * sh) { if(sh) cp = sh;}
 
     //destructor
     ~Shape() {delete cp;}
