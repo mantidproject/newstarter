@@ -1,5 +1,5 @@
-/**
- * Skeleton main routine
+/*!
+ * Program that creates various shapes.
  */
 
 #include <iostream>
@@ -11,6 +11,7 @@
 #include "include/Square.h"
 #include "include/Triangle.h"
 
+///the main program
 int main(int argc, char ** argv)
 {
     std::vector<Shape> shapes;

@@ -1,3 +1,7 @@
+/*!
+* A class that stores vector of shapes and sorts/selects by criteria
+*/
+
 #ifndef CLASS_SHAPESORTER
 #define CLASS_SHAPESORTER
 #include <algorithm>
@@ -8,29 +12,34 @@
 
 class ShapeSorter {
 private:
-    std::vector<Shape> & shapes;
+    std::vector<Shape> & shapes; /**< vector of shapes */
 public:
-    //default constructor
+    ///default constructor
     ShapeSorter();
 
-    //constructor from vector
+    ///constructor from vector
+    /// @param sh vector of shapes
     ShapeSorter(std::vector<Shape> & sh) : shapes(sh) {}
 
-    //sorts by area, prints
+    ///sorts by area, prints
+    /// @param out ostream to print the output to
     void PrintSortByArea(std::ostream& out)
     {
         sort(shapes.begin(),shapes.end(),Shape::CompareArea);
         PrintAll(out);
     }
 
-    //sorts by perimeter, prints
+    ///sorts by perimeter, prints
+    /// @param out ostream to print the output to
     void PrintSortByPerimeter(std::ostream& out)
     {
         sort(shapes.begin(),shapes.end(),Shape::ComparePerimeter);
         PrintAll(out);
     }
 
-    //prints the shapes of the given type
+    ///prints the shapes of the given type
+    /// @param out ostream to print the output to
+    /// @param type the type of the shapes to print
     void PrintSelectByType(std::ostream& out, const std::string & type) const
     {
         out << "Type\tArea\tPerimeter\n";
@@ -44,7 +53,9 @@ public:
         }
     }
 
-    //prints the shapes with given number of sides
+    ///prints the shapes with given number of sides
+    /// @param out ostream to print the output to
+    /// @param ns the number of sides of the shapes to print
     void PrintSelectByNSides(std::ostream& out, const int & ns) const
     {
         out << "Type\tArea\tPerimeter\n";
@@ -58,7 +69,8 @@ public:
         }
     }
 
-    //prints out all the shapes to the stream
+    ///prints out all the shapes to the stream
+    /// @param out ostream to print the output to
     void PrintAll(std::ostream& out) const
     {
         out << "Type\tArea\tPerimeter\n";
