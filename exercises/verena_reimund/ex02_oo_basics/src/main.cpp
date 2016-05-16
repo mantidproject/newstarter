@@ -4,6 +4,7 @@
 #include <math.h>    //pow
 #include <iostream>
 #include <vector>
+#include <string>
 #include <algorithm> //for_each
 //#include <memory>  //smart pointers
 
