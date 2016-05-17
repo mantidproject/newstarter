@@ -82,7 +82,7 @@ def build(build_root):
         sln = os.path.join(build_root, "Project.sln")
         cmd = [msbuild_exe, "/p:Configuration=Release", sln]
     else:
-        cmd = make_scl_command(["make", "-C", "build_root"])
+        cmd = make_scl_command(["make", "-C", build_root])
     print "Running '%s'" % cmd
     return subp.call(cmd, shell=True)
 
