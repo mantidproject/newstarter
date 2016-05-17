@@ -9,6 +9,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <stdexcept>
 #include <vector>
 
 typedef std::vector<std::pair<std::string, int> > pair_vec;
@@ -30,7 +31,7 @@ bool isNotSpecialCharacter(const char & c)
 * @param map The input map to convert
 * @return The vector of pairs containing the same info as in map
 */
-pair_vec MapToPairVector(const std::map<std::string,int> & map)
+pair_vec mapToPairVector(const std::map<std::string,int> & map)
 {
     pair_vec ret;
 
@@ -69,6 +70,7 @@ int main (int argc, char ** argv)
     if (argc < 2)
     {
         std::cout << "Please specify a valid input file!\n";
+
         return 0;
     }
 
@@ -102,7 +104,7 @@ int main (int argc, char ** argv)
     infile.close();
 
     ///sort the map by value
-    pair_vec counts = MapToPairVector(wordCounts);
+    pair_vec counts = mapToPairVector(wordCounts);
 
     sort(counts.begin(),counts.end(),CompareCount);
 
@@ -119,6 +121,8 @@ int main (int argc, char ** argv)
     }
 
     outfile.close();
+
+    std::cout << "output.txt has been succesfully created!\n";
 
     return 0;
 }

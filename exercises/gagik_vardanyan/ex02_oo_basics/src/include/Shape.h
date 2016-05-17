@@ -7,20 +7,27 @@
 #include "ShapeBase.h"
 
 class Shape {
+
+private:
+    ShapeBase * shapebase; /**< pointer to the ShapeBase object*/
+
 public:
     ///default constructor
-    Shape() : cp(0) {}
+    Shape() : shapebase(0) {}
 
     ///copy constructor
     /// @param s object of the same type
-    Shape(const Shape& s) : cp(0) {if(s.cp) cp = s.cp->clone();}
+    Shape(const Shape& s) : shapebase(0)
+    {
+        if(s.shapebase) shapebase = s.shapebase->clone();
+    }
 
     ///constructor from ShapeBase pointer
     /// @param sh pointer to ShapeBase object
-    Shape(ShapeBase * sh) { if(sh) cp = sh;}
+    Shape(ShapeBase * sh) { if(sh) shapebase = sh;}
 
     ///destructor
-    ~Shape() {delete cp;}
+    ~Shape() {delete shapebase;}
 
     ///assignment operator
     /// @param s shape object
@@ -29,34 +36,34 @@ public:
     {
         if(&s != this)
         {
-            delete cp;
-            if(s.cp)
-                cp = s.cp->clone();
-            else cp = 0;
+            delete shapebase;
+            if(s.shapebase)
+                shapebase = s.shapebase->clone();
+            else shapebase = 0;
         }
         return *this;
     }
 
     ///getter of the type of the shape
     /// @return type of the shape
-    std::string GetType() const {return cp->GetType();}
+    std::string GetType() const {return shapebase->GetType();}
 
     ///getter for the number of sides
     /// @return number of sides of the shape
-    double GetNSides() const {return cp->GetNSides();}
+    double GetNSides() const {return shapebase->GetNSides();}
 
     ///computes the area
     /// @return area of the shape
     double ComputeArea() const {
-        if(cp) return cp->ComputeArea();
-        else return 0;
+        if(shapebase) return shapebase->ComputeArea();
+        else throw std::runtime_error("Shape is not valid!");
     }
 
     ///computes the perimeter
     /// @return perimeter of the shape
     double ComputePerimeter() const {
-        if(cp) return cp->ComputePerimeter();
-        else return 0;
+        if(shapebase) return shapebase->ComputePerimeter();
+        else throw std::runtime_error("Shape is not valid!");
     }
 
     ///static binary predicate for area comparison
@@ -74,9 +81,6 @@ public:
     static bool ComparePerimeter(const Shape& sh1, const Shape& sh2) {
         return sh1.ComputePerimeter() > sh2.ComputePerimeter();
     }
-
-private:
-    ShapeBase * cp; /**< pointer to the ShapeBase object*/
 };
 
 #endif

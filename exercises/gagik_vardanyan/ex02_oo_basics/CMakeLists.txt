@@ -18,6 +18,14 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
+  src/ShapeBase.cpp
+  src/Shape.cpp
+  src/ShapeSorter.cpp
+  src/Circle.cpp
+  src/Square.cpp
+  src/Rectangle.cpp
+  src/Triangle.cpp
+	
   # add any additional source files here
 )
 
@@ -26,3 +34,5 @@ set ( HDR_FILES
 )
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )
+
+add_definitions( -D_USE_MATH_DEFINES)

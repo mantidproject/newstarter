@@ -7,17 +7,18 @@
  */
 
 class ShapeBase {
-    friend class Shape;
+
 protected:
     std::string type; /**< type of the shape*/
     int nSides; /**< number of sides*/
 
+    ///default constructor
+    ShapeBase() : type(""), nSides(0) {}
+
+public:
     ///virtual clone function
     ///@return a pointer to the new object of the same type
     virtual ShapeBase* clone() const {return new ShapeBase(*this);}
-public:
-    ///default constructor
-    ShapeBase() : type(""), nSides(0) {}
 
     ///getter for number of sides
     /// @return number of sides
