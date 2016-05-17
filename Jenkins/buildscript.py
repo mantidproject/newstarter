@@ -53,10 +53,10 @@ def run_cmake(cmakelists_path):
         cmd = [cmake_exe, "-G", generator, cmakelists_path]
     else:
         generator = 'Unix Makefiles'
-        cmd = [cmake_exe, "-G", generator, cmakelists_path]
+        cmd = [str(cmake_exe), "-G", str(generator), str(cmakelists_path)]
         cmd = make_scl_command(cmd)
     print "Running '%s'" % " ".join(cmd)
-    status = subp.call(cmd)
+    status = subp.call(cmd, shell=True)
 
 def generate_project(src_root, build_root):
     """
@@ -81,7 +81,7 @@ def build(build_root):
         sln = os.path.join(build_root, "Project.sln")
         cmd = [msbuild_exe, "/p:Configuration=Release", sln]
     else:
-       cmd = make_scl_command(["make", "-C", "build_root"])
+        cmd = make_scl_command(["make", "-C", "build_root"])
     print "Running '%s'" % cmd
     return subp.call(cmd, shell=True)
 
