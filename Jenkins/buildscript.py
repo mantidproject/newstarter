@@ -80,7 +80,9 @@ def build(build_root):
     if is_windows():
         msbuild_exe = r'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe'
         sln = os.path.join(build_root, "Project.sln")
-        cmd = ["msbuildscript.bat", msbuild_exe, "/p:Configuration=Release", sln]
+    
+        msbuildscript = os.path.join(os.path.dirname(os.path.realpath(__file__)), "msbuildscript.bat")
+        cmd = [msbuildscript, msbuild_exe, "/p:Configuration=Release", sln]
     else:
         cmd = make_scl_command(["make", "-C", build_root])
     print "Running '%s'" % cmd
