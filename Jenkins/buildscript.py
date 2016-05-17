@@ -49,13 +49,14 @@ def run_cmake(cmakelists_path):
 
     cmake_exe = "cmake"
     if is_windows():
-        generator = 'Visual Studio 11 Win64'
+        generator = 'Visual Studio 14 Win64'
         cmd = [cmake_exe, "-G", generator, cmakelists_path]
+        print "Running '%s'" % " ".join(cmd)
     else:
         generator = 'Unix Makefiles'
         cmd = [str(cmake_exe), "-G", str(generator), str(cmakelists_path)]
         cmd = make_scl_command(cmd)
-    print "Running '%s'" % " ".join(cmd)
+        print "Running '%s'" % cmd
     status = subp.call(cmd, shell=True)
 
 def generate_project(src_root, build_root):
