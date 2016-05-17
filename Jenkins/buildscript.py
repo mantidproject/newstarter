@@ -37,9 +37,8 @@ BUILDS_ROOT = os.path.join(WORKSPACE, "builds")
 def make_scl_command(command_list):
     command_str = " ".join(command_list)
     quoted_command_str = "\"{0}\"".format(command_str)
-    return " ".join(["scl", "enable", "devtoolset-2", "{0}"]).format(quoted_command_str)
+    return " ".join(["scl", "enable", "devtoolset-2", "{0}".format(quoted_command_str)])
     
-
 def is_windows():
     if sys.platform == "win32":
         return True
