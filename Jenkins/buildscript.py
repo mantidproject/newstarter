@@ -77,7 +77,7 @@ def build(build_root):
        command_str = " ".join(["\"", "make", "-C", "build_root", "\""])
        cmd = " ".join(["scl", "enable", "devtoolset-2", "{0}"]).format(command_str)
     print "Running '%s'" % cmd
-    return subp.call(cmd)
+    return subp.call(cmd, shell=True)
 
 ################### Main #########################################################
 
