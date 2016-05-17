@@ -53,7 +53,7 @@ def run_cmake(cmakelists_path):
         cmd = [cmake_exe, "-G", generator, cmakelists_path]
         print "Running '%s'" % " ".join(cmd)
     else:
-        generator = 'Unix Makefiles'
+        generator = '\'Unix Makefiles\''
         cmd = [str(cmake_exe), "-G", str(generator), str(cmakelists_path)]
         cmd = make_scl_command(cmd)
         print "Running '%s'" % cmd
