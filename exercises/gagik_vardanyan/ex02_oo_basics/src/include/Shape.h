@@ -4,6 +4,7 @@
 
 #ifndef CLASS_SHAPE
 #define CLASS_SHAPE
+#include <stdexcept>
 #include "ShapeBase.h"
 
 class Shape {
