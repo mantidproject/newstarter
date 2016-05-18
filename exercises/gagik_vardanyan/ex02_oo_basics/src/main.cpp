@@ -14,22 +14,17 @@
 ///the main program
 int main(int argc, char ** argv)
 {
-    std::vector<Shape> shapes;
+    std::vector<Shape*> shapes;
 
     Rectangle * rect = new Rectangle(10,50);
     Triangle * tri = new Triangle(10,5);
     Square * sq = new Square(7);
     Circle * cq = new Circle(5);
 
-    Shape sh1(rect);
-    Shape sh2(tri);
-    Shape sh3(sq);
-    Shape sh4(cq);
-
-    shapes.push_back(sh1);
-    shapes.push_back(sh2);
-    shapes.push_back(sh3);
-    shapes.push_back(sh4);
+    shapes.push_back(rect);
+    shapes.push_back(tri);
+    shapes.push_back(sq);
+    shapes.push_back(cq);
 
     ShapeSorter ss(shapes);
 

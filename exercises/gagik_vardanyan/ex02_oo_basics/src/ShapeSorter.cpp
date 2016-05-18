@@ -6,12 +6,12 @@
 void ShapeSorter::PrintSelectByType(std::ostream& out, const std::string & type) const
 {
     out << "Type\tArea\tPerimeter\n";
-    for(std::vector<Shape>::iterator it = shapes.begin(); it != shapes.end(); ++it)
+    for(std::vector<Shape*>::iterator it = shapes.begin(); it != shapes.end(); ++it)
     {
-        if(it->GetType() == type)
+        if((*it)->GetType() == type)
         {
-            out << it->GetType() << "\t" << it->ComputeArea() << "\t"
-                << it->ComputePerimeter() << std::endl;
+            out << (*it)->GetType() << "\t" << (*it)->ComputeArea() << "\t"
+                << (*it)->ComputePerimeter() << std::endl;
         }
     }
 }
@@ -22,12 +22,12 @@ void ShapeSorter::PrintSelectByType(std::ostream& out, const std::string & type)
 void ShapeSorter::PrintSelectByNSides(std::ostream& out, const int & ns) const
 {
     out << "Type\tArea\tPerimeter\n";
-    for(std::vector<Shape>::iterator it = shapes.begin(); it != shapes.end(); ++it)
+    for(std::vector<Shape*>::iterator it = shapes.begin(); it != shapes.end(); ++it)
     {
-        if(it->GetNSides() == ns)
+        if((*it)->GetNSides() == ns)
         {
-            out << it->GetType() << "\t" << it->ComputeArea() << "\t"
-                << it->ComputePerimeter() << std::endl;
+            out << (*it)->GetType() << "\t" << (*it)->ComputeArea() << "\t"
+                << (*it)->ComputePerimeter() << std::endl;
         }
     }
 }
@@ -37,9 +37,9 @@ void ShapeSorter::PrintSelectByNSides(std::ostream& out, const int & ns) const
 void ShapeSorter::PrintAll(std::ostream& out) const
 {
     out << "Type\tArea\tPerimeter\n";
-    for(std::vector<Shape>::iterator it = shapes.begin(); it != shapes.end(); ++it)
+    for(std::vector<Shape*>::iterator it = shapes.begin(); it != shapes.end(); ++it)
     {
-        out << it->GetType() << "\t" << it->ComputeArea() << "\t"
-            << it->ComputePerimeter() << std::endl;
+        out << (*it)->GetType() << "\t" << (*it)->ComputeArea() << "\t"
+            << (*it)->ComputePerimeter() << std::endl;
     }
 }

@@ -5,19 +5,18 @@
 #ifndef CLASS_TRIANGLE
 #define CLASS_TRIANGLE
 #include <cmath>
-#include "ShapeBase.h"
+#include "Shape.h"
 
-class Triangle: public ShapeBase {
+class Triangle: public Shape {
 private:
     double height; /**< height of the triangle*/
     double base; /**< base of the triangle*/
 
-protected:
+public:
     ///clone function
     /// @return new triangle object
     Triangle* clone() const {return new Triangle(*this);}
 
-public:
     ///default constructor
     Triangle()
     {

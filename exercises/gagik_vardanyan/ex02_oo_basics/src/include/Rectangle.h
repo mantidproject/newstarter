@@ -4,19 +4,18 @@
 
 #ifndef CLASS_RECTANGLE
 #define CLASS_RECTANGLE
-#include "ShapeBase.h"
+#include "Shape.h"
 
-class Rectangle: public ShapeBase {
+class Rectangle: public Shape {
 private:
     double side1; /**< side 1 */
     double side2; /**< side 2 */
 
-protected:
+public:
     ///clone function
     /// @return new rectangle object
     Rectangle* clone() const {return new Rectangle(*this);}
 
-public:
     ///default constructor
     Rectangle()
     {

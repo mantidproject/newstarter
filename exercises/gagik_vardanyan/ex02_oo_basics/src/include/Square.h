@@ -4,18 +4,17 @@
 
 #ifndef CLASS_SQUARE
 #define CLASS_SQUARE
-#include "ShapeBase.h"
+#include "Shape.h"
 
-class Square: public ShapeBase {
+class Square: public Shape {
 private:
     double side; /**< side of the square */
 
-protected:
+public:
     ///clone function
     /// @return new square object
     Square* clone() const {return new Square(*this);}
 
-public:
     ///default constructor
     Square()
     {

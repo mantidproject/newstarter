@@ -12,14 +12,14 @@
 
 class ShapeSorter {
 private:
-    std::vector<Shape> & shapes; /**< vector of shapes */
+    std::vector<Shape*> & shapes; /**< vector of shape pointers */
 public:
     ///default constructor
     ShapeSorter();
 
     ///constructor from vector
     /// @param sh vector of shapes
-    ShapeSorter(std::vector<Shape> & sh) : shapes(sh) {}
+    ShapeSorter(std::vector<Shape*> & sh) : shapes(sh) {}
 
     ///sorts by area, prints
     /// @param out ostream to print the output to

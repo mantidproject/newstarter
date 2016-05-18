@@ -5,19 +5,17 @@
 #ifndef CLASS_CIRCLE
 #define CLASS_CIRCLE
 #include <cmath>
-#include "ShapeBase.h"
+#include "Shape.h"
 
 
-class Circle: public ShapeBase {
+class Circle: public Shape {
 private:
     double radius; /**< radius of the circle*/
 
-protected:
+public:
     ///clone function
     /// @return new circle object
     Circle* clone() const {return new Circle(*this);}
-
-public:
 
     ///default constructor
     Circle()

@@ -1,86 +1,58 @@
-/**
-* A handle class for shape objects
-*/
-
 #ifndef CLASS_SHAPE
 #define CLASS_SHAPE
-#include <stdexcept>
-#include "ShapeBase.h"
+#include <string>
+
+/**
+ * An abstract base class for generic shapes
+ */
 
 class Shape {
 
-private:
-    ShapeBase * shapebase; /**< pointer to the ShapeBase object*/
+protected:
+    std::string type; /**< type of the shape*/
+    int nSides; /**< number of sides*/
+
+    ///default constructor
+    Shape() : type(""), nSides(0) {}
 
 public:
-    ///default constructor
-    Shape() : shapebase(0) {}
+    ///virtual clone function
+    ///@return a pointer to the new object of the same type
+    virtual Shape* clone() const = 0;
 
-    ///copy constructor
-    /// @param s object of the same type
-    Shape(const Shape& s) : shapebase(0)
-    {
-        if(s.shapebase) shapebase = s.shapebase->clone();
-    }
+    ///getter for number of sides
+    /// @return number of sides
+    double GetNSides() const {return nSides;}
 
-    ///constructor from ShapeBase pointer
-    /// @param sh pointer to ShapeBase object
-    Shape(ShapeBase * sh) { if(sh) shapebase = sh;}
+    ///getter for the type
+    /// @return the type of the shape
+    std::string GetType() const {return type;}
 
-    ///destructor
-    ~Shape() {delete shapebase;}
+    ///virtual function for computing the area
+    /// @return the area of the shape
+    virtual double ComputeArea() const = 0;
 
-    ///assignment operator
-    /// @param s shape object
-    /// @return shape object
-    Shape& operator=(const Shape& s)
-    {
-        if(&s != this)
-        {
-            delete shapebase;
-            if(s.shapebase)
-                shapebase = s.shapebase->clone();
-            else shapebase = 0;
-        }
-        return *this;
-    }
+    ///virtual function for computing the perimeter
+    /// @return the perimeter of the shape
+    virtual double ComputePerimeter() const = 0;
 
-    ///getter of the type of the shape
-    /// @return type of the shape
-    std::string GetType() const {return shapebase->GetType();}
-
-    ///getter for the number of sides
-    /// @return number of sides of the shape
-    double GetNSides() const {return shapebase->GetNSides();}
-
-    ///computes the area
-    /// @return area of the shape
-    double ComputeArea() const {
-        if(shapebase) return shapebase->ComputeArea();
-        else throw std::runtime_error("Shape is not valid!");
-    }
-
-    ///computes the perimeter
-    /// @return perimeter of the shape
-    double ComputePerimeter() const {
-        if(shapebase) return shapebase->ComputePerimeter();
-        else throw std::runtime_error("Shape is not valid!");
-    }
+    ///virtual distructor
+    virtual ~Shape() {}
 
     ///static binary predicate for area comparison
     /// @param sh1 shape object
     /// @param sh2 shape object
     /// @return True if the sh1 has larger area, False otherwise
-    static bool CompareArea(const Shape& sh1, const Shape& sh2) {
-        return sh1.ComputeArea() > sh2.ComputeArea();
+    static bool CompareArea(const Shape* sh1, const Shape* sh2) {
+        return sh1->ComputeArea() > sh2->ComputeArea();
     }
 
     ///static binary predicate for perimeter comparison
     /// @param sh1 shape object
     /// @param sh2 shape object
     /// @return True if the sh1 has larger perimeter, False otherwise
-    static bool ComparePerimeter(const Shape& sh1, const Shape& sh2) {
-        return sh1.ComputePerimeter() > sh2.ComputePerimeter();
+    static bool ComparePerimeter(const Shape* sh1, const Shape* sh2) {
+        return sh1->ComputePerimeter() > sh2->ComputePerimeter();
     }
 };
 
