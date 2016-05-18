@@ -1,13 +1,13 @@
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Environment setup
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 setlocal enableextensions enabledelayedexpansion
-set VS_VERSION=14
-if not defined DevEnvDir (
-    call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
-)
-:: %1 is the full path to the msbuild executable
-:: %2 is the configuration Release/Debug etc
-:: %3 is the full path to the solution
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Setup environment and call msbuild
+:: %1 Specifies build configuration
+:: all other arguments are passed to msbuild
+:: All arguments are passed on to msbuild
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-%1 %2 %3
+:: Use 64-bit version of the compiler
+call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
+
+:: Call msbuild
+msbuild /nologo /p:Configuration=%1 %2 %3 %4 %5 %6 %7 %8 %9

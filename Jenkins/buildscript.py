@@ -20,7 +20,7 @@ try:
 except KeyError:
   print "WORKSPACE environment variable not found.\nThe build script assumes that a WORKSPACE environment variable points at the root of the source directory."
   sys.exit(1)
-  
+
 PROJECTS_ROOT = os.path.join(WORKSPACE, "exercises")
 TEMPLATE_DIR_NAME = "template" #skip this directory
 
@@ -38,7 +38,7 @@ def make_scl_command(command_list):
     command_str = " ".join(command_list)
     quoted_command_str = "\"{0}\"".format(command_str)
     return " ".join(["scl", "enable", "devtoolset-2", "{0}".format(quoted_command_str)])
-    
+
 def is_windows():
     if sys.platform == "win32":
         return True
@@ -78,11 +78,9 @@ def build(build_root):
     Build the code in the build_root directory
     """
     if is_windows():
-        msbuild_exe = r'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe'
         sln = os.path.join(build_root, "Project.sln")
-    
         msbuildscript = os.path.join(os.path.dirname(os.path.realpath(__file__)), "msbuildscript.bat")
-        cmd = [msbuildscript, msbuild_exe, "/p:Configuration=Release", sln]
+        cmd = [msbuildscript, "Release", sln]
     else:
         cmd = make_scl_command(["make", "-C", build_root])
     print "Running '%s'" % cmd
