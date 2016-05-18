@@ -20,7 +20,7 @@ try:
 except KeyError:
   print "WORKSPACE environment variable not found.\nThe build script assumes that a WORKSPACE environment variable points at the root of the source directory."
   sys.exit(1)
-  
+
 PROJECTS_ROOT = os.path.join(WORKSPACE, "exercises")
 TEMPLATE_DIR_NAME = "template" #skip this directory
 
@@ -34,6 +34,11 @@ BUILDS_ROOT = os.path.join(WORKSPACE, "builds")
 
 ################### Functions #########################################################
 
+def make_scl_command(command_list):
+    command_str = " ".join(command_list)
+    quoted_command_str = "\"{0}\"".format(command_str)
+    return " ".join(["scl", "enable", "devtoolset-2", "{0}".format(quoted_command_str)])
+
 def is_windows():
     if sys.platform == "win32":
         return True
@@ -42,16 +47,17 @@ def is_windows():
 
 def run_cmake(cmakelists_path):
 
-
+    cmake_exe = "cmake"
     if is_windows():
-        cmake_exe = r"C:\Program Files (x86)\CMake 2.8\bin\cmake.exe"
-        generator = 'Visual Studio 11 Win64'
+        generator = 'Visual Studio 14 Win64'
+        cmd = [cmake_exe, "-G", generator, cmakelists_path]
+        print "Running '%s'" % " ".join(cmd)
     else:
-        cmake_exe = "cmake"
-        generator = 'Unix Makefiles'
-    cmd = [cmake_exe, "-G", generator, cmakelists_path]
-    print "Running '%s'" % " ".join(cmd)
-    status = subp.call(cmd)
+        generator = '\'Unix Makefiles\''
+        cmd = [str(cmake_exe), "-G", str(generator), str(cmakelists_path)]
+        cmd = make_scl_command(cmd)
+        print "Running '%s'" % cmd
+    status = subp.call(cmd, shell=True)
 
 def generate_project(src_root, build_root):
     """
@@ -72,13 +78,13 @@ def build(build_root):
     Build the code in the build_root directory
     """
     if is_windows():
-        msbuild_exe = r'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe'
         sln = os.path.join(build_root, "Project.sln")
-        cmd = [msbuild_exe, "/p:Configuration=Release", sln]
+        msbuildscript = os.path.join(os.path.dirname(os.path.realpath(__file__)), "msbuildscript.bat")
+        cmd = [msbuildscript, "Release", sln]
     else:
-        cmd = ["make", "-C", build_root]
-    print "Running '%s'" % " ".join(cmd)
-    return subp.call(cmd)
+        cmd = make_scl_command(["make", "-C", build_root])
+    print "Running '%s'" % cmd
+    return subp.call(cmd, shell=True)
 
 ################### Main #########################################################
 
