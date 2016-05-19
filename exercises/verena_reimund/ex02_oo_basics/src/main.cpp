@@ -8,7 +8,6 @@
 #include <algorithm> //for_each
 //#include <memory>  //smart pointers
 
-const double PI = 3.141592653589793;
 
 // base class
 class print{
@@ -30,7 +29,7 @@ public:
    virtual std::string Square() const {return n_sides;}
    virtual double perimeter () const {return shape_perimeter;}
    virtual double area () const {return shape_area;}
-   virtual ~Shapes(){} // required for freeing memory, since not smart pointers in use
+   virtual ~Shapes(){}
 };
 
 // type definitions
@@ -44,11 +43,11 @@ bool compare_strings (const std::string &s1, const std::string &s2){
 }
 
 bool compare_volume (const Shapes *s1, const Shapes *s2){
-   return s1->area()<s2->area();
+   return s1->area()>s2->area();
 }
 
 bool compare_perimeter (const Shapes *s1, const Shapes *s2){
-   return s1->perimeter()<s2->perimeter();
+   return s1->perimeter()>s2->perimeter();
 }
 
 // class definitions
@@ -58,20 +57,11 @@ class rectangle: public Shapes{
    double side2;
 public:
    rectangle(double x, double y) : side1(x), side2(y) {} // constructor
+   rectangle(double z) : side1(z), side2(z) {} // constructor squares
    std::string type() const {return "Rectangle";}
    std::string Square() const {return "4";}
    double perimeter() const {return (2*(side1+side2));}
    double area() const {return (side1*side2);}
-};
-
-class square: public Shapes{// rectangle class can be used or can be a freind class
-   double side1;
-public:
-   explicit square(double x) : side1(x) {} // constructor, default constructor disabled
-   std::string type() const {return "Square";}
-   std::string Square() const {return "4";}
-   double perimeter() const {return (4*side1);}
-   double area() const {return (pow(side1,2));}
 };
 
 class circle: public Shapes{
@@ -80,8 +70,8 @@ public:
    explicit circle(double r) : radius(r) {} // constructor, default constructor disabled
    std::string type() const {return "Circle";}
    std::string Square() const {return "inf";}
-   double perimeter() const {return(2*PI*radius);}
-   double area() const {return (PI*pow(radius,2));}
+   double perimeter() const {return(2*M_PI*radius);}
+   double area() const {return (M_PI*pow(radius,2));}
 };
 
 class triangle: public Shapes{
@@ -170,7 +160,7 @@ int main(int argc, char** argv){
    cshapes.push_back(new rectangle(4.5,2.0));// std::make_unique
    cshapes.push_back(new rectangle(1.5,2.0));
    cshapes.push_back(new circle(3.0));
-   cshapes.push_back(new square(4.0));
+   cshapes.push_back(new rectangle(4.0));
    cshapes.push_back(new triangle(2.0,2.0));
 
    ShapeSorter shape_sorter(cshapes);
