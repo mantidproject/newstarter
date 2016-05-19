@@ -16,7 +16,7 @@
 #include <cctype>
 #include <cstddef>     // std::size_t
 
-const int MWL=4; // min word length
+const int MWL=5; // min word length
 
 //using namespace std;
 
