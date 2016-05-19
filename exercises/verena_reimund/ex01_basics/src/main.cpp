@@ -16,7 +16,7 @@
 #include <cctype>
 #include <cstddef>     // std::size_t
 
-#define MWL 4 // min word length
+const int MWL=4; // min word length
 
 //using namespace std;
 
@@ -43,7 +43,7 @@ std::string write_str (const std::string& s,std::size_t b, std::size_t e){
 }
 
 // update map
-std::map<std::string,int> update_map (std::map<std::string,int> themap,std::string s){
+std::map<std::string,int> &update_map (std::map<std::string,int> &themap,std::string s){
     if(s.length()>=MWL){
         ++themap[s];
     }
