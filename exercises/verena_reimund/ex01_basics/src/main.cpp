@@ -33,11 +33,6 @@ std::string write_str (const std::string& s,std::size_t b, std::size_t e){
     for (size_t t=b; t<e; ++t){
         if(punctuation(s[t]))
             newstr.push_back(std::tolower(s[t]));// single character required to be case insensitive
-        else{// occurence of punctuation, which should be limited
-            if (countp<1)// only one occurence allowed
-                newstr.push_back(std::tolower(s[t]));// single character required to be case insensitive
-            ++countp;
-        }
     }
     return newstr;
 }
