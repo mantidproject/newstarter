@@ -8,146 +8,197 @@
 #include <algorithm> //for_each
 //#include <memory>  //smart pointers
 
-// abstract base class
-class shape{
+// abstract base class as interface
+class Shape {// abstract class
 public:
-    shape(){}
-    virtual std::string type() const =0;
-    virtual int number_of_sides() const =0;
-    virtual double perimeter () const =0;
-    virtual double area () const =0;
-    virtual ~shape(){}
+    Shape(){}
+    virtual std::string Type() const =0;
+    virtual int Sides () const =0;
+    virtual double Perimeter () const =0;
+    virtual double Area () const =0;
+    virtual ~Shape(){}
 };
 
 // type definitions
 
-typedef std::vector<shape*> collection; // std::unique_ptr
-typedef std::vector<shape*>::size_type its;
+typedef std::vector<Shape*> collection; // std::unique_ptr
+typedef std::vector<Shape*>::size_type ShapeIterator;
 
 // compare functions, const required
-bool compare_strings (const std::string &s1, const std::string &s2){
-    return s1.compare(s2)==0;
+bool CompareStrings (const std::string &s1, const std::string &s2){
+    return s1.compare(s2);
 }
 
-bool compare_volume (const shape *s1, const shape *s2){
-    return s1->area()>s2->area();
-}
-
-bool compare_perimeter (const shape *s1, const shape *s2){
-    return s1->perimeter()>s2->perimeter();
-}
-
-bool compare_sides (const int &s1, const int &s2){
+bool CompareSides (const int &s1, const int &s2){
     return s1==s2;
+}
+
+// it is crucial to use const (for not changing Shapes content)
+bool CompareArea (const Shape *s1, const Shape *s2){
+    return s1->Area()>s2->Area();
+}
+
+bool ComparePerimeter (const Shape *s1, const Shape *s2){
+    return s1->Perimeter()>s2->Perimeter();
 }
 
 // class definitions
 
-class rectangle: public shape{
+class Rectangle: public Shape{
     double side1;
     double side2;
 public:
-    rectangle(double x, double y) : side1(x), side2(y) {} // constructor
-    rectangle(double z) : side1(z), side2(z) {} // constructor number_of_sides
-    std::string type() const {return "Rectangle";}
-    int number_of_sides() const {return 4;}
-    double perimeter() const {return (2*(side1+side2));}
-    double area() const {return (side1*side2);}
+    Rectangle(double x, double y) : side1(x), side2(y) {} // constructor
+    Rectangle(double z) : side1(z), side2(z) {} // square
+    double getSide1() {return side1;}
+    double getSide2() {return side2;}
+    std::string Type() const {return "Rectangle";}
+    int Sides() const {return 4;}
+    double Perimeter() const {return (2*(side1+side2));}
+    double Area() const {return (side1*side2);}
 };
 
-class circle: public shape{
+class Circle: public Shape{
     double radius;
 public:
-    explicit circle(double r) : radius(r) {} // constructor, default constructor disabled
-    std::string type() const {return "Circle";}
-    int number_of_sides() const {return -1;} // infinity, not an unsigned int
-    double perimeter() const {return(2*M_PI*radius);}
-    double area() const {return (M_PI*pow(radius,2));}
+    explicit Circle(double r) : radius(r) {} // constructor, default constructor disabled
+    double getRadius() {return radius;}
+    std::string Type() const {return "Circle";}
+    int Sides() const {return -1;} // infinity
+    double Perimeter() const {return(2*M_PI*radius);}
+    double Area() const {return (M_PI*pow(radius,2));}
 };
 
-class triangle: public shape{
+class Triangle: public Shape{
     double height;
     double base;
 public:
-    triangle(double h, double b) : height(h), base(b) {}
-    std::string type() const {return "Triangle";}
-    int number_of_sides() const {return 3;}
-    double perimeter() const {return(base+2*sqrt(pow(height,2.0)+pow(base,2.0)/4));}
-    double area() const {return (height*base/2);}
+    Triangle(double h, double b) : height(h), base(b) {}
+    double getHeight () {return height;}
+    double getBase () {return base;}
+    std::string Type() const {return "Triangle";}
+    int Sides() const {return 3;}
+    double Perimeter() const {return(base+2*sqrt(pow(height,2.0)+pow(base,2.0)/4));}
+    double Area() const {return (height*base/2);}
 };
 
-class shapesorter{
-    collection shape;
+class ShapeSorter{
 public:
-    explicit shapesorter(collection s) : shape(s) {}
-    void type(std::string select_type);
-    void sides(int select_number_of_sides);
-    void volume_dec();
-    void perimeter_dec();
+    void Type(collection &OutputShape,std::string SelectType);
+    void Sides(collection &OutputShape,int SelectNumberOfSides);
+    void AreaDescending(collection &OutputShape);
+    void PerimeterDescending(collection &OutputShape);
 };
+
+// functions
+
+void out(std::string Type, double val) {
+    std::cout << Type << "\t" << val << std::endl;
+}
+
+void out(std::string Type, double val1, double val2) {
+    std::cout << Type << "\t" << val1 << "\t" << val2 << std::endl;
+}
+
+void out(std::string Type, std::string val) {
+    std::cout << Type << "\t" << val << std::endl;
+}
 
 // member functions
 
-void out(std::string type, double val) {
-    std::cout << type << "\t" << val << std::endl;
-}
-
-void out(std::string type, double val1, double val2) {
-    std::cout << type << "\t" << val1 << "\t" << val2 << std::endl;
-}
-
-
-// would like to print values of derived class members like side1, side2, .. using dynamic_cast
-
-void shapesorter::type(std::string select_type){
-    std::cout << "shape of type : " << select_type << std::endl;
-    for(its i = 0; i!=shape.size(); ++i){
-        if (compare_strings(select_type,shape[i]->type())){
-            out(shape[i]->type(),shape[i]->area());
+void ShapeSorter::Type(collection &OutputShape, std::string SelectType){
+    ShapeIterator i = 0;
+    try{
+        while (i!=OutputShape.size()){
+            if (CompareStrings(SelectType,OutputShape[i]->Type())){
+                OutputShape.erase(OutputShape.begin()+i);
+                --i;//do not update iterator position in vector
+            }
+            ++i;
         }
     }
-    std::cout << '\n' << std::endl;
-}
-
-void shapesorter::sides(int number_of_sides){
-    std::cout << "shape with number of sides : " << number_of_sides << std::endl;
-    for(its i = 0; i!=shape.size(); ++i){
-        if (compare_sides(number_of_sides,shape[i]->number_of_sides())){
-            out(shape[i]->type(),shape[i]->number_of_sides());
-        }
+    catch (std::exception const& ex) {//catch standard exception
+        std::cout << "Exception: " << ex.what() <<std::endl;
     }
 }
 
-void shapesorter::volume_dec(){
-    sort(shape.begin(),shape.end(),compare_volume);
+void ShapeSorter::Sides(collection &OutputShape, int NumberOfSides){
+    ShapeIterator i = 0;
+    try{
+        while (i!=OutputShape.size()){
+            if (!CompareSides(NumberOfSides,OutputShape[i]->Sides())){
+                OutputShape.erase(OutputShape.begin()+i);
+                --i;//do not update iterator position in vector
+            }
+            ++i;
+        }
+    }
+    catch (std::exception const& ex) {//catch standard exception
+        std::cout << "Exception: " << ex.what() <<std::endl;
+    }
 }
 
-void shapesorter::perimeter_dec(){
-    sort(shape.begin(),shape.end(),compare_perimeter);
+void ShapeSorter::AreaDescending(collection &Shapes){
+    sort(Shapes.begin(),Shapes.end(),CompareArea);
+}
+
+void ShapeSorter::PerimeterDescending(collection &Shapes){
+    sort(Shapes.begin(),Shapes.end(),ComparePerimeter);
 }
 
 // template function in order to delete classes
 template <typename T>
-void delete_shape(T* const ptr){delete ptr;}
+void DeleteShape(T* const ptr){delete ptr;}
 
 int main(int argc, char** argv){
     try{
 
-        collection cshape;
+        collection cShape; // input shapes
 
-        cshape.push_back(new rectangle(4.5,2.0));// std::make_unique
-        cshape.push_back(new rectangle(1.5,2.0));
-        cshape.push_back(new circle(3.0));
-        cshape.push_back(new rectangle(4.0));
-        cshape.push_back(new triangle(2.0,2.0));
+        cShape.push_back(new Rectangle(4.5,2.0));// std::make_unique
+        cShape.push_back(new Rectangle(1.5,2.0));
+        cShape.push_back(new Circle(3.0));
+        cShape.push_back(new Rectangle(4.0));
+        cShape.push_back(new Triangle(2.0,2.0));
 
-        shapesorter csorter(cshape);
-        csorter.type("Rectangle");
-        csorter.sides(4);
-        csorter.volume_dec();
-        csorter.perimeter_dec();
+        collection sShape(cShape); // Shape's copy constructor
+        collection tShape(cShape); // Shape's copy constructor
 
-        std::for_each(cshape.begin(), cshape.end(), delete_shape<shape>); // deletes
+        ShapeSorter cSorter;
+
+        std::cout << "All shapes, perimeter descending " << std::endl;
+        cSorter.PerimeterDescending(cShape);
+        for(ShapeIterator i = 0; i!=cShape.size(); ++i){
+            out(cShape[i]->Type(),cShape[i]->Perimeter());
+        }
+        std::cout << "\n" << std::endl;
+
+        std::cout << "All shapes, area descending " << std::endl;
+        cSorter.AreaDescending(cShape);
+        for(ShapeIterator i = 0; i!=cShape.size(); ++i){
+            out(cShape[i]->Type(),cShape[i]->Area());
+        }
+        std::cout << "\n" << std::endl;
+
+        std::cout << "All rectangles (side1, side2)" << std::endl;
+        cSorter.Type(sShape,"Rectangle");
+        for(ShapeIterator i = 0; i!=sShape.size(); ++i){
+            Rectangle * rect = dynamic_cast<Rectangle*>(sShape[i]);
+            if(rect!=NULL)
+                out(sShape[i]->Type(),rect->getSide1(),rect->getSide2());
+        }
+        std::cout << "\n" << std::endl;
+
+        std::cout << "All shapes with 4 sides (side1, side2)" << std::endl;
+        cSorter.Sides(tShape,4);
+        for(ShapeIterator i = 0; i!=tShape.size(); ++i){
+            Rectangle * rect = dynamic_cast<Rectangle*>(sShape[i]);
+            if(rect!=NULL)
+                out(sShape[i]->Type(),rect->getSide1(),rect->getSide2());
+        }
+        std::cout << "\n" << std::endl;
+
+        std::for_each(cShape.begin(), cShape.end(), DeleteShape<Shape>); // deletes
         return 0;
 
     }
