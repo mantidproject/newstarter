@@ -199,12 +199,12 @@ int main(int argc, char** argv){
         std::cout << "\n" << std::endl;
 
         std::for_each(cShape.begin(), cShape.end(), DeleteShape<Shape>); // deletes
-        return 0;
 
     }
     catch (std::exception const& ex) {//catch standard exception
         std::cout << "Exception: " << ex.what() <<std::endl;
-        return -1;
+        
     }
+    return 0;
 
 }
