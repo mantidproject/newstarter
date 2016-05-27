@@ -25,7 +25,7 @@ typedef std::vector<Shape*> collection; // std::unique_ptr
 typedef std::vector<Shape*>::size_type ShapeIterator;
 
 // compare functions, const required
-bool CompareStrings (const std::string &s1, const std::string &s2){
+int CompareStrings (const std::string &s1, const std::string &s2){
     return s1.compare(s2);
 }
 
