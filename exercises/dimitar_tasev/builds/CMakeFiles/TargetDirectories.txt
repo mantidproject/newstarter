@@ -1,0 +1,6 @@
+C:/Users/QBR77747/Documents/newstarter/exercises/dimitar_tasev/builds/CMakeFiles/ALL_BUILD.dir
+C:/Users/QBR77747/Documents/newstarter/exercises/dimitar_tasev/builds/CMakeFiles/ZERO_CHECK.dir
+C:/Users/QBR77747/Documents/newstarter/exercises/dimitar_tasev/builds/ex01_basics/CMakeFiles/WordCounter.dir
+C:/Users/QBR77747/Documents/newstarter/exercises/dimitar_tasev/builds/ex01_basics/CMakeFiles/ALL_BUILD.dir
+C:/Users/QBR77747/Documents/newstarter/exercises/dimitar_tasev/builds/ex02_oo_basics/CMakeFiles/Shapes.dir
+C:/Users/QBR77747/Documents/newstarter/exercises/dimitar_tasev/builds/ex02_oo_basics/CMakeFiles/ALL_BUILD.dir
