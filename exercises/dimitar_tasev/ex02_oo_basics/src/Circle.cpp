@@ -21,7 +21,7 @@ std::string Circle::getType() const
 */
 float Circle::getVolume() const
 {
-	return M_PI * m_radius * m_radius;
+	return float(M_PI * m_radius * m_radius);
 }
 
 /** Returns the perimeter of the shape
@@ -29,5 +29,5 @@ float Circle::getVolume() const
 */
 float Circle::getPerimeter() const
 {
-	return 2 * M_PI * m_radius;
+	return float(2 * M_PI * m_radius);
 }
