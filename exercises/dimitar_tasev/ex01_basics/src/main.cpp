@@ -64,7 +64,7 @@ bool validWord(const std::string& word)
 std::map<std::string, int>* processString(std::string& fileText)
 {
 	// throw -44 if the string is overflowing
-	if (fileText.length() >= fileText.max_size())
+	if (fileText.length() > fileText.max_size())
 	{
 		throw - 44; // String Overflow error
 	}
@@ -106,6 +106,8 @@ std::map<std::string, int>* processString(std::string& fileText)
 }
 
 /** Loads the file into a string using a streambuf 
+ *  The string's max length is 4294967291, which according to reddit is about 4000 books,
+ *	it is possible to overflow it, and then the program will crash
  *	
  *	@param file The file name that will be loaded into a string, it should provide relevant address
  *				to the executable file.
@@ -256,12 +258,11 @@ int main(int argc, char** argv)
 	std::map<std::string, int>* wordDictionary = nullptr;
 
 	// Process the string after removing all of the invalid characters
-	// I
 	try
 	{
 		wordDictionary = processString(*fileText);
 	}
-	catch (int e)
+	catch (int e) // will probably never catch anything because the program will crash
 	{
 		if (e == -44)
 		{
