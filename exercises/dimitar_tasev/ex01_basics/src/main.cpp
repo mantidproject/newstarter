@@ -18,9 +18,6 @@ const static int PRINT_ORDER_DESC = 1;
 // Order the dictionary in an ascending order of word count
 const static int PRINT_ORDER_ASC = 2;
 
-// The invalid characters that will be removed from the file
-static std::string invalidChars = ".,?\'\"!():-";
-
 
 /** Checks if the word is contained within the dictionary map
  *	
@@ -147,12 +144,6 @@ std::vector<std::pair<std::string, int>>* loadVectorFromMap(const std::map<std::
 	return mapVector;
 }
 
-
-bool comparePair(std::pair<std::string, int>& a, std::pair<std::string, int>& b)
-{
-	return a.second < b.second;
-}
-
 /** Sorts the vector depending on specified order in parameter
  *	
  *	@param mapVector The vector that will be sorted
@@ -166,7 +157,22 @@ void sortVector(std::vector<std::pair<std::string, int>>* mapVector, int order)
 	if (order == PRINT_ORDER_ASC)
 	{
 		// Sort the vector by each pair's second member
-		std::sort(mapVector->begin(), mapVector->end(), comparePair);
+		std::sort(mapVector->begin(), mapVector->end(),
+			[=](const std::pair<std::string, int>& a, const std::pair<std::string, int>& b)
+		{
+			return a.second < b.second;
+		}
+		);
+	}
+	else
+	{
+		// Sort the vector by each pair's second member
+		std::sort(mapVector->begin(), mapVector->end(),
+			[=](const std::pair<std::string, int>& a, const std::pair<std::string, int>& b)
+		{
+			return a.second > b.second;
+		});
+
 	}
 }
 
@@ -223,7 +229,7 @@ void printMap(const std::map<std::string, int>& map)
 								can be specified as a string of characters, and each one of them will be removed
 
  */
-void removeInvalidCharacters(std::string* fileText, std::string  invalidCharacters)
+void removeInvalidCharacters(std::string* fileText, const std::string& invalidCharacters)
 {
 	for (unsigned int i = 0; i < invalidCharacters.length(); i++)
 	{
@@ -233,6 +239,9 @@ void removeInvalidCharacters(std::string* fileText, std::string  invalidCharacte
 
 int main(int argc, char** argv)
 {
+
+	// The invalid characters that will be removed from the file
+	const std::string invalidChars = ".,?\'\"!():-";
 
 	// If the argument list is less than 2 then the file name is missing return and show error
 	if (argc < 2)
