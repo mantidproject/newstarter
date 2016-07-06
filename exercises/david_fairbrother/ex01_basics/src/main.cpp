@@ -38,16 +38,22 @@ int main(int argc, char ** argv)
 		return ERR_OPENING_FILE;
 	}
 
+	//Count unique words and return as vector sorted by number of words
 	vector<pair<string, int> > uniqueWordCount = countUniqueWords(fileHandle);
-
 
 	ofstream outFile;
 	//Should ask for destination or possibly check second arg for output filename
 	outFile.open(OUT_FILE_NAME); 
 
+	if (!outFile) {
+		cerr << "Could not open output file " << OUT_FILE_NAME << endl;
+		return ERR_OPENING_FILE;
+	}
+
 	printUniqueWords(uniqueWordCount, outFile);
 
-
+	cout << "Successfully output to file " << OUT_FILE_NAME << endl;
+	return 0;
 }
 
 
