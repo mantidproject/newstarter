@@ -47,6 +47,7 @@ int main(int argc, char ** argv)
 
 	if (!outFile) {
 		cerr << "Could not open output file " << OUT_FILE_NAME << endl;
+		cerr << strerror(errno);
 		return ERR_OPENING_FILE;
 	}
 
