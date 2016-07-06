@@ -37,4 +37,4 @@ private:
 	float m_base;
 	std::string m_type;
 };
-#endif TRIANGLE_SHAPE_H_
+#endif /* TRIANGLE_SHAPE_H_ */
