@@ -135,7 +135,7 @@ std::string* loadString(std::ifstream* file)
  *					PRINT_ORDER_ASC for ascending order 
  *					PRINT_ORDER_DESC for descending order
  */
-std::vector<std::pair<std::string, int>>* loadVectorFromMap(const std::map<std::basic_string<char>, int>& wordDictionary, int order)
+std::vector<std::pair<std::string, int>>* loadVectorFromMap(const std::map<std::string, int>& wordDictionary)
 {
 	std::vector<std::pair<std::string, int>> * mapVector = new std::vector<std::pair<std::string, int>>();
 	// Traverse all of the map and move all the pairs into the vector
@@ -144,29 +144,30 @@ std::vector<std::pair<std::string, int>>* loadVectorFromMap(const std::map<std::
 		mapVector->push_back(*itr);
 	}
 
+	return mapVector;
+}
+
+
+bool comparePair(std::pair<std::string, int>& a, std::pair<std::string, int>& b)
+{
+	return a.second < b.second;
+}
+
+/** Sorts the vector depending on specified order in parameter
+ *	
+ *	@param mapVector The vector that will be sorted
+ *	@param order The order in which the vector will be sorted
+ *					PRINT_ORDER_ASC for ascending order
+ *					PRINT_ORDER_DESC for descending order
+ */
+void sortVector(std::vector<std::pair<std::string, int>>* mapVector, int order)
+{
 	// Change sorting depending on the order
 	if (order == PRINT_ORDER_ASC)
 	{
 		// Sort the vector by each pair's second member
-		std::sort(mapVector->begin(), mapVector->end(),
-			[=](std::pair<std::string, int>& a, std::pair<std::string, int>& b)
-		{
-			return a.second < b.second;
-		}
-		);
+		std::sort(mapVector->begin(), mapVector->end(), comparePair);
 	}
-	else
-	{
-		// Sort the vector by each pair's second member
-		std::sort(mapVector->begin(), mapVector->end(),
-			[=](std::pair<std::string, int>& a, std::pair<std::string, int>& b)
-		{
-			return a.second > b.second;
-		});
-
-	};
-
-	return mapVector;
 }
 
 /** Prints the map dictionary to the console screen in a order specified by the second parameter.
@@ -185,7 +186,9 @@ std::vector<std::pair<std::string, int>>* loadVectorFromMap(const std::map<std::
 void printMap(const std::map<std::string, int>& wordDictionary, int order)
 {
 	// Create vector holder
-	std::vector<std::pair<std::string, int>> * mapVector = loadVectorFromMap(wordDictionary, order);
+	std::vector<std::pair<std::string, int>> * mapVector = loadVectorFromMap(wordDictionary);
+
+	sortVector(mapVector, order);
 
 	std::cout << std::setw(10) << "Word" << ':' << "Count" << std::endl;
 	int wordCount = 0;
