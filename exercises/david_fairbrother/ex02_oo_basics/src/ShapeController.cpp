@@ -7,6 +7,7 @@
 #include "Triangle.h"
 
 #include <exception>
+#include <string>
 
 ShapeController::ShapeController(shapes newShape, double width, double height, double radius) {
 	/*Create correct shape depending on parameter input and set dimensions		*
@@ -35,4 +36,20 @@ ShapeController::ShapeController(shapes newShape, double width, double height, d
 ShapeController::~ShapeController() {
 	delete shapePtr;
 	shapePtr = nullptr;
+}
+
+int ShapeController::getNoOfSides() const {
+	return shapePtr->getNumOfSides();
+}
+
+std::string ShapeController::getShapeName() const {
+	return shapePtr->getName();
+}
+
+double ShapeController::getShapeArea() const {
+	return shapePtr->getArea();
+}
+
+double ShapeController::getShapePerimeter() const {
+	return shapePtr->getPerimeter();
 }
