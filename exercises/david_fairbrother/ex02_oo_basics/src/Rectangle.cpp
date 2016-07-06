@@ -24,11 +24,9 @@ Rectangle::~Rectangle() {
 }
 
 double Rectangle::getArea() const {
-	//TODO
-	return 0;
+	return rectData->height * rectData->width;
 }
 
 double Rectangle::getPerimeter() const {
-	//TODO
-	return 0;
+	return (rectData->height * 2) + (rectData->width * 2);
 }

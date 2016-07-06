@@ -18,3 +18,11 @@ Shape::~Shape() {
 	delete ShapeData;
 	ShapeData = nullptr;
 }
+
+std::string Shape::getName() const {
+	return ShapeData->shapeName;
+}
+
+int Shape::getNumOfSides() const {
+	return ShapeData->noOfSides;
+}

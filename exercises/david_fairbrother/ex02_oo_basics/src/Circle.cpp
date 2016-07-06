@@ -2,6 +2,7 @@
 #include "Circle.h"
 
 #include <string>
+#include <math.h>
 
 struct Circle::CircleImpl {
 	CircleImpl(double inRadius) : radius(inRadius) {}
@@ -23,11 +24,9 @@ Circle::~Circle() {
 }
 
 double Circle::getArea() const {
-	//TODO
-	return 0;
+	return pow(circleData->radius, 2)  * M_PI;
 }
 
 double Circle::getPerimeter() const {
-	//TODO
-	return 0;
+	return (circleData->radius * 2) * M_PI;
 }

@@ -9,7 +9,9 @@
 #include <exception>
 
 ShapeController::ShapeController(shapes newShape, double width, double height, double radius) {
-	//Create correct shape depending on parameter input and set dimensions 
+	/*Create correct shape depending on parameter input and set dimensions		*
+	 *There is a better way of doing this than a switch case as this doesn't	*
+	 *scale very well, however I cannot remember it off the top of my head		*/
 	switch (newShape) {
 	case SQUARE:
 		shapePtr = new Square(width);

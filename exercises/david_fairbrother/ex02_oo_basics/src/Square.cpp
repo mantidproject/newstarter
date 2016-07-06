@@ -26,11 +26,10 @@ Square::~Square() {
 }
 
 double Square::getArea() const{
-	//TODO
-	return 0;
+	return squareData->sideLength * squareData->sideLength;
 }
 
 double Square::getPerimeter() const{
-	//TODO
-	return 0;
+	//Perimeter = 4 sides of length sideLength
+	return squareData->sideLength * 4;
 }

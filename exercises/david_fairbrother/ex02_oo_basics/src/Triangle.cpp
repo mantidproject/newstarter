@@ -2,6 +2,7 @@
 #include "Triangle.h"
 
 #include <string>
+#include <math.h>
 
 struct Triangle::TriangleImpl {
 	TriangleImpl(double inBase, double inHeight) : base(inBase), height(inHeight) {}
@@ -23,11 +24,12 @@ Triangle::~Triangle() {
 }
 
 double Triangle::getArea() const{
-	//TODO
-	return 0;
+	return 0.5 * (triangleData->base * triangleData->height);
 }
 
 double Triangle::getPerimeter() const {
-	//TODO
-	return 0;
+	//Perimeter = base + 2sqrt(h^2 + (base^2/4))
+	double baseSqauredOverFour = pow(triangleData->base, 2) / 4;
+	double squareRootSummation = sqrt(pow(triangleData->height, 2) + baseSqauredOverFour);
+	return triangleData->base + 2 * squareRootSummation;
 }
