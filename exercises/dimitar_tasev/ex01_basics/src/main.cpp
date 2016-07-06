@@ -19,7 +19,7 @@ const static int PRINT_ORDER_DESC = 1;
 const static int PRINT_ORDER_ASC = 2;
 
 // The invalid characters that will be removed from the file
-static char invalidChars[] = ".,?\'\"!():-";
+static std::string invalidChars = ".,?\'\"!():-";
 
 
 /** Checks if the word is contained within the dictionary map
@@ -223,9 +223,9 @@ void printMap(const std::map<std::string, int>& map)
 								can be specified as a string of characters, and each one of them will be removed
 
  */
-void removeInvalidCharacters(std::string* fileText, char * invalidCharacters)
+void removeInvalidCharacters(std::string* fileText, std::string  invalidCharacters)
 {
-	for (unsigned int i = 0; i < strlen(invalidCharacters); i++)
+	for (unsigned int i = 0; i < invalidCharacters.length(); i++)
 	{
 		fileText->erase(std::remove(fileText->begin(), fileText->end(), invalidCharacters[i]), fileText->end());
 	}
