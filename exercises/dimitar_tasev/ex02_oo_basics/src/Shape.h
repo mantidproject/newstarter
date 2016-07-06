@@ -8,7 +8,7 @@
 #include <string>
 
 /*
-Abstract definition for class shape
+	Abstract definition for base class Shape
 */
 class Shape {
 public:

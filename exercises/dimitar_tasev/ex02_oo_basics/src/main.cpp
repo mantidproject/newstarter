@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 	Rectangle t3 = Rectangle(35, 13);
 	Circle t4 = Circle(15);
 
-	ShapeSorter shapeSorter = ShapeSorter();
+	ShapeSorter shapeSorter;
 
 	shapeSorter.addShape(t);
 	shapeSorter.addShape(t1);

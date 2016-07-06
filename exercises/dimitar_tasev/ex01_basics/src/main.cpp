@@ -1,6 +1,8 @@
 //---------------------------------------------------------------------
 // Includes
 //---------------------------------------------------------------------
+
+#include <memory>
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -28,7 +30,7 @@ const static int PRINT_ORDER_ASC = 2;
  *			Returns false if the word is not contained in the dictionary
  *
  */
-bool wordIsContained(std::map<std::string, int>* dictionary, std::string word)
+bool wordIsContained(std::map<std::string, int> *dictionary, std::string word)
 {
 	return dictionary->count(word) ? true : false;
 };
@@ -41,7 +43,7 @@ bool wordIsContained(std::map<std::string, int>* dictionary, std::string word)
  *	@return True if the word conforms to the rules 
  *			False if the word fails to conform to the rules
  */
-bool validWord(const std::string& word)
+bool validWord(const std::string &word)
 {
 	return word.length() <= 4 ? false : true;
 }
@@ -53,21 +55,13 @@ bool validWord(const std::string& word)
  *	@param wordDictionary The map dictinoary that will STORE the information about the 
  *			words and occurence count after the fileText string has been processed
  *
- *	@return Returns a map containing std::pair<string, int> of all the valid words in the text
+ *	@return Returns a map pointer containing std::pair<string, int> of all the valid words in the text
  *			and the count of their occurence in the text
- *
- *	@throw Throws -44 if the string is overflowing
  */
-std::map<std::string, int>* processString(std::string& fileText)
+std::map<std::string, int> * loadWordsIntoMap(std::string &fileText)
 {
-	// throw -44 if the string is overflowing
-	if (fileText.length() > fileText.max_size())
-	{
-		throw - 44; // String Overflow error
-	}
-
 	// Declare container for the dictionary as a map
-	std::map<std::string, int>* wordDictionary = new std::map<std::string, int>();
+	std::map<std::string, int> *wordDictionary = new std::map<std::string, int>();
 
 	std::string word;
 
@@ -111,9 +105,9 @@ std::map<std::string, int>* processString(std::string& fileText)
  *
  *	@return Returns an std::string pointer that holds all of the information from the text file
  */
-std::string* loadString(std::ifstream* file)
+std::string * loadStringFromFile(std::ifstream *file)
 {
-	std::string* str = new std::string();
+	std::string *str = new std::string();
 
 	file->seekg(0, std::ios::end);
 	str->reserve(file->tellg());
@@ -132,9 +126,9 @@ std::string* loadString(std::ifstream* file)
  *					PRINT_ORDER_ASC for ascending order 
  *					PRINT_ORDER_DESC for descending order
  */
-std::vector<std::pair<std::string, int>>* loadVectorFromMap(const std::map<std::string, int>& wordDictionary)
+std::vector<std::pair<std::string, int>> * loadVectorFromMap(const std::map<std::string, int> &wordDictionary)
 {
-	std::vector<std::pair<std::string, int>> * mapVector = new std::vector<std::pair<std::string, int>>();
+	std::vector<std::pair<std::string, int>> *mapVector = new std::vector<std::pair<std::string, int>>();
 	// Traverse all of the map and move all the pairs into the vector
 	for (auto itr = wordDictionary.begin(); itr != wordDictionary.end(); ++itr)
 	{
@@ -151,28 +145,27 @@ std::vector<std::pair<std::string, int>>* loadVectorFromMap(const std::map<std::
  *					PRINT_ORDER_ASC for ascending order
  *					PRINT_ORDER_DESC for descending order
  */
-void sortVector(std::vector<std::pair<std::string, int>>* mapVector, int order)
+void sortVector(std::vector<std::pair<std::string, int>> *mapVector, int order)
 {
 	// Change sorting depending on the order
 	if (order == PRINT_ORDER_ASC)
 	{
 		// Sort the vector by each pair's second member
 		std::sort(mapVector->begin(), mapVector->end(),
-			[=](const std::pair<std::string, int>& a, const std::pair<std::string, int>& b)
-		{
-			return a.second < b.second;
-		}
+		          [=](const std::pair<std::string, int> &a, const std::pair<std::string, int> &b)
+		          {
+			          return a.second < b.second;
+		          }
 		);
 	}
 	else
 	{
 		// Sort the vector by each pair's second member
 		std::sort(mapVector->begin(), mapVector->end(),
-			[=](const std::pair<std::string, int>& a, const std::pair<std::string, int>& b)
-		{
-			return a.second > b.second;
-		});
-
+		          [=](const std::pair<std::string, int> &a, const std::pair<std::string, int> &b)
+		          {
+			          return a.second > b.second;
+		          });
 	}
 }
 
@@ -189,15 +182,17 @@ void sortVector(std::vector<std::pair<std::string, int>>* mapVector, int order)
  *					PRINT_ORDER_ASC for ascending or PRINT_ORDER_DESC for descending
  *
  */
-void printMap(const std::map<std::string, int>& wordDictionary, int order)
+void displayDictionary(const std::map<std::string, int> &wordDictionary, int order)
 {
 	// Create vector holder
-	std::vector<std::pair<std::string, int>> * mapVector = loadVectorFromMap(wordDictionary);
+	std::vector<std::pair<std::string, int>> *mapVector = loadVectorFromMap(wordDictionary);
 
 	sortVector(mapVector, order);
 
 	std::cout << std::setw(10) << "Word" << ':' << "Count" << std::endl;
+
 	int wordCount = 0;
+
 	std::string buffer;
 
 	for (auto it = mapVector->begin(); it != mapVector->end(); ++it)
@@ -217,9 +212,9 @@ void printMap(const std::map<std::string, int>& wordDictionary, int order)
 *	@param wordDictionary The map variable containing the word dictionary
 *							PRINT_ORDER_ASC for ascending or PRINT_ORDER_DESC for descending
 */
-void printMap(const std::map<std::string, int>& map)
+void displayDictionary(const std::map<std::string, int> &wordDictionary)
 {
-	printMap(map, PRINT_ORDER_ASC);
+	displayDictionary(wordDictionary, PRINT_ORDER_ASC);
 }
 
 /** Traverses the string parameter and removes all invalid characters specified 
@@ -229,7 +224,7 @@ void printMap(const std::map<std::string, int>& map)
 								can be specified as a string of characters, and each one of them will be removed
 
  */
-void removeInvalidCharacters(std::string* fileText, const std::string& invalidCharacters)
+void removeInvalidCharacters(std::string *fileText, const std::string &invalidCharacters)
 {
 	for (unsigned int i = 0; i < invalidCharacters.length(); i++)
 	{
@@ -237,9 +232,8 @@ void removeInvalidCharacters(std::string* fileText, const std::string& invalidCh
 	}
 }
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
-
 	// The invalid characters that will be removed from the file
 	const std::string invalidChars = ".,?\'\"!():-";
 
@@ -250,45 +244,32 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	std::ifstream file;
-
-	file.open(argv[1]);
+	std::ifstream file(argv[1]);
 
 	// If we failed to load the file return and show error
-	if (!file.is_open())
+	if (!file.is_open() || !file.good())
 	{
 		std::cerr << "ERROR: Cannot find or open file!" << std::endl;
 		return -1;
 	}
 
+	std::unique_ptr<std::string> fileText(loadStringFromFile(&file));
+	
 	// Load the text from the file into a string
-	std::string* fileText = loadString(&file);
+	//std::string *fileText = loadStringFromFile(&file);
 
 	// Remove all invalid characters from text
-	removeInvalidCharacters(fileText, invalidChars);
+	removeInvalidCharacters(fileText.get(), invalidChars);
 
-	std::map<std::string, int>* wordDictionary = nullptr;
+	std::unique_ptr<std::map<std::string, int>> wordDictionary(loadWordsIntoMap(*fileText));
 
 	// Process the string after removing all of the invalid characters
-	try
-	{
-		wordDictionary = processString(*fileText);
-	}
-	catch (int e) // will probably never catch anything because the program will crash
-	{
-		if (e == -44)
-		{
-			std::cout << "The string has overflown and the program cannot continue to work properly!";
-			return -44;
-		}
-	}
-
 	// Print the words onto the screen
-	printMap(*wordDictionary);
-	
-	if(wordDictionary)
-		delete(wordDictionary);
-	delete(fileText);
+	// TODO is this the same as wordDictionary.get()?
+	displayDictionary(*wordDictionary);
+
+	wordDictionary.release();
+	fileText.release();
 
 	return 0;
 }

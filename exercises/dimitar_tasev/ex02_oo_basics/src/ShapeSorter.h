@@ -1,26 +1,33 @@
 ﻿#ifndef SHAPESORTER_H
 #define SHAPESORTER_H
 
+
+//----------------------------------------------------------------------
+// Includes
+//----------------------------------------------------------------------
+
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 #include "Shape.h"
+#include <memory>
 
 
 class ShapeSorter{
 public:
 
-	ShapeSorter()
+	ShapeSorter(): m_shapesContainer(new std::vector<Shape*>())
 	{
-		shapesContainer = new std::vector<Shape*>();
 	}
+
 	~ShapeSorter()
 	{
-		delete shapesContainer;
+		m_shapesContainer.release();
 	}
 
 	/// Add shape to the vector holder
-	void addShape(Shape& shape);
+	void addShape(Shape &shape);
 
 	/// Get all shapes from parameter type as text in stdout
 	void getShapesFromType(std::string type) const;
@@ -35,7 +42,7 @@ public:
 	void getShapesPerimeterDesc() const;
 
 private:
-	std::vector<Shape*> * shapesContainer;
+	std::unique_ptr<std::vector<Shape*>> m_shapesContainer;
 };
 
 #endif /* SHAPESORTER_H */

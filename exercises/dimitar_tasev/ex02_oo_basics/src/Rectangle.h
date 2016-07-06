@@ -8,6 +8,7 @@
 #include <string>
 #include "Shape.h"
 
+
 class Rectangle : public Shape{
 public:
 	Rectangle(float side1, float side2): m_sideCount(4), m_side1(side1), m_side2(side2), m_type("rectangle")
