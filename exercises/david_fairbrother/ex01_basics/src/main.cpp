@@ -15,6 +15,7 @@ using namespace std;
 #define ERR_BAD_PROGRAM_ARG 1
 #define ERR_OPENING_FILE 2
 
+#define OUT_FILE_NAME "outfile.txt"
 #define MIN_WORD_SIZE 4
 
 int main(int argc, char ** argv)
@@ -39,8 +40,10 @@ int main(int argc, char ** argv)
 
 	vector<pair<string, int> > uniqueWordCount = countUniqueWords(fileHandle);
 
+
 	ofstream outFile;
-	outFile.open("outfile.txt"); //TODO replace with user prompt
+	//Should ask for destination or possibly check second arg for output filename
+	outFile.open(OUT_FILE_NAME); 
 
 	printUniqueWords(uniqueWordCount, outFile);
 
@@ -48,8 +51,7 @@ int main(int argc, char ** argv)
 }
 
 
-/* Counts the number of unique words and returns it as a sorted vector	*/
-
+// Counts the number of unique words and stores it as a sorted vector
 vector<pair<string, int> > countUniqueWords(ifstream &fileHandle) {
 
 	//Count in unique words
@@ -65,8 +67,7 @@ vector<pair<string, int> > countUniqueWords(ifstream &fileHandle) {
 
 }
 
-/*	Opens a file handle at specified path	*
-*	Throws exception if unsuccessful		*/
+//	Opens a file handle at specified path throws exception if unsuccessful
 void openFileHandle(const char* filePath, ifstream &fileHandle) {
 
 	fileHandle.open(filePath, ifstream::in);
@@ -78,7 +79,7 @@ void openFileHandle(const char* filePath, ifstream &fileHandle) {
 	}
 }
 
-/* Reads from file handle and splits words of a minimum size into a vector */
+// Reads from file handle and splits words of a minimum size into a map which is returned
 map<string, int> readWordsFromFile(ifstream &fileHandle, int minWordSize) {
 
 	bool wordPresent = false;
@@ -115,14 +116,14 @@ map<string, int> readWordsFromFile(ifstream &fileHandle, int minWordSize) {
 	return wordCount;
 }
 
-/* Sorts map pairs based on their value */
+// Sorts map pairs based on their value 
 bool sortPairsByVal(const pair<const string, int> &i, const pair<const string, int> &j) {
 
 	//This could be turned into a template for compile time polymorphism but this is overkill for this exercise
 	return i.second > j.second;
 }
 
-/* Prints the list of unique words to file, throws exception if cannot open output stream*/
+// Prints the list of unique words to file, throws exception if cannot open output stream
 void printUniqueWords(const vector<pair<string, int> > &toPrint, ostream &output) {
 
 	output << "Word" << "\t\t" << "Usage" << endl;;
