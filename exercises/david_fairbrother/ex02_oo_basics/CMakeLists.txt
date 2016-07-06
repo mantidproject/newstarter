@@ -16,13 +16,14 @@ include ( CommonSetup )
 # Executable
 ###############################################################################
 
-set ( SRC_FILES
-  src/main.cpp
-  # add any additional source files here
+file(GLOB shapes_SRC
+    "src/*.cpp"
 )
 
-set ( HDR_FILES
-  # add any additional header files here
-)
 
-add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )
+file(GLOB shapes_HDR
+    "src/*.h"
+)
+# Probably not the correct way of completing this but better than retyping everything
+
+add_executable ( Shapes ${shapes_SRC} ${shapes_HDR} )
