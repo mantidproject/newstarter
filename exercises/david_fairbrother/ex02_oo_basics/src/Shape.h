@@ -13,8 +13,9 @@ public:
 	virtual ~Shape();
 
 	std::string getName() const;
-	int getNumOfSides() const;
 	ShapesEnum getShapeEnum() const;
+
+	int getNumOfSides() const;
 
 	double getShapeHeight() const;
 	double getShapeWidth() const;

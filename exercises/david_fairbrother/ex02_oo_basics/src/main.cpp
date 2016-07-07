@@ -37,6 +37,7 @@ int main(int, char **)
 	int selection = getPrintType();
 	//Have to add 1 as ENUM is 0 based index whilst selection starts at 1
 	switch (selection) {
+	//Select based on print ENUM between type, sides, area....etc.
 	case TYPE+1:
 		printShapeOutput(sortOutputByType, shapeCollection);
 		break;
@@ -55,7 +56,7 @@ int main(int, char **)
 	return 0;
 }
 
-
+//Gets the type of print the user wants and returns an int corresponding to the print ENUM
 int getPrintType() {
 
 	int c = ' ';
@@ -76,22 +77,12 @@ int getPrintType() {
 	return c;
 }
 
-
+//Takes a pointer to a sort function and prints the resulting vector
 void printShapeOutput(outputSortFuncPtr sortMethod,	vector<ShapeController> const &inputVector) {
 	//Using function pointer we can keep it generic and just plug in what we need
-
-	for (const ShapeController &output : inputVector) {
-		cout << "Shape: " << output.getShapeName() << endl;
-		cout << "Sides: " << output.getNoOfSides() << endl;
-		cout << "Area: " << output.getShapeArea() << endl;
-		cout << "Perimeter: " << output.getShapePerimeter() << endl;
-		cout << "\n"; //create some space for next output
-	}
-
-	cout << "------------------------------------" << endl;
 	vector<ShapeController> toPrint = sortMethod(inputVector, cin);
 
-	
+	//Print out our sorted vector to the user
 	for (ShapeController &output : toPrint) {
 		cout << "Shape: " << output.getShapeName() << endl;
 		cout << "Sides: " << output.getNoOfSides() << endl;
@@ -102,6 +93,7 @@ void printShapeOutput(outputSortFuncPtr sortMethod,	vector<ShapeController> cons
 
 }
 
+//Asks user for shape type and filter so only that type is present
 vector<ShapeController> sortOutputByType(const vector<ShapeController> &inputVector,
 	istream &inputSource) {
 	vector<ShapeController> foundShapes;
@@ -120,6 +112,7 @@ vector<ShapeController> sortOutputByType(const vector<ShapeController> &inputVec
 	return foundShapes;
 }
 
+//Asks user for the number of sides and filters so only shapes with that no is present
 vector<ShapeController> sortOutputBySides(const vector<ShapeController> &inputVector,
 	istream &inputSource) {
 	vector<ShapeController> foundShapes;
@@ -138,6 +131,7 @@ vector<ShapeController> sortOutputBySides(const vector<ShapeController> &inputVe
 	return foundShapes;
 }
 
+//Sorts inputted shapes by their area
 vector<ShapeController> sortOutputByDescArea(const vector<ShapeController> &inputVector,
 	istream &inputSource) {
 	vector<ShapeController> orderedShapes = inputVector;
@@ -145,7 +139,7 @@ vector<ShapeController> sortOutputByDescArea(const vector<ShapeController> &inpu
 	return orderedShapes;
 }
 
-
+//Sorts inputted shapes by their perimeter
 vector<ShapeController> sortOutputByDescPerim(const vector<ShapeController> &inputVector,
 	istream &inputSource) {
 	vector<ShapeController> orderedShapes = inputVector;

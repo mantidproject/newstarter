@@ -10,15 +10,14 @@
 
 class ShapeController {
 public:
-	ShapeController();
 	ShapeController(ShapesEnum newShape, double width = 0, double height = 0);
-	ShapeController(const ShapeController &other);
 	~ShapeController();
+
+	ShapeController(const ShapeController &other);
 	ShapeController& operator=(const ShapeController &other);
 
-
+	//Constructs a new shape held by the shape controller
 	void changeShape(ShapesEnum newShape, double width = 0, double height = 0);
-	bool isSetup() const { return ptrIsSet; }
 
 	std::string getShapeName() const;
 	ShapesEnum getShapeEnum() const;
@@ -31,9 +30,9 @@ public:
 	double getShapePerimeter() const;
 
 private:
+	//Constructs a new shape with the specified parameters
 	void setupShape(ShapesEnum newShape, double width, double height);
 
-	bool ptrIsSet;
 	Shape *shapePtr;
 };
 

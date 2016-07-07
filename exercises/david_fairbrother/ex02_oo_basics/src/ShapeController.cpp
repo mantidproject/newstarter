@@ -9,22 +9,22 @@
 #include <exception>
 #include <string>
 
-ShapeController::ShapeController() : ptrIsSet(false) {}
 
-ShapeController::ShapeController(ShapesEnum newShape, double width, double height) : ptrIsSet(false) {
+ShapeController::ShapeController(ShapesEnum newShape, double width, double height) : shapePtr(nullptr) {
 	setupShape(newShape, width, height);
 }
 
-ShapeController::ShapeController(const ShapeController &other) : ptrIsSet(false) {
-	setupShape(other.getShapeEnum(), other.getShapeWidth(), other.getShapeHeight());
-}
-
 ShapeController::~ShapeController() {
-	if (ptrIsSet) {
+	if (shapePtr) {
 		delete shapePtr;
 		shapePtr = nullptr;
 	}
 }
+
+ShapeController::ShapeController(const ShapeController &other) : shapePtr(nullptr) {
+	setupShape(other.getShapeEnum(), other.getShapeWidth(), other.getShapeHeight());
+}
+
 
 ShapeController& ShapeController::operator=(const ShapeController &other) {
 	if (this != &other) {
@@ -33,6 +33,7 @@ ShapeController& ShapeController::operator=(const ShapeController &other) {
 	return *this;
 }
 
+//Constructs a new shape held by the shape controller
 void ShapeController::changeShape(ShapesEnum newShape, double width, double height) {
 	setupShape(newShape, width, height);
 }
@@ -67,12 +68,14 @@ double ShapeController::getShapePerimeter() const {
 	return shapePtr->getPerimeter();
 }
 
+
+//Constructs a new shape with the specified parameters
 void ShapeController::setupShape(ShapesEnum newShape, double width, double height) {
 	/*Create correct shape depending on parameter input and set dimensions		*
 	*There is a better way of doing this than a switch case as this doesn't	*
 	*scale very well, however I cannot remember it off the top of my head		*/
 
-	if (ptrIsSet) {
+	if (shapePtr) {
 		delete shapePtr;
 		shapePtr = nullptr;
 	}
@@ -94,5 +97,4 @@ void ShapeController::setupShape(ShapesEnum newShape, double width, double heigh
 		throw std::domain_error("Shape parameter not valid");
 	}
 
-	ptrIsSet = true;
 }
