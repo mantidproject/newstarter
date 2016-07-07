@@ -9,12 +9,12 @@
 class Shape
 {
 public:
-	Shape(std::string name, int sides, shapes shapeEnum, double width = 0, double height = 0);
+	Shape(std::string name, int sides, ShapesEnum shapeEnum, double width = 0, double height = 0);
 	virtual ~Shape();
 
 	std::string getName() const;
 	int getNumOfSides() const;
-	shapes getShapeEnum() const;
+	ShapesEnum getShapeEnum() const;
 
 	double getShapeHeight() const;
 	double getShapeWidth() const;

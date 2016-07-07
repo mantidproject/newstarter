@@ -14,7 +14,7 @@ struct Circle::CircleImpl {
 
 const std::string Circle::CircleImpl::shapeName = "Circle";
 
-Circle::Circle(double radius, shapes shapeEnum) 
+Circle::Circle(double radius, ShapesEnum shapeEnum) 
 	: Shape(circleData->shapeName, circleData->sides, shapeEnum, radius),
 	circleData(new CircleImpl()) {}
 

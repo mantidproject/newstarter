@@ -7,7 +7,7 @@
 
 class Rectangle : public Shape{
 public:
-	Rectangle(double height, double width, shapes shapeEnum);
+	Rectangle(double height, double width, ShapesEnum shapeEnum);
 	~Rectangle();
 
 	double getArea() const;

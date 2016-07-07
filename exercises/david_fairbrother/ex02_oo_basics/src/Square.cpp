@@ -16,7 +16,7 @@ struct Square::SquareImpl {
 const std::string Square::SquareImpl::shapeName = "Square";
 
 
-Square::Square(double sideLength, shapes shapeEnum) 
+Square::Square(double sideLength, ShapesEnum shapeEnum) 
 	: Shape(squareData->shapeName, squareData->sides, shapeEnum, sideLength),
 	squareData(new SquareImpl()) {}
 

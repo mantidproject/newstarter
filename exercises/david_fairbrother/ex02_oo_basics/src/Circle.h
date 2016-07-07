@@ -7,7 +7,7 @@
 
 class Circle : public Shape {
 public:
-	Circle(double radius, shapes shapeEnum);
+	Circle(double radius, ShapesEnum shapeEnum);
 	~Circle();
 
 	double getArea() const;

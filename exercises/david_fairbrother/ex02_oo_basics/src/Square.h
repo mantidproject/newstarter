@@ -7,7 +7,7 @@
 
 class Square : public Shape{
 public:
-	Square(double sideLength, shapes shapeEnum);
+	Square(double sideLength, ShapesEnum shapeEnum);
 	~Square();
 
 	double getArea() const;

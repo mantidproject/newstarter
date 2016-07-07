@@ -12,7 +12,7 @@ struct Rectangle::RectImpl {
 
 const std::string Rectangle::RectImpl::shapeName = "Rectangle";
 
-Rectangle::Rectangle(double height, double width, shapes shapeEnum) 
+Rectangle::Rectangle(double height, double width, ShapesEnum shapeEnum) 
 	: Shape(rectData->shapeName, rectData->sides, shapeEnum, width, height),
 	rectData(new RectImpl()) {}
 

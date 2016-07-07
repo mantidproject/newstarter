@@ -14,7 +14,7 @@ struct Triangle::TriangleImpl {
 
 const std::string Triangle::TriangleImpl::shapeName = "Triangle";
 
-Triangle::Triangle(double base, double height, shapes shapeEnum) 
+Triangle::Triangle(double base, double height, ShapesEnum shapeEnum) 
 	: Shape(triangleData->shapeName, triangleData->sides, shapeEnum, base, height),
 	triangleData(new TriangleImpl()) {}
 

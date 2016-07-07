@@ -7,7 +7,7 @@
 
 class Triangle : public Shape {
 public:
-	Triangle(double base, double height, shapes shapeEnum);
+	Triangle(double base, double height, ShapesEnum shapeEnum);
 	~Triangle();
 
 	double getArea() const;

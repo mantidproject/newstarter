@@ -11,7 +11,7 @@
 
 ShapeController::ShapeController() : ptrIsSet(false) {}
 
-ShapeController::ShapeController(shapes newShape, double width, double height) : ptrIsSet(false) {
+ShapeController::ShapeController(ShapesEnum newShape, double width, double height) : ptrIsSet(false) {
 	setupShape(newShape, width, height);
 }
 
@@ -33,7 +33,7 @@ ShapeController& ShapeController::operator=(const ShapeController &other) {
 	return *this;
 }
 
-void ShapeController::changeShape(shapes newShape, double width, double height) {
+void ShapeController::changeShape(ShapesEnum newShape, double width, double height) {
 	setupShape(newShape, width, height);
 }
 
@@ -42,7 +42,7 @@ std::string ShapeController::getShapeName() const {
 	return shapePtr->getName();
 }
 
-shapes ShapeController::getShapeEnum() const {
+ShapesEnum ShapeController::getShapeEnum() const {
 	return shapePtr->getShapeEnum();
 }
 
@@ -67,7 +67,7 @@ double ShapeController::getShapePerimeter() const {
 	return shapePtr->getPerimeter();
 }
 
-void ShapeController::setupShape(shapes newShape, double width, double height) {
+void ShapeController::setupShape(ShapesEnum newShape, double width, double height) {
 	/*Create correct shape depending on parameter input and set dimensions		*
 	*There is a better way of doing this than a switch case as this doesn't	*
 	*scale very well, however I cannot remember it off the top of my head		*/

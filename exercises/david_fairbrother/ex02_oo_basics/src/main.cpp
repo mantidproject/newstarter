@@ -19,7 +19,7 @@ int main(int, char **)
 	//Generate new shapes randomly until user tells us to stop
 	do {
 		
-		shapes selectedShape = static_cast<shapes>(rand() % SHAPE_ENUM_LEN);
+		ShapesEnum selectedShape = static_cast<ShapesEnum>(rand() % SHAPE_ENUM_LEN);
 		double height = rand() % 100;
 		double width = rand() % 100;
 
@@ -154,9 +154,9 @@ vector<ShapeController> sortOutputByDescPerim(const vector<ShapeController> &inp
 }
 
 bool compareShapeArea(const ShapeController &i, const ShapeController &j) {
-	return i.getShapeArea() < j.getShapeArea();
+	return i.getShapeArea() > j.getShapeArea();
 }
 
 bool compareShapePerim(const ShapeController &i, const ShapeController &j) {
-	return i.getShapePerimeter() < j.getShapePerimeter();
+	return i.getShapePerimeter() > j.getShapePerimeter();
 }

@@ -7,12 +7,12 @@
 using namespace std;
 
 struct Shape::ShapeImpl {
-	ShapeImpl(string name, int sides, shapes inShapeEnum, double width, double height) 
+	ShapeImpl(string name, int sides, ShapesEnum inShapeEnum, double width, double height) 
 		: shapeName(name), noOfSides(sides), shapeEnum(inShapeEnum), shapeWidth(width),
 		shapeHeight(height) {}
 	
 	string shapeName;
-	shapes shapeEnum;
+	ShapesEnum shapeEnum;
 
 	int noOfSides;
 
@@ -21,7 +21,7 @@ struct Shape::ShapeImpl {
 };
 
 
-Shape::Shape(std::string name, int sides, shapes shapeEnum, double width, double height) 
+Shape::Shape(std::string name, int sides, ShapesEnum shapeEnum, double width, double height) 
 	: ShapeData(new ShapeImpl(name, sides, shapeEnum, width, height)) {};
 
 Shape::~Shape() {
@@ -37,7 +37,7 @@ int Shape::getNumOfSides() const {
 	return ShapeData->noOfSides;
 }
 
-shapes Shape::getShapeEnum() const {
+ShapesEnum Shape::getShapeEnum() const {
 	return ShapeData->shapeEnum;
 }
 
