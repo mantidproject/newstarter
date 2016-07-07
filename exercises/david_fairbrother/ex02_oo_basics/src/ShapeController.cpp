@@ -6,7 +6,7 @@
 #include "Circle.h"
 #include "Triangle.h"
 
-#include <exception>
+#include <stdexcept>
 #include <string>
 
 
