@@ -48,9 +48,10 @@ int main(int argc, char* argv[]) {
 	sort(sortvec.begin(), sortvec.end(), compare);
 
 	//prints out values in order of usage
-	int vecsize = sortvec.size();
-	for (int i = 0; i < vecsize; ++i)
-		cout << sortvec[i].first << " : " << sortvec[i].second << endl;
+	//int vecsize = sortvec.size();
+
+	for (auto iter = sortvec.begin(); iter != sortvec.end(); ++iter)
+		cout << iter->first << " : " << iter->second << endl;
 	return 0;
 
 
