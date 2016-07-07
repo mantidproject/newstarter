@@ -7,7 +7,7 @@
 #include <vector>
 #include <iosfwd>
 
-enum printOptions { TYPE, SIDES, DESC_VOL, DESC_PERIM, PRINT_ENUM_LEN };
+enum printOptions { TYPE, SIDES, DESC_AREA, DESC_PERIM, PRINT_ENUM_LEN };
 
 //Tidy up function pointer for future use
 using outputSortFuncPtr = std::vector<ShapeController>(*)(const std::vector<ShapeController>&,
@@ -23,5 +23,15 @@ std::vector<ShapeController> sortOutputByType(const std::vector<ShapeController>
 
 std::vector<ShapeController> sortOutputBySides(const std::vector<ShapeController> &inputVector,
 	std::istream &inputSource);
+
+std::vector<ShapeController> sortOutputByDescArea(const std::vector<ShapeController> &inputVector,
+	std::istream &inputSource);
+
+std::vector<ShapeController> sortOutputByDescPerim(const std::vector<ShapeController> &inputVector,
+	std::istream &inputSource);
+
+bool compareShapeArea(const ShapeController &i, const ShapeController &j);
+
+bool compareShapePerim(const ShapeController &i, const ShapeController &j);
 
 #endif

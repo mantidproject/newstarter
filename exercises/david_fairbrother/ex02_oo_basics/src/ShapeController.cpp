@@ -26,6 +26,13 @@ ShapeController::~ShapeController() {
 	}
 }
 
+ShapeController& ShapeController::operator=(const ShapeController &other) {
+	if (this != &other) {
+		setupShape(other.getShapeEnum(), other.getShapeWidth(), other.getShapeHeight());
+	}
+	return *this;
+}
+
 void ShapeController::changeShape(shapes newShape, double width, double height) {
 	setupShape(newShape, width, height);
 }

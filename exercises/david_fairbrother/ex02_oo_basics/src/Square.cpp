@@ -11,8 +11,6 @@ struct Square::SquareImpl {
 	static const std::string shapeName;
 	static const int sides = 4;
 
-	double sideLength;
-
 };
 
 const std::string Square::SquareImpl::shapeName = "Square";
@@ -28,10 +26,10 @@ Square::~Square() {
 }
 
 double Square::getArea() const{
-	return squareData->sideLength * squareData->sideLength;
+	return getShapeWidth() * getShapeWidth();
 }
 
 double Square::getPerimeter() const{
 	//Perimeter = 4 sides of length sideLength
-	return squareData->sideLength * 4;
+	return  getShapeWidth() * 4;
 }

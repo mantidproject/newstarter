@@ -14,9 +14,11 @@ public:
 	ShapeController(shapes newShape, double width = 0, double height = 0);
 	ShapeController(const ShapeController &other);
 	~ShapeController();
+	ShapeController& operator=(const ShapeController &other);
+
 
 	void changeShape(shapes newShape, double width = 0, double height = 0);
-	bool isSetup() const;
+	bool isSetup() const { return ptrIsSet; }
 
 	std::string getShapeName() const;
 	shapes getShapeEnum() const;

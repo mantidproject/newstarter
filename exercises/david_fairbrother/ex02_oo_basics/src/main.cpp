@@ -29,7 +29,7 @@ int main(int, char **)
 		cout << "W:" << width << " H:" << height;
 		shapeCollection.push_back(newShape);
 
-		cout << "Enter 'q' to stop generating new shapes" << "\n" << endl;
+		cout << "'q' to stop generation, enter to generate more shapes:" << "\n" << endl;
 		cin.get(c);
 	} while (c != 'q');
 
@@ -43,20 +43,55 @@ int main(int, char **)
 	case SIDES+1:
 		printShapeOutput(sortOutputBySides, shapeCollection);
 		break;
+	case DESC_AREA+1:
+		printShapeOutput(sortOutputByDescArea, shapeCollection);
+		break;
+	case DESC_PERIM+1:
+		printShapeOutput(sortOutputByDescPerim, shapeCollection);
 	default:
 		break;
 	}
 
+	return 0;
 }
 
 
+int getPrintType() {
+
+	int c = ' ';
+	do {
+		//Have to add 1 as ENUM is 0 indexed
+		cout << "Printing options:" << endl;
+		cout << TYPE + 1 << " Matching Type" << endl;
+		cout << SIDES + 1 << " Matching Number of Sides" << endl;
+		cout << DESC_AREA + 1 << " In Order of Desc. Areas" << endl;
+		cout << DESC_PERIM + 1 << " In Order of Desc. Perimeters" << endl;
+		cout << "Please select 1-4 or 0 to exit:";
+		cin >> c;
+
+
+		//Test range against options
+	} while (c < 0 || c > PRINT_ENUM_LEN);
+
+	return c;
+}
 
 
 void printShapeOutput(outputSortFuncPtr sortMethod,	vector<ShapeController> const &inputVector) {
 	//Using function pointer we can keep it generic and just plug in what we need
 
+	for (const ShapeController &output : inputVector) {
+		cout << "Shape: " << output.getShapeName() << endl;
+		cout << "Sides: " << output.getNoOfSides() << endl;
+		cout << "Area: " << output.getShapeArea() << endl;
+		cout << "Perimeter: " << output.getShapePerimeter() << endl;
+		cout << "\n"; //create some space for next output
+	}
+
+	cout << "------------------------------------" << endl;
 	vector<ShapeController> toPrint = sortMethod(inputVector, cin);
 
+	
 	for (ShapeController &output : toPrint) {
 		cout << "Shape: " << output.getShapeName() << endl;
 		cout << "Sides: " << output.getNoOfSides() << endl;
@@ -103,23 +138,25 @@ vector<ShapeController> sortOutputBySides(const vector<ShapeController> &inputVe
 	return foundShapes;
 }
 
-
-int getPrintType() {
-	
-	int c = ' ';
-	do {
-		//Have to add 1 as ENUM is 0 indexed
-		cout << "Printing options:" << endl;
-		cout << TYPE + 1 << " Matching Type" << endl;
-		cout << SIDES + 1 << " Matching Number of Sides" << endl;
-		cout << DESC_VOL + 1 << " In Order of Desc. Volumes" << endl;
-		cout << DESC_PERIM + 1 << " In Order of Desc. Perimeters" << endl;
-		cout << "Please select 1-4 or 0 to exit:";
-		cin >> c;
+vector<ShapeController> sortOutputByDescArea(const vector<ShapeController> &inputVector,
+	istream &inputSource) {
+	vector<ShapeController> orderedShapes = inputVector;
+	sort(orderedShapes.begin(), orderedShapes.end(), compareShapeArea);
+	return orderedShapes;
+}
 
 
-		//Test range against options
-	} while (c < 0 || c > PRINT_ENUM_LEN);
+vector<ShapeController> sortOutputByDescPerim(const vector<ShapeController> &inputVector,
+	istream &inputSource) {
+	vector<ShapeController> orderedShapes = inputVector;
+	sort(orderedShapes.begin(), orderedShapes.end(), compareShapePerim);
+	return orderedShapes;
+}
 
-	return c;
+bool compareShapeArea(const ShapeController &i, const ShapeController &j) {
+	return i.getShapeArea() < j.getShapeArea();
+}
+
+bool compareShapePerim(const ShapeController &i, const ShapeController &j) {
+	return i.getShapePerimeter() < j.getShapePerimeter();
 }
