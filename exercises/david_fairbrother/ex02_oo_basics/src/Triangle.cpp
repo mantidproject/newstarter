@@ -1,13 +1,12 @@
 
 #include "Triangle.h"
+#include "shapeEnum.h"
 
 #include <string>
 #include <math.h>
 
 struct Triangle::TriangleImpl {
-	TriangleImpl(double inBase, double inHeight) : base(inBase), height(inHeight) {}
-	double base;
-	double height;
+	TriangleImpl() {}
 
 	static const int sides = 3;
 	static const std::string shapeName;
@@ -15,8 +14,9 @@ struct Triangle::TriangleImpl {
 
 const std::string Triangle::TriangleImpl::shapeName = "Triangle";
 
-Triangle::Triangle(double base, double height) : Shape(triangleData->shapeName, triangleData->sides),
-	triangleData(new TriangleImpl(base, height)) {}
+Triangle::Triangle(double base, double height, shapes shapeEnum) 
+	: Shape(triangleData->shapeName, triangleData->sides, shapeEnum, base, height),
+	triangleData(new TriangleImpl()) {}
 
 Triangle::~Triangle() {
 	delete triangleData;
@@ -24,12 +24,12 @@ Triangle::~Triangle() {
 }
 
 double Triangle::getArea() const{
-	return 0.5 * (triangleData->base * triangleData->height);
+	return 0.5 * (getShapeWidth() * getShapeHeight());
 }
 
 double Triangle::getPerimeter() const {
 	//Perimeter = base + 2sqrt(h^2 + (base^2/4))
-	double baseSqauredOverFour = pow(triangleData->base, 2) / 4;
-	double squareRootSummation = sqrt(pow(triangleData->height, 2) + baseSqauredOverFour);
-	return triangleData->base + 2 * squareRootSummation;
+	double baseSqauredOverFour = pow(getShapeWidth(), 2) / 4;
+	double squareRootSummation = sqrt(pow(getShapeHeight(), 2) + baseSqauredOverFour);
+	return getShapeWidth() + 2 * squareRootSummation;
 }

@@ -4,10 +4,7 @@
 #include <string>
 
 struct Rectangle::RectImpl {
-	RectImpl(double inHeight, double inWidth) : height(inHeight), width(inWidth) {}
-
-	double height;
-	double width;
+	RectImpl() {}
 
 	static const int sides = 4;
 	static const std::string shapeName;
@@ -15,8 +12,9 @@ struct Rectangle::RectImpl {
 
 const std::string Rectangle::RectImpl::shapeName = "Rectangle";
 
-Rectangle::Rectangle(double height, double width) : Shape(rectData->shapeName, rectData->sides),
-	rectData(new RectImpl(height, width)) {}
+Rectangle::Rectangle(double height, double width, shapes shapeEnum) 
+	: Shape(rectData->shapeName, rectData->sides, shapeEnum, width, height),
+	rectData(new RectImpl()) {}
 
 Rectangle::~Rectangle() {
 	delete rectData;
@@ -24,9 +22,9 @@ Rectangle::~Rectangle() {
 }
 
 double Rectangle::getArea() const {
-	return rectData->height * rectData->width;
+	return getShapeHeight() * getShapeWidth();
 }
 
 double Rectangle::getPerimeter() const {
-	return (rectData->height * 2) + (rectData->width * 2);
+	return (getShapeHeight() * 2) + (getShapeWidth() * 2);
 }

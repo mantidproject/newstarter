@@ -1,11 +1,12 @@
 
 #include "Square.h"
+#include "shapeEnum.h"
 
 #include <string>
 
 struct Square::SquareImpl {
 
-	SquareImpl(double length) : sideLength(length){}
+	SquareImpl() {}
 
 	static const std::string shapeName;
 	static const int sides = 4;
@@ -17,8 +18,9 @@ struct Square::SquareImpl {
 const std::string Square::SquareImpl::shapeName = "Square";
 
 
-Square::Square(double sideLength) : Shape(squareData->shapeName, squareData->sides),
-	squareData(new SquareImpl(sideLength)) {}
+Square::Square(double sideLength, shapes shapeEnum) 
+	: Shape(squareData->shapeName, squareData->sides, shapeEnum, sideLength),
+	squareData(new SquareImpl()) {}
 
 Square::~Square() {
 	delete squareData;

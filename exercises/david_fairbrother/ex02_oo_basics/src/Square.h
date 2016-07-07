@@ -3,10 +3,11 @@
 #define SQUARE_H
 
 #include "Shape.h"
+#include "shapeEnum.h"
 
 class Square : public Shape{
 public:
-	Square(double sideLength);
+	Square(double sideLength, shapes shapeEnum);
 	~Square();
 
 	double getArea() const;

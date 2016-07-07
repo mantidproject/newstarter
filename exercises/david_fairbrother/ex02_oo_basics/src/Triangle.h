@@ -3,10 +3,11 @@
 #define TRIANGLE_H
 
 #include "Shape.h"
+#include "shapeEnum.h"
 
 class Triangle : public Shape {
 public:
-	Triangle(double base, double height);
+	Triangle(double base, double height, shapes shapeEnum);
 	~Triangle();
 
 	double getArea() const;

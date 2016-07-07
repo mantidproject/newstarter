@@ -3,10 +3,11 @@
 #define CIRCLE_H
 
 #include "Shape.h"
+#include "shapeEnum.h"
 
 class Circle : public Shape {
 public:
-	Circle(double radius);
+	Circle(double radius, shapes shapeEnum);
 	~Circle();
 
 	double getArea() const;

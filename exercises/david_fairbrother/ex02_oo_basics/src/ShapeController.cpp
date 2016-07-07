@@ -9,41 +9,47 @@
 #include <exception>
 #include <string>
 
-ShapeController::ShapeController(shapes newShape, double width, double height, double radius) {
-	/*Create correct shape depending on parameter input and set dimensions		*
-	 *There is a better way of doing this than a switch case as this doesn't	*
-	 *scale very well, however I cannot remember it off the top of my head		*/
-	switch (newShape) {
-	case SQUARE:
-		shapePtr = new Square(width);
-		break;
-	case RECTANGLE:
-		shapePtr = new Rectangle(height, width);
-		break;
-	case CIRCLE:
-		shapePtr = new Circle(radius);
-		break;
-	case TRIANGLE:
-		shapePtr = new Triangle(width, height);
-		break;
-	default:
-		throw std::domain_error("Shape parameter not valid");
-	}
+ShapeController::ShapeController() : ptrIsSet(false) {}
 
+ShapeController::ShapeController(shapes newShape, double width, double height) : ptrIsSet(false) {
+	setupShape(newShape, width, height);
+}
 
+ShapeController::ShapeController(const ShapeController &other) : ptrIsSet(false) {
+	setupShape(other.getShapeEnum(), other.getShapeWidth(), other.getShapeHeight());
 }
 
 ShapeController::~ShapeController() {
-	delete shapePtr;
-	shapePtr = nullptr;
+	if (ptrIsSet) {
+		delete shapePtr;
+		shapePtr = nullptr;
+	}
 }
+
+void ShapeController::changeShape(shapes newShape, double width, double height) {
+	setupShape(newShape, width, height);
+}
+
+
+std::string ShapeController::getShapeName() const {
+	return shapePtr->getName();
+}
+
+shapes ShapeController::getShapeEnum() const {
+	return shapePtr->getShapeEnum();
+}
+
 
 int ShapeController::getNoOfSides() const {
 	return shapePtr->getNumOfSides();
 }
 
-std::string ShapeController::getShapeName() const {
-	return shapePtr->getName();
+double ShapeController::getShapeWidth() const {
+	return shapePtr->getShapeWidth();
+}
+
+double ShapeController::getShapeHeight() const {
+	return shapePtr->getShapeHeight();
 }
 
 double ShapeController::getShapeArea() const {
@@ -52,4 +58,34 @@ double ShapeController::getShapeArea() const {
 
 double ShapeController::getShapePerimeter() const {
 	return shapePtr->getPerimeter();
+}
+
+void ShapeController::setupShape(shapes newShape, double width, double height) {
+	/*Create correct shape depending on parameter input and set dimensions		*
+	*There is a better way of doing this than a switch case as this doesn't	*
+	*scale very well, however I cannot remember it off the top of my head		*/
+
+	if (ptrIsSet) {
+		delete shapePtr;
+		shapePtr = nullptr;
+	}
+
+	switch (newShape) {
+	case SQUARE:
+		shapePtr = new Square(width, newShape);
+		break;
+	case RECTANGLE:
+		shapePtr = new Rectangle(height, width, newShape);
+		break;
+	case CIRCLE:
+		shapePtr = new Circle(width, newShape);
+		break;
+	case TRIANGLE:
+		shapePtr = new Triangle(width, height, newShape);
+		break;
+	default:
+		throw std::domain_error("Shape parameter not valid");
+	}
+
+	ptrIsSet = true;
 }

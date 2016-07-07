@@ -3,10 +3,11 @@
 #define RECTANGLE_H
 
 #include "Shape.h"
+#include "shapeEnum.h"
 
 class Rectangle : public Shape{
 public:
-	Rectangle(double height, double width);
+	Rectangle(double height, double width, shapes shapeEnum);
 	~Rectangle();
 
 	double getArea() const;

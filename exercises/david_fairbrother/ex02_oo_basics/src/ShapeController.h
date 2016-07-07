@@ -7,17 +7,31 @@
 
 #include <string>
 
+
 class ShapeController {
 public:
-	ShapeController(shapes newShape, double width = 0, double height = 0, double radius=0);
+	ShapeController();
+	ShapeController(shapes newShape, double width = 0, double height = 0);
+	ShapeController(const ShapeController &other);
 	~ShapeController();
 
-	int getNoOfSides() const;
+	void changeShape(shapes newShape, double width = 0, double height = 0);
+	bool isSetup() const;
+
 	std::string getShapeName() const;
+	shapes getShapeEnum() const;
+
+	int getNoOfSides() const;
+	double getShapeWidth() const;
+	double getShapeHeight() const;
+
 	double getShapeArea() const;
 	double getShapePerimeter() const;
 
 private:
+	void setupShape(shapes newShape, double width, double height);
+
+	bool ptrIsSet;
 	Shape *shapePtr;
 };
 

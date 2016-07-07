@@ -1,12 +1,12 @@
 
 #include "Circle.h"
+#include "shapeEnum.h"
 
 #include <string>
 #include <math.h>
 
 struct Circle::CircleImpl {
-	CircleImpl(double inRadius) : radius(inRadius) {}
-	double radius;
+	CircleImpl() {}
 
 	static const int sides = 1;
 	static const std::string shapeName;
@@ -14,8 +14,9 @@ struct Circle::CircleImpl {
 
 const std::string Circle::CircleImpl::shapeName = "Circle";
 
-Circle::Circle(double radius) : Shape(circleData->shapeName, circleData->sides),
-	circleData(new CircleImpl(radius)) {}
+Circle::Circle(double radius, shapes shapeEnum) 
+	: Shape(circleData->shapeName, circleData->sides, shapeEnum, radius),
+	circleData(new CircleImpl()) {}
 
 
 Circle::~Circle() {
@@ -24,9 +25,9 @@ Circle::~Circle() {
 }
 
 double Circle::getArea() const {
-	return pow(circleData->radius, 2)  * M_PI;
+	return pow(getShapeWidth(), 2)  * M_PI;
 }
 
 double Circle::getPerimeter() const {
-	return (circleData->radius * 2) * M_PI;
+	return (getShapeWidth() * 2) * M_PI;
 }
