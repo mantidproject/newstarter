@@ -9,6 +9,7 @@
 #include <vector>
 #include <iterator>
 #include <cctype>
+#include <cstring>
 
 using namespace std;
 
