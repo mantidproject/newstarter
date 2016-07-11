@@ -36,7 +36,7 @@ class square: public shape
 	
 	std::string type() const { return "Square"; }
 	int nSides() const { return 4; }
-	float perimeter() const { return 4.0 * side; }
+	float perimeter() const { return 4.0f * side; }
 	float area() const { return side * side; }
 	
 };
@@ -51,7 +51,7 @@ class rectangle: public shape
 	
 	std::string type() const { return "Rectangle"; }
 	int nSides() const { return 4; }
-	float perimeter() const { return 2.0 * side1 + 2.0 * side2; }
+	float perimeter() const { return 2.0f * side1 + 2.0f * side2; }
 	float area() const { return side1 * side2; }
 	
 };
@@ -66,7 +66,7 @@ class circle: public shape
 	
 	std::string type() const { return "Circle"; }
 	int nSides() const { return 1; }
-	float perimeter() const { return 2.0 * PI * radius; }
+	float perimeter() const { return 2.0f * PI * radius; }
 	float area() const { return PI * radius * radius ; }
 	
 };
@@ -81,8 +81,8 @@ class triangle: public shape
 	
 	std::string type() const { return "Triangle"; }
 	int nSides() const { return 3; }
-	float perimeter() const { return base + 2.0 * sqrt(height*height + base*base / 4.0); }
-	float area() const { return 0.5 * base * height; }
+	float perimeter() const { return base + 2.0f * sqrt(height*height + base*base / 4.0f); }
+	float area() const { return 0.5f * base * height; }
 	
 };
 
@@ -131,10 +131,10 @@ class ShapeSorter
 int main(int argc, char ** argv)
 {
 	std::vector<shape*> shv;
-	shv.push_back(new square(10.0));
-	shv.push_back(new circle(2.0));
-	shv.push_back(new rectangle(5.0, 3.0));
-	shv.push_back(new triangle(5.0, 15.0));
+	shv.push_back(new square(10.0f));
+	shv.push_back(new circle(2.0f));
+	shv.push_back(new rectangle(5.0f, 3.0f));
+	shv.push_back(new triangle(5.0f, 15.0f));
 	
 	ShapeSorter sorter;
 	sorter.printOfNSides(shv, 4);
