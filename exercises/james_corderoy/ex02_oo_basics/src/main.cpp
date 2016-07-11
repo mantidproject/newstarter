@@ -4,7 +4,7 @@
 #include <math.h>
 #include <algorithm>
 
-#define PI 3.14159265359
+#define PI 3.14159265359f
 
 
 class shape
