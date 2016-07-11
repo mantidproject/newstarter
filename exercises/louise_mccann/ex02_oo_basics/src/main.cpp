@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <list>
@@ -119,4 +120,12 @@ int main()
 		return 1;
 	}
 	return 0;
+=======
+/**
+ * Skeleton main routine
+ */
+
+int main(int, char **)
+{
+>>>>>>> df6ba5f169a64c5ebbc8acd33750004a78155b5b
 }
