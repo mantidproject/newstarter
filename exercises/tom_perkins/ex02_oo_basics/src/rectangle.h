@@ -1,0 +1,24 @@
+#ifndef RECTANGLE_H_
+#define RECTANGLE_H_
+
+//----------------------------------------------------------------------
+// Includes
+//----------------------------------------------------------------------
+#include "shape.h"
+
+/**
+ * \brief Rectangle represents a rectangle
+ */
+class Rectangle : public Shape {
+public:
+  Rectangle(double xIn, double yIn, std::string nameIn);
+  Rectangle(double xIn, double yIn, std::string nameIn, std::string typeIn);
+  virtual double perimeter() const;
+  virtual double area() const;
+
+private:
+  const double x;
+  const double y;
+};
+
+#endif
