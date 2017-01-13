@@ -23,11 +23,11 @@ data: 10/01/2017
 This body file defines the circle class 
 */
 	
-double Circle::GetArea() const 
+double Circle::getArea() const 
 {
 	return M_PI*m_radius*m_radius;
 }	
-double Circle::GetPerimeter() const  
+double Circle::getPerimeter() const  
 {
 	return 2.*M_PI*m_radius;
 }	

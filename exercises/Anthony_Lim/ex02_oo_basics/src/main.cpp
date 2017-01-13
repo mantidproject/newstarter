@@ -50,24 +50,24 @@ int main(int, char **)
 	ShapeSorter data(shapes);
 
 	std::cout<<"list shapes with 4 sides"<<std::endl;
-	c2.ReportHeaders(); // output the headers to screen 
-	data.PrintMatchedSides(4);
+	c2.reportHeaders(); // output the headers to screen 
+	data.printMatchedSides(4);
 	std::cout<<std::endl;
 	
 	
 	std::cout<<"lists all circles"<<std::endl;
-	c2.ReportHeaders(); // output the headers to screen 
-	data.PrintMatchedShape("circle");
+	c2.reportHeaders(); // output the headers to screen 
+	data.printMatchedShape("circle");
 	std::cout<<std::endl;
 	
 	std::cout<<"Orders shapes by area"<<std::endl;
-	c2.ReportHeaders(); // output the headers to screen 
-	data.PrintOrderByArea();
+	c2.reportHeaders(); // output the headers to screen 
+	data.printOrderByArea();
 	std::cout<<std::endl;
 	
 	std::cout<<"Orders shapes by perimeter"<<std::endl;
-	c2.ReportHeaders(); // output the headers to screen 
-	data.PrintOrderByPerimeter();
+	c2.reportHeaders(); // output the headers to screen 
+	data.printOrderByPerimeter();
 	
 	
 }

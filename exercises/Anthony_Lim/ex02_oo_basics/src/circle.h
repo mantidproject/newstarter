@@ -31,8 +31,8 @@ class Circle : public Shape
 		// chosen for a circle to have 0 sides -> shouble be infinity 
 		Circle(double radius):Shape("circle",0),m_radius(radius){}
 		~ Circle(){};
-		double GetArea() const override;	
-		double GetPerimeter() const override;	
+		double getArea() const override;	
+		double getPerimeter() const override;	
 
 };
 

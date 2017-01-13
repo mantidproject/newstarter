@@ -22,20 +22,20 @@ data: 10/01/2017
 /*
 This body file is for the shape class - which is an abstract concept
 */
-std::string Shape::GetName()  const
+std::string Shape::getName()  const
 {
 	return m_nameOfShape;
 }
-int Shape::GetNumSides() const	
+int Shape::getNumSides() const	
 {
 	return m_numSides;
 }
-void Shape:: ReportShape() const
+void Shape:: reportShape() const
 {
 	std::cout<<std::setprecision(5);
-	std::cout<<GetName()<<"    "<<GetNumSides()<<"            "<<GetArea()<<"    "<<GetPerimeter()<<std::endl;
+	std::cout<<getName()<<"    "<<getNumSides()<<"            "<<getArea()<<"    "<<getPerimeter()<<std::endl;
 }
-void Shape:: ReportHeaders() const
+void Shape:: reportHeaders() const
 {
 	std::cout<<"name"<<"      "<<"# of sides"<<"      "<<"area"<<"      "<<"perimeter"<<std::endl;
 }

@@ -22,11 +22,11 @@ data: 10/01/2017
 /*
 This body file is for the triangle class 
 */
-double Triangle::GetArea() const 
+double Triangle::getArea() const 
 {
 	return m_base*m_height/2.;
 }	
-double Triangle::GetPerimeter() const
+double Triangle::getPerimeter() const
 {
 	return m_base+2.*sqrt((m_height*m_height)+((m_base*m_base)/4));
 } // this is from the mantid introduction to c++ webpage => assumes isoceles triangle 	

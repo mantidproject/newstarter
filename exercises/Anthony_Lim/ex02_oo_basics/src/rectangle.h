@@ -34,8 +34,8 @@ class Rectangle : public Shape // inhert shape
 	
 		Rectangle(double length1, double length2):Shape("rectangle",4),m_length1(length1),m_length2(length2){}
 		~ Rectangle(){};
-		double GetArea() const override;	
-		double GetPerimeter()const  override;	
+		double getArea() const override;	
+		double getPerimeter()const  override;	
 
 };
 

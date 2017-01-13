@@ -31,12 +31,12 @@ class Shape
 	public:
 		Shape(std::string name_in,int sides):m_nameOfShape(name_in), m_numSides(sides){	}
 		virtual ~Shape(){};
-		std::string GetName() const;
-		int GetNumSides() const;
-		virtual double GetArea() const =0;
-		virtual double GetPerimeter() const =0;
-		void ReportShape() const;
-		void ReportHeaders() const;
+		std::string getName() const;
+		int getNumSides() const;
+		virtual double getArea() const =0;
+		virtual double getPerimeter() const =0;
+		void reportShape() const;
+		void reportHeaders() const;
 };
 
 #endif

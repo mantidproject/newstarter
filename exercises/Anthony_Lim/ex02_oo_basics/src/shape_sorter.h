@@ -31,10 +31,10 @@ class ShapeSorter
 	public: 
 		ShapeSorter(std::vector<Shape*> shapes):m_shapes(shapes){}
 		~ShapeSorter(){};
-		void PrintMatchedShape(std::string this_shape) const;
-		void PrintMatchedSides(int sides) const;
-		void PrintOrderByArea();
-		void PrintOrderByPerimeter();
+		void printMatchedShape(std::string this_shape) const;
+		void printMatchedSides(int sides) const;
+		void printOrderByArea();
+		void printOrderByPerimeter();
 };
 
 

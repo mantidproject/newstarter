@@ -21,36 +21,36 @@ data: 10/01/2017
 /*
 This body file is for the shape_sorter class 
 */
-void ShapeSorter::PrintMatchedShape(std::string this_shape) const 
+void ShapeSorter::printMatchedShape(std::string this_shape) const 
 {
 	for(int j =0;j<m_shapes.size();j++)
 	{
-		if(this_shape == m_shapes[j]->GetName())
+		if(this_shape == m_shapes[j]->getName())
 		{
-			m_shapes[j]->ReportShape();
+			m_shapes[j]->reportShape();
 		}
 	}	
 }
-void  ShapeSorter::PrintMatchedSides(int sides) const
+void  ShapeSorter::printMatchedSides(int sides) const
 {	
 	for(const auto tmpShape:m_shapes )
 	{
-		if(sides == tmpShape->GetNumSides())
+		if(sides == tmpShape->getNumSides())
 		{
-			tmpShape->ReportShape();
+			tmpShape->reportShape();
 		}
 	}	
 }
 
 // this method and the method below could be merged, however I did not know how to pass the method (area or perimeter) to the ordering method. 
 // could have used a map to auto-order the data. However, some data would be lost. 
-void ShapeSorter::PrintOrderByArea()
+void ShapeSorter::printOrderByArea()
 {	//order results
 	for(auto k:m_shapes ) // using std::Sort causes problems with the comparison as we wnat to move the object but just compare one particular method => done it explicitly. 
 	{
 		for(int j =0;j<m_shapes.size()-1;j++)
 		{
-			if(m_shapes[j]->GetArea()<m_shapes[j+1]->GetArea() )
+			if(m_shapes[j]->getArea()<m_shapes[j+1]->getArea() )
 			{
 				std::swap(m_shapes[j],m_shapes[j+1]);	
 			}
@@ -59,17 +59,17 @@ void ShapeSorter::PrintOrderByArea()
 	//print results
 	for(const auto tmpShape:m_shapes )
 	{
-		tmpShape->ReportShape();
+		tmpShape->reportShape();
 	}	
 
 }
-void ShapeSorter::PrintOrderByPerimeter()
+void ShapeSorter::printOrderByPerimeter()
 {	//order results
 	for(auto k:m_shapes )
 	{
 		for(int j =0;j<m_shapes.size()-1;j++)
 		{
-			if(m_shapes[j]->GetPerimeter()<m_shapes[j+1]->GetPerimeter() )
+			if(m_shapes[j]->getPerimeter()<m_shapes[j+1]->getPerimeter() )
 			{
 				std::swap(m_shapes[j],m_shapes[j+1]);	
 			}
@@ -78,7 +78,7 @@ void ShapeSorter::PrintOrderByPerimeter()
 	// print results
 	for(const auto tmpShape:m_shapes )
 	{
-		tmpShape->ReportShape();
+		tmpShape->reportShape();
 	}	
 }
 

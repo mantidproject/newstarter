@@ -32,8 +32,8 @@ class Triangle : public Shape
 		// chosen for a circle to have 0 sides -> shouble be infinity 
 		Triangle(double base,double height):Shape("triangle",3),m_base( base),m_height(height){}
 		~ Triangle(){};
-		double GetArea() const override;	
-		double GetPerimeter() const override; 	
+		double getArea() const override;	
+		double getPerimeter() const override; 	
 
 };
 
