@@ -1,5 +1,5 @@
-#ifndef rectangle_h
-#define rectangle_h
+#ifndef RECTANGLE_H
+#define RECTANGLE_H
 
 //This is the introduction exercise 2. The work has been completed by Anthony Lim 
 /*
@@ -14,7 +14,6 @@ Include statements:
 */
 
 #include "shape.h" 
-#include<string> 
 
 /*
 Aurthor: Anthony Lim
@@ -29,32 +28,14 @@ class Rectangle : public Shape // inhert shape
 	private:
 		double m_length1, m_length2; 
 	public:
-		// the first two constructors are for the special case of a rectange (square). 
-		Rectangle(std::string name):Shape(name,4)
-		{
-			m_length1 = 0.0;
-			m_length2 = 0.0;
-		};
-		Rectangle(std::string name,double lengtha, double lengthb):Shape(name,4)
-		{
-			m_length1 = lengtha;
-			m_length2 = lengthb;
-		};
+		// the constructor are for the special case of a rectange (square). 
+		Rectangle(std::string name,double length1, double length2):Shape(name,4),m_length1(length1),m_length2(length2){}
 		// normal definitions 
-		Rectangle():Shape("rectangle",4)
-		{
-			m_length1 = 0.0;
-			m_length2 = 0.0;
-		};
 	
-		Rectangle(double lengtha, double lengthb):Shape("rectangle",4)
-		{
-			m_length1 = lengtha;
-			m_length2 = lengthb;
-		};
+		Rectangle(double length1, double length2):Shape("rectangle",4),m_length1(length1),m_length2(length2){}
 		~ Rectangle(){};
-		virtual  double get_Area();	
-		virtual  double get_Perimeter();	
+		double GetArea() const override;	
+		double GetPerimeter()const  override;	
 
 };
 

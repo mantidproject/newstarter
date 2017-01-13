@@ -20,11 +20,11 @@ data: 10/01/2017
 /*
 This body file defines the rectangle class 
 */
-double Rectangle::get_Area()
+double Rectangle::GetArea() const 
 {
 	return m_length1*m_length2;
 }	
-double Rectangle::get_Perimeter()
+double Rectangle::GetPerimeter() const 
 {
 	return 2.*(m_length1+m_length2);
 }	

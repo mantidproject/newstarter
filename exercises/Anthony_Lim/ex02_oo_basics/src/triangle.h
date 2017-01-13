@@ -1,5 +1,5 @@
-#ifndef triangle_h
-#define triangle_h
+#ifndef TRIANGLE_H
+#define TRIANGLE_H
 
 //This is the introduction exercise 2. The work has been completed by Anthony Lim 
 /*
@@ -14,7 +14,6 @@ Include statements:
 */
 
 #include "shape.h" 
-#include<string> 
 
 /*
 Aurthor: Anthony Lim
@@ -30,19 +29,11 @@ class Triangle : public Shape
 		double m_base,m_height;
 		
 	public:
-		Triangle():Shape("triangle",3) // chosen for a circle to have 0 sides -> shouble be infinity 
-		{
-			m_base = 0.0;
-			m_height = 0.0;
-		};
-		Triangle(double basea,double heighta):Shape("triangle",3)
-		{
-			m_base = basea;
-			m_height=heighta;
-		};
+		// chosen for a circle to have 0 sides -> shouble be infinity 
+		Triangle(double base,double height):Shape("triangle",3),m_base( base),m_height(height){}
 		~ Triangle(){};
-		virtual  double get_Area();	
-		virtual  double get_Perimeter(); 	
+		double GetArea() const override;	
+		double GetPerimeter() const override; 	
 
 };
 

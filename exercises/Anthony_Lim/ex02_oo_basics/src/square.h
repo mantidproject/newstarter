@@ -13,7 +13,6 @@ Include statements:
 -------------------------------------------------------------------------------
 */
 #include "rectangle.h"
-#include<string> 
 
 /*
 Aurthor: Anthony Lim
@@ -26,12 +25,7 @@ This header file defines the square class - a square with 2 equal lengths
 class Square : public Rectangle
 {
 	public:
-		Square():Rectangle("square")
-		{
-		};
-		Square(double lengtha):Rectangle("square",lengtha,lengtha)
-		{
-		};
+		Square(double lengtha):Rectangle("square",lengtha,lengtha){}
 		~ Square(){};
 
 };

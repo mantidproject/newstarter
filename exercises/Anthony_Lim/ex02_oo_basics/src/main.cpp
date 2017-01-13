@@ -9,15 +9,10 @@ Include statements:
 	system
 -------------------------------------------------------------------------------
 */
-#include "shape.h"
-#include "rectangle.h"
 #include "square.h"
 #include "circle.h"
 #include "triangle.h"
 #include "shape_sorter.h"
-
-//#include<string> 
-
 
 #include<vector> 
 #include<string> 
@@ -34,37 +29,45 @@ This is the main file where computations are done
 */
 int main(int, char **)
 {
-	std::vector<Shape*> m_shapes;	
+	std::vector<Shape*> shapes;	
 	// create shapes 
-	Square m_s1(3.1);
-	m_shapes.push_back(&m_s1);
+	Square s1(3.1);
+	shapes.push_back(&s1);
 	
-	Rectangle m_r1(2.2,3.);
-	m_shapes.push_back(&m_r1);
+	Rectangle r1(2.2,3.);
+	shapes.push_back(&r1);
 
 
-	Triangle m_t1(4.,3.2);
-	m_shapes.push_back(&m_t1);
+	Triangle t1(4.,3.2);
+	shapes.push_back(&t1);
 
-	Circle m_c1(3.4);
-	m_shapes.push_back(&m_c1);
-	Circle m_c2(4.2);
-	m_shapes.push_back(&m_c2); // include multiple circles 
+	Circle c1(3.4);
+	shapes.push_back(&c1);
+	Circle c2(4.2);
+	shapes.push_back(&c2); // include multiple circles 
 
-	// output the headers to screen 
-	m_c2.report_Headers();
-	
 	// use the shape sorter 
-	Shape_Sorter m_data(m_shapes);
+	ShapeSorter data(shapes);
 
+	std::cout<<"list shapes with 4 sides"<<std::endl;
+	c2.ReportHeaders(); // output the headers to screen 
+	data.PrintMatchedSides(4);
+	std::cout<<std::endl;
+	
+	
 	std::cout<<"lists all circles"<<std::endl;
-	m_data.get_Match_Shape("circle");
+	c2.ReportHeaders(); // output the headers to screen 
+	data.PrintMatchedShape("circle");
 	std::cout<<std::endl;
+	
 	std::cout<<"Orders shapes by area"<<std::endl;
-	m_data.order_By_Area();
+	c2.ReportHeaders(); // output the headers to screen 
+	data.PrintOrderByArea();
 	std::cout<<std::endl;
+	
 	std::cout<<"Orders shapes by perimeter"<<std::endl;
-	m_data.order_By_Perimeter();
+	c2.ReportHeaders(); // output the headers to screen 
+	data.PrintOrderByPerimeter();
 	
 	
 }

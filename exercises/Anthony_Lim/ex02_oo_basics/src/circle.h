@@ -13,7 +13,6 @@ Include statements:
 -------------------------------------------------------------------------------
 */
 #include "shape.h"
-#include<string> 
 
 /*
 Aurthor: Anthony Lim
@@ -29,17 +28,11 @@ class Circle : public Shape
 		double m_radius;
 		
 	public:
-		Circle():Shape("circle",0) // chosen for a circle to have 0 sides -> shouble be infinity 
-		{
-			m_radius = 0.0;
-		};
-		Circle(double radiusa):Shape("circle",0)
-		{
-			m_radius = radiusa;
-		};
+		// chosen for a circle to have 0 sides -> shouble be infinity 
+		Circle(double radius):Shape("circle",0),m_radius(radius){}
 		~ Circle(){};
-		virtual  double get_Area();	
-		virtual  double get_Perimeter();	
+		double GetArea() const override;	
+		double GetPerimeter() const override;	
 
 };
 

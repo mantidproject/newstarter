@@ -12,7 +12,7 @@ Include statements:
 
 #include "shape_sorter.h" 
 #include<string> 
-
+#include<algorithm> 
 /*
 Aurthor: Anthony Lim
 data: 10/01/2017
@@ -21,73 +21,64 @@ data: 10/01/2017
 /*
 This body file is for the shape_sorter class 
 */
-void Shape_Sorter::swap(Shape* &shape1, Shape* &shape2)
-{
-	Shape* tmp1 = shape1;
-	Shape* tmp2 = shape2;
-	shape1 = tmp2;
-	shape2 = tmp1;
-}
-	
-void Shape_Sorter::get_Match_Shape(std::string this_shape)
+void ShapeSorter::PrintMatchedShape(std::string this_shape) const 
 {
 	for(int j =0;j<m_shapes.size();j++)
 	{
-		if(this_shape == m_shapes[j]->get_Name())
+		if(this_shape == m_shapes[j]->GetName())
 		{
-			m_shapes[j]->report_Shape();
+			m_shapes[j]->ReportShape();
 		}
 	}	
 }
-void  Shape_Sorter::match_Sides(int sides)
+void  ShapeSorter::PrintMatchedSides(int sides) const
 {	
-	for(int j =0;j<m_shapes.size();j++)
+	for(const auto tmpShape:m_shapes )
 	{
-		if(sides == m_shapes[j]->get_Num_Sides())
+		if(sides == tmpShape->GetNumSides())
 		{
-			m_shapes[j]->report_Shape();
+			tmpShape->ReportShape();
 		}
 	}	
 }
 
 // this method and the method below could be merged, however I did not know how to pass the method (area or perimeter) to the ordering method. 
 // could have used a map to auto-order the data. However, some data would be lost. 
-void Shape_Sorter::order_By_Area()
+void ShapeSorter::PrintOrderByArea()
 {	//order results
-	for(int k =0;k<m_shapes.size();k++)
+	for(auto k:m_shapes ) // using std::Sort causes problems with the comparison as we wnat to move the object but just compare one particular method => done it explicitly. 
 	{
 		for(int j =0;j<m_shapes.size()-1;j++)
 		{
-			if(m_shapes[j]->get_Area()<m_shapes[j+1]->get_Area() )
+			if(m_shapes[j]->GetArea()<m_shapes[j+1]->GetArea() )
 			{
-				swap(m_shapes[j],m_shapes[j+1]);	
+				std::swap(m_shapes[j],m_shapes[j+1]);	
 			}
 		}
 	}
 	//print results
-	for(int j =0;j<m_shapes.size();j++)
+	for(const auto tmpShape:m_shapes )
 	{
-		m_shapes[j]->report_Shape();
-		
+		tmpShape->ReportShape();
 	}	
 
 }
-void Shape_Sorter::order_By_Perimeter()
+void ShapeSorter::PrintOrderByPerimeter()
 {	//order results
-	for(int k =0;k<m_shapes.size();k++)
+	for(auto k:m_shapes )
 	{
 		for(int j =0;j<m_shapes.size()-1;j++)
 		{
-			if(m_shapes[j]->get_Perimeter()<m_shapes[j+1]->get_Perimeter() )
+			if(m_shapes[j]->GetPerimeter()<m_shapes[j+1]->GetPerimeter() )
 			{
-				swap(m_shapes[j],m_shapes[j+1]);	
+				std::swap(m_shapes[j],m_shapes[j+1]);	
 			}
 		}
 	}
 	// print results
-	for(int j =0;j<m_shapes.size();j++)
+	for(const auto tmpShape:m_shapes )
 	{
-		m_shapes[j]->report_Shape();
+		tmpShape->ReportShape();
 	}	
 }
 

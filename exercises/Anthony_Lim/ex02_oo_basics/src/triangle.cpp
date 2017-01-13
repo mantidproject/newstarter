@@ -12,7 +12,7 @@ Include statements:
 
 #include "triangle.h" 
 #include<string> 
-#include<cmath> 
+#include<cmath> // this is math.h 
 
 /*
 Aurthor: Anthony Lim
@@ -22,11 +22,11 @@ data: 10/01/2017
 /*
 This body file is for the triangle class 
 */
-double Triangle::get_Area()
+double Triangle::GetArea() const 
 {
 	return m_base*m_height/2.;
 }	
-double Triangle::get_Perimeter()
+double Triangle::GetPerimeter() const
 {
 	return m_base+2.*sqrt((m_height*m_height)+((m_base*m_base)/4));
 } // this is from the mantid introduction to c++ webpage => assumes isoceles triangle 	

@@ -12,7 +12,7 @@ Include statements:
 */
 #include "circle.h"
 #include<string> 
-#include<cmath> 
+#include<cmath> //this is math.h
 
 /*
 Aurthor: Anthony Lim
@@ -23,14 +23,12 @@ data: 10/01/2017
 This body file defines the circle class 
 */
 	
-double Circle::get_Area()
+double Circle::GetArea() const 
 {
-	const double PI=4.*atan(1.); //calculate value for pi  
-	return PI*m_radius*m_radius;
+	return M_PI*m_radius*m_radius;
 }	
-double Circle::get_Perimeter()
+double Circle::GetPerimeter() const  
 {
-	const double PI=4.*atan(1.); // calculate value for pi 
-	return 2.*PI*m_radius;
+	return 2.*M_PI*m_radius;
 }	
 
