@@ -18,13 +18,13 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
-  src/counter.cpp
   # add any additional source files here
+  src/counter.cpp
 )
 
 set ( HDR_FILES
-  src/counter.h
   # add any additional header files here
+  src/counter.h
 )
 
 add_executable ( WordCounter ${SRC_FILES} ${HDR_FILES} )
