@@ -1,5 +1,7 @@
 #include "counter.h"
 
+#include <cctype>
+
 /** Counts the number of occurences of unique words (over 4 letters)
  *
  *		@param line	The input text containing words to be counted

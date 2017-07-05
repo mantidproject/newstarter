@@ -11,7 +11,6 @@
 // Includes
 #include "counter.h"
 
-#include <cctype>
 #include <fstream>
 #include <iostream>
 #include <map>
