@@ -18,10 +18,12 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
+  src/counter.cpp
   # add any additional source files here
 )
 
 set ( HDR_FILES
+  src/counter.h
   # add any additional header files here
 )
 
