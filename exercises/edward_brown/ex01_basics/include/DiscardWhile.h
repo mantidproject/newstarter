@@ -1,5 +1,6 @@
 #ifndef EX1_DISCARD_WHILE
 #define EX1_DISCARD_WHILE
+#include <algorithm>
 /** Performs a linear search over the range [Begin, End) for a character c
  *  such that ShouldDiscard(c) is false returning the first occurence found.
  * Otherwise, if no character c is found then End will be returned.
@@ -16,10 +17,6 @@ template <typename ConstCharInputIterator, typename CharPredicate>
 ConstCharInputIterator discardWhile(ConstCharInputIterator Begin,
                                     ConstCharInputIterator End,
                                     CharPredicate ShouldDiscard) {
-  auto Current = Begin;
-  while (Current != End && ShouldDiscard(*Current)) {
-    Current++;
-  }
-  return Current;
+  return std::find_if(Begin, End, [&ShouldDiscard](char Candidate) -> bool { return !ShouldDiscard(Candidate); });
 }
 #endif // EX1_DISCARD_WHILE
