@@ -19,7 +19,7 @@ using namespace std;
  * @param c The character to convert
  * @return The converted character
  */
-char chartolower(const char c){
+char charToLower(const char c){
   if (65 <= c && c <= 90)
     return c + 32;
   return c;
@@ -53,7 +53,7 @@ bool space(const char c){
  * @param c The character to test
  * @return True if the character is not whitespace or hyphen, false otherwise
  */
-bool notspace(const char c){
+bool notSpace(const char c){
   return !space(c);
 }
 
@@ -64,13 +64,13 @@ bool notspace(const char c){
  * @return A vector of the words in the string
  */
 std::vector<string> split(const string s){
-  typedef string::const_iterator iter;
+  typedef string::const_iterator Iter;
   vector<string> words;
-  iter i = s.begin();
+  Iter i = s.begin();
 
   while (i != s.end()){ // While i is not at the end of s
     // Put i at the start of the next word, and j at the end of it
-    i = find_if(i, s.end(), notspace);
+    i = find_if(i, s.end(), notSpace);
     iter j = find_if(i, s.end(), space);
     
     if (i != s.end()) // Success, so add the word to the vector
@@ -86,7 +86,7 @@ std::vector<string> split(const string s){
  * @param c The character to test
  * @return True if the character is any other than a-z, false otherwise
  */
-bool notlowerchar(const char c){
+bool notLowerChar(const char c){
   return c < 97 || c > 122;
 }
 
@@ -96,8 +96,8 @@ bool notlowerchar(const char c){
  * @param s The string to remove from
  * @return The modified string
  */
-string nopunct(string s){
-  string::const_iterator iter(remove_if(s.begin(), s.end(), notlowerchar));
+string noPunct(string s){
+  string::const_iterator iter(remove_if(s.begin(), s.end(), notLowerChar));
   s.erase(iter, s.end());
   return s;
 }
@@ -107,7 +107,7 @@ string nopunct(string s){
  * @param counter The word counter
  * @return The length of the longest word
  */
-int maxlen(const map<string, int> counter){
+int maxLen(const map<string, int> counter){
   int m = 0;
   for (map<string, int>::const_iterator it = counter.begin();
        it != counter.end(); ++it){
@@ -122,7 +122,7 @@ int maxlen(const map<string, int> counter){
  * @param p2 The second pair
  * @return True if p1's second element is greater than p2's, false otherwise
  */
-bool comparepair(const pair<string, int> p1, const pair<string, int> p2){
+bool comparePair(const pair<string, int> p1, const pair<string, int> p2){
   return p1.second > p2.second;
 }
 
@@ -131,13 +131,13 @@ bool comparepair(const pair<string, int> p1, const pair<string, int> p2){
  * @param counter The map to copy
  * @return A sorted vector of pairs
  */
-vector<pair<string,int>> sortedmap(map<string, int> counter){
+vector<pair<string,int>> sortedMap(map<string, int> counter){
   vector<pair<string,int>> sorted;
   for_each(counter.begin(), counter.end(),
 	   [&] (pair<string, int> p){
 	     sorted.push_back(p);
 	   });
-  sort(sorted.begin(), sorted.end(), comparepair);
+  sort(sorted.begin(), sorted.end(), comparePair);
   return sorted;
 }
 
@@ -164,7 +164,7 @@ int main(int argv, char **argc){
   while (getline(infile, s)){ 
     vector<string> words = split(lower(s));
     // Strip punctutation from the next line
-    transform(words.begin(), words.end(), words.begin(), nopunct);
+    transform(words.begin(), words.end(), words.begin(), noPunct);
     // Add all words over 4 letter long to the counter
     for_each(words.begin(), words.end(),
 	     [&](string t){
@@ -172,20 +172,20 @@ int main(int argv, char **argc){
 	     });
   }
   
-  vector<pair<string, int>> sortedcounter = sortedmap(counter);
-  int maxwordlength = maxlen(counter);
+  vector<pair<string, int>> sortedCounter = sortedMap(counter);
+  int maxWordLength = maxLen(counter);
 
   string outname = "output.txt";
   if (argv == 3) // If the user has given a name for outfile, then use it
     outname = argc[2];
   
   ofstream outfile(outname);
-  outfile << "Word" << string(maxwordlength - 3, ' ') <<  "Usage\n\n";
+  outfile << "Word" << string(maxWordLength - 3, ' ') <<  "Usage\n\n";
 
   // Print each word to outfile, with buffer making sure everything is nicely aligned
-  for_each(sortedcounter.begin(), sortedcounter.end(),
+  for_each(sortedCounter.begin(), sortedCounter.end(),
 	   [&] (pair<string, int> p){
-	     string buffer = string(maxwordlength - p.first.length() + 1, ' ');
+	     string buffer = string(maxWordLength - p.first.length() + 1, ' ');
 	     outfile << p.first << buffer << p.second << endl;
 	   });
 
