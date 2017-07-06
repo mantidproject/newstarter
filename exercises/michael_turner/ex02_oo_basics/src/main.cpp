@@ -2,6 +2,9 @@
  * Skeleton main routine
  */
 
-int main(int, char **)
+#include "shapes.h"
+
+int main()
 {
+	return 0;
 }
