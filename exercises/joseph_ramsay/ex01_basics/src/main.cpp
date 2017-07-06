@@ -23,7 +23,7 @@ string lower(string s){
 
 
 bool space(char c){
-  return isspace(c) || c == 45;
+  return isspace(c) || c == '-';
 }
 
 
@@ -105,7 +105,8 @@ int main(int argv, char **argc){
   while (getline(infile, s)){
     vector<string> words = split(lower(s));
     transform(words.begin(), words.end(), words.begin(), nopunct);
-    for_each(words.begin(), words.end(), [&](string t){if (t.length() > 4) ++counter[t];});
+    for_each(words.begin(), words.end(), [&](string t)
+	     {if (t.length() > 4) ++counter[t];});
   }
   
   vector<pair<string, int>> sortedcounter = sortedmap(counter);
