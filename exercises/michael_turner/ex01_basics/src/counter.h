@@ -2,9 +2,7 @@
 #define COUNTER_H_
 
 //Includes
-#include <algorithm>
-#include <fstream>
-#include <iomanip>
+#include <iosfwd>
 #include <map>
 #include <string>
 

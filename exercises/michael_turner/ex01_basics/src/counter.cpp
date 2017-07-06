@@ -1,6 +1,9 @@
 #include "counter.h"
 
+#include <algorithm>
 #include <cctype>
+#include <fstream>
+#include <iomanip>
 
 /** Counts the number of occurences of unique words (over 4 letters)
  *
@@ -79,8 +82,8 @@ wordRank flipMap(wordMap& counters){
  *
  * @param c		The character to be checked
  *
- *
  * @returns		True if punc or whitespace, false otherwise
+ *
  */
 
 bool isPunc(char c){
@@ -92,8 +95,8 @@ bool isPunc(char c){
  *
  * @param c		The character to be checked
  *
- *
  * @returns		True if hyphen, false otherwise
+ *
  */
 
 bool isHyphen(char c){
