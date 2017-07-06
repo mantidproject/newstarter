@@ -33,7 +33,7 @@ char charToLower(const char c){
  */
 string lower(const string s){
   string t;
-  transform(s.begin(), s.end(), back_inserter(t), chartolower);
+  transform(s.begin(), s.end(), back_inserter(t), charToLower);
   return t;
 }
 
@@ -64,14 +64,13 @@ bool notSpace(const char c){
  * @return A vector of the words in the string
  */
 std::vector<string> split(const string s){
-  typedef string::const_iterator Iter;
   vector<string> words;
-  Iter i = s.begin();
+  string::const_iterator i = s.begin();
 
   while (i != s.end()){ // While i is not at the end of s
     // Put i at the start of the next word, and j at the end of it
     i = find_if(i, s.end(), notSpace);
-    iter j = find_if(i, s.end(), space);
+    string::const_iterator j = find_if(i, s.end(), space);
     
     if (i != s.end()) // Success, so add the word to the vector
       words.push_back(string(i, j));
