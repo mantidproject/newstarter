@@ -1,3 +1,5 @@
+#ifndef EX1_WORD_FREQUENCY_TABLE
+#define EX1_WORD_FREQUENCY_TABLE
 #include <algorithm>
 #include <string>
 #include <utility>
@@ -9,7 +11,8 @@ using WordFrequencyTable = std::vector<WordFrequencyPair>;
 /** Converts word frequency pairs in the range [Begin, End) into a vector of
  *  pairs sorted by frequency from highest to lowest.
  *
- *  @param Begin The const_iterator which marks the begining of the range of pairs.
+ *  @param Begin The const_iterator which marks the begining of the range of
+ * pairs.
  *  @param End The const_iterator which marks the end of the range of pairs.
  *  @return The created vector.
  */
@@ -40,3 +43,4 @@ std::ostream &operator<<(std::ostream &OutputStream,
  */
 std::ostream &operator<<(std::ostream &OutputStream,
                          WordFrequencyPair const &Row);
+#endif // EX1_WORD_FREQUENCY_TABLE

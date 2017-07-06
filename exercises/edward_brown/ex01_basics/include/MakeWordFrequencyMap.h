@@ -1,3 +1,5 @@
+#ifndef EX1_MAKE_WORD_FREQUENCY_MAP
+#define EX1_MAKE_WORD_FREQUENCY_MAP
 #include "ForEachWord.h"
 #include "Punctuation.h"
 #include "ToLowerCase.h"
@@ -40,3 +42,4 @@ makeWordFrequencyMap(ConstCharInputIterator begin, ConstCharInputIterator end) {
       });
   return std::move(wordFrequencyMap);
 }
+#endif // EX1_MAKE_WORD_FREQUENCY_MAP

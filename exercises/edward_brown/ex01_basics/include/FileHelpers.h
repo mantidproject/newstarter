@@ -1,3 +1,5 @@
+#ifndef EX1_FILE_HELPERS
+#define EX1_FILE_HELPERS
 #include <fstream>
 #include <string>
 
@@ -16,3 +18,4 @@ std::ofstream openOutputFile();
  *  @pre The stream is open and in an error free state.
  */
 std::string fileToString(std::ifstream const &File);
+#endif // EX1_FILE_HELPERS

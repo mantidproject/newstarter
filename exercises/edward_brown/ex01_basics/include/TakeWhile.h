@@ -1,3 +1,5 @@
+#ifndef EX1_TAKE_WHILE
+#define EX1_TAKE_WHILE
 #include <sstream>
 #include <utility>
 
@@ -26,3 +28,4 @@ takeWhile(ConstCharInputIterator Begin, ConstCharInputIterator End,
   }
   return std::make_pair(WordStream.str(), Current);
 }
+#endif // EX1_TAKE_WHILE

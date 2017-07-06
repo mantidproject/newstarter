@@ -1,3 +1,5 @@
+#ifndef EX1_WORD_CHAR_PREDICATES
+#define EX1_WORD_CHAR_PREDICATES
 /** Predicate for a character which may form part of a word.
  *  Any non whitespace character may form part of a word.
  *  @param Candidate The character to check.
@@ -11,3 +13,5 @@ bool isWordChar(char Candidate);
  *  @return Ture for characters which denote black space or line breaks.
  */
 bool isWhitespaceChar(char Candidate);
+
+#endif // EX1_WORD_CHAR_PREDICATES

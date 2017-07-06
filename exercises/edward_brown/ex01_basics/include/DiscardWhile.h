@@ -1,3 +1,5 @@
+#ifndef EX1_DISCARD_WHILE
+#define EX1_DISCARD_WHILE
 /** Performs a linear search over the range [Begin, End) for a character c
  *  such that ShouldDiscard(c) is false returning the first occurence found.
  * Otherwise, if no character c is found then End will be returned.
@@ -20,3 +22,4 @@ ConstCharInputIterator discardWhile(ConstCharInputIterator Begin,
   }
   return Current;
 }
+#endif // EX1_DISCARD_WHILE

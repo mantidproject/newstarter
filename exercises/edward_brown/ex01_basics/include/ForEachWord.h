@@ -1,3 +1,5 @@
+#ifndef EX1_FOR_EACH_WORD
+#define EX1_FOR_EACH_WORD
 #include "DiscardWhile.h"
 #include "TakeWhile.h"
 #include "WordCharPredicates.h"
@@ -24,3 +26,4 @@ void forEachWord(ConstCharInputIterator Begin, ConstCharInputIterator End,
     Current = discardWhile(Current, End, &isWhitespaceChar);
   }
 }
+#endif // EX1_FOR_EACH_WORD
