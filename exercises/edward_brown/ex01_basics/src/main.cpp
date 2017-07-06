@@ -1,6 +1,8 @@
-#include <ifstream>
-#include <ofstream>
+#include <fstream>
+#include <sstream>
 #include <string>
+#include <iostream>
+#include <stdexcept>
 
 std::ifstream openInputFile(std::string const &filename) {
   auto InputFile = std::ifstream(filename);
@@ -12,7 +14,7 @@ std::ifstream openInputFile(std::string const &filename) {
   }
 }
 
-std::ofstream openOutputFile(std::string const &filename) {
+std::ofstream openOutputFile() {
   auto OutputFile = std::ofstream("results.txt", std::ofstream::out);
   if (OutputFile.is_open()) {
     return OutputFile;
@@ -34,7 +36,7 @@ int main(int argc, char **argv) {
       auto const InputFileName = std::string(argv[0]);
       auto InputFileStream = openInputFile(InputFileName);
       auto OutputFileStream = openOutputFile();
-    } catch (std::runtime_exception const &ex) {
+    } catch (std::runtime_error const &ex) {
       std::cout << ex.what() << std::endl;
     }
   }
