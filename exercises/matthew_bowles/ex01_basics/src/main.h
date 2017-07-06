@@ -6,7 +6,7 @@
 #include <vector>
 using namespace std;
 
-vector<string> ReadFile(string path);
-map<string, int> CreateWordCounter(vector<string>);
+map<string, int> ReadFile(string path);
 void OutputCount(map<string, int>);
-vector<string> SplitLine(vector<string>, string);
+map<string,int> SplitLine(map<string, int>, string);
+void AddWord(map<string, int> &Words, string Word);

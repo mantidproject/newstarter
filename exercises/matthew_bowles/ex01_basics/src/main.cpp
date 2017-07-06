@@ -8,9 +8,9 @@ int main(int, char **)
 	return 0;
 }
 
-vector<string> ReadFile(string path)
+map<string, int> ReadFile(string path)
 {
-	vector<string> Words;
+	map<string, int> Words;
 	ifstream FileIn;
 	string Line;
 	string Word;
@@ -25,10 +25,10 @@ vector<string> ReadFile(string path)
 	}
 	else cout << "unable to open file";
 
-	vector<string>::iterator iter = Words.begin();
+	map<string, int>::iterator iter = Words.begin();
 	while (iter != Words.end())
 	{
-		printf("Next word is %s \n", iter->c_str());
+		printf("Word: %s count: %d \n", (iter->first).c_str(), iter->second);
 		++iter;
 	}
 	getchar();
@@ -36,7 +36,7 @@ vector<string> ReadFile(string path)
 	return Words;
 }
 
-vector<string> SplitLine(vector<string> Words, string Line)
+map<string, int> SplitLine(map<string, int> Words, string Line)
 {
 	string Word;
 	size_t Space;
@@ -46,19 +46,29 @@ vector<string> SplitLine(vector<string> Words, string Line)
 	{
 		Word = Line.substr(0, Space);
 		Line = Line.substr(++Space);
-		if( Word.size() > 4)
-			Words.push_back(Word);
+		AddWord(Words, Word);
 		Space = Line.find(" ");
 	}
-	if (Word.size() > 4)
-	Words.push_back(Line);
+	AddWord(Words, Line);
 	return Words;
 }
 
-map<string, int> CreateWordCounter(vector<string>)
+void AddWord(map<string, int> &Words, string Word)
 {
-	map<string, int> WordCounter;
-	return WordCounter;
+	map<string, int>::iterator Existing;
+
+	if (Word.size() > 4)
+	{
+		Existing = Words.find(Word);
+		if (Existing == Words.end())
+		{
+			Words.insert(std::pair<string, int>(Word, 1));
+		}
+		else
+		{
+			Words[Word]++;
+		}
+	}
 }
 
 void OutputCount(map<string, int>)
