@@ -1,6 +1,7 @@
 #include "FileHelpers.h"
-#include <stdexcept>
+#include <cassert>
 #include <sstream>
+#include <stdexcept>
 
 std::ifstream openInputFile(std::string const &Filename) {
   auto InputFile = std::ifstream(Filename);
@@ -23,6 +24,8 @@ std::ofstream openOutputFile() {
 }
 
 std::string fileToString(std::ifstream const &File) {
+  assert(File.is_open() &&
+         "File must be open when it is passed to fileToString");
   auto FileStream = std::stringstream();
   FileStream << File.rdbuf();
   return FileStream.str();

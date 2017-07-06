@@ -17,12 +17,12 @@ int main(int argc, char **argv) {
       auto const InputFileName = std::string(argv[0]);
       auto InputFileStream = openInputFile(InputFileName);
       auto OutputFileStream = openOutputFile();
+      auto const InputString = fileToString(InputFileStream);
 
-      auto const str = std::string{"Hello world, this is some text."};
-      auto WordFrequencyMap = makeWordFrequencyMap(str.cbegin(), str.cend());
+      auto WordFrequencyMap = makeWordFrequencyMap(InputString.cbegin(), InputString.cend());
       auto WordFrequencyTable = makeOrderedWordFrequencyTable(
           WordFrequencyMap.cbegin(), WordFrequencyMap.cend());
-      std::cout << WordFrequencyTable << std::endl;
+      std::cout << InputString << std::endl;
 
     } catch (std::runtime_error const &ex) {
       std::cout << ex.what() << std::endl;
