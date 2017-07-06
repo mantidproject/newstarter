@@ -98,7 +98,7 @@ bool notLowerChar(const char c){
  * @return The modified string
  */
 string noPunct(string s){
-  string::const_iterator iter(remove_if(s.begin(), s.end(), notLowerChar));
+  string::iterator iter(remove_if(s.begin(), s.end(), notLowerChar));
   s.erase(iter, s.end());
   return s;
 }
