@@ -6,10 +6,17 @@
 #include <stdexcept>
 #include <vector>
 
-bool hasRequiredCommandLineArguments(int argc) {
-  auto constexpr MinimumCommandLineArguments = 2;
-  return argc < MinimumCommandLineArguments;
+bool hasRequiredCommandLineArguments(int ArgumentCount) {
+  auto constexpr MinimumCommandLineArguments = 1;
+  return MinimumCommandLineArguments <= ArgumentCount;
 }
+
+void indicateSuccess() {
+  std::cout << "Successfully wrote word frequencies to results.txt."
+            << std::endl;
+}
+
+void noInputFiles() { std::cerr << "No input file specified." << std::endl; }
 
 int main(int argc, char **argv) {
   if (hasRequiredCommandLineArguments(argc)) {
@@ -19,14 +26,16 @@ int main(int argc, char **argv) {
       auto OutputFileStream = openOutputFile();
       auto const InputString = fileToString(InputFileStream);
 
-      auto WordFrequencyMap = makeWordFrequencyMap(InputString.cbegin(), InputString.cend());
+      auto WordFrequencyMap =
+          makeWordFrequencyMap(InputString.cbegin(), InputString.cend());
       auto WordFrequencyTable = makeOrderedWordFrequencyTable(
           WordFrequencyMap.cbegin(), WordFrequencyMap.cend());
-
-      std::cout << WordFrequencyTable << std::endl;
-
-    } catch (std::runtime_error const &Error) {
-      std::cout << Error.what() << std::endl;
+      OutputFileStream << WordFrequencyTable << std::endl;
+      indicateSuccess();
+    } catch (std::runtime_error &Error) {
+      std::cerr << Error.what() << std::endl;
     }
+  } else {
+    noInputFiles();
   }
 }
