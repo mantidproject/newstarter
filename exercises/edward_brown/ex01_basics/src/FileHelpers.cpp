@@ -6,7 +6,7 @@
 std::ifstream openInputFile(std::string const &Filename) {
   auto InputFile = std::ifstream(Filename);
   if (InputFile.is_open()) {
-    return InputFile;
+    return std::move(InputFile);
   } else {
     throw std::runtime_error(
         "Input file does not exist or has incorect permisssions.");
@@ -16,7 +16,7 @@ std::ifstream openInputFile(std::string const &Filename) {
 std::ofstream openOutputFile() {
   auto OutputFile = std::ofstream("results.txt", std::ofstream::out);
   if (OutputFile.is_open()) {
-    return OutputFile;
+    return std::move(OutputFile);
   } else {
     throw std::runtime_error(
         "Failed to create an output file, check directory permissions.");
