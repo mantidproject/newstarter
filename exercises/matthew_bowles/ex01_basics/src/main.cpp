@@ -4,7 +4,7 @@ using namespace std;
 
 int main(int, char **)
 {
-	ReadFile("TextFile1.txt");
+	ReadFile("Holmes.txt");
 	return 0;
 }
 
@@ -24,14 +24,8 @@ map<string, int> ReadFile(string path)
 		}
 	}
 	else cout << "unable to open file";
-
-	map<string, int>::iterator iter = Words.begin();
-	while (iter != Words.end())
-	{
-		printf("Word: %s count: %d \n", (iter->first).c_str(), iter->second);
-		++iter;
-	}
-	getchar();
+	SortWords(Words);
+	OutputCount(SortWords(Words));
 	FileIn.close();
 	return Words;
 }
@@ -56,7 +50,6 @@ map<string, int> SplitLine(map<string, int> Words, string Line)
 void AddWord(map<string, int> &Words, string Word)
 {
 	map<string, int>::iterator Existing;
-
 	if (Word.size() > 4)
 	{
 		Existing = Words.find(Word);
@@ -71,7 +64,33 @@ void AddWord(map<string, int> &Words, string Word)
 	}
 }
 
-void OutputCount(map<string, int>)
+vector<pair<string, int>> SortWords(map<string, int> &Words)
 {
+	vector<std::pair<string, int>> WordsVector;
+	map<string, int>::iterator iter;
+
+	for (iter = Words.begin(); iter != Words.end(); ++iter)
+	{
+		WordsVector.push_back(*iter);
+	}
+	sort(WordsVector.begin(), WordsVector.end(), Compare);
+	return WordsVector;
+
+}
+
+bool Compare(const pair<string, int>& x, const pair<string, int>& y)
+{
+	return x.second < y.second;
+}
+
+void OutputCount(vector<pair<string, int>> &Words)
+{
+	vector<pair<string, int>>::iterator iter = Words.begin();
+	while (iter != Words.end())
+	{
+		printf("%s: %d \n", (iter->first).c_str(), iter->second);
+		++iter;
+	}
+	getchar();
 	return;
 }
