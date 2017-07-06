@@ -1,41 +1,29 @@
-#include <fstream>
-#include <sstream>
-#include <string>
+#include "FileHelpers.h"
+#include "MakeWordFrequencyMap.h"
+#include "WordFrequencyTable.h"
+#include <algorithm>
 #include <iostream>
 #include <stdexcept>
+#include <vector>
 
-std::ifstream openInputFile(std::string const &filename) {
-  auto InputFile = std::ifstream(filename);
-  if (InputFile.is_open()) {
-    return InputFile;
-  } else {
-    throw std::runtime_error(
-        "Input file does not exist or has incorect permisssions.");
-  }
-}
-
-std::ofstream openOutputFile() {
-  auto OutputFile = std::ofstream("results.txt", std::ofstream::out);
-  if (OutputFile.is_open()) {
-    return OutputFile;
-  } else {
-    throw std::runtime_error(
-        "Failed to create an output file, check directory permissions.");
-  }
-}
-
-std::string fileToString(std::ifstream& file) {
-  auto FileStream = std::stringstream();
-  FileStream << file.rdbuf();
-  return FileStream.str();
+bool hasRequiredCommandLineArguments(int argc) {
+  auto constexpr MINIMUM_COMMAND_LINE_ARGUMENTS = 1;
+  return MINIMUM_COMMAND_LINE_ARGUMENTS;
 }
 
 int main(int argc, char **argv) {
-  if (argc > 1) {
+  if (hasRequiredCommandLineArguments(argc)) {
     try {
       auto const InputFileName = std::string(argv[0]);
       auto InputFileStream = openInputFile(InputFileName);
       auto OutputFileStream = openOutputFile();
+
+      auto const str = std::string{"Hello world, this is some text."};
+      auto WordFrequencyMap = makeWordFrequencyMap(str.cbegin(), str.cend());
+      auto WordFrequencyTable = makeOrderedWordFrequencyTable(
+          WordFrequencyMap.cbegin(), WordFrequencyMap.cend());
+      std::cout << WordFrequencyTable << std::endl;
+
     } catch (std::runtime_error const &ex) {
       std::cout << ex.what() << std::endl;
     }

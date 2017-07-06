@@ -18,6 +18,11 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
+  src/WordCharPredicates.cpp
+  src/Punctuation.cpp
+  src/ToLowerCase.cpp
+  src/FileHelpers.cpp
+  src/WordFrequencyTable.cpp
   # add any additional source files here
 )
 
@@ -26,3 +31,4 @@ set ( HDR_FILES
 )
 
 add_executable ( WordCounter ${SRC_FILES} ${HDR_FILES} )
+target_include_directories( WordCounter PUBLIC include )

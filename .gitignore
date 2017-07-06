@@ -24,5 +24,7 @@ builds/*
 *.app
 
 # Vim Ycm Config
-
 *.ycm_extra_conf.py
+
+# Exercise 1 Output File
+*results.txt
