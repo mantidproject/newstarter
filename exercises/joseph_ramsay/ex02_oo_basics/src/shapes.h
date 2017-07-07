@@ -1,0 +1,5 @@
+#include "circle.h"
+#include "rectangle.h"
+#include "shape.h"
+#include "square.h"
+#include "triangle.h"
