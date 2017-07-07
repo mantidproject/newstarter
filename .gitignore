@@ -1,6 +1,9 @@
 # Builds directory
 builds/*
 
+# Vim Swap Files
+*.swp
+
 # Compiled Object files
 *.slo
 *.lo

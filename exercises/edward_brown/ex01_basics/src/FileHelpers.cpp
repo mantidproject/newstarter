@@ -3,10 +3,11 @@
 #include <sstream>
 #include <stdexcept>
 
-void openInputFile(std::string const &Filename,
-                   std::ifstream &InputFileStream) {
-  InputFileStream.open(Filename);
-  if (!InputFileStream.good()) {
+std::string readInputFile(std::string const &Filename) {
+  std::ifstream InputFileStream(Filename);
+  if (InputFileStream.good()) {
+    return fileToString(InputFileStream);
+  } else {
     throw std::runtime_error(
         "Input file does not exist or has incorrect permisssions.");
   }

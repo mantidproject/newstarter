@@ -29,11 +29,9 @@ int main(int argc, char **argv) {
   if (hasRequiredCommandLineArguments(argc)) {
     try {
       auto const InputFileName = std::string(argv[1]);
-      std::ifstream InputFileStream;
-      openInputFile(InputFileName, InputFileStream);
+      auto const InputString = readInputFile(InputFileName);
       std::ofstream OutputFileStream;
       openOutputFile(OutputFileStream);
-      auto const InputString = fileToString(InputFileStream);
 
       auto WordFrequencyMap =
           makeWordFrequencyMap(InputString.cbegin(), InputString.cend());
