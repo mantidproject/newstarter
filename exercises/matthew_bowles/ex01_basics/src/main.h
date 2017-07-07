@@ -13,3 +13,5 @@ map<string,int> SplitLine(map<string, int>, string);
 void AddWord(map<string, int> &Words, string Word);
 bool Compare(const pair<string, int>& x, const pair<string, int>& y);
 vector<pair<string, int>> SortWords(map<string, int> &Words);
+string RemovePunc(string Word);
+string ToLower(string Word);

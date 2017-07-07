@@ -50,8 +50,11 @@ map<string, int> SplitLine(map<string, int> Words, string Line)
 void AddWord(map<string, int> &Words, string Word)
 {
 	map<string, int>::iterator Existing;
-	if (Word.size() > 4)
+	Word = RemovePunc(Word);
+	if (Word.length() > 4)
 	{
+		Word = ToLower(Word);
+
 		Existing = Words.find(Word);
 		if (Existing == Words.end())
 		{
@@ -62,6 +65,26 @@ void AddWord(map<string, int> &Words, string Word)
 			Words[Word]++;
 		}
 	}
+}
+
+string RemovePunc(string Word)
+{
+	while (Word.length() > 1 && !isalpha(Word[Word.length() - 1]))
+		Word = Word.substr(0, Word.length() - 1);
+	while (Word.length() > 1 && !isalpha(Word[0]))
+		Word = Word.substr(1);
+	return Word;
+}
+
+string ToLower(string Word)
+{
+	int i = 0;
+	while (i < Word.length() && isupper(Word[i]))
+	{
+		Word[i] = tolower(Word[i]);
+		i++;
+	}
+	return Word;
 }
 
 vector<pair<string, int>> SortWords(map<string, int> &Words)
