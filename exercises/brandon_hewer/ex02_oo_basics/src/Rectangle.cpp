@@ -17,12 +17,12 @@ Rectangle::Rectangle(double width, double height) {
 	if (width < 0) {
 		std::ostringstream ss;
 		ss << "Width of a " << name() << " must be greater than or equal to 0.";
-		throw std::invalid_argument(ss.str());
+		throw ss.str();
 	}
 	else if (height < 0) {
 		std::ostringstream ss;
 		ss << "Height of a " << name() << " must be greater than or equal to 0.";
-		throw std::invalid_argument(ss.str());
+		throw ss.str();
 	}
 
 	m_width = width;

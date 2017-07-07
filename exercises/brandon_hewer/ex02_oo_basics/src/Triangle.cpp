@@ -17,12 +17,12 @@ Triangle::Triangle(double height, double base) {
 	if (height < 0) {
 		std::ostringstream ss;
 		ss << "Height of a " << name() << " must be greater than or equal to 0.";
-		throw std::invalid_argument(ss.str());
+		throw ss.str();
 	}
 	else if (base < 0) {
 		std::ostringstream ss;
 		ss << "Base length of a " << name() << " must be greater than or equal to 0.";
-		throw std::invalid_argument(ss.str());
+		throw ss.str();
 	}
 	m_height = height;
 	m_base = base;

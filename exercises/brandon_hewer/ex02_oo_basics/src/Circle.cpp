@@ -16,7 +16,7 @@ Circle::Circle(double radius) {
 		std::ostringstream ss;
 		ss << "Radius of a " << name() << " must be greater than or equal"
 			"to 0";
-		throw std::invalid_argument(ss.str());
+		throw ss.str();
 		m_radius = radius;
 	}
 	m_radius = radius;

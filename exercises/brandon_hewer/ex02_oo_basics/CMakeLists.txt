@@ -28,6 +28,7 @@ set ( SRC_FILES
 set ( HDR_FILES
   src/Circle.h
   src/Square.h
+  src/Shape.h
   src/Rectangle.h
   src/Triangle.h
   src/ShapeSorter.h
