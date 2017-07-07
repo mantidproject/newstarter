@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
       std::ifstream InputFileStream;
       openInputFile(InputFileName, InputFileStream);
       std::ofstream OutputFileStream;
-      openOutputFile(OutputFile);
+      openOutputFile(OutputFileStream);
       auto const InputString = fileToString(InputFileStream);
 
       auto WordFrequencyMap =
