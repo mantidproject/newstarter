@@ -20,13 +20,13 @@ set ( SRC_FILES
   src/main.cpp
   # add any additional source files here
   src/shapes.cpp
-  src/shapeSorter.cpp
+  src/shape_sorter.cpp
 )
 
 set ( HDR_FILES
   # add any additional header files here
   src/shapes.h
-  src/shapeSorter.h
+  src/shape_sorter.h
 )
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )

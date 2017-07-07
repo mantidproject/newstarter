@@ -10,8 +10,8 @@ namespace constants{
 	const std::string TRIANGLE_NAME = "triangle";
 	const int TRIANGLE_SIDES = 3;
 
-	const std::string RECT_NAME = "rectangle";
-	const int RECT_SIDES = 4;
+    const std::string RECTANGLE_NAME = "rectangle";
+    const int RECTANGLE_SIDES = 4;
 
 	const std::string SQUARE_NAME = "square";
 
@@ -22,33 +22,33 @@ namespace constants{
 class Shape
 {
 	protected:
-		std::string name;
+        std::string type;
 		const int sides;
 	public:
-		Shape( const std::string& name, const int& s);
-		std::string getType();
-		int getSides();
-		virtual double getPerim() = 0;
-		virtual double getArea() = 0;
+        Shape( const std::string& name, const int& s);
+        std::string getType() const;
+        int getSides() const;
+        virtual double getPerim() const {return 0;}
+        virtual double getArea() const {return 0;}
 
 };
 
 //Rectangle class
-class Rect: public Shape
+class Rectangle: public Shape
 {
 	protected:
 		float width, height;
 	public:
-		Rect(double& w, double& h);
-		double getArea();
-		double getPerim();
+        Rectangle(double w, double h);
+        double getArea() const;
+        double getPerim() const;
 };
 
 //Square class
-class Square: public Rect
+class Square: public Rectangle
 {
 	public:
-		Square(double& w);
+        Square(double w);
 };
 
 //Triangle class
@@ -57,9 +57,9 @@ class Triangle: public Shape
 	protected:
 		float base, height;
 	public:
-		Triangle(double& b, double& h);
-		double getArea();
-		double getPerim();
+        Triangle(double b, double h);
+        double getArea() const;
+        double getPerim() const;
 };
 
 //Circle class
@@ -68,9 +68,9 @@ class Circle: public Shape
 	protected:
 		double radius;
 	public:
-		Circle(double& r);
-		double getArea();
-		double getPerim();
+        Circle(double r);
+        double getArea() const;
+        double getPerim() const;
 };
 
 #endif // SHAPES_H_
