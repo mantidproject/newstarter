@@ -22,8 +22,10 @@ int main(int argc, char **argv) {
   if (hasRequiredCommandLineArguments(argc)) {
     try {
       auto const InputFileName = std::string(argv[1]);
-      auto InputFileStream = openInputFile(InputFileName);
-      auto OutputFileStream = openOutputFile();
+      std::ifstream InputFileStream;
+      openInputFile(InputFileName, InputFileStream);
+      std::ofstream OutputFileStream;
+      openOutputFile(OutputFile);
       auto const InputString = fileToString(InputFileStream);
 
       auto WordFrequencyMap =
