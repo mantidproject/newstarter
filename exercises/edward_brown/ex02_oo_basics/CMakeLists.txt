@@ -18,6 +18,10 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
+  src/Shape.cpp
+  src/Circle.cpp
+  src/Rectangle.cpp
+  src/Square.cpp
   # add any additional source files here
 )
 
@@ -26,3 +30,4 @@ set ( HDR_FILES
 )
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )
+target_include_directories(Shapes PUBLIC include)
