@@ -1,10 +1,7 @@
 #include "FileHelpers.h"
 #include "MakeWordFrequencyMap.h"
 #include "WordFrequencyTable.h"
-#include <algorithm>
 #include <iostream>
-#include <stdexcept>
-#include <vector>
 
 /** Ensures the existance of at least one command line argument to be used as the input
  *  file name.
