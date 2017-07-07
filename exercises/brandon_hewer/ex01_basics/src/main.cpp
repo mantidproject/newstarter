@@ -157,7 +157,7 @@ vector<string> getWords(istream& in, const unordered_set<char>& delimiters = {})
 		// If true, split the current line by the delimiters,
 		// storing the result in the words vector.
 		if (!delimiters.empty()) {
-			split(str, delimiters, words);
+			words = split(str, delimiters, words);
 		}
 		else {
 			words.push_back(str);
@@ -179,7 +179,7 @@ vector<string> getWords(istream& in, const unordered_set<char>& delimiters = {})
  *					    the split string.
  */
 vector<string> split(const string str, const unordered_set<char>& delimiters, 
-	vector<string>& words = vector<string>()) {
+	vector<string> words = vector<string>()) {
 	// c_str stores the currently built string section, since the last
 	// delimiter was found.
 	string c_str;
@@ -188,7 +188,7 @@ vector<string> split(const string str, const unordered_set<char>& delimiters,
 	for (auto i = str.begin(); i != str.end(); ++i) {
 		// Attempt to find the current character in the specified set
 		// of delimiters \p delimiters.
-		unordered_set<char>::iterator s_iter = delimiters.find(*i);
+		unordered_set<char>::const_iterator s_iter = delimiters.find(*i);
 
 		// Check whether the current character was found within
 		// the set of specified delimiters \p delimiters.

@@ -42,7 +42,7 @@ std::vector<std::string> getWords(std::istream& in, const std::unordered_set<cha
 /// Splits a string \p str, at the delimiters specified in \p delimiters and
 /// stores the result in the specified vector \p words.
 std::vector<std::string> split(const std::string str, const std::unordered_set<char>& delimiters,
-	std::vector<std::string>& words);
+	std::vector<std::string> words);
 
 /// Overloading the << operator to allow for inserting multimaps with int keys 
 /// and string values into output streams.
