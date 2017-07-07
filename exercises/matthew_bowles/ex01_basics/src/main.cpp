@@ -6,127 +6,185 @@ int main(int argc, char *argv[])
 {
 	if (argc < 2)
 	{
-		ofstream Output;
-		Output.open("Output.txt");
-		Output << "Missing input file argument" << endl;
-		Output.close();
+		ofstream output;
+		output.open("Output.txt");
+		output << "Missing input file argument" << endl;
+		output.close();
 		return 1;
 	}
-	map<string, int> Words = ReadFile(argv[1]);
-	OutputCount(SortWords(Words));
+	map<string, int> words = loadFile(argv[1]);
+	outputCount(sortWords(words));
 	return 0;
 }
 
-map<string, int> ReadFile(string path)
+
+/** Loads word input from a file into a map 
+*
+* @param path The path to the input file
+* @return A map of words and their number of uses
+*
+*/
+map<string, int> loadFile(string path)
 {
-	map<string, int> Words;
-	ifstream FileIn;
-	string Line;
-	string Word;
+	map<string, int> words;
+	ifstream fileIn;
+	string line;
+	string word;
 	
-	FileIn.open(path);
-	if (FileIn.is_open())
+	fileIn.open(path);
+	if (fileIn.is_open())
 	{
-		while (getline(FileIn, Line))
+		while (getline(fileIn, line))
 		{
-			SplitLine(Words, Line);
+			splitLine(line, words);
 		}
 	}
 	else cout << "unable to open file";
-	FileIn.close();
-	return Words;
+	fileIn.close();
+	return words;
 }
 
-void SplitLine(map<string, int> &Words, string Line)
+/** Splits an input line into seperate words
+*
+* @param line The line to split
+* @param words The map of words to hold the resulting words
+*
+*/
+void splitLine(string line, map<string, int> &words)
 {
-	string Word;
-	size_t Space;
+	string word;
+	size_t space;
 
-	Space = Line.find(" ");
-	while (Space != string::npos)
+	space = line.find(" ");
+	while (space != string::npos)
 	{
-		Word = Line.substr(0, Space);
-		Line = Line.substr(++Space);
-		AddWord(Words, Word);
-		Space = Line.find(" ");
+		word = line.substr(0, space);
+		++space;
+		line = line.substr(space);
+		addWord(words, word);
+		space = line.find(" ");
 	}
-	AddWord(Words, Line);
+	addWord(words, line);
 }
 
-void AddWord(map<string, int> &Words, string Word)
+/** Adds a word to a given map if applicable
+*
+* @param words The map of words to add to
+* @param word The word to be added
+*
+*/
+void addWord(map<string, int> &words, string word)
 {
-	map<string, int>::iterator Existing;
-	Word = RemovePunc(Word);
-	if (Word.length() > 4)
+	map<string, int>::iterator existing;
+	word = removePunctuation(word);
+	if (word.length() > 4)
 	{
-		Word = ToLower(Word);
+		word = toLower(word);
 
-		Existing = Words.find(Word);
-		if (Existing == Words.end())
+		existing = words.find(word);
+		
+		if (existing == words.end()) 
 		{
-			Words.insert(std::pair<string, int>(Word, 1));
+			//if word isn't already in map, add it with quantity 1
+			words.insert(std::pair<string, int>(word, 1));
 		}
 		else
 		{
-			Words[Word]++;
+			//if word already exists in map, increment its quantity
+			words[word]++;
 		}
 	}
 }
 
-string RemovePunc(string Word)
+/** Removes punctuation from the start or end of a string
+*
+* @param word The string to have punctuation removed
+* @return The string without leading or trailing punctuation
+*
+*/
+string removePunctuation(string word)
 {
-	while (Word.length() > 1 && !isalpha(Word[Word.length() - 1]))
-		Word = Word.substr(0, Word.length() - 1);
-	while (Word.length() > 1 && !isalpha(Word[0]))
-		Word = Word.substr(1);
-	return Word;
+	//check end of word
+	while (word.length() > 1 && !isalpha(word[word.length() - 1]))
+		word = word.substr(0, word.length() - 1);
+
+	//check start of word
+	while (word.length() > 1 && !isalpha(word[0]))
+		word = word.substr(1);
+
+	return word;
 }
 
-string ToLower(string Word)
+/** Converts a string to lowercase
+*
+* @param word The string to convert to lowercase
+* @return The string in lowercase
+*
+*/
+string toLower(string word)
 {
 	int i = 0;
-	while (i < Word.length() && isupper(Word[i]))
+	while (i < word.length() && isupper(word[i]))
+	//note loop terminates if it finds a lowercase character (assumes rest to be lowercase)
 	{
-		Word[i] = tolower(Word[i]);
+		word[i] = tolower(word[i]);
 		i++;
 	}
-	return Word;
+	return word;
 }
 
-vector<pair<string, int>> SortWords(map<string, int> &Words)
+/** Converts a map of words into a vector of pairs and sorts (descending by value)
+*
+* @param words The map of words to be sorted
+* @return A sorted vector of word-value pairs
+*
+*/
+vector<pair<string, int>> sortWords(map<string, int> &words)
 {
-	vector<std::pair<string, int>> WordsVector;
+	vector<std::pair<string, int>> wordsVector;
 	map<string, int>::iterator iter;
 
-	for (iter = Words.begin(); iter != Words.end(); ++iter)
+	for (iter = words.begin(); iter != words.end(); ++iter)
 	{
-		WordsVector.push_back(*iter);
+		wordsVector.push_back(*iter);
 	}
-	sort(WordsVector.begin(), WordsVector.end(), Compare);
-	return WordsVector;
+	sort(wordsVector.begin(), wordsVector.end(), compare);
+	return wordsVector;
 
 }
 
-bool Compare(const pair<string, int>& x, const pair<string, int>& y)
+/** Compares two int values
+*
+* @param x First int to be compared
+* @param y Second int to be compared
+* @return Result of comparison
+*
+*/
+bool compare(const pair<string, int>& x, const pair<string, int>& y)
 {
 	return x.second > y.second;
 }
 
-void OutputCount(vector<pair<string, int>> &Words)
+/** Outputs vector of word-value pairs to a file
+*
+* @param words The vector of word-value pairs to output
+*
+*/
+void outputCount(vector<pair<string, int>> &words)
 {
-	ofstream Output;
-	vector<pair<string, int>>::iterator iter = Words.begin();
-	string Word;
+	ofstream output;
+	vector<pair<string, int>>::iterator iter = words.begin();
+	string word;
 
-	Output.open("Output.txt");
-	Output << "Word" << setw(16) << "Usage" << endl << endl;
+	output.open("Output.txt");
+	output << "Word" << setw(16) << "Usage" << endl << endl;
 
-	while (iter != Words.end())
+	while (iter != words.end())
 	{
-		Word = (iter->first).c_str();
-		Output << Word << setw(20 - Word.length()) << iter->second << endl;
+		word = (iter->first).c_str();
+		output << word << setw(20 - word.length()) << iter->second << endl;
 		++iter;
 	}
-	Output.close();
+	output.close();
 	return;
 }
