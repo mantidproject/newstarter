@@ -3,7 +3,8 @@
 #include <sstream>
 #include <stdexcept>
 
-void openInputFile(std::string const &Filename, std::ifstream& InputFileStream) {
+void openInputFile(std::string const &Filename,
+                   std::ifstream &InputFileStream) {
   InputFileStream.open(Filename);
   if (!InputFileStream.good()) {
     throw std::runtime_error(
@@ -11,7 +12,7 @@ void openInputFile(std::string const &Filename, std::ifstream& InputFileStream) 
   }
 }
 
-void openOutputFile(std::ofstream& OutputFileStream) {
+void openOutputFile(std::ofstream &OutputFileStream) {
   OutputFileStream.open("results.txt", std::ofstream::out);
   if (!OutputFileStream.good()) {
     throw std::runtime_error(

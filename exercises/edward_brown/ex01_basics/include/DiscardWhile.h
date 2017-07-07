@@ -17,6 +17,8 @@ template <typename ConstCharInputIterator, typename CharPredicate>
 ConstCharInputIterator discardWhile(ConstCharInputIterator Begin,
                                     ConstCharInputIterator End,
                                     CharPredicate ShouldDiscard) {
-  return std::find_if(Begin, End, [&ShouldDiscard](char Candidate) -> bool { return !ShouldDiscard(Candidate); });
+  return std::find_if(Begin, End, [&ShouldDiscard](char Candidate) -> bool {
+    return !ShouldDiscard(Candidate);
+  });
 }
 #endif // EX1_DISCARD_WHILE
