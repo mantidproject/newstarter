@@ -6,6 +6,8 @@
 //----------------------------------------------------------------------
 #include "Shape.h"
 
+#include <math.h>
+
 //===-- Triangle.h - Square definition -------*- C++ -*-======================//
 //
 //                          2-Dimmensional Shapes
