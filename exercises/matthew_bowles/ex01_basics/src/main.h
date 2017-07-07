@@ -1,6 +1,7 @@
 #pragma once
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <map>
 #include <vector>
@@ -9,7 +10,7 @@ using namespace std;
 
 map<string, int> ReadFile(string path);
 void OutputCount(vector<pair<string, int>> &Words);
-map<string,int> SplitLine(map<string, int>, string);
+void SplitLine(map<string, int> &Words, string);
 void AddWord(map<string, int> &Words, string Word);
 bool Compare(const pair<string, int>& x, const pair<string, int>& y);
 vector<pair<string, int>> SortWords(map<string, int> &Words);

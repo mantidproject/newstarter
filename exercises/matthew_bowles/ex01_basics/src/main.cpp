@@ -2,9 +2,18 @@
 
 using namespace std;
 
-int main(int, char **)
+int main(int argc, char *argv[])
 {
-	ReadFile("Holmes.txt");
+	if (argc < 2)
+	{
+		ofstream Output;
+		Output.open("Output.txt");
+		Output << "Missing input file argument" << endl;
+		Output.close();
+		return 1;
+	}
+	map<string, int> Words = ReadFile(argv[1]);
+	OutputCount(SortWords(Words));
 	return 0;
 }
 
@@ -20,17 +29,15 @@ map<string, int> ReadFile(string path)
 	{
 		while (getline(FileIn, Line))
 		{
-			Words = SplitLine(Words, Line);
+			SplitLine(Words, Line);
 		}
 	}
 	else cout << "unable to open file";
-	SortWords(Words);
-	OutputCount(SortWords(Words));
 	FileIn.close();
 	return Words;
 }
 
-map<string, int> SplitLine(map<string, int> Words, string Line)
+void SplitLine(map<string, int> &Words, string Line)
 {
 	string Word;
 	size_t Space;
@@ -44,7 +51,6 @@ map<string, int> SplitLine(map<string, int> Words, string Line)
 		Space = Line.find(" ");
 	}
 	AddWord(Words, Line);
-	return Words;
 }
 
 void AddWord(map<string, int> &Words, string Word)
@@ -103,17 +109,24 @@ vector<pair<string, int>> SortWords(map<string, int> &Words)
 
 bool Compare(const pair<string, int>& x, const pair<string, int>& y)
 {
-	return x.second < y.second;
+	return x.second > y.second;
 }
 
 void OutputCount(vector<pair<string, int>> &Words)
 {
+	ofstream Output;
 	vector<pair<string, int>>::iterator iter = Words.begin();
+	string Word;
+
+	Output.open("Output.txt");
+	Output << "Word" << setw(16) << "Usage" << endl << endl;
+
 	while (iter != Words.end())
 	{
-		printf("%s: %d \n", (iter->first).c_str(), iter->second);
+		Word = (iter->first).c_str();
+		Output << Word << setw(20 - Word.length()) << iter->second << endl;
 		++iter;
 	}
-	getchar();
+	Output.close();
 	return;
 }
