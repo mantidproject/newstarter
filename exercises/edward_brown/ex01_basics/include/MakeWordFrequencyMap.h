@@ -12,8 +12,8 @@
  *  @return True if CandidateWord is a 'word' false if not.
  */
 bool isWord(std::string const &CandidateWord) {
-  auto constexpr MinimumWordLength = 4;
-  return CandidateWord.size() > MinimumWordLength;
+  auto constexpr MINIMUM_WORD_LENGTH = 4;
+  return CandidateWord.size() > MINIMUM_WORD_LENGTH;
 }
 
 /** Creates a map from strings containing words found in the range [Begin, End)
