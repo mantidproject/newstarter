@@ -1,5 +1,5 @@
-#ifndef EX2_RECTANGLE
-#define EX2_RECTANGLE
+#ifndef EX2_TRIANGLE
+#define EX2_TRIANGLE
 #include "Shape.h"
 class Triangle : public Shape {
   public:
@@ -15,4 +15,4 @@ class Triangle : public Shape {
     double m_Base;
     double m_Height;
 };
-#endif // EX2_RECTANGLE
+#endif // EX2_TRIANGLE

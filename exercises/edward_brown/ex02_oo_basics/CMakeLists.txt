@@ -22,6 +22,8 @@ set ( SRC_FILES
   src/Circle.cpp
   src/Rectangle.cpp
   src/Square.cpp
+  src/Triangle.cpp
+  src/ShapeSorter.cpp
   # add any additional source files here
 )
 
