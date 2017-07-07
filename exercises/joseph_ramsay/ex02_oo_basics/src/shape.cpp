@@ -1,6 +1,3 @@
 #include "shape.h"
 
-
-int Shape::getNumSides(){
-  return m_numSides;
-}
+int Shape::getNumSides() { return m_numSides; }

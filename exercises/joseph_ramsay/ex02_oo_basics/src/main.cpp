@@ -1,12 +1,11 @@
+#include "shapeSorter.h"
+#include "shapes.h"
 #include <iostream>
 #include <vector>
-#include "shapes.h"
-#include "shapeSorter.h"
 
+int main(int argc, char **argv) {
 
-int main(int argc, char **argv){
-  
-  std::vector<Shape*> shapes;
+  std::vector<Shape *> shapes;
   Triangle t(1, 2);
   Rectangle r(1, 2);
   Circle c(2);
