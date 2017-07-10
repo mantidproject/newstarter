@@ -19,41 +19,44 @@
 
 int main(int argc, char* argv[])
 {
-	//Check if file name given
-	if (argc < 2){
-		std::cerr << "File name not given" << std::endl;
-		return EXIT_FAILURE;
-	}
-	else {
-		//Open file, and check that it exists
-		std::ifstream inFile(argv[1]);
+    //Check if file name given
+    if (argc < 2){
+        std::cerr << "File name not given" << std::endl;
+        return EXIT_FAILURE;
+    }
+    else {
+        //Open file, and check that it exists
+        std::ifstream inFile(argv[1]);
 
-		if (!inFile){
-			std::cerr << "The file \"" << argv[1] << "\" does not exist" << std::endl;
-			return EXIT_FAILURE;
-		}
-		else{
-			std::string line;
-			//Store each word and an associated counter
-			wordMap counters;
+        if (!inFile){
+            std::cerr << "The file \"" << argv[1] << "\" does not exist" << std::endl;
+            return EXIT_FAILURE;
+        }
+        else{
+            std::string line;
+            //Store each word and an associated counter
+            WordMap counters;
 
-			//Count all the words in the file.
-			while(std::getline(inFile, line))
+            //Count all the words in the file.
+            while(std::getline(inFile, line)){
 				countWords(line, counters);
+            }
 
-			//Create output file, check operation success
-			std::string outFilePath = argv[1];
-			outFilePath += "_Word_Rank";
-			std::ofstream outFile(outFilePath);
+            //File to be saved in the same directory as input file.
+            std::string outFilePath = argv[1];
+            outFilePath += "_Word_Rank";
 
-			if(!outFile){
-				std::cerr << "The file path\"" << outFilePath << "\" does not exist" << std::endl;
-				return EXIT_FAILURE;
-			}
-			else
-				rankWords(counters, outFile);
+            //Create output file, check operation success
+            std::ofstream outFile(outFilePath);
 
-			return EXIT_SUCCESS;
-		}
-	}
+            if(!outFile){
+                std::cerr << "The file path\"" << outFilePath << "\" does not exist" << std::endl;
+                return EXIT_FAILURE;
+            }
+            else
+                rankWords(counters, outFile);
+
+            return EXIT_SUCCESS;
+        }
+    }
 }
