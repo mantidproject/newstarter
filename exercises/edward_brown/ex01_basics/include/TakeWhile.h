@@ -26,7 +26,7 @@ takeWhile(ConstCharInputIterator Begin, ConstCharInputIterator End,
   static std::stringstream WordStream;
   WordStream.str(std::string());
   auto Current = Begin;
-  while(Current != End && ShouldTake(*Current)) {
+  while (Current != End && ShouldTake(*Current)) {
     WordStream << *Current;
     Current++;
   }

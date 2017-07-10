@@ -1,7 +1,7 @@
-#include <cassert>
 #include "FileHelpers.h"
 #include "MakeWordFrequencyMap.h"
 #include "WordFrequencyTable.h"
+#include <cassert>
 #include <iostream>
 
 /** Ensures the existance of at least one command line argument to be used as

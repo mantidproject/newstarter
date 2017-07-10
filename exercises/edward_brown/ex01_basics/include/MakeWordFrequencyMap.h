@@ -33,14 +33,14 @@ template <typename ConstCharInputIterator>
 std::unordered_map<std::string, int>
 makeWordFrequencyMap(ConstCharInputIterator begin, ConstCharInputIterator end) {
   auto wordFrequencyMap = std::unordered_map<std::string, int>();
-  forEachWord(
-      begin, end, [&wordFrequencyMap](std::string& WordCandidate) -> void {
-        stripPunctuation(WordCandidate);
-        if (isWord(WordCandidate)) {
-          toLowerCase(WordCandidate);
-          wordFrequencyMap[WordCandidate]++;
-        }
-      });
+  forEachWord(begin, end,
+              [&wordFrequencyMap](std::string &WordCandidate) -> void {
+                stripPunctuation(WordCandidate);
+                if (isWord(WordCandidate)) {
+                  toLowerCase(WordCandidate);
+                  wordFrequencyMap[WordCandidate]++;
+                }
+              });
   return wordFrequencyMap;
 }
 #endif // EX1_MAKE_WORD_FREQUENCY_MAP

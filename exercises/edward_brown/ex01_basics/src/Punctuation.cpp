@@ -15,9 +15,10 @@ bool isPunctuation(char Candidate) {
 
 /** Performs in place modification of the string MaybeContainsPunctuation
  * such that it no longer constains puncutation characters.
- *  @param MaybeContainsPunctuation A string to be modified which may contain punctuation.
+ *  @param MaybeContainsPunctuation A string to be modified which may contain
+ * punctuation.
  */
-void stripPunctuation(std::string& MaybeContainsPunctuation) {
+void stripPunctuation(std::string &MaybeContainsPunctuation) {
   MaybeContainsPunctuation.erase(
       std::remove_if(MaybeContainsPunctuation.begin(),
                      MaybeContainsPunctuation.end(), &isPunctuation),

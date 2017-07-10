@@ -17,7 +17,7 @@ public:
   void printByPerimeterDescending();
 
 private:
-  void printShape(Shape const& Shape);
+  void printShape(Shape const &Shape);
   template <typename ShapePredicate>
   void printWhere(ShapePredicate ShouldPrint);
   template <typename ComparisonFunction>
@@ -49,11 +49,9 @@ void ShapeSorter::printWhere(ShapePredicate ShouldPrint) {
  */
 template <typename ComparisonFunction>
 void ShapeSorter::printOrderedBy(ComparisonFunction Compare) {
-  std::sort(
-      m_Shapes.begin(), m_Shapes.end(),
-      [&Compare](UniqueShapePtr const &First, UniqueShapePtr const &Last) -> bool {
-        return Compare(*First, *Last);
-      });
+  std::sort(m_Shapes.begin(), m_Shapes.end(),
+            [&Compare](UniqueShapePtr const &First, UniqueShapePtr const &Last)
+                -> bool { return Compare(*First, *Last); });
   printAll();
 }
 #endif // EX2_SHAPE_SORTER

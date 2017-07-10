@@ -1,7 +1,7 @@
 #include "FileHelpers.h"
 #include <cassert>
-#include <sstream>
 #include <ios>
+#include <sstream>
 #include <stdexcept>
 
 /** Opens the file with the specified path on the InputFileStream object.
@@ -9,7 +9,8 @@
  *  @param InputFile The target ifstream.
  *  @throws std::runtime_eror When the file cannot be opened.
  */
-void openInputFile(std::string const &Filename, std::ifstream& InputFileStream) {
+void openInputFile(std::string const &Filename,
+                   std::ifstream &InputFileStream) {
   InputFileStream.open(Filename);
   if (InputFileStream.good()) {
     InputFileStream >> std::noskipws;
