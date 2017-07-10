@@ -54,7 +54,7 @@ void ShapeSorter::printSort(std::vector<std::reference_wrapper<Shape>> &sorted){
  */
 void ShapeSorter::types(const std::string& type){
     std::vector<std::reference_wrapper<Shape>> sorted;
-    int occurences;
+    int occurences = 0;
 
     for (auto iter = shapes.begin(); iter < shapes.end(); ++iter){
 
@@ -76,7 +76,7 @@ void ShapeSorter::types(const std::string& type){
  */
 void ShapeSorter::sides(const int &numSides){
     std::vector<std::reference_wrapper<Shape>> sorted;
-    int occurences;
+    int occurences = 0;
 
     for (auto iter = shapes.begin(); iter < shapes.end(); ++iter){
          if( iter->get().getSides() == numSides){
