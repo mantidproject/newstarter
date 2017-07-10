@@ -35,9 +35,9 @@ makeWordFrequencyMap(ConstCharInputIterator begin, ConstCharInputIterator end) {
   auto wordFrequencyMap = std::unordered_map<std::string, int>();
   forEachWord(
       begin, end, [&wordFrequencyMap](std::string WordCandidate) -> void {
-        WordCandidate = stripPunctuation(WordCandidate);
+        stripPunctuation(WordCandidate);
         if (isWord(WordCandidate)) {
-          wordFrequencyMap[toLowerCase(stripPunctuation(WordCandidate))]++;
+          wordFrequencyMap[toLowerCase(WordCandidate)]++;
         }
       });
   return std::move(wordFrequencyMap);
