@@ -12,8 +12,10 @@ class ShapeSorter
 {
     private:
         const std::vector<std::reference_wrapper< Shape>> shapes;
-        void printRank(std::multimap<double, std::string> &rank);
-        void printRank(std::map<std::string, int>& rank);
+        void printRank(std::multimap<double, std::reference_wrapper<Shape>> &rank);
+        void printRank(std::vector<std::reference_wrapper<Shape>> &rank);
+
+
     public:
         ShapeSorter (std::vector<std::reference_wrapper<Shape> >& v);
 

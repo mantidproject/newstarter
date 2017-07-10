@@ -2,6 +2,7 @@
 #define SHAPES_H_
 
 #include <string>
+#include <map>
 
 namespace constants{
 	const std::string CIRCLE_NAME = "circle";
@@ -16,6 +17,8 @@ namespace constants{
 	const std::string SQUARE_NAME = "square";
 
 	const float PI = 3.14159;
+
+    const int COL_WIDTH = 15;
 }
 
 //Base class
@@ -23,9 +26,13 @@ class Shape
 {
 	protected:
         std::string type;
-		const int sides;
+        const int numSides;
+        std::map<std::string, double> dimensions;
+
 	public:
-        Shape( const std::string& name, const int& s);
+        Shape(const std::string& name, const int &s);
+        void setDim(std::map<std::string, double>& dim);
+        void printShape();
         std::string getType() const;
         int getSides() const;
         virtual double getPerim() const {return 0;}
@@ -37,7 +44,7 @@ class Shape
 class Rectangle: public Shape
 {
 	protected:
-		float width, height;
+        double width, height;
 	public:
         Rectangle(double w, double h);
         double getArea() const;
