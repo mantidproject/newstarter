@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	map<string, int> words = loadFile(argv[1]);
-	outputCount(sortWords(words));
+	vector<pair<string, int>> sortedWords = sortWords(words);
+	outputCount(sortedWords);
 	return 0;
 }
 
