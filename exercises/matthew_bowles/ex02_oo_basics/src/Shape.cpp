@@ -29,7 +29,7 @@ double Shape::calcPerimeter()
 
 void Shape::print()
 {
-	cout << "Type: " << shapeType << ", sides: " << sideCount << endl;
+	cout << "Type: " << shapeType << ", sides: " << sideCount;
 }
 
 Shape::~Shape()

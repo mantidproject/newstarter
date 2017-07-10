@@ -22,7 +22,7 @@ double Triangle::calcPerimeter()
 void Triangle::print()
 {
 	Shape::print();
-	printf("base: %f, height: %f \n", base, height);
+	cout << ", base: " << base << ", height: " << height << endl;
 }
 
 string Triangle::getType()
