@@ -28,6 +28,13 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
+  include/Circle.h
+  include/Rectangle.h
+  include/Shape.h
+  include/ShapeSorter.h
+  include/Square.h
+  include/StdMakeUnique.h
+  include/Triangle.h
   # add any additional header files here
 )
 
