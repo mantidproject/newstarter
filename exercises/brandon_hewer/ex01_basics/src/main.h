@@ -14,6 +14,7 @@
 
 #include <algorithm>
 #include <fstream>
+#include <functional>
 #include <iostream>
 #include <map>
 #include <sstream>
@@ -30,9 +31,10 @@ template<typename A, typename B>
 std::multimap<B, A> flip_map(const std::unordered_map<A, B>& mp);
 
 /// Totals the number of each unique word in the vector \p words,
-/// which passes the condition \p cond.
+/// which passes the condition \p cond. Ignores specified characters
+/// \p ignored when considering where words are unique.
 std::unordered_map<std::string, int> countUniqueWords(const std::vector<std::string>& words, 
-	const bool cond(std::string));
+	const bool cond(const std::string&), const std::unordered_set<char>& ignore);
 
 /// Retrieves all words from the input stream \p in, where words
 /// are defined as the vector created when the input is split by
@@ -41,8 +43,19 @@ std::vector<std::string> getWords(std::istream& in, const std::unordered_set<cha
 
 /// Splits a string \p str, at the delimiters specified in \p delimiters and
 /// stores the result in the specified vector \p words.
-std::vector<std::string> split(const std::string str, const std::unordered_set<char>& delimiters,
-	std::vector<std::string> words);
+std::vector<std::string> split(const std::string& str, const std::unordered_set<char>& delimiters,
+	std::vector<std::string>& words);
+
+/// Splits a string \p str, at the delimiters specified in \p delimiters and
+/// returns a vector containing the sections of the split string.
+std::vector<std::string> split(const std::string&str, const std::unordered_set<char>& delimiters);
+
+/// Removes the specified set of characters \p toRemove from the specified
+/// string \p str.
+std::string removeChars(const std::string& str, const std::unordered_set<char>& toRemove);
+
+/// Converts a string \p str to lowercase.
+std::string toLower(const std::string& str);
 
 /// Overloading the << operator to allow for inserting multimaps with int keys 
 /// and string values into output streams.
