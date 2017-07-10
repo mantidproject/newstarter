@@ -9,7 +9,7 @@
  *  @return True if the minimum number of arguments or greater are present.
  */
 bool hasRequiredCommandLineArguments(int ArgumentCount) {
-  auto constexpr MINIMUM_COMMAND_LINE_ARGUMENTS = 1;
+  auto constexpr MINIMUM_COMMAND_LINE_ARGUMENTS = 2;
   return MINIMUM_COMMAND_LINE_ARGUMENTS <= ArgumentCount;
 }
 
