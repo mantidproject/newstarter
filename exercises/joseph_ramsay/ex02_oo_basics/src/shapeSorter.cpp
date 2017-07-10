@@ -14,7 +14,7 @@ void ShapeSorter::setShapes(const std::vector<Shape *> shapes) {
  *
  */
 void ShapeSorter::printOnCondition(
-    const std::function<bool(Shape *shape)> pred) const {
+    const std::function<bool(Shape *shape)> &pred) const {
   // Iterate over shapes, print those for which pred(shape) evaluates to true
   for_each(m_shapes.begin(), m_shapes.end(), [=](Shape *shape) {
     if (pred(shape)) {
@@ -29,7 +29,7 @@ void ShapeSorter::printOnCondition(
  * @param type The type of shapes which should be printed
  *
  */
-void ShapeSorter::shapesOfType(const ShapeType type) const {
+void ShapeSorter::shapesOfType(const ShapeType &type) const {
   printOnCondition([=](Shape *shape) { return shape->getType() == type; });
 }
 
@@ -38,7 +38,7 @@ void ShapeSorter::shapesOfType(const ShapeType type) const {
  * @param num The number of sides which shapes printed should have
  *
  */
-void ShapeSorter::shapesOfNSides(const int num) const {
+void ShapeSorter::shapesOfNSides(const int &num) const {
   printOnCondition([=](Shape *shape) { return shape->getNumSides() == num; });
 }
 
@@ -48,7 +48,7 @@ void ShapeSorter::shapesOfNSides(const int num) const {
  *
  */
 void ShapeSorter::printInOrder(
-    const std::function<bool(Shape *s1, Shape *s2)> compare) const {
+    const std::function<bool(Shape *s1, Shape *s2)> &compare) const {
   std::vector<Shape *> tempShapes = m_shapes;
   sort(tempShapes.begin(), tempShapes.end(), compare);
   for_each(tempShapes.begin(), tempShapes.end(),
