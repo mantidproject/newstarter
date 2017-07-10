@@ -4,80 +4,117 @@
 #include <string>
 #include <map>
 
-namespace constants{
-	const std::string CIRCLE_NAME = "circle";
-	const int CIRCLE_SIDES = 1;
+//Column width - for printing data in columns
+static const int COL_WIDTH = 15;
 
-	const std::string TRIANGLE_NAME = "triangle";
-	const int TRIANGLE_SIDES = 3;
 
-    const std::string RECTANGLE_NAME = "rectangle";
-    const int RECTANGLE_SIDES = 4;
-
-	const std::string SQUARE_NAME = "square";
-
-	const float PI = 3.14159;
-
-    const int COL_WIDTH = 15;
-}
 
 //Base class
 class Shape
 {
-	protected:
-        std::string type;
-        const int numSides;
-        std::map<std::string, double> dimensions;
+public:
+    ///Constructor: sets the type and number of sides
+    Shape(const std::string& name, const int &s);
 
-	public:
-        Shape(const std::string& name, const int &s);
-        void setDim(std::map<std::string, double>& dim);
-        void printShape();
-        std::string getType() const;
-        int getSides() const;
-        virtual double getPerim() const {return 0;}
-        virtual double getArea() const {return 0;}
+    ///Virtual destructor
 
+    ///Prints the Shape's Type, followed by its measurements
+    void printShape();
+
+    ///Returns the Shape's Type
+    std::string getType() const;
+
+    ///Returns the number of sides of the shape
+    int getSides() const;
+
+    ///Returns the Shape's Area.
+    virtual double getArea() const {return 0;}
+
+    ///Returns the Shape's Perimeter
+    virtual double getPerim() const {return 0;}
+
+protected:
+    ///Saves the Shape's dimensions
+    void setDim(std::map<std::string, double>& dim);
+
+    ///Sets the shape's type
+    void setType(const std::string &name);
+
+private:
+    //e.g. type = "square"
+    std::string type;
+
+    //e.g. numSides = 4
+    const int numSides;
+
+    ///Holds the Shape's dimensions
+    /// e.g Triangle: (base, 5), (height, 3)
+    std::map<std::string, double> dimensions;
 };
+
+
 
 //Rectangle class
 class Rectangle: public Shape
 {
-	protected:
+public:
+    ///Constructor: sets width & height
+    Rectangle(double w, double h);
+
+    ///Returns Rectangle's Area
+    double getArea() const;
+
+    ///Returns Rectangle's Perimeter
+    double getPerim() const;
+
+private:
         double width, height;
-	public:
-        Rectangle(double w, double h);
-        double getArea() const;
-        double getPerim() const;
 };
+
+
 
 //Square class
 class Square: public Rectangle
 {
-	public:
-        Square(double w);
+public:
+    //Constructor: sets side length
+    Square(double w);
 };
+
+
 
 //Triangle class
 class Triangle: public Shape
 {
-	protected:
-		float base, height;
-	public:
-        Triangle(double b, double h);
-        double getArea() const;
-        double getPerim() const;
+public:
+    ///Constructor: sets base and hieght
+    Triangle(double b, double h);
+
+    ///Returns Triangle's Area
+    double getArea() const;
+
+    ///Returns Triangle's Perimeter
+    double getPerim() const;
+private:
+    double base, height;
 };
+
+
 
 //Circle class
 class Circle: public Shape
 {
-	protected:
-		double radius;
-	public:
-        Circle(double r);
-        double getArea() const;
-        double getPerim() const;
+public:
+    ///Constructor: sets radius length
+    Circle(double r);
+
+    ///Returns Circle's Area
+    double getArea() const;
+
+    ///Returns Circle's Perimeter
+    double getPerim() const;
+private:
+    double radius;
 };
 
 #endif // SHAPES_H_
