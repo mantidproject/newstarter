@@ -8,7 +8,7 @@
  *  @return True if the Candidate is a punctuation mark, false if it is not.
  */
 bool isPunctuation(char Candidate) {
-  auto const punctuation = std::string(".,?'\\\"!():");
+  static auto const punctuation = std::string(".,?'\\\"!():");
   return std::find(punctuation.cbegin(), punctuation.cend(), Candidate) !=
          punctuation.cend();
 }
