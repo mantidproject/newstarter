@@ -5,7 +5,9 @@
 #include "Triangle.h"
 #include <iostream>
 #include <memory>
+#ifndef _MSC_VER
 #include "StdMakeUnique.h" // This provides std::make_unique - Would use boost equivalent or similar if available.
+#endif
 
 using ShapeVector = typename ShapeSorter::ShapeVector;
 
