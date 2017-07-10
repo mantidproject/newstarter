@@ -34,10 +34,11 @@ std::unordered_map<std::string, int>
 makeWordFrequencyMap(ConstCharInputIterator begin, ConstCharInputIterator end) {
   auto wordFrequencyMap = std::unordered_map<std::string, int>();
   forEachWord(
-      begin, end, [&wordFrequencyMap](std::string WordCandidate) -> void {
+      begin, end, [&wordFrequencyMap](std::string& WordCandidate) -> void {
         stripPunctuation(WordCandidate);
         if (isWord(WordCandidate)) {
-          wordFrequencyMap[toLowerCase(WordCandidate)]++;
+          toLowerCase(WordCandidate);
+          wordFrequencyMap[WordCandidate]++;
         }
       });
   return std::move(wordFrequencyMap);

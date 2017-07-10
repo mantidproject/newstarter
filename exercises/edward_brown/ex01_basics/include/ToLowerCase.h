@@ -9,5 +9,5 @@
  *  @param MixedOrUpperCase A string which may contain upper case characters.
  *  @return A copy of MixedOrUpperCase containing only lower case characters.
  */
-std::string toLowerCase(std::string MixedOrUpperCase);
+void toLowerCase(std::string &MixedOrUpperCase);
 #endif // EX1_TO_LOWER_CASE

@@ -21,7 +21,7 @@ void forEachWord(ConstCharInputIterator Begin, ConstCharInputIterator End,
   auto Current = Begin;
   while (Current != End) {
     auto WordPositionPair = takeWhile(Current, End, &isWordChar);
-    DoIt(std::move(WordPositionPair.first));
+    DoIt(WordPositionPair.first);
     Current = WordPositionPair.second;
     Current = discardWhile(Current, End, &isWhitespaceChar);
   }
