@@ -257,16 +257,3 @@ vector<string> split(const string& str, const unordered_set<char>& delimiters,
 
 	return words;
 }
-
-/*
-* Splits the specified string \p str by the specified set of delimiters
-* \p delimiters.
-*
-* @param str			The string to split by the delimiters in \p delimiters.
-* @param delimiters		The delimiters to use in splitting the string \p str.
-*
-* @return				The vector containing the split sections of the string.
-*/
-vector<string> split(const string&str, const unordered_set<char>& delimiters) {
-	return split(str, delimiters, vector<string>());
-}

@@ -46,10 +46,6 @@ std::vector<std::string> getWords(std::istream& in, const std::unordered_set<cha
 std::vector<std::string> split(const std::string& str, const std::unordered_set<char>& delimiters,
 	std::vector<std::string>& words);
 
-/// Splits a string \p str, at the delimiters specified in \p delimiters and
-/// returns a vector containing the sections of the split string.
-std::vector<std::string> split(const std::string&str, const std::unordered_set<char>& delimiters);
-
 /// Removes the specified set of characters \p toRemove from the specified
 /// string \p str.
 std::string removeChars(const std::string& str, const std::unordered_set<char>& toRemove);
