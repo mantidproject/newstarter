@@ -10,20 +10,12 @@ Command-line tool for counting unique words in a text file Usage:
 #include <iterator>
 #include <map>
 #include <string>
+#include <unordered_set>
 #include <vector>
 
 using namespace std;
 
-/** Convert character to lower
- *
- * @param c The character to convert
- * @return The converted character
- */
-char charToLower(const char c) {
-  if (65 <= c && c <= 90)
-    return c + 32;
-  return c;
-}
+const unordered_set<char> PUNCT({'.', ',', '?', '\'', '\\', '"', '!', '(', ')', ':'});
 
 /** Convert a string to lower case
  *
@@ -71,13 +63,13 @@ std::vector<string> split(const string& s) {
   return words;
 }
 
-/** Is a character not a lowercase character?
+/** Is a character a disallowed punctuation character?
  *
  * @param c The character to test
- * @return True if the character is any other than a-z, false otherwise
+ * @return True if the character is any other of .,?'"!():, false otherwise
  */
-bool notLowerAlNum(const char c) {
-  return c < '0' || c > 'z' || (c > '9' && c < 'a');
+bool isPunct(const char c){
+  return PUNCT.find(c) != PUNCT.end();
 }
 
 /** Remove punctuation from a string
@@ -86,7 +78,7 @@ bool notLowerAlNum(const char c) {
  * @return The modified string
  */
 string noPunct(string s) {
-  string::iterator iter(remove_if(s.begin(), s.end(), notLowerAlNum));
+  string::iterator iter(remove_if(s.begin(), s.end(), isPunct));
   s.erase(iter, s.end());
   return s;
 }
@@ -119,13 +111,11 @@ bool comparePair(const pair<string, int> &p1, const pair<string, int> &p2) {
 vector<pair<string, int>> sortedMap(map<string, int> &counter) {
   vector<pair<string, int>> sorted;
   copy(counter.cbegin(), counter.cend(), back_inserter(sorted));
-  //for_each(counter.begin(), counter.end(),
-  //         [&sorted](pair<string, int> p) { sorted.push_back(p); });
   sort(sorted.begin(), sorted.end(), comparePair);
   return sorted;
 }
 
-void displayError(string msg){
+void displayError(const string &msg){
   cout << msg << "\nUsage: ./WordCounter infile [outfile]\n";
 }
 
@@ -159,8 +149,8 @@ int main(int argv, char **argc) {
   }
 
   vector<pair<string, int>> sortedCounter = sortedMap(counter);
-  int maxWordLength = maxLen(counter);
-
+  int maxWordLength = maxLen(counter) + 1;
+ 
   string outname = "output.txt";
   if (argv == 3) // If the user has given a name for outfile, then use it
     outname = argc[2];
@@ -172,9 +162,8 @@ int main(int argv, char **argc) {
   // aligned
   for_each(sortedCounter.begin(), sortedCounter.end(),
            [&](const pair<string, int> &p) {
-	     outfile << p.first << " ";
-	     outfile << setw(maxWordLength - p.first.length() + 1);
-             outfile << p.second << "\n";
+	     outfile << setfill(' ') << setw(maxWordLength) << left
+		     << p.first << p.second << "\n";
            });
 
   cout << "Output file written to " << outname << "\n";
