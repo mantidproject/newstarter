@@ -4,8 +4,8 @@
 
 Circle::Circle(double Radius) : m_Radius(Radius) {}
 
-std::string Circle::getShapeName() const {
-  return std::string("Circle");
+ShapeType Circle::getShapeType() const {
+  return ShapeType::Circle;
 }
 
 int Circle::getSideCount() const {

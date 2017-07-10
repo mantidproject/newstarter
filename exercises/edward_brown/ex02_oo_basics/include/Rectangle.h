@@ -4,7 +4,7 @@
 class Rectangle : public Shape {
   public:
     Rectangle(double Width, double Height);
-    std::string getShapeName() const override;
+    ShapeType getShapeType() const override;
     int getSideCount() const override;
     double getPerimeter() const override;
     double getArea() const override;

@@ -4,8 +4,8 @@
 
 Square::Square(double SideLength) : m_SideLength(SideLength) {}
 
-std::string Square::getShapeName() const {
-  return std::string("Square");
+ShapeType Square::getShapeType() const {
+  return ShapeType::Square;
 }
 
 int Square::getSideCount() const {

@@ -9,7 +9,7 @@
  *  @param ToPrint The shape to print.
  */
 std::ostream& operator<<(std::ostream& OutputStream, Shape const& ToPrint) {
-  OutputStream << ToPrint.getShapeName() << '(';
+  OutputStream << ToPrint.getShapeType() << '(';
   ToPrint.printAttributes(OutputStream);
   OutputStream << ')';
   return OutputStream;

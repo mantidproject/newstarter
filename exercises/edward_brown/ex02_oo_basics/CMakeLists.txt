@@ -24,10 +24,12 @@ set ( SRC_FILES
   src/Square.cpp
   src/Triangle.cpp
   src/ShapeSorter.cpp
+  src/ShapeType.cpp
   # add any additional source files here
 )
 
 set ( HDR_FILES
+  include/ShapeType.h
   include/Circle.h
   include/Rectangle.h
   include/Shape.h

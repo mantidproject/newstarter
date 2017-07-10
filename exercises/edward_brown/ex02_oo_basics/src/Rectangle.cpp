@@ -4,7 +4,7 @@
 Rectangle::Rectangle(double Width, double Height)
     : m_Width(Width), m_Height(Height) {}
 
-std::string Rectangle::getShapeName() const { return std::string("Rectangle"); }
+ShapeType Rectangle::getShapeType() const { return ShapeType::Rectangle; }
 
 int Rectangle::getSideCount() const { return 4; }
 

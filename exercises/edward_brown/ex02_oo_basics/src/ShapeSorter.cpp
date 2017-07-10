@@ -21,16 +21,16 @@ void ShapeSorter::printShape(Shape const &Shape) {
 void ShapeSorter::printAll() {
   std::for_each(
       m_Shapes.cbegin(), m_Shapes.cend(),
-      [this](UniqueShape const &Shape) -> void { printShape(*Shape); });
+      [this](UniqueShapePtr const &Shape) -> void { printShape(*Shape); });
   m_OutputStream << std::endl;
 }
 
 /** Prints all shapes with the specified name.
  * @param Name The shape name printed shapes all have.
  */
-void ShapeSorter::printOfType(std::string Type) {
+void ShapeSorter::printOfType(ShapeType Type) {
   printWhere([&Type](Shape const &PrintCandidate) -> bool {
-    return PrintCandidate.getShapeName() == Type;
+    return PrintCandidate.getShapeType() == Type;
   });
 }
 

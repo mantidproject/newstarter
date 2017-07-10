@@ -4,7 +4,7 @@
 class Square : public Shape {
   public:
     Square(double SideLength);
-    std::string getShapeName() const override;
+    ShapeType getShapeType() const override;
     int getSideCount() const override;
     double getPerimeter() const override;
     double getArea() const override;

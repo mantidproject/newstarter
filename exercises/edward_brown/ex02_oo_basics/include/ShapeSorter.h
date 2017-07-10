@@ -8,10 +8,10 @@
 
 class ShapeSorter {
 public:
-  using UniqueShape = std::unique_ptr<Shape>;
-  using ShapeVector = std::vector<UniqueShape>;
+  using UniqueShapePtr = std::unique_ptr<Shape>;
+  using ShapeVector = std::vector<UniqueShapePtr>;
   ShapeSorter(ShapeVector Shapes, std::ostream &OutputStream);
-  void printOfType(std::string Type);
+  void printOfType(ShapeType Type);
   void printWithSides(int N);
   void printByAreaDescending();
   void printByPerimeterDescending();
@@ -34,7 +34,7 @@ private:
 template <typename ShapePredicate>
 void ShapeSorter::printWhere(ShapePredicate ShouldPrint) {
   std::for_each(m_Shapes.cbegin(), m_Shapes.cend(),
-                [this, &ShouldPrint](UniqueShape const &Shape) -> void {
+                [this, &ShouldPrint](UniqueShapePtr const &Shape) -> void {
                   if (ShouldPrint(*Shape)) {
                     printShape(*Shape);
                   }
@@ -51,7 +51,7 @@ template <typename ComparisonFunction>
 void ShapeSorter::printOrderedBy(ComparisonFunction Compare) {
   std::sort(
       m_Shapes.begin(), m_Shapes.end(),
-      [&Compare](UniqueShape const &First, UniqueShape const &Last) -> bool {
+      [&Compare](UniqueShapePtr const &First, UniqueShapePtr const &Last) -> bool {
         return Compare(*First, *Last);
       });
   printAll();

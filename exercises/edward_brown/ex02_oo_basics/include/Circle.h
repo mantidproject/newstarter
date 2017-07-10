@@ -4,12 +4,11 @@
 class Circle : public Shape {
   public:
     Circle(double Radius);
-    std::string getShapeName() const override;
+    ShapeType getShapeType() const override;
     int getSideCount() const override;
     double getPerimeter() const override;
     double getArea() const override;
     static constexpr double PI = 3.14159265359;
-    ~Circle(){}
   private:
     void printAttributes(std::ostream& OutputStream) const override;
     double getDiameter() const;

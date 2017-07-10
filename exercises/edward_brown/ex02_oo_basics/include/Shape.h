@@ -1,10 +1,11 @@
 #ifndef EX2_SHAPE
 #define EX2_SHAPE
+#include "ShapeType.h"
 #include <string>
 class Shape {
   friend std::ostream& operator<<(std::ostream& OutputStream, Shape const& ToPrint);
   public:
-    virtual std::string getShapeName() const = 0;
+    virtual ShapeType getShapeType() const = 0;
     virtual int getSideCount() const = 0;
     virtual double getPerimeter() const = 0;
     virtual double getArea() const = 0;

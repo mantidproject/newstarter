@@ -5,7 +5,7 @@
 Triangle::Triangle(double Base, double Height)
     : m_Base(Base), m_Height(Height) {}
 
-std::string Triangle::getShapeName() const { return std::string("Triangle"); }
+ShapeType Triangle::getShapeType() const { return ShapeType::Triangle; }
 
 int Triangle::getSideCount() const { return 3; }
 
