@@ -23,7 +23,7 @@ template <typename ConstCharInputIterator, typename CharPredicate>
 std::pair<std::string, ConstCharInputIterator>
 takeWhile(ConstCharInputIterator Begin, ConstCharInputIterator End,
           CharPredicate ShouldTake) {
-  static auto WordStream = std::stringstream();
+  static std::stringstream WordStream;
   WordStream.str(std::string());
   auto Current = Begin;
   while(Current != End && ShouldTake(*Current)) {
