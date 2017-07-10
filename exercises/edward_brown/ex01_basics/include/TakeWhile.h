@@ -15,6 +15,9 @@
  *  searched for c.
  *  @param ShouldTake A callable object which returns a pair containing the
  *  substring s and the const_iterator which points to c.
+ *  @return The a pair (A,B) where A is the substring s, and B is an iterator
+ * pointing to to the character which immediately follows s or, End, if the
+ * length of s matches the distance between Begin and End.
  */
 template <typename ConstCharInputIterator, typename CharPredicate>
 std::pair<std::string, ConstCharInputIterator>
