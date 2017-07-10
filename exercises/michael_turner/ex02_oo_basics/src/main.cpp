@@ -1,7 +1,11 @@
 /**
- * Skeleton main routine
+ * Initialises 4 types of shape (Circle, Rectangle, Square & Triangle).
+ *
+ * Shapes are then sorted by area, perimeter, type & number of sides.
  */
 
+
+//Includes
 #include "shapes.h"
 #include "shape_sorter.h"
 
@@ -10,6 +14,7 @@
 
 int main(){
 
+    //Prevent Object slicing
     std::vector<std::reference_wrapper<Shape>> shapes;
     //Initialise shapes
     Circle a(1.5);
@@ -29,6 +34,7 @@ int main(){
     shapes.push_back(g);
     shapes.push_back(h);
 
+    //Initialises Shapesorter object, which allows the sorting of shapes
     ShapeSorter sort(shapes);
 
     sort.area();
