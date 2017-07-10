@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 
-std::string readInputFile(std::string const &Filename);
+void openInputFile(std::string const &Filename, std::ifstream& InputFileStream);
 void openOutputFile(std::ofstream &OutputFileStream);
 std::string fileToString(std::ifstream const &File);
 #endif // EX1_FILE_HELPERS

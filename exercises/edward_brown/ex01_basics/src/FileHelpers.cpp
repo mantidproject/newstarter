@@ -1,6 +1,7 @@
 #include "FileHelpers.h"
 #include <cassert>
 #include <sstream>
+#include <ios>
 #include <stdexcept>
 
 /** Opens the file with the specified path on the InputFileStream object.
@@ -8,10 +9,10 @@
  *  @param InputFile The target ifstream.
  *  @throws std::runtime_eror When the file cannot be opened.
  */
-std::string readInputFile(std::string const &Filename) {
-  std::ifstream InputFileStream(Filename);
+void openInputFile(std::string const &Filename, std::ifstream& InputFileStream) {
+  InputFileStream.open(Filename);
   if (InputFileStream.good()) {
-    return fileToString(InputFileStream);
+    InputFileStream >> std::noskipws;
   } else {
     throw std::runtime_error(
         "Input file does not exist or has incorrect permisssions.");
