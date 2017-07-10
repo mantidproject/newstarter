@@ -1,7 +1,5 @@
 #include "main.h"
 
-using namespace std;
-
 int main(int, char **)
 {
 	vector<Shape*> shapeVector;
@@ -13,7 +11,6 @@ int main(int, char **)
 	Triangle triangle2 = Triangle(6, 8);
 	Rectangle rectangle2 = Rectangle(3, 5);
 	Circle circle2 = Circle(25);
-
 
 	shapeVector.push_back(&square1);
 	shapeVector.push_back(&triangle1);
