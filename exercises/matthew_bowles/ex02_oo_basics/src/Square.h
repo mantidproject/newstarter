@@ -8,8 +8,9 @@ class Square :
 {
 public:
 	Square(double side1);
-	virtual double calcArea();
-	virtual double calcPerimeter();
+	virtual double calcArea() const;
+	virtual double calcPerimeter() const;
+	virtual void print();
 	double side1;
 	~Square();
 };

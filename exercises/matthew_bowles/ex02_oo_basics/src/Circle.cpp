@@ -8,14 +8,20 @@ Circle::Circle(double radius)
 {
 }
 
-double Circle::calcArea()
+double Circle::calcArea() const
 {
 	return M_PI * radius * radius;
 }
 
-double Circle::calcPerimeter()
+double Circle::calcPerimeter() const
 {
 	return M_PI * radius * 2;
+}
+
+void Circle::print()
+{
+	Shape::print();
+	cout << ", radius: " << radius << endl;
 }
 
 Circle::~Circle()

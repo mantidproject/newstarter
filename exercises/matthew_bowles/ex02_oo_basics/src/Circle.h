@@ -8,8 +8,9 @@ class Circle :
 {
 public:
 	Circle(double radius);
-	virtual double calcArea();
-	virtual double calcPerimeter();
+	virtual double calcArea() const;
+	virtual double calcPerimeter() const;
+	virtual void print();
 	double radius;
 	~Circle();
 };

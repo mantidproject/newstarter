@@ -7,8 +7,8 @@ class Triangle : public Shape
 {
 public:
 	Triangle(double base, double height);
-	virtual double calcArea();
-	virtual double calcPerimeter();
+	virtual double calcArea() const;
+	virtual double calcPerimeter() const;
 	virtual void print();
 	virtual string getType();
 	double base;

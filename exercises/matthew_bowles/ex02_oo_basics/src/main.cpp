@@ -22,5 +22,9 @@ int main(int, char **)
 	shapeVector.push_back(&circle2);
 
 	ShapeSorter ss;
-	ss.matchType("Triangle", shapeVector);
+	ss.matchType("Circle", shapeVector);
+	ss.matchSides(4, shapeVector);
+	ss.sortArea(shapeVector);
+	ss.sortPerimeter(shapeVector);
+	getchar();
 }

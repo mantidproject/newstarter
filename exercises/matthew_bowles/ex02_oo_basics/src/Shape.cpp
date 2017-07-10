@@ -17,12 +17,12 @@ string Shape::getType()
 	return shapeType;
 }
 
-double Shape::calcArea()
+double Shape::calcArea() const
 {
 	return 0;
 }
 
-double Shape::calcPerimeter()
+double Shape::calcPerimeter() const
 {
 	return 0;
 }

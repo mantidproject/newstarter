@@ -12,8 +12,8 @@ public:
 	Shape(string type, int sideCount);
 	virtual string getType();
 	~Shape();
-	virtual double calcArea();
-	virtual double calcPerimeter();
+	virtual double calcArea() const;
+	virtual double calcPerimeter() const;
 	virtual void print();
 	int sideCount;
 	string shapeType;

@@ -9,13 +9,13 @@ Triangle::Triangle(double base, double height)
 {
 }
 
-double Triangle::calcArea()
+double Triangle::calcArea() const
 {
 	return height * base / 2;
 }
 
-double Triangle::calcPerimeter()
-{
+double Triangle::calcPerimeter() const
+{ 
 	return base + 2*(sqrt(height * height + (base * base / 4)));
 }
 
