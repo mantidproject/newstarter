@@ -8,7 +8,7 @@ ShapeSorter::ShapeSorter()
 
 void ShapeSorter::matchType(string type, vector<Shape*> shapes)
 {
-	vector<Shape*>::const_iterator iter = shapes.begin();
+	vector<Shape*>::iterator iter = shapes.begin();
 	while (iter != shapes.end())
 	{
 		printf("matching... \n");
