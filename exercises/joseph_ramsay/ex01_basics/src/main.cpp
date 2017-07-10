@@ -166,13 +166,13 @@ int main(int argv, char **argc) {
     outname = argc[2];
 
   ofstream outfile(outname);
-  outfile << "Word" << setw(maxWordLength - 3) << "Usage\n\n";
+  outfile << "Word" << setw(maxWordLength) << "Usage\n\n";
 
   // Print each word to outfile, with buffer making sure everything is nicely
   // aligned
   for_each(sortedCounter.begin(), sortedCounter.end(),
            [&](const pair<string, int> &p) {
-	     outfile << p.first;
+	     outfile << p.first << " ";
 	     outfile << setw(maxWordLength - p.first.length() + 1);
              outfile << p.second << "\n";
            });
