@@ -41,6 +41,6 @@ makeWordFrequencyMap(ConstCharInputIterator begin, ConstCharInputIterator end) {
           wordFrequencyMap[WordCandidate]++;
         }
       });
-  return std::move(wordFrequencyMap);
+  return wordFrequencyMap;
 }
 #endif // EX1_MAKE_WORD_FREQUENCY_MAP
