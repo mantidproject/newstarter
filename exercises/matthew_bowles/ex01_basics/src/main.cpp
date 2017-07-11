@@ -176,7 +176,7 @@ void outputCount(vector<pair<string, int>> &words)
 	string word;
 
 	output.open("Output.txt");
-	output << "Word" << setw(16) << "Usage" << '\n' << '/n';
+	output << "Word" << setw(16) << "Usage" << "\n" << "\n";
 
 	while(iter != words.cend())
 	{
