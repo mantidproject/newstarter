@@ -99,7 +99,7 @@ void ShapeSorter::printShapes(const vector<Shape*>& shapes)
 		(*iter)->print();
 		++iter;
 	}
-	cout << endl;
+	cout << '\n';
 }
 
 ShapeSorter::~ShapeSorter()

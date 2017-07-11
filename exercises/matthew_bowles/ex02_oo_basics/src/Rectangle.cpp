@@ -20,7 +20,7 @@ double Rectangle::calcPerimeter() const
 void Rectangle::print() const
 {
 	Shape::print();
-	std::cout << ", side 1: " << side1 << ", side 2: " << side2 << std::endl;
+	std::cout << ", side 1: " << side1 << ", side 2: " << side2 << '\n';
 }
 
 Rectangle::~Rectangle()

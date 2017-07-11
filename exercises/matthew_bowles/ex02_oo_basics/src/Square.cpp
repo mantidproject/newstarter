@@ -19,7 +19,7 @@ double Square::calcPerimeter() const
 void Square::print() const
 {
 	Shape::print();
-	std::cout << ", side: " << side << std::endl;
+	std::cout << ", side: " << side << '\n';
 }
 
 Square::~Square()

@@ -20,7 +20,7 @@ double Circle::calcPerimeter() const
 void Circle::print() const
 {
 	Shape::print();
-	std::cout << ", radius: " << radius << std::endl;
+	std::cout << ", radius: " << radius << '\n';
 }
 
 Circle::~Circle()

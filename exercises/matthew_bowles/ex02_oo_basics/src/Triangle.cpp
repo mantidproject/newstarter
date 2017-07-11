@@ -20,7 +20,7 @@ double Triangle::calcPerimeter() const
 void Triangle::print() const
 {
 	Shape::print();
-	std::cout << ", base: " << base << ", height: " << height << std::endl;
+	std::cout << ", base: " << base << ", height: " << height << '\n';
 }
 
 Triangle::~Triangle()
