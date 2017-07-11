@@ -1,14 +1,14 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
-#include "rectangle.h"
+#include "Rectangle.h"
 
 class Square : public Rectangle {
 
 public:
   Square(int sideLength);
-  ShapeType getType() const;
-  std::string toString() const;
+  ShapeType getType() const override;
+  std::string toString() const override;
 };
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef SHAPESORTER_H
 #define SHAPESORTER_H
 
-#include "shape.h"
+#include "Shape.h"
 #include <functional>
 #include <iostream>
 #include <vector>

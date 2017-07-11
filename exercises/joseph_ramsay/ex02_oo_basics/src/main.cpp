@@ -1,7 +1,11 @@
-#include "shapeSorter.h"
-#include "shapes.h"
 #include <iostream>
 #include <vector>
+#include "Circle.h"
+#include "Rectangle.h"
+#include "ShapeSorter.h"
+#include "Square.h"
+#include "Shape.h"
+#include "Triangle.h"
 
 int main(int argc, char **argv) {
 
@@ -25,7 +29,7 @@ int main(int argc, char **argv) {
   Rectangle r2(5, 6);
   shapes.push_back(&r2);
   ss.setShapes(shapes);
-  ss.shapesOfType(T_rectangle);
+  ss.shapesOfType(ShapeType::rectangle);
 
   ss.shapesInPerimeterOrder();
 }

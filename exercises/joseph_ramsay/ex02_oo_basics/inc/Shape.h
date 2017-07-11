@@ -3,11 +3,12 @@
 
 #include <string>
 
-enum ShapeType { T_square, T_circle, T_rectangle, T_triangle };
+enum class ShapeType { square, circle, rectangle, triangle };
 
 class Shape {
 
 public:
+  virtual ~Shape();
   virtual int getNumSides() const = 0;
   virtual double getArea() const = 0;
   virtual double getPerimeter() const = 0;
