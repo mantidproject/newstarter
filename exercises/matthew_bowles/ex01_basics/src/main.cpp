@@ -8,8 +8,7 @@ int main(int argc, char *argv[])
 	{
 		ofstream output;
 		output.open("Output.txt");
-		output << "Missing input file argument" << endl;
-		output.close();
+		output << "Missing input file argument" << '\n';
 		return 1;
 	}
 	map<string, int> words = loadFile(argv[1]);
@@ -41,7 +40,6 @@ map<string, int> loadFile(string path)
 		}
 	}
 	else cout << "unable to open file";
-	fileIn.close();
 	return words;
 }
 
@@ -76,7 +74,7 @@ void splitLine(string line, map<string, int> &words)
 */
 void addWord(map<string, int> &words, string word)
 {
-	map<string, int>::iterator existing;
+	map<string, int>::const_iterator existing;
 	word = removePunctuation(word);
 	if (word.length() > 4)
 	{
@@ -174,18 +172,17 @@ bool compare(const pair<string, int>& x, const pair<string, int>& y)
 void outputCount(vector<pair<string, int>> &words)
 {
 	ofstream output;
-	vector<pair<string, int>>::iterator iter = words.begin();
+	auto iter = words.cbegin();
 	string word;
 
 	output.open("Output.txt");
-	output << "Word" << setw(16) << "Usage" << endl << endl;
+	output << "Word" << setw(16) << "Usage" << '\n' << '/n';
 
-	while (iter != words.end())
+	while(iter != words.cend())
 	{
 		word = (iter->first).c_str();
-		output << word << setw(20 - word.length()) << iter->second << endl;
+		output << word << setw(20 - word.length()) << iter->second << '\n';
 		++iter;
-	}
-	output.close();
+	};
 	return;
 }

@@ -22,7 +22,7 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
-  src/main.h
+  inc/main.h
   # add any additional header files here
 )
 
