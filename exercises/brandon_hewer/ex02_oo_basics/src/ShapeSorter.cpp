@@ -93,7 +93,8 @@ ShapeSorter ShapeSorter::filterBySideNumber(int numSides) const {
  * @return			A ShapeSorter for the filtered vector of
  *					shapes.
  */
-ShapeSorter ShapeSorter::filterBy(const std::function<bool (const Shape*)> filter) const {
+template<typename F>
+ShapeSorter ShapeSorter::filterBy(const F filter) const {
 	std::vector<const Shape*> filtered;
 
 	// Iterate through all shapes in this ShapeSorter's vector of
@@ -109,9 +110,8 @@ ShapeSorter ShapeSorter::filterBy(const std::function<bool (const Shape*)> filte
 	return ShapeSorter(filtered);
 }
 
-template<typename T>
-ShapeSorter ShapeSorter::sortBy(const std::function<T (const Shape*)> valueOf, 
-	bool direction) const {
+template<typename F>
+ShapeSorter ShapeSorter::sortBy(const F valueOf, bool direction) const {
 	// Copy vector of shapes.
 	std::vector<const Shape*> n_shapes(m_shapes);
 	std::function<bool (const Shape*, const Shape*)> sorter;

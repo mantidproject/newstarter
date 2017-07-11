@@ -62,11 +62,11 @@ private:
 	/// Filters the vector of shapes by a specified filter
 	/// function. Returns a shape sorter for the filtered
 	/// vector.
-	ShapeSorter filterBy(const std::function<bool (const Shape*)>) const;
+	template<typename F>
+	ShapeSorter filterBy(const F filter) const;
 
-	template<typename T>
-	ShapeSorter sortBy(const std::function<T (const Shape*)> valueFunc, 
-		bool direction) const;
+	template<typename F>
+	ShapeSorter sortBy(const F valueFunc, bool direction) const;
 };
 
 /// Adds the string representation of a specified ShapeSorter

@@ -45,5 +45,4 @@ int main(int, char**) {
 		sorter.sortByArea(ShapeSorter::DESCENDING) << "\n" << endl;
 	cout << "Printing out shapes in order of perimeter descending:\n" <<
 		sorter.sortByPerimeter(ShapeSorter::DESCENDING) << "\n" << endl;
-	system("pause");
 }

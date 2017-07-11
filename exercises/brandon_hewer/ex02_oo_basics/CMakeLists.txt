@@ -11,6 +11,7 @@ set ( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../CMake")
 
 # Common setup
 include ( CommonSetup )
+include_directories(inc)
 
 ###############################################################################
 # Executable
