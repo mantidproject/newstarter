@@ -1,5 +1,6 @@
 #pragma once
 #include "Shape.h"
+#include <math.h>
 
 class Triangle : public Shape
 {
