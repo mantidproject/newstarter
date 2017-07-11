@@ -24,14 +24,14 @@ public:
 	/// Constructs a square of a specified size.
 	Square(double size);
 
-	/// Destructor.
-	~Square();
+	/// Returns the type of the square.
+	ShapeType type() const override;
 
-	/// Returns the name of the square.
-	std::string name() const;
+	/// Returns the name of this square.
+	std::string name() const override;
 
 	/// Returns the string representation of the square.
-	std::string toString() const;
+	std::string toString() const override;
 private:
 	/// The size of the square.
 	double m_size;

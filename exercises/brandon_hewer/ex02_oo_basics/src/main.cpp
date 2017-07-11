@@ -22,16 +22,16 @@ int main(int, char**) {
 	Triangle triangle2(20, 20.1);
 
 	// Testing sorting and filtering of shapes.
-	vector<Shape*> shapes = { &circle, &circle2, &square, &square2, &rectangle, 
+	vector<const Shape*> shapes = { &circle, &circle2, &square, &square2, &rectangle, 
 		&rectangle2, &triangle, &triangle2 };
 	ShapeSorter sorter(shapes);
-	cout << "Printing out squares:\n" << sorter.filterByType("Square") << "\n" 
+	cout << "Printing out squares:\n" << sorter.filterByType(ShapeType::Square) << "\n" 
 		<< endl;
-	cout << "Printing out circles:\n" << sorter.filterByType("Circle") << "\n" 
+	cout << "Printing out circles:\n" << sorter.filterByType(ShapeType::Circle) << "\n" 
 		<< endl;
-	cout << "Printing out triangles:\n" << sorter.filterByType("Triangle") << 
+	cout << "Printing out triangles:\n" << sorter.filterByType(ShapeType::Triangle) << 
 		"\n" << endl;
-	cout << "Printing out rectangles:\n" << sorter.filterByType("Rectangle") << 
+	cout << "Printing out rectangles:\n" << sorter.filterByType(ShapeType::Rectangle) << 
 		"\n" << endl;
 	cout << "Printing out shapes with 4 sides:\n" << sorter.filterBySideNumber(4) 
 		<< "\n" << endl;
@@ -41,8 +41,9 @@ int main(int, char**) {
 		<< "\n" << endl;
 	cout << "Printing out shapes with 1 side:\n" << sorter.filterBySideNumber(1) 
 		<< "\n" << endl;
-	cout << "Printing out shapes in order of volume decreasing:\n" << 
+	cout << "Printing out shapes in order of area decreasing:\n" << 
 		sorter.sortByArea(ShapeSorter::DESCENDING) << "\n" << endl;
 	cout << "Printing out shapes in order of perimeter descending:\n" <<
 		sorter.sortByPerimeter(ShapeSorter::DESCENDING) << "\n" << endl;
+	system("pause");
 }

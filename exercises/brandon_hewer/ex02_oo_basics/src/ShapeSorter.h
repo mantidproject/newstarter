@@ -33,15 +33,12 @@ public:
 
 	/// Constructs a ShapeSorter for the specified
 	/// vector of shapes.
-	ShapeSorter(const std::vector<Shape*>& shapes);
-
-	/// Destructor.
-	~ShapeSorter();
+	ShapeSorter(const std::vector<const Shape*>& shapes);
 
 	/// Filters the vector of shapes by their type.
 	/// The type of a shape is their name. Returns
 	/// a shape sorter for the filtered vector.
-	ShapeSorter filterByType(std::string type) const;
+	ShapeSorter filterByType(ShapeType type) const;
 
 	/// Filters the vector of shapes by their number
 	/// of sides. Returns a shape sorter for the
@@ -61,12 +58,16 @@ public:
 	std::string toString() const;
 private:
 	/// The vector of shapes for the ShapeSorter.
-	std::vector<Shape*> m_shapes;
+	std::vector<const Shape*> m_shapes;
 
 	/// Filters the vector of shapes by a specified filter
 	/// function. Returns a shape sorter for the filtered
 	/// vector.
-	ShapeSorter filterBy(std::function<bool (const Shape*)>) const;
+	ShapeSorter filterBy(const std::function<bool (const Shape*)>) const;
+
+	template<typename T>
+	ShapeSorter sortBy(const std::function<T (const Shape*)> valueFunc, 
+		bool direction) const;
 };
 
 /// Adds the string representation of a specified ShapeSorter

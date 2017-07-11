@@ -8,14 +8,8 @@
  *
  * @param shapes	A vector containing pointers to shape objects.
  */
-ShapeSorter::ShapeSorter(const std::vector<Shape*>& shapes) {
+ShapeSorter::ShapeSorter(const std::vector<const Shape*>& shapes) {
 	m_shapes = shapes;
-}
-
-/*
- * Destructor for this ShapeSorter.
- */
-ShapeSorter::~ShapeSorter() {
 }
 
 /*
@@ -26,33 +20,12 @@ ShapeSorter::~ShapeSorter() {
  *                  ShapeSorter::DESCENDING (false) - Sort by decreasing area.
  */
 ShapeSorter ShapeSorter::sortByArea(bool direction) const {
-	// Copy vector of shapes.
-	std::vector<Shape*> n_shapes(m_shapes);
-	bool(*sorter) (Shape*, Shape*);
+	std::function<double(const Shape*)> valueFunc;
+	valueFunc = [](const Shape* shape) -> double {
+		return shape->area();
+	};
 
-	// Check whether the specified direction is ascending or
-	// descending.
-	if (direction == ASCENDING) {
-
-		// Create a sorter function for ascending sorting
-		// by area.
-		sorter = [](Shape* s1, Shape* s2) -> bool {
-			return s1->area() < s2->area();
-		};
-	}
-	else {
-
-		// Create a sorter function for descending sorting
-		// by area.
-		sorter = [](Shape* s1, Shape* s2) -> bool {
-			return s1->area() > s2->area();
-		};
-	}
-
-	// Sort and return new ShapeSorter for sorted vector
-	// of shapes.
-	sort(n_shapes.begin(), n_shapes.end(), sorter);
-	return ShapeSorter(n_shapes);
+	return sortBy(valueFunc, direction);
 }
 
 /*
@@ -65,33 +38,12 @@ ShapeSorter ShapeSorter::sortByArea(bool direction) const {
  * @return			A ShapeSorter for the sorted vector of shapes.
  */
 ShapeSorter ShapeSorter::sortByPerimeter(bool direction) const {
-	// Copy vector of shapes.
-	std::vector<Shape*> n_shapes(m_shapes);
-	bool(*sorter) (Shape*, Shape*);
+	std::function<double(const Shape*)> valueFunc;
+	valueFunc = [](const Shape* shape) -> double {
+		return shape->perimeter();
+	};
 
-	// Check whether the specified direction is ascending or
-	// descending.
-	if (direction == ASCENDING) {
-
-		// Create a sorter function for ascending sorting
-		// by perimeter.
-		sorter = [](Shape* s1, Shape* s2) -> bool {
-			return s1->perimeter() < s2->perimeter();
-		};
-	}
-	else {
-
-		// Create a sorter function for descending sorting
-		// by perimeter.
-		sorter = [](Shape* s1, Shape* s2) -> bool {
-			return s1->perimeter() > s2->perimeter();
-		};
-	}
-
-	// Sort and return new ShapeSorter for sorted vector
-	// of shapes.
-	sort(n_shapes.begin(), n_shapes.end(), sorter);
-	return ShapeSorter(n_shapes);
+	return sortBy(valueFunc, direction);
 }
 
 /*
@@ -101,11 +53,11 @@ ShapeSorter ShapeSorter::sortByPerimeter(bool direction) const {
  *
  * @return		A ShapeSorter for the filtered vector of shapes.
  */
-ShapeSorter ShapeSorter::filterByType(std::string type) const {
+ShapeSorter ShapeSorter::filterByType(ShapeType type) const {
 
 	// Create type filter function.
 	auto filter = [&type](const Shape* s) -> bool {
-		return s->name() == type;
+		return s->type() == type;
 	};
 	return filterBy(filter);
 }
@@ -139,35 +91,65 @@ ShapeSorter ShapeSorter::filterBySideNumber(int numSides) const {
  * @return			A ShapeSorter for the filtered vector of
  *					shapes.
  */
-ShapeSorter ShapeSorter::filterBy(std::function<bool (const Shape*)> filter) const {
-	std::vector<Shape*> filtered;
+ShapeSorter ShapeSorter::filterBy(const std::function<bool (const Shape*)> filter) const {
+	std::vector<const Shape*> filtered;
 
 	// Iterate through all shapes in this ShapeSorter's vector of
 	// shapes.
-	for (auto i = m_shapes.begin(); i != m_shapes.end(); ++i) {
+	for (const auto& shape : m_shapes) {
 
 		// Check whether the current shape passes the filter.
-		if (filter(*i)) {
-			filtered.push_back(*i);
+		if (filter(shape)) {
+			filtered.push_back(shape);
 		}
 	}
 
 	return ShapeSorter(filtered);
 }
 
+template<typename T>
+ShapeSorter ShapeSorter::sortBy(const std::function<T (const Shape*)> valueOf, 
+	bool direction) const {
+	// Copy vector of shapes.
+	std::vector<const Shape*> n_shapes(m_shapes);
+	std::function<bool (const Shape*, const Shape*)> sorter;
+	
+	// Check whether the specified direction is ascending or
+	// descending.
+	if (direction == ASCENDING) {
+
+		// Create a sorter function for ascending sorting.
+		sorter = [&](const Shape* s1, const Shape* s2) -> bool {
+			return valueOf(s1) < valueOf(s2);
+		};
+	}
+	else if (direction == DESCENDING) {
+		
+		// Create a sorter function for descending sorting.
+		sorter = [&](const Shape* s1, const Shape* s2) -> bool {
+			return valueOf(s1) > valueOf(s2);
+		};
+	}
+
+	// Sort and return new ShapeSorter for sorted vector
+	// of shapes.
+	sort(n_shapes.begin(), n_shapes.end(), sorter);
+	return ShapeSorter(n_shapes);
+}
+
 /*
  * @return	The string representation of this ShapeSorter.
  */
 std::string ShapeSorter::toString() const {
-	std::ostringstream ss;
+	std::string str;
 	
 	// Iterate through all shapes in this ShapeSorter's vector of
 	// shapes.
-	for (auto i = m_shapes.begin(); i != m_shapes.end(); ++i) {
-		ss << (*i)->toString() << "\n";
+	for (const auto& shape : m_shapes) {
+		str += shape->toString() + "\n";
 	}
 
-	return ss.str();
+	return str;
 }
 
 /*
@@ -175,7 +157,6 @@ std::string ShapeSorter::toString() const {
  * specified output stream.
  *
  * @param os		The output stream to append to.
- *
  * @param sorter	The ShapeSorter whose string representation to
  *					append.
  *

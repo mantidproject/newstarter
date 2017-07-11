@@ -6,6 +6,8 @@
 //----------------------------------------------------------------------
 #include "Shape.h"
 
+#include <stdexcept>
+
 //===-- Rectangle.h - Rectangle definition -------*- C++ -*-==================//
 //
 //                          2-Dimmensional Shapes
@@ -26,23 +28,23 @@ public:
 	/// and height.
 	Rectangle(double width, double height);
 
-	/// Destructor.
-	~Rectangle();
-
 	/// Returns the perimeter of the rectangle.
-	double perimeter() const;
+	double perimeter() const override;
 
 	/// Returns the area of the rectangle.
-	double area() const;
+	double area() const override;
 
-	/// Returns the name of the rectangle.
-	virtual std::string name() const;
+	/// Returns the type of the rectangle.
+	ShapeType type() const override;
+
+	/// Returns the name of this rectangle.
+	std::string name() const override;
 
 	/// Returns the number of sides of the rectangle.
-	int numberOfSides() const;
+	int numberOfSides() const override;
 
 	/// Returns a string representation of the rectangle.
-	std::string toString() const;
+	std::string toString() const override;
 private:
 	/// The width of the rectangle.
 	double m_width;

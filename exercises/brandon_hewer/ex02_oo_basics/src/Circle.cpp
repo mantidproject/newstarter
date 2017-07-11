@@ -13,19 +13,11 @@
 Circle::Circle(double radius) {
 	
 	if (radius < 0) {
-		std::ostringstream ss;
-		ss << "Radius of a " << name() << " must be greater than or equal"
+		std::string errorMsg = "Radius of a " + name() + " must be greater than or equal"
 			"to 0";
-		throw ss.str();
-		m_radius = radius;
+		throw std::invalid_argument(errorMsg);
 	}
 	m_radius = radius;
-}
-
-/*
- * Destructor for this circle.
- */
-Circle::~Circle() {
 }
 
 /*
@@ -49,6 +41,13 @@ double Circle::area() const {
 }
 
 /*
+ * @return	The type of this circle.
+ */
+ShapeType Circle::type() const {
+	return ShapeType::Circle;
+}
+
+/*
  * @return	The name of this circle.
  */
 std::string Circle::name() const {
@@ -66,7 +65,5 @@ int Circle::numberOfSides() const {
  * @return	The string representation of this circle.
  */
 std::string Circle::toString() const {
-	std::ostringstream ss;
-	ss << "Circle | Radius: " << m_radius;
-	return ss.str();
+	return "Circle | Radius: " + std::to_string(m_radius);
 }

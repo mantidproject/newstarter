@@ -7,6 +7,7 @@
 #include "Shape.h"
 
 #include <math.h>
+#include <stdexcept>
 
 //===-- Circle.h - Shape definition -------*- C++ -*-=========================//
 //
@@ -27,23 +28,23 @@ public:
 	/// Constructs a circle with a specified radius.
 	Circle(double radius);
 
-	/// Destructor.
-	~Circle();
-
 	/// Returns the perimeter of the circle.
-	double perimeter() const;
+	double perimeter() const override;
 
 	/// Returns the area of the circle.
-	double area() const;
+	double area() const override;
 
-	/// Returns the name of the circle.
-	std::string name() const;
+	/// Returns the type of the circle.
+	ShapeType type() const override;
+
+	/// Returns the name of this circle.
+	std::string name() const override;
 
 	/// Returns the number of sides of the circle.
-	int numberOfSides() const;
+	int numberOfSides() const override;
 
 	/// Returns the string representation of the circle.
-	std::string toString() const;
+	std::string toString() const override;
 private:
 	/// The radius of the circle.
 	double m_radius;

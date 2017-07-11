@@ -7,31 +7,26 @@
  * Constructs a new isoceles triangle with the specified height and base
  * length.
  *
- * @param height	The height of the triangle to construct.
+ * @param height			The height of the triangle to construct.
+ * @param base				The length of the base of the triangle to
+ *							construct.
  *
- * @param base		The length of the base of the triangle to
- *                  construct.
+ * @throw invalid_argument	Thrown when the specified heigth or base length
+ *							is less than 0.
  */
 Triangle::Triangle(double height, double base) {
 
 	if (height < 0) {
-		std::ostringstream ss;
-		ss << "Height of a " << name() << " must be greater than or equal to 0.";
-		throw ss.str();
+		std::string errorMsg = "Height of a " + name() + " must be greater than or equal to 0.";
+		throw std::invalid_argument(errorMsg);
 	}
 	else if (base < 0) {
-		std::ostringstream ss;
-		ss << "Base length of a " << name() << " must be greater than or equal to 0.";
-		throw ss.str();
+		std::string errorMsg = "Base length of a " + name() + " must be greater than or equal to 0.";
+		throw std::invalid_argument(errorMsg);
 	}
+
 	m_height = height;
 	m_base = base;
-}
-
-/*
- * Destructor for this triangle.
- */
-Triangle::~Triangle() {
 }
 
 /*
@@ -57,6 +52,13 @@ double Triangle::area() const {
 /*
  * @return	The name of this triangle.
  */
+ShapeType Triangle::type() const {
+	return ShapeType::Triangle;
+}
+
+/*
+ * @return	The name of this triangle.
+ */
 std::string Triangle::name() const {
 	return "Triangle";
 }
@@ -72,7 +74,6 @@ int Triangle::numberOfSides() const {
  * @return	The string representation of this triangle.
  */
 std::string Triangle::toString() const {
-	std::ostringstream ss;
-	ss << "Triangle | Height: " << m_height << ", Base: " << m_base;
-	return ss.str();
+	return "Triangle | Height: " + std::to_string(m_height) +
+		", Base: " + std::to_string(m_base);
 }

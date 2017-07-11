@@ -6,7 +6,10 @@
 /*
  * Constructs a new Square of the specified size.
  *
- * @param size	The size of the Square to construct.
+ * @param size				The size of the Square to construct.
+ *
+ * @throw invalid_argument	Thrown when the specified size is less
+ *							than 0.
  */
 Square::Square(double size) 
 	: Rectangle(size, size) {
@@ -14,9 +17,10 @@ Square::Square(double size)
 }
 
 /*
- * Destructor for this Square.
+ * @return	The type of this square.
  */
-Square::~Square(){
+ShapeType Square::type() const {
+	return ShapeType::Square;
 }
 
 /*
@@ -30,7 +34,5 @@ std::string Square::name() const {
  * @return	The string representation of this square.
  */
 std::string Square::toString() const {
-	std::ostringstream ss;
-	ss << "Square | Size: " << m_size;
-	return ss.str();
+	return "Square | Size: " + std::to_string(m_size);
 }

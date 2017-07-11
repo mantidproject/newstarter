@@ -28,23 +28,23 @@ public:
 	/// and base length.
 	Triangle(double height, double base);
 
-	/// Destructor.
-	~Triangle();
-
 	/// Returns the perimeter of the triangle.
-	double perimeter() const;
+	double perimeter() const override;
 
 	/// Returns the area of the triangle.
-	double area() const;
+	double area() const override;
 
-	/// Returns the name of the triangle.
-	std::string name() const;
+	/// Returns the type of the triangle.
+	ShapeType type() const override;
+
+	/// Returns the name of this triangle.
+	std::string name() const override;
 
 	/// Returns the number of sides of the triangle.
-	int numberOfSides() const;
+	int numberOfSides() const override;
 
 	/// Returns the string representation of the triangle.
-	std::string toString() const;
+	std::string toString() const override;
 private:
 	/// The height of the triangle.
 	double m_height;

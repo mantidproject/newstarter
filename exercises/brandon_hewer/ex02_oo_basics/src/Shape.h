@@ -6,7 +6,6 @@
 //----------------------------------------------------------------------
 
 #include <string>
-#include <sstream>
 
 //===-- Shape.h - Shape definition -------*- C++ -*-==========================//
 //
@@ -19,14 +18,24 @@
 /// abstract class for all shapes.
 ///
 //===----------------------------------------------------------------------===//
+
+/// Enumerator for the different types of shape.
+enum class ShapeType { Square, Circle, Triangle, Rectangle };
+
 class Shape
 {
 public:
+	/// Shape destructor.
+	virtual ~Shape() {};
+
 	/// Returns the perimeter of the shape.
 	virtual double perimeter() const = 0;
 
 	/// Returns the area of the shape.
 	virtual double area() const = 0;
+
+	/// Returns the type of the shape.
+	virtual ShapeType type() const = 0;
 
 	/// Returns the name of the shape.
 	virtual std::string name() const = 0;
