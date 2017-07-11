@@ -8,9 +8,9 @@ public:
 	Triangle(double base, double height);
 	~Triangle();
 
-	virtual double calcArea() const;
-	virtual double calcPerimeter() const;
-	virtual void print() const;
+	virtual double calcArea() const override;
+	virtual double calcPerimeter() const override;
+	virtual void print() const override;
 
 private:
 	double base;

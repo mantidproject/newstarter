@@ -8,7 +8,7 @@ class Shape
 public:
 	Shape();
 	Shape(std::string type, int sideCount);
-	~Shape();
+	virtual ~Shape();
 
 	std::string getType() const;
 	int getSideCount() const;

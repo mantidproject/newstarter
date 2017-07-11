@@ -9,9 +9,9 @@ public:
 	Circle(double radius);
 	~Circle();
 
-	virtual double calcArea() const;
-	virtual double calcPerimeter() const;
-	virtual void print() const;
+	double calcArea() const override;
+	double calcPerimeter() const override;
+	void print() const override;
 	
 private:
 	double radius;
