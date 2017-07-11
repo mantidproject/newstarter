@@ -28,14 +28,16 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
-  src/main.h
-  src/Shape.h
-  src/Square.h
-  src/Circle.h
-  src/Rectangle.h
-  src/Triangle.h
-  src/ShapeSorter.h
+  inc/main.h
+  inc/Shape.h
+  inc/Square.h
+  inc/Circle.h
+  inc/Rectangle.h
+  inc/Triangle.h
+  inc/ShapeSorter.h
   # add any additional header files here
 )
+
+include_directories( inc )
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )

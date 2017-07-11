@@ -9,26 +9,26 @@
 
 using namespace std;
 
-//loads word input from a file
-map<string, int> loadFile(string path);
+//loads word input from a file 
+map<string, int> loadFile(const string& path);
 
 //splits a line of the input into words
-void splitLine(string line, map<string, int> &words);
+void splitLine(string &line, map<string, int>& words);
 
 //adds a word to a given map
-void addWord(map<string, int> &words, string word);
+void addWord(map<string, int>& words, string& word);
 
 //compares two int values
 bool compare(const pair<string, int>& x, const pair<string, int>& y);
 
 //removes punctuation from a string
-string removePunctuation(string word);
+string removePunctuation(string& word);
 
 //converts a string to lowercase
-string toLower(string word);
+string toLower(string& word);
 
 //sorts map of words into descending order by value
-vector<pair<string, int>> sortWords(map<string, int> &words);
+vector<pair<string, int>> sortWords(map<string, int>& words);
 
 //outputs the words to a file
-void outputCount(vector<pair<string, int>> &words);
+void outputCount(vector<pair<string, int>>& words);

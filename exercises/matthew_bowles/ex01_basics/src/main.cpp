@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 * @return A map of words and their number of uses
 *
 */
-map<string, int> loadFile(string path)
+map<string, int> loadFile(const string& path)
 {
 	map<string, int> words;
 	ifstream fileIn;
@@ -49,7 +49,7 @@ map<string, int> loadFile(string path)
 * @param words The map of words to hold the resulting words
 *
 */
-void splitLine(string line, map<string, int> &words)
+void splitLine(string& line, map<string, int>& words)
 {
 	string word;
 	size_t space;
@@ -72,7 +72,7 @@ void splitLine(string line, map<string, int> &words)
 * @param word The word to be added
 *
 */
-void addWord(map<string, int> &words, string word)
+void addWord(map<string, int>& words, string& word)
 {
 	map<string, int>::const_iterator existing;
 	word = removePunctuation(word);
@@ -101,7 +101,7 @@ void addWord(map<string, int> &words, string word)
 * @return The string without leading or trailing punctuation
 *
 */
-string removePunctuation(string word)
+string removePunctuation(string& word)
 {
 	//check end of word
 	while (word.length() > 1 && !isalpha(word[word.length() - 1]))
@@ -120,7 +120,7 @@ string removePunctuation(string word)
 * @return The string in lowercase
 *
 */
-string toLower(string word)
+string toLower(string& word)
 {
 	int i = 0;
 	while (i < word.length() && isupper(word[i]))
@@ -138,7 +138,7 @@ string toLower(string word)
 * @return A sorted vector of word-value pairs
 *
 */
-vector<pair<string, int>> sortWords(map<string, int> &words)
+vector<pair<string, int>> sortWords(map<string, int>& words)
 {
 	vector<std::pair<string, int>> wordsVector;
 	map<string, int>::iterator iter;
@@ -169,7 +169,7 @@ bool compare(const pair<string, int>& x, const pair<string, int>& y)
 * @param words The vector of word-value pairs to output
 *
 */
-void outputCount(vector<pair<string, int>> &words)
+void outputCount(vector<pair<string, int>>& words)
 {
 	ofstream output;
 	auto iter = words.cbegin();

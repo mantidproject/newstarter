@@ -10,9 +10,9 @@ ShapeSorter::ShapeSorter()
 * @param shapes The vector of shape pointers to traverse
 *
 */
-void ShapeSorter::matchType(string type, vector<Shape*> shapes)
+void ShapeSorter::matchType(const string& type, vector<Shape*> shapes)
 {
-	vector<Shape*>::iterator iter = shapes.begin();
+	auto iter = shapes.begin();
 	while (iter != shapes.end())
 	{
 		if (type.compare((*iter)->getType()) != 0)
@@ -31,7 +31,7 @@ void ShapeSorter::matchType(string type, vector<Shape*> shapes)
 */
 void ShapeSorter::matchSides(int sides, vector<Shape*> shapes)
 {
-	vector<Shape*>::iterator iter = shapes.begin();
+	auto iter = shapes.begin();
 	while (iter != shapes.end())
 	{
 		if ((*iter)->getSideCount() != sides)
@@ -47,7 +47,7 @@ void ShapeSorter::matchSides(int sides, vector<Shape*> shapes)
 * @param shapes The vector of shape pointers to sort
 *
 */
-void ShapeSorter::sortArea(vector<Shape*> shapes)
+void ShapeSorter::sortArea(vector<Shape*>& shapes)
 {
 	sort(shapes.begin(), shapes.end(), compareArea);
 	printShapes(shapes);
@@ -69,7 +69,7 @@ bool compareArea(const Shape* x, const Shape* y)
 * @param shapes The vector of shape pointers to sort
 *
 */
-void ShapeSorter::sortPerimeter(vector<Shape*> shapes)
+void ShapeSorter::sortPerimeter(vector<Shape*>& shapes)
 {
 	sort(shapes.begin(), shapes.end(), comparePerimeter);
 	printShapes(shapes);
@@ -91,10 +91,10 @@ bool comparePerimeter(const Shape* x, const Shape* y)
 * @param shapes The vector of shape pointers to print
 *
 */
-void ShapeSorter::printShapes(vector<Shape*> &shapes)
+void ShapeSorter::printShapes(const vector<Shape*>& shapes)
 {
-	vector<Shape*>::const_iterator iter = shapes.begin();
-	while (iter != shapes.end())
+	auto iter = shapes.cbegin();
+	while (iter != shapes.cend())
 	{
 		(*iter)->print();
 		++iter;
