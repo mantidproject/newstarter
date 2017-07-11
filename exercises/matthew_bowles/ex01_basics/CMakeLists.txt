@@ -26,4 +26,6 @@ set ( HDR_FILES
   # add any additional header files here
 )
 
+include_directories( inc )
+
 add_executable ( WordCounter ${SRC_FILES} ${HDR_FILES} )
