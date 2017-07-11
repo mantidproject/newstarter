@@ -6,8 +6,6 @@
 //----------------------------------------------------------------------
 #include "Shape.h"
 
-#include <stdexcept>
-
 //===-- Rectangle.h - Rectangle definition -------*- C++ -*-==================//
 //
 //                          2-Dimmensional Shapes

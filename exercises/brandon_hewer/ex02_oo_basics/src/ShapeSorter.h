@@ -6,7 +6,6 @@
 //----------------------------------------------------------------------
 #include "Shape.h"
 
-#include <algorithm>
 #include <functional>
 #include <sstream>
 #include <string>

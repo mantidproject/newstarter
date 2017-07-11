@@ -3,6 +3,8 @@
 //----------------------------------------------------------------------
 #include "Triangle.h"
 
+#include <stdexcept>
+
 /*
  * Constructs a new isoceles triangle with the specified height and base
  * length.

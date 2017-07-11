@@ -3,6 +3,8 @@
 //----------------------------------------------------------------------
 #include "Rectangle.h"
 
+#include <stdexcept>
+
 /*
  * Constructs a new rectangle of the specified width and height.
  *

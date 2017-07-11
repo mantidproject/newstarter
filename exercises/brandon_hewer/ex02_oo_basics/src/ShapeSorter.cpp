@@ -3,6 +3,8 @@
 //----------------------------------------------------------------------
 #include "ShapeSorter.h"
 
+#include <algorithm>
+
 /*
  * Constructs a new ShapeSorter for the specified vector of shapes.
  *

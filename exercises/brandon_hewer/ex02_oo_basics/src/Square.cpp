@@ -3,6 +3,8 @@
 //----------------------------------------------------------------------
 #include "Square.h"
 
+#include <stdexcept>
+
 /*
  * Constructs a new Square of the specified size.
  *

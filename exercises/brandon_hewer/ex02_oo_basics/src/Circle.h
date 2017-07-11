@@ -6,9 +6,6 @@
 //----------------------------------------------------------------------
 #include "Shape.h"
 
-#include <math.h>
-#include <stdexcept>
-
 //===-- Circle.h - Shape definition -------*- C++ -*-=========================//
 //
 //                          2-Dimmensional Shapes

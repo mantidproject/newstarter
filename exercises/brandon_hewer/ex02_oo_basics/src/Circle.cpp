@@ -3,6 +3,9 @@
 //----------------------------------------------------------------------
 #include "Circle.h"
 
+#include <math.h>
+#include <stdexcept>
+
 /*
  * Constructs a new Circle with the specified radius.
  *
