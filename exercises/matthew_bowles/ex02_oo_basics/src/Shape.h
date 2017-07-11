@@ -1,22 +1,26 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include <math.h>
 
-using namespace std;
 
 class Shape
 {
 public:
 	Shape();
-	Shape(string type, int sideCount);
-	virtual string getType();
+	Shape(std::string type, int sideCount);
 	~Shape();
+
+	std::string getType() const;
+	int getSideCount() const;
 	virtual double calcArea() const;
 	virtual double calcPerimeter() const;
-	virtual void print();
+	virtual void print() const;
+
+private:
 	int sideCount;
-	string shapeType;
+	std::string type;
+
 	
+
 };
 

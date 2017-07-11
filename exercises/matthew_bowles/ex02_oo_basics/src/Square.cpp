@@ -1,27 +1,25 @@
 #include "Square.h"
 
-using namespace std;
-
-Square::Square(double side1)
+Square::Square(double side)
 	:Shape("Square", 4),
-	side1(side1)
+	side(side)
 {
 }
 
 double Square::calcArea() const
 {
-	return side1*side1;
+	return side*side;
 }
 
 double Square::calcPerimeter() const
 {
-	return side1 * 4;
+	return side * 4;
 }
 
-void Square::print()
+void Square::print() const
 {
 	Shape::print();
-	cout << ", side: " << side1 << endl;
+	std::cout << ", side: " << side << std::endl;
 }
 
 Square::~Square()

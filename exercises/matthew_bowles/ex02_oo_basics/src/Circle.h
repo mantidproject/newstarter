@@ -1,17 +1,18 @@
 #pragma once
 #include "Shape.h"
 
-using namespace std;
-
 class Circle :
 	public Shape
 {
 public:
 	Circle(double radius);
+	~Circle();
+
 	virtual double calcArea() const;
 	virtual double calcPerimeter() const;
-	virtual void print();
+	virtual void print() const;
+	
+private:
 	double radius;
-	~Circle();
 };
 

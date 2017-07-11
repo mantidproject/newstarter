@@ -1,10 +1,8 @@
 #pragma once
 #include "Shape.h"
-#include <string>
-#include <iostream>
-#include <vector>
-#include <math.h>
 #include <algorithm>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -12,12 +10,14 @@ class ShapeSorter
 {
 public:
 	ShapeSorter();
+	~ShapeSorter();
 	void matchType(string type, vector<Shape*> shapes);
 	void matchSides(int sides, vector<Shape*> shapes);
 	void sortArea(vector<Shape*> shapes);
 	void sortPerimeter(vector<Shape*> shapes);
+
+private:
 	void printShapes(vector<Shape*> &shapes);
-	~ShapeSorter();
 	vector<Shape> shapes;
 };
 

@@ -1,7 +1,5 @@
 #include "Rectangle.h"
 
-using namespace std;
-
 Rectangle::Rectangle(double side1, double side2)
 	:Shape("Rectangle", 4),
 	side1(side1),
@@ -19,10 +17,10 @@ double Rectangle::calcPerimeter() const
 	return side1 * 2 + side2 * 2;
 }
 
-void Rectangle::print()
+void Rectangle::print() const
 {
 	Shape::print();
-	cout << ", side 1: " << side1 << ", side 2: " << side2 << endl;
+	std::cout << ", side 1: " << side1 << ", side 2: " << side2 << std::endl;
 }
 
 Rectangle::~Rectangle()

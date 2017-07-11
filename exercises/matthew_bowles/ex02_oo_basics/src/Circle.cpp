@@ -1,6 +1,5 @@
 #include "Circle.h"
 
-using namespace std;
 
 Circle::Circle(double radius)
 	:Shape("Circle", 1),
@@ -18,10 +17,10 @@ double Circle::calcPerimeter() const
 	return M_PI * radius * 2;
 }
 
-void Circle::print()
+void Circle::print() const
 {
 	Shape::print();
-	cout << ", radius: " << radius << endl;
+	std::cout << ", radius: " << radius << std::endl;
 }
 
 Circle::~Circle()
