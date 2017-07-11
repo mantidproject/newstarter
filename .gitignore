@@ -1,6 +1,9 @@
 # Builds directory
 builds/*
 
+# Vim Swap Files
+*.swp
+
 # Compiled Object files
 *.slo
 *.lo
@@ -22,3 +25,9 @@ builds/*
 *.exe
 *.out
 *.app
+
+# Vim Ycm Config
+*.ycm_extra_conf.py
+
+# Exercise 1 Output File
+*results.txt
