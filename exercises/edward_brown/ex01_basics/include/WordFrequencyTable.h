@@ -25,7 +25,7 @@ makeOrderedWordFrequencyTable(ConstWordFrequencyPairInputIterator Begin,
             [](WordFrequencyPair const &A, WordFrequencyPair const &B) -> bool {
               return A.second > B.second;
             });
-  return std::move(table);
+  return table;
 }
 
 /** Prints a padded word frequency table to the output stream.

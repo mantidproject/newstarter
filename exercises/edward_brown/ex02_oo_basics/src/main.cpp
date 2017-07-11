@@ -17,7 +17,7 @@ ShapeVector makeShapeList() {
   shapes.emplace_back(std::make_unique<Triangle>(10.0, 5.0));
   shapes.emplace_back(std::make_unique<Rectangle>(4.0, 8.0));
   shapes.emplace_back(std::make_unique<Square>(3.0));
-  return std::move(shapes);
+  return shapes;
 }
 
 int main(int, char **) {
