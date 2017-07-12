@@ -2,7 +2,6 @@
 #define CIRCLE_H
 
 #include "Shape.h"
-#define _USE_MATH_DEFINES
 #include <cmath>
 
 class Circle :

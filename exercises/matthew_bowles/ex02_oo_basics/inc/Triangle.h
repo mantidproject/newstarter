@@ -2,6 +2,7 @@
 #define TRIANGLE_H
 
 #include "Shape.h"
+#include <cmath>
 
 class Triangle : public Shape
 {
