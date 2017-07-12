@@ -17,12 +17,14 @@ include ( CommonSetup )
 ###############################################################################
 
 set ( SRC_FILES
-  src/main.cpp
+  src/Io.cpp
+  src/WordManipulation.cpp
   # add any additional source files here
 )
 
 set ( HDR_FILES
-  inc/main.h
+  inc/Io.h
+  inc/WordManipulation.h
   # add any additional header files here
 )
 
