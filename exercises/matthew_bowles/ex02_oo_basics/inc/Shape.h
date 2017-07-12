@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SHAPE_H
+#define SHAPE_H
+
 #include <string>
 #include <iostream>
 
@@ -6,7 +8,6 @@
 class Shape
 {
 public:
-	Shape();
 	Shape(std::string type, int sideCount);
 	virtual ~Shape();
 
@@ -17,10 +18,10 @@ public:
 	virtual void print() const;
 
 private:
-	int sideCount;
-	std::string type;
+	int m_sideCount;
+	std::string m_type;
 
 	
 
 };
-
+#endif

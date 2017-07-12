@@ -2,27 +2,24 @@
 
 Triangle::Triangle(double base, double height)
 	:Shape("Triangle", 3),
-	base(base),
-	height(height)
+	m_base(base),
+	m_height(height)
 {
 }
 
 double Triangle::calcArea() const
 {
-	return height * base / 2;
+	return m_height * m_base / 2;
 }
 
 double Triangle::calcPerimeter() const
 { 
-	return base + 2*(sqrt(height * height + (base * base / 4)));
+	return m_base + 2*(sqrt(m_height * m_height + (m_base * m_base / 4)));
 }
 
 void Triangle::print() const
 {
 	Shape::print();
-	std::cout << ", base: " << base << ", height: " << height << '\n';
+	std::cout << ", base: " << m_base << ", height: " << m_height << '\n';
 }
 
-Triangle::~Triangle()
-{
-}

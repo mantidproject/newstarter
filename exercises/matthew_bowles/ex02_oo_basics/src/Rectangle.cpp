@@ -2,27 +2,23 @@
 
 Rectangle::Rectangle(double side1, double side2)
 	:Shape("Rectangle", 4),
-	side1(side1),
-	side2(side2)
+	m_side1(side1),
+	m_side2(side2)
 {
 }
 
 double Rectangle::calcArea() const
 {
-	return side1*side2;
+	return m_side1*m_side2;
 }
 
 double Rectangle::calcPerimeter() const
 {
-	return side1 * 2 + side2 * 2;
+	return m_side1 * 2 + m_side2 * 2;
 }
 
 void Rectangle::print() const
 {
 	Shape::print();
-	std::cout << ", side 1: " << side1 << ", side 2: " << side2 << '\n';
-}
-
-Rectangle::~Rectangle()
-{
+	std::cout << ", side 1: " << m_side1 << ", side 2: " << m_side2 << '\n';
 }

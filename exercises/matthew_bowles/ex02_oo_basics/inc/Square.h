@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SQUARE_H
+#define SQUARE_H
+
 #include "Shape.h"
 
 class Square :
@@ -6,13 +8,13 @@ class Square :
 {
 public:
 	Square(double side);
-	~Square();
 
-	virtual double calcArea() const override;
-	virtual double calcPerimeter() const override;
-	virtual void print() const override;
+	double calcArea() const override;
+	double calcPerimeter() const override;
+	void print() const override;
 private:
-	double side;
+	double m_side;
 
 };
 
+#endif

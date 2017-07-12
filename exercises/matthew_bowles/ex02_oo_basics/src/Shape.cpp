@@ -1,23 +1,19 @@
 #include "Shape.h"
 
-Shape::Shape()
-{
-}
-
 Shape::Shape(std::string type, int sideCount)
-	:type(type),
-	sideCount(sideCount)
+	:m_type(type),
+	m_sideCount(sideCount)
 {
 }
 
 std::string Shape::getType() const
 {
-	return type;
+	return m_type;
 }
 
 int Shape::getSideCount() const
 {
-	return sideCount;
+	return m_sideCount;
 }
 
 double Shape::calcArea() const
@@ -32,7 +28,7 @@ double Shape::calcPerimeter() const
 
 void Shape::print() const
 {
-	std::cout << "Type: " << type << ", sides: " << sideCount;
+	std::cout << "Type: " << m_type << ", sides: " << m_sideCount;
 }
 
 Shape::~Shape()

@@ -1,8 +1,5 @@
 #include "ShapeSorter.h"
 
-ShapeSorter::ShapeSorter()
-{
-}
 
 /** prints shapes that match a given type
 *
@@ -10,17 +7,17 @@ ShapeSorter::ShapeSorter()
 * @param shapes The vector of shape pointers to traverse
 *
 */
-void ShapeSorter::matchType(const string& type, vector<Shape*> shapes)
+void ShapeSorter::matchType(const string& type, const vector<Shape*>& shapes)
 {
-	auto iter = shapes.begin();
-	while (iter != shapes.end())
+	vector<Shape*> matches;
+	for (auto s : shapes)
 	{
-		if (type.compare((*iter)->getType()) != 0)
-			iter = shapes.erase(iter);
-		else
-			++iter;
+		if (s->getType() == type)
+		{
+			matches.push_back(s);
+		}
 	}
-	printShapes(shapes);
+	printShapes(matches);
 }
 
 /** prints shapes with a given number of sides
@@ -29,17 +26,17 @@ void ShapeSorter::matchType(const string& type, vector<Shape*> shapes)
 * @param shapes The vector of shape pointers to traverse
 *
 */
-void ShapeSorter::matchSides(int sides, vector<Shape*> shapes)
+void ShapeSorter::matchSides(int sides, const vector<Shape*>& shapes)
 {
-	auto iter = shapes.begin();
-	while (iter != shapes.end())
+	vector<Shape*> matches;
+	for (auto s : shapes)
 	{
-		if ((*iter)->getSideCount() != sides)
-			iter = shapes.erase(iter);
-		else
-			++iter;
+		if (s->getSideCount() == sides)
+		{
+			matches.push_back(s);
+		}
 	}
-	printShapes(shapes);
+	printShapes(matches);
 }
 
 /** sorts shapes by their area (descending)
@@ -59,7 +56,7 @@ void ShapeSorter::sortArea(vector<Shape*>& shapes)
 * @param y Pointer to second shape to compare
 *
 */
-bool compareArea(const Shape* x, const Shape* y)
+bool ShapeSorter::compareArea(const Shape* x, const Shape* y)
 {
 	return x->calcArea() > y->calcArea();
 }
@@ -81,7 +78,7 @@ void ShapeSorter::sortPerimeter(vector<Shape*>& shapes)
 * @param y Pointer to second shape to compare
 *
 */
-bool comparePerimeter(const Shape* x, const Shape* y)
+bool ShapeSorter::comparePerimeter(const Shape* x, const Shape* y)
 {
 	return x->calcPerimeter() > y->calcPerimeter();
 }
@@ -93,16 +90,9 @@ bool comparePerimeter(const Shape* x, const Shape* y)
 */
 void ShapeSorter::printShapes(const vector<Shape*>& shapes)
 {
-	auto iter = shapes.cbegin();
-	while (iter != shapes.cend())
-	{
-		(*iter)->print();
-		++iter;
-	}
+	for (auto s : shapes)
+		s->print();
 	cout << '\n';
 }
 
-ShapeSorter::~ShapeSorter()
-{
-}
 

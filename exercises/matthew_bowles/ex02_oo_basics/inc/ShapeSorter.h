@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SHAPESORTER_H
+#define SHAPESORTER_H
+
 #include "Shape.h"
 #include <algorithm>
 #include <string>
@@ -9,19 +11,15 @@ using namespace std;
 class ShapeSorter
 {
 public:
-	ShapeSorter();
-	~ShapeSorter();
-	void matchType(const string& type, vector<Shape*> shapes);
-	void matchSides(int sides, vector<Shape*> shapes);
+	void matchType(const string& type, const vector<Shape*>& shapes);
+	void matchSides(int sides, const vector<Shape*>& shapes);
 	void sortArea(vector<Shape*>& shapes);
 	void sortPerimeter(vector<Shape*>& shapes);
 
 private:
 	void printShapes(const vector<Shape*> &shapes);
-	vector<Shape> shapes;
+	static bool compareArea(const Shape* x, const Shape* y);
+	static bool comparePerimeter(const Shape* x, const Shape* y);
 };
 
-bool compareArea(const Shape* x, const Shape* y);
-bool comparePerimeter(const Shape* x, const Shape* y);
-
-
+#endif
