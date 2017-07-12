@@ -51,5 +51,5 @@ void removePunctuation(string& word)
 */
 void toLower(string& word)
 {
-	std::transform(word.begin(), word.end(), word.begin(), tolower);
+	std::transform(word.begin(), word.end(), word.begin(), ::tolower);
 }
