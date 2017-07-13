@@ -17,19 +17,4 @@ int Shape::getSideCount() const
 	return m_sideCount;
 }
 
-double Shape::calcArea() const
-{
-	return 0;
-}
-
-double Shape::calcPerimeter() const
-{
-	return 0;
-}
-
-void Shape::print() const
-{
-	std::cout << "Type: " << m_type << ", sides: " << m_sideCount;
-}
-
 
