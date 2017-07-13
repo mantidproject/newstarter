@@ -33,16 +33,19 @@ void addWord(map<string, int>& words, string& word)
 */
 void removePunctuation(string& word)
 {
-	string punctuation = ".,?'\"!():;";
-	auto iter = word.begin();
-	while (iter != word.end())
-	{
-		if (punctuation.find(*iter) != string::npos)
-			iter = word.erase(iter);
-		else
-			++iter;
-	}
+	word.erase(remove_if(word.begin(), word.end(), isPunctuation), word.end());
+}
 
+/** checks if a character is punctuation /
+*
+* @param c Character to be checked
+* @return true if c is punctuation, otherwise false
+*
+*/
+bool isPunctuation(const char& c)
+{
+	string punctuation = ".,?'\"!():;";
+	return punctuation.find(c) != string::npos;
 }
 
 /** Converts a string to lowercase

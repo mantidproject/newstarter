@@ -20,5 +20,5 @@ double Square::calcPerimeter() const
 void Square::print() const
 {
 	Shape::print();
-	std::cout << ", side: " << m_side << '\n';
+	std::cout << "Type: " << m_type << ", sides: " << m_sideCount << ", side: " << m_side << '\n';
 }

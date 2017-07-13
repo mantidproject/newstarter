@@ -32,7 +32,4 @@ void Shape::print() const
 	std::cout << "Type: " << m_type << ", sides: " << m_sideCount;
 }
 
-Shape::~Shape()
-{
-}
 

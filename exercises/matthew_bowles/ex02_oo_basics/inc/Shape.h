@@ -4,23 +4,22 @@
 #include <string>
 
 
-class Shape
+class Shape abstract
 {
 public:
 	Shape(std::string type, int sideCount);
-	virtual ~Shape();
+	virtual ~Shape() = default;
 
 	std::string getType() const;
 	int getSideCount() const;
-	virtual double calcArea() const;
-	virtual double calcPerimeter() const;
-	virtual void print() const;
+	virtual double calcArea() const = 0;
+	virtual double calcPerimeter() const = 0;
+	virtual void print() const = 0;
 
-private:
+protected:
 	int m_sideCount;
 	std::string m_type;
 
 	
-
 };
 #endif

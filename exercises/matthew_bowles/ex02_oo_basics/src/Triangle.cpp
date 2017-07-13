@@ -21,7 +21,6 @@ double Triangle::calcPerimeter() const
 
 void Triangle::print() const
 {
-	Shape::print();
-	std::cout << ", base: " << m_base << ", height: " << m_height << '\n';
+	std::cout << "Type: " << m_type << ", sides: " << m_sideCount << ", base: " << m_base << ", height: " << m_height << '\n';
 }
 

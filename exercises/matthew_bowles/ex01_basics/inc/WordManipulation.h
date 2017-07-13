@@ -15,6 +15,9 @@ bool compare(const pair<string, int>& x, const pair<string, int>& y);
 //removes punctuation from a string
 void removePunctuation(string& word);
 
+//checks if a character is punctuation
+bool isPunctuation(const char& c);
+
 //converts a string to lowercase
 void toLower(string& word);
 
