@@ -1,4 +1,6 @@
 #include "Triangle.h"
+#include <cmath>
+#include <iostream>
 
 Triangle::Triangle(double base, double height)
 	:Shape("Triangle", 3),

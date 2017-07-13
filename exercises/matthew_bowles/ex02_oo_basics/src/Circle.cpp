@@ -1,5 +1,6 @@
 #include "Circle.h"
-
+#include <cmath>
+#include <iostream>
 
 Circle::Circle(double radius)
 	:Shape("Circle", 1),

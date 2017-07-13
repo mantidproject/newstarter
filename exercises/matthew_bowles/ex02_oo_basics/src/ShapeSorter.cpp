@@ -1,5 +1,6 @@
 #include "ShapeSorter.h"
-
+#include <algorithm>
+#include <iostream>
 
 /** prints shapes that match a given type
 *

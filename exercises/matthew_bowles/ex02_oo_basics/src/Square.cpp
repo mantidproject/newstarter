@@ -1,4 +1,5 @@
 #include "Square.h"
+#include <iostream>
 
 Square::Square(double side)
 	:Shape("Square", 4),

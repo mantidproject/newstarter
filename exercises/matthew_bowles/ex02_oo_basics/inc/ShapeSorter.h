@@ -2,7 +2,6 @@
 #define SHAPESORTER_H
 
 #include "Shape.h"
-#include <algorithm>
 #include <string>
 #include <vector>
 

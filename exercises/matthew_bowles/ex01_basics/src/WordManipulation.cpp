@@ -1,4 +1,5 @@
 #include "WordManipulation.h"
+#include <algorithm>
 
 /** Adds a word to a given map if applicable
 *
@@ -32,7 +33,7 @@ void addWord(map<string, int>& words, string& word)
 */
 void removePunctuation(string& word)
 {
-	string punctuation = ".,?'\"!():";
+	string punctuation = ".,?'\"!():;";
 	auto iter = word.begin();
 	while (iter != word.end())
 	{

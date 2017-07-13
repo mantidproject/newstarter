@@ -28,7 +28,6 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
-  inc/main.h
   inc/Shape.h
   inc/Square.h
   inc/Circle.h

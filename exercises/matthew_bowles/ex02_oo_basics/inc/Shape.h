@@ -2,7 +2,6 @@
 #define SHAPE_H
 
 #include <string>
-#include <iostream>
 
 
 class Shape

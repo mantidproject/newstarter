@@ -1,4 +1,8 @@
-#include "main.h"
+#include "ShapeSorter.h"
+#include "Triangle.h"
+#include "Square.h"
+#include "Circle.h"
+#include "Rectangle.h"
 
 int main(int, char **)
 {

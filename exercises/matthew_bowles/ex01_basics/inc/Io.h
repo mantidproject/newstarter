@@ -1,14 +1,9 @@
 #ifndef IO_H
 #define IO_H
 
-#include "WordManipulation.h"
-#include <fstream>
-#include <iostream>
-#include <iomanip>
 #include <string>
 #include <map>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 

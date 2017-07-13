@@ -1,4 +1,5 @@
 #include "Shape.h"
+#include <iostream>
 
 Shape::Shape(std::string type, int sideCount)
 	:m_type(type),

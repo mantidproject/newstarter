@@ -1,4 +1,5 @@
 #include "Rectangle.h"
+#include <iostream>
 
 Rectangle::Rectangle(double side1, double side2)
 	:Shape("Rectangle", 4),

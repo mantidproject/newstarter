@@ -1,7 +1,6 @@
 #ifndef WORDMANIP_H
 #define WORDMANIP_H
 
-#include <algorithm>
 #include <string>
 #include <map>
 
