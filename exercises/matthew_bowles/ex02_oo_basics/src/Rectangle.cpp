@@ -20,6 +20,5 @@ double Rectangle::calcPerimeter() const
 
 void Rectangle::print() const
 {
-	Shape::print();
 	std::cout << "Type: " << m_type << ", sides: " << m_sideCount << ", side 1: " << m_side1 << ", side 2: " << m_side2 << '\n';
 }

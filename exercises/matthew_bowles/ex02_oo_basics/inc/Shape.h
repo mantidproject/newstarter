@@ -4,7 +4,7 @@
 #include <string>
 
 
-class Shape abstract
+class Shape
 {
 public:
 	Shape(std::string type, int sideCount);

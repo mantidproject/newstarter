@@ -20,6 +20,5 @@ double Circle::calcPerimeter() const
 
 void Circle::print() const
 {
-	Shape::print();
 	std::cout << "Type: " << m_type << ", sides: " << m_sideCount << ", radius: " << m_radius << '\n';
 }
