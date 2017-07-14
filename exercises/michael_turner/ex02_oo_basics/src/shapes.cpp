@@ -5,45 +5,13 @@
 #include <iomanip>
 #include <map>
 
-//Constants - defines type names and number of sides
-namespace {
-    const std::string CIRCLE_NAME = "circle";
-    const int CIRCLE_SIDES = 1;
-
-    const std::string TRIANGLE_NAME = "triangle";
-    const int TRIANGLE_SIDES = 3;
-
-    const std::string RECTANGLE_NAME = "rectangle";
-    const int RECTANGLE_SIDES = 4;
-
-    const std::string SQUARE_NAME = "square";
-
-    const double PI = 3.14159;
-}
-
 //Base Class
 /**
  * @brief Shape::Shape  Constructor for the Shape class - sets type and number of sides
  * @param name      The type of the shape (i.e. subclass)
  * @param s         Number of Sides of the shape
  */
-Shape::Shape(const std::string& name, const int& s): type(name), numSides(s) {}
-
-/**
- * @brief Shape::setDim   Stores the measurements of the shape in 'dim': e.g. Circle: (radius, 5)
- * @param dim       Container for shape measurements
- */
-void Shape::setDim(std::map<std::string, double>& dim){
-    dimensions = dim;
-}
-
-/**
- * @brief Shape::setType  Allows the subclass to change its type
- * @param name          Subclass type
- */
-void Shape::setType(const std::string& name){
-    type = name;
-}
+Shape::Shape(){}
 
 /**
  * @brief Shape::printShape  Displays the Shape's type & measurements on a single line.
@@ -56,22 +24,6 @@ void Shape::printShape(){
     std::cout << std::endl;
 }
 
-/**
- * @brief Shape::getType        Gets the shape's type
- * @return      std::string
- */
-std::string Shape::getType() const{
-    return type;
-}
-
-/**
- * @brief Shape::getSides       Gets the number of sides of the shape
- * @return      int
- */
-int Shape::getSides() const{
-    return numSides;
-}
-
 //Rectangle Class
 /**
  * @brief Rectangle::Rectangle      Constructor for the rectangle class.  Sets width and height
@@ -79,13 +31,25 @@ int Shape::getSides() const{
  * @param w     Width of Rectangle
  * @param h     Height of Rectangle
  */
-Rectangle::Rectangle(double w, double h): Shape(RECTANGLE_NAME, RECTANGLE_SIDES), width(w), height(h){
-    std::map<std::string, double> dim;
-    dim.insert(std::pair<std::string, double>("width", width));
-    dim.insert(std::pair<std::string, double>("height", height));
+Rectangle::Rectangle(double w, double h): Shape(), width(w), height(h){
+    dimensions.insert(std::pair<std::string, double>("width", width));
+    dimensions.insert(std::pair<std::string, double>("height", height));
+}
 
-    //Saves measurements in 'dimensions'
-    setDim(dim);
+/**
+ * @brief Rectangle::getType    Returns 'rectangle'
+ * @return      std::string
+ */
+std::string Rectangle::getType() const{
+    return "rectangle";
+}
+
+/**
+ * @brief Rectangle::getSides   Returns 4
+ * @return      int
+ */
+int Rectangle::getSides() const{
+    return 4;
 }
 
 /**
@@ -114,8 +78,14 @@ double Rectangle::getPerim() const{
  *
  * @param w         Side length
  */
-Square::Square(double w): Rectangle(w, w){
-    setType(SQUARE_NAME);
+Square::Square(double w): Rectangle(w, w){}
+
+    /**
+ * @brief Square::getType       Returns 'square'
+ * @return      std::string
+ */
+std::string Square::getType() const{
+    return "square";
 }
 
 
@@ -128,11 +98,25 @@ Square::Square(double w): Rectangle(w, w){
  * @param b     Base lenght
  * @param h     Height
  */
-Triangle::Triangle(double b, double h): Shape(TRIANGLE_NAME, TRIANGLE_SIDES), base(b), height(h){
-    std::map<std::string, double> dim;
-    dim.insert(std::pair<std::string, double>("base", base ));
-    dim.insert(std::pair<std::string, double>("height", height));
-    setDim(dim);
+Triangle::Triangle(double b, double h): Shape(), base(b), height(h){
+    dimensions.insert(std::pair<std::string, double>("base", base ));
+    dimensions.insert(std::pair<std::string, double>("height", height));
+}
+
+/**
+ * @brief Triangle::getType     Returns 'triangle'
+ * @return      std::string
+ */
+std::string Triangle::getType() const{
+    return "triangle";
+}
+
+/**
+ * @brief Triangle::getSides    Returns 3
+ * @return      int
+ */
+int Triangle::getSides() const{
+    return 3;
 }
 
 /**
@@ -160,10 +144,26 @@ double Triangle::getPerim() const{
  *                                          Sets the 'dimensions' variable
  * @param r
  */
-Circle::Circle(double r): Shape(CIRCLE_NAME, CIRCLE_SIDES), radius(r){
-    std::map<std::string, double> dim;
-    dim.insert(std::pair<std::string, double>("radius", radius));
-    setDim(dim);
+Circle::Circle(double r): Shape(), radius(r){
+    dimensions.insert(std::pair<std::string, double>("radius", radius));
+}
+
+
+/**
+ * @brief Circle::getType       Returns 'cirlce'
+ * @return      std::string
+ */
+std::string Circle::getType() const{
+    return "circle";
+}
+
+
+/**
+ * @brief Circle::getSides      Returns 1
+ * @return      int
+ */
+int Circle::getSides() const{
+    return 1;
 }
 
 /**

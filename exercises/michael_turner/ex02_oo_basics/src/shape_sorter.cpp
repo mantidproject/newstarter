@@ -13,7 +13,7 @@
  * @brief ShapeSorter::ShapeSorter      Reads in the vector of shapes to be sorted
  * @param v         The vector of shapes
  */
-ShapeSorter::ShapeSorter(std::vector<std::reference_wrapper<Shape> > &v): shapes(v){}
+ShapeSorter::ShapeSorter(ShapeVector &v): shapes(v){}
 
 
 /**
@@ -24,7 +24,7 @@ ShapeSorter::ShapeSorter(std::vector<std::reference_wrapper<Shape> > &v): shapes
 void ShapeSorter::printRank(std::multimap<double, std::reference_wrapper<Shape> > &rank){
 
     //Iterate through map in reverse order and print value of area/perimeter, followed by the Shape data
-    for(std::multimap<double, std::reference_wrapper<Shape>>::const_reverse_iterator iter = rank.rbegin(); iter != rank.rend(); ++iter){
+    for(auto iter = rank.crbegin(); iter != rank.crend(); ++iter){
         //Print data in columns
         std::cout <<std::left << std::setw(COL_WIDTH) << iter->first;
         iter->second.get().printShape();
@@ -37,10 +37,10 @@ void ShapeSorter::printRank(std::multimap<double, std::reference_wrapper<Shape> 
  * @brief ShapeSorter::printSort        Prints the data of the shapes matching a criterium
  * @param sorted            The selected shapes
  */
-void ShapeSorter::printSort(std::vector<std::reference_wrapper<Shape>> &sorted){
+void ShapeSorter::printSort(ShapeVector &sorted){
     //Iterate through vector and print each shape's data
-    for(auto iter = sorted.begin(); iter < sorted.end(); ++iter){
-        iter->get().printShape();
+    for(const auto &shape_ref: sorted){
+        shape_ref.get().printShape();
     }
     std::cout << std::endl;
 }
@@ -53,13 +53,13 @@ void ShapeSorter::printSort(std::vector<std::reference_wrapper<Shape>> &sorted){
  * @param type      The type of shapes desired
  */
 void ShapeSorter::types(const std::string& type){
-    std::vector<std::reference_wrapper<Shape>> sorted;
+    ShapeVector sorted;
     int occurences = 0;
 
-    for (auto iter = shapes.begin(); iter < shapes.end(); ++iter){
+    for (const auto &shape_ref: shapes){
 
-        if (!(iter->get().getType().compare(type))){
-            sorted.push_back(iter->get());
+        if (!(shape_ref.get().getType().compare(type))){
+            sorted.push_back(shape_ref.get());
             //Increment number of matching shapes found
             ++occurences;
         }
@@ -75,12 +75,12 @@ void ShapeSorter::types(const std::string& type){
  * @param numSides
  */
 void ShapeSorter::sides(const int &numSides){
-    std::vector<std::reference_wrapper<Shape>> sorted;
+    ShapeVector sorted;
     int occurences = 0;
 
-    for (auto iter = shapes.begin(); iter < shapes.end(); ++iter){
-         if( iter->get().getSides() == numSides){
-             sorted.push_back(iter->get());
+    for (const auto &shape_ref: shapes){
+         if( shape_ref.get().getSides() == numSides){
+             sorted.push_back(shape_ref.get());
              //Increment number of matching shapes found
              ++occurences;
          }
@@ -97,8 +97,8 @@ void ShapeSorter::sides(const int &numSides){
 void ShapeSorter::area(){
     std::multimap<double, std::reference_wrapper<Shape>> rank;
 
-    for (auto iter = shapes.begin(); iter < shapes.end(); ++iter){
-        rank.insert(std::pair<double, std::reference_wrapper<Shape>>(iter->get().getArea(), iter->get()));
+    for (const auto &shape_ref: shapes){
+        rank.insert(std::pair<double, std::reference_wrapper<Shape>>(shape_ref.get().getArea(), shape_ref.get()));
     }
     std::cout <<std::left <<std::setw(COL_WIDTH)<<"Area" << "Type"<<std::endl;
     printRank(rank);
@@ -111,8 +111,8 @@ void ShapeSorter::area(){
 void ShapeSorter::perim(){
     std::multimap<double, std::reference_wrapper<Shape>> rank;
 
-    for (auto iter = shapes.begin(); iter < shapes.end(); ++iter){
-        rank.insert(std::pair<double, std::reference_wrapper<Shape>>(iter->get().getPerim(), iter->get()));
+    for (const auto &shape_ref: shapes){
+        rank.insert(std::pair<double, std::reference_wrapper<Shape>>(shape_ref.get().getPerim(), shape_ref.get()));
     }
     std::cout << std::left << std::setw(COL_WIDTH)<< "Perimeter" <<"Type"<<std::endl;
     printRank(rank);

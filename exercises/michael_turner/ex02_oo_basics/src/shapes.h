@@ -7,46 +7,32 @@
 //Column width - for printing data in columns
 static const int COL_WIDTH = 15;
 
-
-
 //Base class
 class Shape
 {
 public:
     ///Constructor: sets the type and number of sides
-    Shape(const std::string& name, const int &s);
+    Shape();
 
     ///Virtual destructor
+    virtual ~Shape() = default;
 
     ///Prints the Shape's Type, followed by its measurements
     void printShape();
 
     ///Returns the Shape's Type
-    std::string getType() const;
+    virtual std::string getType() const = 0;
 
     ///Returns the number of sides of the shape
-    int getSides() const;
+    virtual int getSides() const = 0;
 
     ///Returns the Shape's Area.
-    virtual double getArea() const {return 0;}
+    virtual double getArea() const = 0;
 
     ///Returns the Shape's Perimeter
-    virtual double getPerim() const {return 0;}
+    virtual double getPerim() const = 0;
 
 protected:
-    ///Saves the Shape's dimensions
-    void setDim(std::map<std::string, double>& dim);
-
-    ///Sets the shape's type
-    void setType(const std::string &name);
-
-private:
-    //e.g. type = "square"
-    std::string type;
-
-    //e.g. numSides = 4
-    const int numSides;
-
     ///Holds the Shape's dimensions
     /// e.g Triangle: (base, 5), (height, 3)
     std::map<std::string, double> dimensions;
@@ -61,11 +47,17 @@ public:
     ///Constructor: sets width & height
     Rectangle(double w, double h);
 
+    ///Returns Rectangle's Type
+    std::string getType() const override;
+
+    ///Returns number of sides of Rectangle
+    int getSides() const override;
+
     ///Returns Rectangle's Area
-    double getArea() const;
+    double getArea() const override;
 
     ///Returns Rectangle's Perimeter
-    double getPerim() const;
+    double getPerim() const override;
 
 private:
         double width, height;
@@ -79,6 +71,8 @@ class Square: public Rectangle
 public:
     //Constructor: sets side length
     Square(double w);
+
+    std::string getType() const override;
 };
 
 
@@ -87,14 +81,20 @@ public:
 class Triangle: public Shape
 {
 public:
-    ///Constructor: sets base and hieght
+    ///Constructor: sets base and height
     Triangle(double b, double h);
 
+    ///Returns Triangle's Type
+    std::string getType() const override;
+
+    ///Returns number of sides of Triangle
+    int getSides() const override;
+
     ///Returns Triangle's Area
-    double getArea() const;
+    double getArea() const override;
 
     ///Returns Triangle's Perimeter
-    double getPerim() const;
+    double getPerim() const override;
 private:
     double base, height;
 };
@@ -108,13 +108,20 @@ public:
     ///Constructor: sets radius length
     Circle(double r);
 
+    ///Returns Circle's Type
+    std::string getType() const override;
+
+    ///Returns number of sides of Circle
+    int getSides() const override;
+
     ///Returns Circle's Area
-    double getArea() const;
+    double getArea() const override;
 
     ///Returns Circle's Perimeter
-    double getPerim() const;
+    double getPerim() const override;
 private:
     double radius;
+    static constexpr double PI = 3.14159;
 };
 
 #endif // SHAPES_H_
