@@ -17,6 +17,13 @@ using std::vector; using std::string; using std::map;
 using std::ifstream; using std::cout; using std::cin;
 using std::ofstream; using std::pair;
 
+// check if a file is empty adapted from
+// https://stackoverflow.com/questions/2390912/checking-for-an-empty-file-in-c
+bool is_empty(std::ifstream& pFile)
+{
+    return pFile.peek() == std::ifstream::traits_type::eof();
+}
+
 // true if argument is an allowed character
 bool allowed_character(char c)
 {
@@ -115,14 +122,22 @@ int main () {
     map<string, int> counters;
     // Test that the file has opened properly
     if (!myfile.is_open())
+    {
         perror("Error while opening file");
+        return(-1);
+    }
+    // Test that the file has contents
+    if (is_empty(myfile))
+    {
+        cout << "Error reading file. File is empty. " << "\n";
+        return(-1);
+    }
     // Read in the file
     string line;
     while ( getline (myfile,line) )
     {
         find_words(line, counters);
     }
-    myfile.close();
     
     // Do the sorting
     // Change the map to a vector to allow sorting
@@ -135,7 +150,6 @@ int main () {
     // write the ouptut
     // we need to findd the longest pair of word + number
     int width = width_pair(reversed);
-    cout << "Widest pair ... " << width << '\n';
     ofstream outfile("analysis.out");
     outfile << "Word" << string(width - 9,' ') << "Usage" << '\n';
     outfile << '\n';
