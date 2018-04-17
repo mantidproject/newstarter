@@ -1,6 +1,10 @@
-/**
- * Skeleton main routine
- */
+//
+//  ShapeSorter.cpp
+//  Tutorials
+//
+//  Created by Keith Butler on 15/02/2018.
+//  Copyright © 2018 Keith Butler. All rights reserved.
+//
 
 #include <string>
 #include <iostream>
@@ -128,6 +132,7 @@ class Triangle : public Shape
 bool isShape(string shape_provided, string shape_target){
     return shape_target == shape_provided;
 }
+
 // hasSides compares the shape against a target number of sizes
 // args:
 // shape_target: an int
@@ -135,23 +140,24 @@ bool isShape(string shape_provided, string shape_target){
 bool hasSides(int shape_target, int shape_provided){
     return shape_target == shape_provided;
 }
+
 // A function to determine which shape has the larger area
 // Args:
-// i: a shape
-// j: a shape
+// shape1: a shape
+// shape2: a shape
 // Returns:
-// boolian, is i larger than j?
-bool greaterArea( const Shape* i, const Shape* j){return i-> area() 
-    > j -> area(); }
+// boolian, is shape1 larger than shape2?
+bool greaterArea( const Shape* shape1, const Shape* shape2){return shape1-> area() 
+    > shape2 -> area(); }
 
 // A function to determine which shape has the larger perimeter
 // Args:
-// i: a shape
-// j: a shape
+// shape1: a shape
+// shape2: a shape
 // Returns:
-// boolian, is i larger than j?
-bool greaterPerim( const Shape* i, const Shape* j){return i-> perimeter() 
-    > j -> perimeter(); }
+// boolian, is shape1 larger than shape2?
+bool greaterPerim( const Shape* shape1, const Shape* shape2){return shape1-> perimeter() 
+    > shape2 -> perimeter(); }
 
 // A function to sort a list of shapes by area
 // Args:
