@@ -49,7 +49,7 @@ std::vector<std::string> get_words(std::string input_string, int min_len) {
   return words;
 };
 
-std::map<std::string, int> word_counts(std::map<std::string, int> current_counts , std::vector<std::string> word_vec  ) {
+int word_counts(std::map<std::string, int>& current_counts , std::vector<std::string>& word_vec  ) {
   /*
     Adds a vector of words into a map of word:occurance pairs.
 
@@ -60,18 +60,25 @@ std::map<std::string, int> word_counts(std::map<std::string, int> current_counts
   for ( std::vector<std::string>::iterator i = word_vec.begin(); i != word_vec.end(); i++ ) {
       ++current_counts[(*i)];
   };
-  return current_counts;
+  // return current_counts;
+  return 0;
 };
 
 
 int main()
 {
-
+// Map to store the word counts
 std::map<std::string, int> counts;
 
-// Import test file
-std::string file_path = "words.txt";
+std::string file_path;
+/*
 
+Add prompt for user input of file name
+
+*/
+
+// Import test file
+file_path = "words.txt";
 std::fstream myFile;
 myFile.open(file_path,std::ios_base::in);
 
@@ -94,8 +101,7 @@ if (myFile.is_open()) {
         counter++;
         std::cout << counter << " : " << *i << std::endl;
     }
-    counts = word_counts(counts , words);
-
+    word_counts(counts , words);
   }
   myFile.close();
 }
