@@ -68,9 +68,8 @@ int add_word_counts(std::map<std::string, int>& current_counts , const std::vect
   return 0;
 };
 
-std::vector< std::pair<int,std::string > > ordered_by_value(std::map<std::string, int > count_map) {
+int ordered_by_value(std::vector< std::pair<  int , std::string > >& vec ,std::map<std::string, int >& count_map) {
   // Create a vector to store the pairs.
-  std::vector< std::pair<  int , std::string > > vec;
   std::pair<int,std::string> elem;
   for ( std::map<std::string, int >::iterator i = count_map.begin() ; i != count_map.end(); i++ ) {
       // Reverse the pair to allow the default vector sort to compare the first entry.
@@ -78,7 +77,8 @@ std::vector< std::pair<int,std::string > > ordered_by_value(std::map<std::string
       elem.second = (*i).first;
       vec.push_back(elem);
   };
-  return vec;
+  std::sort(vec.begin(),vec.end());
+  return 0;
 }
 
 int main()
@@ -155,39 +155,27 @@ for ( std::map<std::string, int>::iterator i = counts.begin(); i != counts.end()
     cout << (*i).first << pad_blank << (*i).second << endl;
 }
 
-
-std::map<int , std::string> ordered_counts;
-
+// Order the pairs by value using default vector sort
 std::vector< std::pair<  int , std::string > > ordered;
-ordered = ordered_by_value(counts);
-std::sort(ordered.begin(),ordered.end());
+ordered_by_value(ordered, counts);
 
+// Display the ordered words and counts.
+counter = 0;
 for ( std::vector< std::pair<  int , std::string > >::iterator i = ordered.begin(); i != ordered.end(); i++ ) {
     counter++;
-    cout << counter << " : ";
-    cout << (*i).first << "  " << (*i).second << endl;
+
+    // Pad the gap between word and count.
+    int pad = 15 - (*i).second.size();
+    std::string pad_blank = " " ;
+    for (int i=1; i<pad; i++) {
+      pad_blank = pad_blank + " ";
+    }
+
+    // Pad the index of the words
+    int num_pad = 3; 
+
+    cout << std::setfill('0') << std::setw(num_pad) << counter << " : ";
+    cout << (*i).second << pad_blank << (*i).first << endl;
 }
-
-// ordered_counts = ordered_by_value(counts);
-
-// // Display the words and counts
-// counter = 0;
-// for ( std::map<int,std::string>::iterator i = ordered_counts.begin(); i != ordered_counts.end(); i++ ) {
-//     counter++;
-
-//     cout << "TEST" << endl;
-//     // Pad the gap between word and count.
-//     int pad = 15 - (*i).second.size();
-//     std::string pad_blank = " " ;
-//     for (int i=1; i<pad; i++) {
-//       pad_blank = pad_blank + " ";
-//     }
-
-//     // Pad the index of the words
-//     int num_pad = 3; 
-
-//     cout << std::setfill('0') << std::setw(num_pad) << counter << " : ";
-//     cout << (*i).first << pad_blank << (*i).second << endl;
-// }
 
 }
