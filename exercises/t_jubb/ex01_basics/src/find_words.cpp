@@ -68,15 +68,25 @@ int add_word_counts(std::map<std::string, int>& current_counts , std::vector<std
 
 int main()
 {
-// Map to store the word counts
+const bool verbose = false;
+
+// Map to store the words and counts and key/value pairs
 std::map<std::string, int> counts;
 
+// Prompt user for a filepath and check if file exists
 std::string file_path;
-/*
-
-Add prompt for user input of file name
-
-*/
+cout << "Please enter a valid filepath : " ;
+bool valid_file = false;
+while (!valid_file){
+  std::cin >> file_path;
+  std::ifstream infile(file_path);
+  if (!infile.good() ){
+    cout << "File does not exist, please enter a valid file : ";
+  }
+  else {
+    valid_file = true;
+  }
+}
 
 // Import test file
 file_path = "words.txt";
@@ -92,15 +102,19 @@ if (myFile.is_open()) {
   while (myFile.good()) {
     line++;
     std::getline(myFile,file_line);
-    cout << "\tFile Line " << line << " : " << file_line << endl;
+    if (verbose == true) {
+      cout << "\tFile Line " << line << " : " << file_line << endl;
+    }
 
     // count the words
     std::vector<std::string> words;
     words = get_words(file_line, 4);
-    int counter = 0;
-    for ( auto i = words.begin(); i != words.end(); i++ ) {
-        counter++;
-        std::cout << counter << " : " << *i << std::endl;
+    if (verbose == true) {
+      int counter = 0;
+      for ( auto i = words.begin(); i != words.end(); i++ ) {
+          counter++;
+          std::cout << counter << " : " << *i << std::endl;
+      }
     }
     add_word_counts(counts , words);
   }
@@ -121,19 +135,9 @@ for ( std::map<std::string, int>::iterator i = counts.begin(); i != counts.end()
 
     // Pad the index of the words
     int num_pad = 3; 
-    
-    std::cout << std::setfill('0') << std::setw(num_pad) << counter << " : ";
-    std::cout << (*i).first << pad_blank << (*i).second << std::endl;
-}
 
-// // Test code
-// std::vector<std::string> words;
-// words = get_words("hello world    ");
-// int counter = 0;
-// for ( auto i = words.begin(); i != words.end(); i++ ) {
-//     counter++;
-//     std::cout << counter << " : " << *i << std::endl;
-// }
-// counts = word_counts(counts , words);
+    cout << std::setfill('0') << std::setw(num_pad) << counter << " : ";
+    cout << (*i).first << pad_blank << (*i).second << endl;
+}
 
 }
