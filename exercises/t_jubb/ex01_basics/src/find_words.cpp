@@ -55,9 +55,9 @@ std::vector<std::string> get_words(const std::string input_string, const int min
 
 int add_word_counts(std::map<std::string, int>& current_counts , const std::vector<std::string>& word_vec  ) {
   /*
-    Adds a vector of words into a map of word:occurance pairs.
+    Adds a vector of words into a map of <word,occurance> pairs.
 
-    @param current_counts, a map of word:occurance pairs.
+    @param current_counts, a map of <word,occurance> pairs.
     @param word_vec a vector of words.
     @return current_counts after the words in word_vec have been added.
   */
@@ -69,11 +69,18 @@ int add_word_counts(std::map<std::string, int>& current_counts , const std::vect
 };
 
 int ordered_by_value(std::vector< std::pair<  int , std::string > >& vec ,std::map<std::string, int >& count_map) {
-  // Create a vector to store the pairs.
+  /*
+    Sorts a map of <string,value> pairs by value (ascending), by inserting the <value,string> pairs into a vector
+    and then performing the default sort.
+
+    @param vec : a vector to append the entries of count_map to.
+    @param count_map : a map of <string,value> pairs.
+
+  */
   std::pair<int,std::string> elem;
   for ( std::map<std::string, int >::iterator i = count_map.begin() ; i != count_map.end(); i++ ) {
       // Reverse the pair to allow the default vector sort to compare the first entry.
-      elem.first = (*i).second;
+      elem.first  = (*i).second;
       elem.second = (*i).first;
       vec.push_back(elem);
   };
@@ -103,8 +110,6 @@ while (!valid_file){
   }
 }
 
-// Import test file
-file_path = "words.txt";
 std::fstream myFile;
 myFile.open(file_path,std::ios_base::in);
 
@@ -115,13 +120,14 @@ if (myFile.is_open()) {
   int line = 0;
 
   while (myFile.good()) {
+    // calculate line by line
     line++;
     std::getline(myFile,file_line);
     if (verbose == true) {
       cout << "\tFile Line " << line << " : " << file_line << endl;
     }
 
-    // count the words
+    // find/count the words and add to counts map
     std::vector<std::string> words;
     words = get_words(file_line, 4);
     if (verbose == true) {
@@ -137,6 +143,7 @@ if (myFile.is_open()) {
 }
 
 // Display the words and counts
+cout << endl << "Word Occurance : " << endl << endl;
 unsigned int counter = 0;
 for ( std::map<std::string, int>::iterator i = counts.begin(); i != counts.end(); i++ ) {
     counter++;
@@ -160,6 +167,7 @@ std::vector< std::pair<  int , std::string > > ordered;
 ordered_by_value(ordered, counts);
 
 // Display the ordered words and counts.
+cout << endl << "Ordered By Occurance : " << endl << endl;
 counter = 0;
 for ( std::vector< std::pair<  int , std::string > >::iterator i = ordered.begin(); i != ordered.end(); i++ ) {
     counter++;
