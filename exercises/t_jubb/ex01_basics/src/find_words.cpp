@@ -8,27 +8,6 @@ using std::cout;
 using std::endl;
 
 
-std::vector<int> find_spaces(std::string input_string){
-  /*
-    Finds all the spaces in a string.
-
-    @param input_string, a string of characters.
-    @return spaces, a vector of ints, the indices of the spaces.
-  */
-  std::vector<int> spaces;
-  int index = 0;
-  spaces.push_back(0);
-  for ( std::string::iterator i = input_string.begin(); i != input_string.end(); i++ ) {
-    index++;
-    if (isspace(*i) != 0){
-      spaces.push_back(index);
-    }
-  }
-  // Add final index as end of line to ensure last word is included.
-  spaces.push_back(input_string.size());
-  return spaces;
-}
-
 std::vector<std::string> get_words(std::string input_string) {
   /*
     Splits input_string up into its components words by detecting
@@ -38,16 +17,28 @@ std::vector<std::string> get_words(std::string input_string) {
     @return a vector of strings (the words).
   */
   std::vector<std::string> words;
-  std::vector<int> space_locations;
-  space_locations = find_spaces(input_string);
+  
+  int index      = -1;
+  int word_start = 0;
+  int word_end   = 0;
 
-  for (int i = 0; i < space_locations.size(); i++) {
-    int word_length = (space_locations[i+1]-space_locations[i]);
-    if (word_length > 1) {
-      std::string word = input_string.substr(space_locations[i], word_length);
-      words.push_back(word);
-    };
-  };
+  for ( std::string::iterator i = input_string.begin(); i <= input_string.end(); i++ ) {
+    index++;
+
+    if (isalpha(*i) != 0){
+      word_start = index;
+      while ((isalpha(*i) != 0)) {
+        index++;
+        i++;
+        if ((i == input_string.end())) {
+          break;
+        }
+      }
+      word_end = index;
+      words.push_back(input_string.substr(word_start,(word_end-word_start)));
+    }
+  }
+
   return words;
 };
 
@@ -104,6 +95,7 @@ if (myFile.is_open()) {
   myFile.close();
 }
 
+// Display the words and counts
 int counter = 0;
 for ( std::map<std::string, int>::iterator i = counts.begin(); i != counts.end(); i++ ) {
     counter++;
