@@ -3,13 +3,16 @@
 #include <vector>
 #include <fstream>
 #include <map>
+#include <set>
 #include <iomanip>
+#include <algorithm>
+#include <functional>
 
 using std::cout;
 using std::endl;
 
 
-std::vector<std::string> get_words(std::string input_string, int min_len) {
+std::vector<std::string> get_words(const std::string input_string, const int min_len) {
   /*
     Splits input_string up into its components words by finding a character, and then
     iterating through characters until a non-alphabetic character is found.
@@ -25,7 +28,7 @@ std::vector<std::string> get_words(std::string input_string, int min_len) {
   int word_end   = 0;
   int word_len   = 0;
 
-  for ( std::string::iterator i = input_string.begin(); i <= input_string.end(); i++ ) {
+  for ( std::string::const_iterator i = input_string.begin(); i <= input_string.end(); i++ ) {
     index++;
     // If we find the start of a word.
     if (isalpha(*i) != 0){
@@ -50,7 +53,7 @@ std::vector<std::string> get_words(std::string input_string, int min_len) {
   return words;
 };
 
-int add_word_counts(std::map<std::string, int>& current_counts , std::vector<std::string>& word_vec  ) {
+int add_word_counts(std::map<std::string, int>& current_counts , const std::vector<std::string>& word_vec  ) {
   /*
     Adds a vector of words into a map of word:occurance pairs.
 
@@ -58,13 +61,25 @@ int add_word_counts(std::map<std::string, int>& current_counts , std::vector<std
     @param word_vec a vector of words.
     @return current_counts after the words in word_vec have been added.
   */
-  for ( std::vector<std::string>::iterator i = word_vec.begin(); i != word_vec.end(); i++ ) {
+  for ( std::vector<std::string>::const_iterator i = word_vec.begin(); i != word_vec.end(); i++ ) {
       ++current_counts[(*i)];
   };
   // return current_counts;
   return 0;
 };
 
+std::vector< std::pair<int,std::string > > ordered_by_value(std::map<std::string, int > count_map) {
+  // Create a vector to store the pairs.
+  std::vector< std::pair<  int , std::string > > vec;
+  std::pair<int,std::string> elem;
+  for ( std::map<std::string, int >::iterator i = count_map.begin() ; i != count_map.end(); i++ ) {
+      // Reverse the pair to allow the default vector sort to compare the first entry.
+      elem.first = (*i).second;
+      elem.second = (*i).first;
+      vec.push_back(elem);
+  };
+  return vec;
+}
 
 int main()
 {
@@ -139,5 +154,40 @@ for ( std::map<std::string, int>::iterator i = counts.begin(); i != counts.end()
     cout << std::setfill('0') << std::setw(num_pad) << counter << " : ";
     cout << (*i).first << pad_blank << (*i).second << endl;
 }
+
+
+std::map<int , std::string> ordered_counts;
+
+std::vector< std::pair<  int , std::string > > ordered;
+ordered = ordered_by_value(counts);
+std::sort(ordered.begin(),ordered.end());
+
+for ( std::vector< std::pair<  int , std::string > >::iterator i = ordered.begin(); i != ordered.end(); i++ ) {
+    counter++;
+    cout << counter << " : ";
+    cout << (*i).first << "  " << (*i).second << endl;
+}
+
+// ordered_counts = ordered_by_value(counts);
+
+// // Display the words and counts
+// counter = 0;
+// for ( std::map<int,std::string>::iterator i = ordered_counts.begin(); i != ordered_counts.end(); i++ ) {
+//     counter++;
+
+//     cout << "TEST" << endl;
+//     // Pad the gap between word and count.
+//     int pad = 15 - (*i).second.size();
+//     std::string pad_blank = " " ;
+//     for (int i=1; i<pad; i++) {
+//       pad_blank = pad_blank + " ";
+//     }
+
+//     // Pad the index of the words
+//     int num_pad = 3; 
+
+//     cout << std::setfill('0') << std::setw(num_pad) << counter << " : ";
+//     cout << (*i).first << pad_blank << (*i).second << endl;
+// }
 
 }
