@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <map>
+#include <iomanip>
 
 using std::cout;
 using std::endl;
@@ -49,7 +50,7 @@ std::vector<std::string> get_words(std::string input_string, int min_len) {
   return words;
 };
 
-int word_counts(std::map<std::string, int>& current_counts , std::vector<std::string>& word_vec  ) {
+int add_word_counts(std::map<std::string, int>& current_counts , std::vector<std::string>& word_vec  ) {
   /*
     Adds a vector of words into a map of word:occurance pairs.
 
@@ -101,16 +102,28 @@ if (myFile.is_open()) {
         counter++;
         std::cout << counter << " : " << *i << std::endl;
     }
-    word_counts(counts , words);
+    add_word_counts(counts , words);
   }
   myFile.close();
 }
 
 // Display the words and counts
-int counter = 0;
+unsigned int counter = 0;
 for ( std::map<std::string, int>::iterator i = counts.begin(); i != counts.end(); i++ ) {
     counter++;
-    std::cout << counter << " : " << (*i).first << "   " << (*i).second << std::endl;
+
+    // Pad the gap between word and count.
+    int pad = 15 - (*i).first.size();
+    std::string pad_blank = " " ;
+    for (int i=1; i<pad; i++) {
+      pad_blank = pad_blank + " ";
+    }
+
+    // Pad the index of the words
+    int num_pad = 3; 
+    
+    std::cout << std::setfill('0') << std::setw(num_pad) << counter << " : ";
+    std::cout << (*i).first << pad_blank << (*i).second << std::endl;
 }
 
 // // Test code
