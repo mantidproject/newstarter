@@ -22,14 +22,12 @@ std::vector<int> find_spaces(std::string input_string){
     index++;
     if (isspace(*i) != 0){
       spaces.push_back(index);
-      std::cout << "Found a space!" << std::endl;
     }
-    std::cout << (*i) << std::endl;
   }
+  // Add final index as end of line to ensure last word is included.
+  spaces.push_back(input_string.size());
   return spaces;
 }
-
-
 
 std::vector<std::string> get_words(std::string input_string) {
   /*
@@ -73,6 +71,9 @@ std::map<std::string, int> word_counts(std::map<std::string, int> current_counts
 int main()
 {
 
+std::map<std::string, int> counts;
+
+// Import test file
 std::string file_path = "words.txt";
 
 std::fstream myFile;
@@ -84,31 +85,39 @@ if (myFile.is_open()) {
   std::string file_line;
   int line = 0;
 
-
   while (myFile.good()) {
     line++;
     std::getline(myFile,file_line);
-    cout << line << " : " << file_line << endl;
+    cout << "\tFile Line " << line << " : " << file_line << endl;
+
+    // count the words
+    std::vector<std::string> words;
+    words = get_words(file_line);
+    int counter = 0;
+    for ( auto i = words.begin(); i != words.end(); i++ ) {
+        counter++;
+        std::cout << counter << " : " << *i << std::endl;
+    }
+    counts = word_counts(counts , words);
 
   }
-
-
   myFile.close();
 }
 
-std::vector<std::string> words;
-words = get_words("hello world    ");
-// std::vector<int> spaces;
-// spaces = find_spaces("hello ");
-
 int counter = 0;
-for ( auto i = words.begin(); i != words.end(); i++ ) {
+for ( std::map<std::string, int>::iterator i = counts.begin(); i != counts.end(); i++ ) {
     counter++;
-    std::cout << counter << " : " << *i << std::endl;
+    std::cout << counter << " : " << (*i).first << "   " << (*i).second << std::endl;
 }
 
-
-std::map<std::string, int> counts;
-counts = word_counts(counts , words);
+// // Test code
+// std::vector<std::string> words;
+// words = get_words("hello world    ");
+// int counter = 0;
+// for ( auto i = words.begin(); i != words.end(); i++ ) {
+//     counter++;
+//     std::cout << counter << " : " << *i << std::endl;
+// }
+// counts = word_counts(counts , words);
 
 }
