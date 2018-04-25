@@ -8,12 +8,13 @@ using std::cout;
 using std::endl;
 
 
-std::vector<std::string> get_words(std::string input_string) {
+std::vector<std::string> get_words(std::string input_string, int min_len) {
   /*
-    Splits input_string up into its components words by detecting
-    any spaces in the string.
+    Splits input_string up into its components words by finding a character, and then
+    iterating through characters until a non-alphabetic character is found.
 
     @param input_string a string with spaces.
+    @param min_len, minimum lenth of word to store.
     @return a vector of strings (the words).
   */
   std::vector<std::string> words;
@@ -21,21 +22,27 @@ std::vector<std::string> get_words(std::string input_string) {
   int index      = -1;
   int word_start = 0;
   int word_end   = 0;
+  int word_len   = 0;
 
   for ( std::string::iterator i = input_string.begin(); i <= input_string.end(); i++ ) {
     index++;
-
+    // If we find the start of a word.
     if (isalpha(*i) != 0){
       word_start = index;
+      // Iterate through the string until the character is not part of a word.
       while ((isalpha(*i) != 0)) {
         index++;
         i++;
+        // Catch the end of the string for last word
         if ((i == input_string.end())) {
           break;
         }
       }
       word_end = index;
-      words.push_back(input_string.substr(word_start,(word_end-word_start)));
+      word_len = word_end - word_start;
+      if ( word_len > min_len){
+        words.push_back(input_string.substr(word_start,(word_end-word_start)));
+      }
     }
   }
 
@@ -55,8 +62,6 @@ std::map<std::string, int> word_counts(std::map<std::string, int> current_counts
   };
   return current_counts;
 };
-
-
 
 
 int main()
@@ -83,7 +88,7 @@ if (myFile.is_open()) {
 
     // count the words
     std::vector<std::string> words;
-    words = get_words(file_line);
+    words = get_words(file_line, 4);
     int counter = 0;
     for ( auto i = words.begin(); i != words.end(); i++ ) {
         counter++;
