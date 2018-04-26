@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <cmath>
 #include <iostream>
@@ -8,7 +7,7 @@
 
 /*
 Shape class
- */
+*/
 class Shape {
 
 public:
@@ -18,11 +17,11 @@ public:
 	double get_perimeter() { return perimeter; };
 	double get_sides() { return sides; };
 	std::string get_type() { return type; };
-	void print_shape() {  
+	void print_shape(std::ostream &OutputStream) {  
 		int pad = 10 - type.size();
 		std::string pad_blank(pad, ' ');
-		std::cout << "Shape : " << type << pad_blank;
-		std::cout << " Area : " << area << " Perim. : " << perimeter << std::endl;
+		OutputStream << "Shape : " << type << pad_blank;
+		OutputStream << " Area : " << area << " Perim. : " << perimeter << std::endl;
 		};
 
 protected:
@@ -133,35 +132,35 @@ private:
 /*
 Comparisons between shapes for area, perimeter
 */
-bool compare_area(Shape& shape1, Shape& shape2) {
-	return shape1.get_area() < shape2.get_area();
+bool compare_area(Shape* shape1, Shape* shape2) {
+	return (*shape1).get_area() < (*shape2).get_area();
 };
-bool compare_perimeter(Shape& shape1, Shape& shape2) {
-	return shape1.get_perimeter() < shape2.get_perimeter();
+bool compare_perimeter(Shape* shape1, Shape* shape2) {
+	return (*shape1).get_perimeter() < (*shape2).get_perimeter();
 };
 
 class ShapeSorter : public Shape {
 
 public:
 	ShapeSorter() { };
-	ShapeSorter(std::vector<Shape> vec) { shape_vector = vec; };
-	void print_type(std::string type);
-	void print_sides(int sides);
-	void print_by_area(bool ascending);
-	void print_by_perimeter(bool ascending);
+	ShapeSorter(std::vector<Shape*> vec) { shape_vector = vec; };
+	void print_type(std::string type, std::ostream &Ostream);
+	void print_sides(int sides, std::ostream &Ostream);
+	void print_by_area(bool ascending, std::ostream &Ostream);
+	void print_by_perimeter(bool ascending, std::ostream &Ostream);
 
 private:
-	std::vector<Shape> shape_vector;
+	std::vector<Shape*> shape_vector;
 
 };
 
 /*
 Prints shapes in shape_vector with a given type.
 */
-void ShapeSorter::print_type(std::string type) {
+void ShapeSorter::print_type(std::string type, std::ostream &Ostream) {
 	for (auto i = shape_vector.begin(); i != shape_vector.end(); i++) {
-		if ((*i).get_type() == type) {
-			(*i).print_shape();
+		if ((**i).get_type() == type) {
+			(**i).print_shape(Ostream);
 		};
 	};
 };
@@ -169,102 +168,81 @@ void ShapeSorter::print_type(std::string type) {
 /*
 Prints shapes in shape_vector with a given number of sides.
 */
-void ShapeSorter::print_sides(int sides) {
+void ShapeSorter::print_sides(int sides, std::ostream &Ostream) {
 	for (auto i = shape_vector.begin(); i != shape_vector.end(); i++) {
-		if ((*i).get_sides() == sides) {
-			(*i).print_shape();
+		if ((**i).get_sides() == sides) {
+			(**i).print_shape(Ostream);
 		};
 	};
 };
 
 /*
-
 Sort the vector of Shapes by their area and print out the contents.
 
 @param ascending : Wether to sort from lowest to highst
-
 */
-void ShapeSorter::print_by_area(bool ascending) {
+void ShapeSorter::print_by_area(bool ascending, std::ostream &Ostream) {
 
 	sort(shape_vector.begin(), shape_vector.end(),compare_area);
 
 	if (ascending) {
 		for (auto i = shape_vector.begin(); i != shape_vector.end(); i++) {
-			(*i).print_shape();
+			(**i).print_shape(Ostream);
 		};
 	}
 	else {
 		for (auto i = shape_vector.rbegin(); i != shape_vector.rend(); i++) {
-			(*i).print_shape();
+			(**i).print_shape(Ostream);
 		};
-
 	}
-	
 };
 
 /*
-
 Sort the vector of Shapes by their perimeter and print out the contents.
 
-@param ascending : Wether to sort from lowest to highst
-
+@param ascending : Wether to sort from lowest to highst.
 */
-void ShapeSorter::print_by_perimeter(bool ascending) {
+void ShapeSorter::print_by_perimeter(bool ascending, std::ostream &Ostream) {
 
 	sort(shape_vector.begin(), shape_vector.end(), compare_perimeter);
 
 	if (ascending) {
 		for (auto i = shape_vector.begin(); i != shape_vector.end(); i++) {
-			(*i).print_shape();
+			(**i).print_shape(Ostream);
 		};
 	}
 	else {
 		for (auto i = shape_vector.rbegin(); i != shape_vector.rend(); i++) {
-			(*i).print_shape();
+			(**i).print_shape(Ostream);
 		};
 
 	}
-
 };
 
 
 int main(int, char **)
 {
-	std::cout << "Hello World" << std::endl;
-
-	Shape shape;
-	std::cout << shape.get_area() << std::endl;
-	std::cout << shape.get_perimeter() << std::endl;
-	std::cout << shape.get_sides() << std::endl;
 
 	Circle ci(5.0);
-	std::cout << "Area      : " << ci.get_area() << std::endl;
-	std::cout << "Perimeter : " << ci.get_perimeter() << std::endl;
-	std::cout << "Sides     : " << ci.get_sides() << std::endl;
-
 	Square sq(1.0);
-	std::cout << "Area      : " << sq.get_area() << std::endl;
-	std::cout << "Perimeter : " << sq.get_perimeter() << std::endl;
-	std::cout << "Sides     : " << sq.get_sides() << std::endl;
-
 	Rectangle re(1.0, 2.0);
 	IsoscelesTriangle tri(5.7, 2.3);
 
-	std::vector<Shape> vec;
-	vec.push_back(ci);
-	vec.push_back(sq);
-	vec.push_back(re);
-	vec.push_back(tri);
+	std::vector<Shape*> vec;
+	vec.push_back(&ci);
+	vec.push_back(&sq);
+	vec.push_back(&re);
+	vec.push_back(&tri);
 
 	ShapeSorter sorter(vec);
 	std::cout << "Print by type " << std::endl;
-	sorter.print_type("Circle");
+	sorter.print_type("Circle", std::cout);
 	std::cout << "Print by sides " << std::endl;
-	sorter.print_sides(3);
+	sorter.print_sides(3, std::cout);
 	std::cout << "Print by area " << std::endl;
-	sorter.print_by_area(true);
+	sorter.print_by_area(true, std::cout);
 	std::cout << "Print by perimeter " << std::endl;
-	sorter.print_by_perimeter(true);
+	sorter.print_by_perimeter(true, std::cout);
 
-
+	return 0;
 }
