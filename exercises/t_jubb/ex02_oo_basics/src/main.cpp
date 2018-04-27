@@ -11,21 +11,19 @@ Shape class
 class Shape {
 
 public:
-	Shape() { area = 0.0; this->perimeter = 0.0; this->sides = 0; this->type = " "; };
-
-	double get_area() { return area; };
-	double get_perimeter() { return perimeter; };
+	//virtual Shape() = 0;
+	virtual double area() = 0;
+	virtual double perimeter()  = 0;
 	double get_sides() { return sides; };
 	std::string get_type() { return type; };
 	void print_shape(std::ostream &OutputStream) {  
 		int pad = 10 - type.size();
 		std::string pad_blank(pad, ' ');
 		OutputStream << "Shape : " << type << pad_blank;
-		OutputStream << " Area : " << area << " Perim. : " << perimeter << std::endl;
+		OutputStream << " Area : " << this->area() << " Perim. : " << this->perimeter() << std::endl;
 		};
 
 protected:
-	double area, perimeter;
 	int sides;
 	std::string type;
 };
@@ -36,12 +34,14 @@ Square class
 class Square: public Shape {
 
 public:
-	Square(double height) {
+	Square(double h) {
+		height = h;
 		type = "Square";
 		sides = 4;
-		area = height * height;
-		perimeter = 4 * height;
 	};
+
+	double area() { return height * height; };
+	double perimeter() { return 4 * height; };
 
 private:
 	double height;
@@ -53,12 +53,14 @@ Rectangle class
 class Rectangle : public Shape {
 
 public:
-	Rectangle(double height, double width) {
+	Rectangle(double h, double w) {
+		height = h;
+		width = w;
 		type = "Rectangle";
 		sides = 4;
-		area = height * width;
-		perimeter = 2 * height + 2 * width;
 	};
+	double area() { return height * width; };
+	double perimeter() { return  2 * height + 2 * width; };
 
 private:
 	double height, width;
@@ -71,29 +73,32 @@ Triangle Class
 class IsoscelesTriangle : public Shape {
 
 public:
-	IsoscelesTriangle(double base, double height) {
+	IsoscelesTriangle(double b, double h) {
+		base = b;
+		height = h;
 		type = "Triangle";
 		sides = 3;
-		area = 0.5 * base * height;
-		perimeter = base + 2 * sqrt(pow(height, 2) + 0.25 * pow(base, 2));
 	};
+	double area() { return 0.5 * base * height; };
+	double perimeter() { return  base + 2 * sqrt(pow(height, 2) + 0.25 * pow(base, 2)); };
 
 private:
 	double base, height;
 };
 
 /*
-Circlee Class
+Circle Class
 */
 class Circle : public Shape {
 
 public:
-	Circle(double radius) {
+	Circle(double r) {
+		radius = r;
 		type = "Circle";
 		sides = 1;
-		area = M_PI * pow(radius, 2);
-		perimeter = M_PI * 2 * radius;
 	};
+	double area() { return M_PI * pow(radius, 2); };
+	double perimeter() { return  M_PI * 2 * radius; };
 
 private:
 	double radius;
@@ -103,16 +108,15 @@ private:
 Comparisons between shapes for area, perimeter
 */
 bool compare_area(Shape* shape1, Shape* shape2) {
-	return (*shape1).get_area() < (*shape2).get_area();
+	return (*shape1).area() < (*shape2).area();
 };
 bool compare_perimeter(Shape* shape1, Shape* shape2) {
-	return (*shape1).get_perimeter() < (*shape2).get_perimeter();
+	return (*shape1).perimeter() < (*shape2).perimeter();
 };
 
-class ShapeSorter : public Shape {
+class ShapeSorter {
 
 public:
-	ShapeSorter() { };
 	ShapeSorter(std::vector<Shape*> vec) { shape_vector = vec; };
 	void print_type(std::string type, std::ostream &Ostream);
 	void print_sides(int sides, std::ostream &Ostream);
@@ -121,6 +125,11 @@ public:
 
 private:
 	std::vector<Shape*> shape_vector;
+	void print_vector(std::ostream& Ostream) {
+		for (const auto & iter : shape_vector) {
+			(*iter).print_shape(Ostream);
+		}
+	}
 
 };
 
@@ -156,9 +165,7 @@ void ShapeSorter::print_by_area(bool ascending, std::ostream &Ostream) {
 	sort(shape_vector.begin(), shape_vector.end(),compare_area);
 
 	if (ascending) {
-		for (auto i = shape_vector.begin(); i != shape_vector.end(); i++) {
-			(**i).print_shape(Ostream);
-		};
+		print_vector(Ostream);
 	}
 	else {
 		for (auto i = shape_vector.rbegin(); i != shape_vector.rend(); i++) {
@@ -177,9 +184,7 @@ void ShapeSorter::print_by_perimeter(bool ascending, std::ostream &Ostream) {
 	sort(shape_vector.begin(), shape_vector.end(), compare_perimeter);
 
 	if (ascending) {
-		for (auto i = shape_vector.begin(); i != shape_vector.end(); i++) {
-			(**i).print_shape(Ostream);
-		};
+		print_vector(Ostream);
 	}
 	else {
 		for (auto i = shape_vector.rbegin(); i != shape_vector.rend(); i++) {
@@ -197,6 +202,8 @@ int main(int, char **)
 	Square sq(1.0);
 	Rectangle re(1.0, 2.0);
 	IsoscelesTriangle tri(5.7, 2.3);
+
+	std::cout << ci.area() << std::endl;
 
 	std::vector<Shape*> vec;
 	vec.push_back(&ci);
