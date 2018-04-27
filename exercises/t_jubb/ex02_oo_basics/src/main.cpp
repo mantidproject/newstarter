@@ -36,13 +36,6 @@ Square class
 class Square: public Shape {
 
 public:
-	Square() {
-		height = 0.0;
-		sides = 4;
-		area = 0.0;
-		perimeter = 0.0;
-		type = "Square";
-	};
 	Square(double height) {
 		type = "Square";
 		sides = 4;
@@ -60,14 +53,6 @@ Rectangle class
 class Rectangle : public Shape {
 
 public:
-	Rectangle() {
-		type = "Rectangle";
-		height = 0.0;
-		width = 0.0;
-		sides = 4;
-		area = 0.0;
-		perimeter = 0.0;
-	};
 	Rectangle(double height, double width) {
 		type = "Rectangle";
 		sides = 4;
@@ -86,14 +71,6 @@ Triangle Class
 class IsoscelesTriangle : public Shape {
 
 public:
-	IsoscelesTriangle() {
-		type = "Triangle";
-		height = 0.0;
-		base = 0.0;
-		sides = 3;
-		area = 0.0;
-		perimeter = 0.0;
-	};
 	IsoscelesTriangle(double base, double height) {
 		type = "Triangle";
 		sides = 3;
@@ -111,13 +88,6 @@ Circlee Class
 class Circle : public Shape {
 
 public:
-	Circle() {
-		type = "Circle";
-		radius = 0.0;
-		sides = 1;
-		area = 0.0;
-		perimeter = 0.0;
-	};
 	Circle(double radius) {
 		type = "Circle";
 		sides = 1;
