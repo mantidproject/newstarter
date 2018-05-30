@@ -164,31 +164,83 @@ class Circle : protected Shape {
 
 
 /**
+ *  Triangle class
+**/
+class Triangle : protected Shape {
+
+    // Own height and base
+    private:
+        double height_len;
+        double base_len;
+
+    // Method implementations
+    public:
+        // Constructor 
+        Triangle(double height, double base) {
+            height_len = height;
+            base_len = base;
+            shape_type = "Triangle";
+            num_sides = 3;
+        }
+
+        // Let's user know what type it is
+        void print_type() {
+            cout << "Shape type is: " << shape_type << endl;
+        }
+
+        // Prints out number of sides
+        void print_num_sides() {
+            cout << "Number of sides is: " << num_sides << endl;
+        }
+
+        // Calculates and returns the perimeter
+        double perimeter() {
+            return (base_len + 2 * sqrt(height_len*height_len + (base_len*base_len)/4));
+        }
+
+        // Calculates and returns the area
+        double area() {
+            return (0.5*base_len*height_len);
+        }
+
+        // Prints out the length of its radius
+        void print_side_lengths() {
+            cout << "Height length is: " << height_len << endl;
+            cout << "Base length is: " << base_len << endl;
+        }
+};
+
+
+/**
  *  Main method
 **/
 int main(int, char **) {
     // Create a square
     Square square(5);
-    
     // Print details of square
     square.print_type();
     cout << "Area: " << square.area() << endl;
 
 
-    // Create a square
+    // Create a rectangle
     Rectangle rectangle(5, 10);
-    
-    // Print details of square
+    // Print details of rectangle
     rectangle.print_type();
     cout << "Area: " << rectangle.area() << endl;
 
 
     // Create a circle
     Circle circle(5);
-    
-    // Print details of square
+    // Print details of circle
     circle.print_type();
     cout << "Area: " << circle.area() << endl;
+
+
+    // Create a triangle
+    Triangle triangle(10, 5);
+    // Print details of triangle
+    triangle.print_type();
+    cout << "Area: " << triangle.area() << endl;
 
     return 0;
 }
