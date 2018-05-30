@@ -218,6 +218,7 @@ class Triangle : public Shape {
 **/
 class ShapeSorter {
     public:
+        // Method to print matching given type
         void print_matching_type(vector<Shape*> shapes, string name) {
             for(vector<Shape*>::const_iterator it = shapes.begin(); it != shapes.end(); ++it) {
                 if(((*it)->shape_type).compare(name) == 0) {
@@ -226,8 +227,17 @@ class ShapeSorter {
             }
         }
 
-        void print_shapes_matching_num_sides();
-        void print_vol_des();
+        // Method to print shapes of chosen number of sides
+        void print_shapes_matching_num_sides(vector<Shape*> shapes, int num_sides) {
+            for(vector<Shape*>::const_iterator it = shapes.begin(); it != shapes.end(); ++it) {
+                if(((*it)->num_sides) == num_sides) {
+                    cout << (*it)->shape_type << endl;
+                }
+            }
+        }
+
+
+        void print_area_des();
         void print_per_des();
 };
 
@@ -271,10 +281,11 @@ int main(int, char **) {
     shapes.push_back(&circle);
     shapes.push_back(&triangle);
 
-    
+    // Print chosen types
     cout << "\n\nShape sorting section\n\n" << endl;
     ShapeSorter ss;
     ss.print_matching_type(shapes, "Square");
+    ss.print_shapes_matching_num_sides(shapes, 4);
 
     return 0;
 }
