@@ -1,7 +1,7 @@
 /**
  * PROGRAM DESCRIPTION:
  * 
- * A commnad line program to read in a text file and give the occurrences of the words. 
+ * A command line program to read in a text file and give the occurrences of the words. 
  *
 **/
 
@@ -11,9 +11,27 @@
 #include <map>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 
 // Namespace being used
 using namespace std;
+
+
+/**
+ * Code to flip the <string, int> pairs.
+ * Code adapted from: https://stackoverflow.com/questions/5056645/sorting-stdmap-using-value?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+**/
+template<typename A, typename B>
+pair<B, A> flip_pair(const pair<A, B> &p) {
+    return pair<B, A>(p.second, p.first);
+}
+
+template<typename A, typename B>
+multimap<B, A> flip_map(const map<A, B> &src) {
+    multimap<B, A> dst;
+    transform(src.begin(), src.end(), inserter(dst, dst.begin()), flip_pair<A, B>);
+    return dst;
+}
 
 
 /**
@@ -54,7 +72,6 @@ vector<string> split(const string& s) {
  * Main function.
 **/
 int main(int, char **) {
-
     // Get file name from user and store
     cout << "Please enter the name of the file: " << endl;
     string file_name;
@@ -98,12 +115,18 @@ int main(int, char **) {
         }
     }
 
-    // Print out the word and it's count
-    for(map <string, int>::const_iterator it = word_and_count.begin(); it != word_and_count.end(); ++it) {
-        cout << it->first << "\t" << it->second << endl;
+    // Header for output
+    cout << "Word" << "\t\t" << "Usage" << endl;
+    cout << "" << endl;
+
+    // Flip the output
+    multimap<int, string> dst = flip_map(word_and_count);
+
+    // Print out the word and its count
+    for(multimap <int, string>::const_iterator it = dst.end(); it != dst.begin(); --it) {
+        cout << it->second << "\t\t" << it->first << endl;
     }
 
     return 0;
 }
-
 
