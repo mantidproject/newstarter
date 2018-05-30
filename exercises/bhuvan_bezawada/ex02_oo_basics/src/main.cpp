@@ -4,6 +4,7 @@
 #include <string>
 #include <math.h>
 #include <string.h>
+#include <algorithm>
 
 // Namespace to use
 using namespace std;
@@ -18,12 +19,12 @@ class Shape {
         string shape_type;
         int num_sides;
 
-    // Methods
+    // Methods to implement
     public:
-        void print_type();
-        void print_num_sides();
-        void perimeter();
-        void area();
+        virtual void print_type() = 0;
+        virtual void print_num_sides() = 0;
+        virtual double perimeter() = 0;
+        virtual double area() = 0;
 };
 
 
@@ -213,10 +214,26 @@ class Triangle : public Shape {
 };
 
 
+
 /**
  *  ShapeSorter class
 **/
 class ShapeSorter {
+
+    /**
+     * Comparators for sort()
+     * 
+     * http://www.cplusplus.com/reference/algorithm/sort/ 
+    **/
+    static bool compare_area(Shape* shape1, Shape* shape2) {
+        return shape1->area() > shape2->area();
+    }
+
+    static bool compare_perimeter(Shape* shape1, Shape* shape2) {
+        return shape1->perimeter() > shape2->perimeter();
+    }
+
+
     public:
         // Method to print matching given type
         void print_matching_type(vector<Shape*> shapes, string name) {
@@ -237,8 +254,24 @@ class ShapeSorter {
         }
 
 
-        void print_area_des();
-        void print_per_des();
+        void print_area_des(vector<Shape*> shapes) {
+            vector<Shape*> sorted_areas = shapes;
+            sort(sorted_areas.begin(), sorted_areas.end(), ShapeSorter::compare_area);
+
+            for(vector<Shape*>::iterator it = sorted_areas.begin(); it != sorted_areas.end(); ++it) {
+                cout << (*it)->shape_type << (*it)->area() << endl;
+            }
+        }
+
+
+        void print_per_des(vector<Shape*> shapes) {
+            vector<Shape*> sorted_per = shapes;
+            sort(sorted_per.begin(), sorted_per.end(), ShapeSorter::compare_perimeter);
+
+            for(vector<Shape*>::iterator it = sorted_per.begin(); it != sorted_per.end(); ++it) {
+                cout << (*it)->shape_type << (*it)->perimeter() << endl;
+            }
+        }
 };
 
 
@@ -284,8 +317,15 @@ int main(int, char **) {
     // Print chosen types
     cout << "\n\nShape sorting section\n\n" << endl;
     ShapeSorter ss;
+    
     ss.print_matching_type(shapes, "Square");
+    cout << endl;
     ss.print_shapes_matching_num_sides(shapes, 4);
+    cout << endl;
+    ss.print_area_des(shapes);
+    cout << endl;
+    ss.print_per_des(shapes);
+    cout << endl;
 
     return 0;
 }
