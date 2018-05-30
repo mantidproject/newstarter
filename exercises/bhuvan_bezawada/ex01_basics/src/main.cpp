@@ -122,10 +122,14 @@ int main(int, char **) {
     // Flip the output
     multimap<int, string> dst = flip_map(word_and_count);
 
-    // Print out the word and its count
+    // Print out the word and its count (to terminal and file)
+    ofstream out_file;
+    out_file.open("results.txt");
     for(multimap <int, string>::const_iterator it = dst.end(); it != dst.begin(); --it) {
         cout << it->second << "\t\t" << it->first << endl;
+        out_file << it->second << "\t\t" << it->first << endl;
     }
+    out_file.close();
 
     return 0;
 }
