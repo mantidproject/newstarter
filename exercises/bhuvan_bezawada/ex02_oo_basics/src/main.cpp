@@ -1,7 +1,9 @@
 // Imports
+#include <vector>
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <string.h>
 
 // Namespace to use
 using namespace std;
@@ -12,7 +14,7 @@ using namespace std;
 **/
 class Shape {
     // Instance variables
-    protected:
+    public:
         string shape_type;
         int num_sides;
 
@@ -28,7 +30,7 @@ class Shape {
 /**
  *  Square class
 **/
-class Square : protected Shape {
+class Square : public Shape {
 
     // Own side length
     private:
@@ -73,7 +75,7 @@ class Square : protected Shape {
 /**
  *  Rectangle class
 **/
-class Rectangle : protected Shape {
+class Rectangle : public Shape {
 
     // Own side lengths
     private:
@@ -121,7 +123,7 @@ class Rectangle : protected Shape {
 /**
  *  Circle class
 **/
-class Circle : protected Shape {
+class Circle : public Shape {
 
     // Own radius
     private:
@@ -166,7 +168,7 @@ class Circle : protected Shape {
 /**
  *  Triangle class
 **/
-class Triangle : protected Shape {
+class Triangle : public Shape {
 
     // Own height and base
     private:
@@ -212,6 +214,25 @@ class Triangle : protected Shape {
 
 
 /**
+ *  ShapeSorter class
+**/
+class ShapeSorter {
+    public:
+        void print_matching_type(vector<Shape*> shapes, string name) {
+            for(vector<Shape*>::const_iterator it = shapes.begin(); it != shapes.end(); ++it) {
+                if(((*it)->shape_type).compare(name) == 0) {
+                    cout << (*it)->shape_type << endl;
+                }
+            }
+        }
+
+        void print_shapes_matching_num_sides();
+        void print_vol_des();
+        void print_per_des();
+};
+
+
+/**
  *  Main method
 **/
 int main(int, char **) {
@@ -241,6 +262,19 @@ int main(int, char **) {
     // Print details of triangle
     triangle.print_type();
     cout << "Area: " << triangle.area() << endl;
+
+
+    // Add shapes into a vector
+    vector<Shape*> shapes;
+    shapes.push_back(&square);
+    shapes.push_back(&rectangle);
+    shapes.push_back(&circle);
+    shapes.push_back(&triangle);
+
+    
+    cout << "\n\nShape sorting section\n\n" << endl;
+    ShapeSorter ss;
+    ss.print_matching_type(shapes, "Square");
 
     return 0;
 }
