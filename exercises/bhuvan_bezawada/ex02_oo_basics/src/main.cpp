@@ -70,6 +70,54 @@ class Square : protected Shape {
 
 
 /**
+ *  Square class
+**/
+class Rectangle : protected Shape {
+
+    // Own side length
+    private:
+        double side1_len;
+        double side2_len;
+
+    // Method implementations
+    public:
+        // Constructor 
+        Rectangle(double side1, double side2) {
+            side1_len = side1;
+            side2_len = side2;
+            shape_type = "Rectangle";
+            num_sides = 4;
+        }
+
+        // Let's user know what type it is
+        void print_type() {
+            cout << "Shape type is: " << shape_type << endl;
+        }
+
+        // Prints out number of sides
+        void print_num_sides() {
+            cout << "Number of sides is: " << num_sides << endl;
+        }
+
+        // Calculates and returns the perimeter
+        double perimeter() {
+            return (2*side1_len + 2*side2_len);
+        }
+
+        // Calculates and returns the area
+        double area() {
+            return side1_len*side2_len;
+        }
+
+        // Prints out the length of its side
+        void print_side_lengths() {
+            cout << "Side 1 length is: " << side1_len << endl;
+            cout << "Side 2 length is: " << side2_len << endl;
+        }
+};
+
+
+/**
  *  Main method
 **/
 int main(int, char **) {
@@ -79,6 +127,14 @@ int main(int, char **) {
     // Print details of square
     square.print_type();
     cout << "Area: " << square.area() << endl;
+
+
+    // Create a square
+    Rectangle rectangle(5, 10);
+    
+    // Print details of square
+    rectangle.print_type();
+    cout << "Area: " << rectangle.area() << endl;
 
     return 0;
 }
