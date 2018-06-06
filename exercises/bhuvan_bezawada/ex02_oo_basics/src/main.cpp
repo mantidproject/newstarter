@@ -223,8 +223,7 @@ int main() {
   shapes.push_back(&triangle);
 
   // Loop through each shape
-  for
-    each(Shape * shape in shapes) {
+  for each(Shape * shape in shapes) {
       shape->printType();
       shape->printNumSides();
       cout << "Area: " << shape->area() << endl;
