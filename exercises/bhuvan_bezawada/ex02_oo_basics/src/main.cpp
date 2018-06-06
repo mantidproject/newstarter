@@ -16,24 +16,42 @@ using namespace std;
 class Shape {
 
     // Instance variables
-    public:
+    private:
         string shape_type;
-        int num_sides;
+        unsigned int num_sides;
 
     // Methods
     public:
+		Shape(const string &type, int sides) {
+			shape_type = type;
+			num_sides = sides;
+		}
+
         // Methods to be overridden
         virtual double perimeter() = 0;
         virtual double area() = 0;
 
         // Methods for info
-        void print_type(const string shape_type) const {
-            cout << "Shape type is: " << shape_type << endl;
+        void print_type() const {
+            cout << "Shape type is: " << get_shape_type() << endl;
         }
 
-        virtual void print_num_sides(const int num_sides) const {
-            cout << "Number of sides is: " << num_sides << endl;
+        virtual void print_num_sides() const {
+            cout << "Number of sides is: " << get_num_sides() << endl;
         }
+
+		// Getters
+		string get_shape_type() const {
+			return shape_type;
+		}
+
+		int get_num_sides() const {
+			return num_sides;
+		}
+
+		// Destructor
+		virtual ~Shape() {}
+
 };
 
 
@@ -49,29 +67,17 @@ class Square : public Shape {
     // Method implementations
     public:
         // Constructor 
-        Square(int side1) {
-            side_length = side1;
-            shape_type = "Square";
-            num_sides = 4;
-        }
-
-        // Let's user know what type it is
-        void print_type() const {
-            Shape::print_type(shape_type);
-        }
-
-        // Prints out number of sides
-        void print_num_sides() const {
-            Shape::print_num_sides(num_sides);
+        Square(double width) : Shape("Square", 4) {
+            side_length = width;
         }
 
         // Calculates and returns the perimeter
-        double perimeter() {
+        double perimeter() override {
             return 4*side_length;
         }
 
         // Calculates and returns the area
-        double area() {
+        double area() override {
             return side_length*side_length;
         }
 
@@ -95,30 +101,18 @@ class Rectangle : public Shape {
     // Method implementations
     public:
         // Constructor 
-        Rectangle(double side1, double side2) {
+        Rectangle(double side1, double side2) : Shape("Rectangle", 4) {
             side1_len = side1;
             side2_len = side2;
-            shape_type = "Rectangle";
-            num_sides = 4;
-        }
-
-        // Let's user know what type it is
-        void print_type() const {
-            Shape::print_type(shape_type);
-        }
-
-        // Prints out number of sides
-        void print_num_sides() const {
-            Shape::print_num_sides(num_sides);
         }
 
         // Calculates and returns the perimeter
-        double perimeter() {
+        double perimeter() override {
             return (2*side1_len + 2*side2_len);
         }
 
         // Calculates and returns the area
-        double area() {
+        double area() override {
             return side1_len*side2_len;
         }
 
@@ -142,29 +136,17 @@ class Circle : public Shape {
     // Method implementations
     public:
         // Constructor 
-        Circle(double radius) {
+        Circle(double radius) : Shape("Circle", 0)  {
             radius_size = radius;
-            shape_type = "Circle";
-            num_sides = 0;
-        }
-
-        // Let's user know what type it is
-        void print_type() const {
-            Shape::print_type(shape_type);
-        }
-
-        // Prints out number of sides
-        void print_num_sides() const {
-            Shape::print_num_sides(num_sides);
         }
 
         // Calculates and returns the perimeter
-        double perimeter() {
+        double perimeter() override {
             return (2*M_PI*radius_size);
         }
 
         // Calculates and returns the area
-        double area() {
+        double area() override {
             return (M_PI*radius_size*radius_size);
         }
 
@@ -188,21 +170,9 @@ class Triangle : public Shape {
     // Method implementations
     public:
         // Constructor 
-        Triangle(double height, double base) {
+		Triangle(double height, double base) : Shape("Triangle", 3) {
             height_len = height;
             base_len = base;
-            shape_type = "Triangle";
-            num_sides = 3;
-        }
-
-        // Let's user know what type it is
-        void print_type() const {
-            Shape::print_type(shape_type);
-        }
-
-        // Prints out number of sides
-        void print_num_sides() const {
-            Shape::print_num_sides(num_sides);
         }
 
         // Calculates and returns the perimeter
@@ -247,8 +217,8 @@ class ShapeSorter {
         // Method to print matching given type
         void print_matching_type(vector<Shape*> shapes, string name) {
             for(vector<Shape*>::const_iterator it = shapes.begin(); it != shapes.end(); ++it) {
-                if(((*it)->shape_type).compare(name) == 0) {
-                    cout << (*it)->shape_type << endl;
+                if(((*it)->get_shape_type()).compare(name) == 0) {
+                    cout << (*it)->get_shape_type() << endl;
                 }
             }
         }
@@ -256,8 +226,8 @@ class ShapeSorter {
         // Method to print shapes of chosen number of sides
         void print_shapes_matching_num_sides(vector<Shape*> shapes, int num_sides) {
             for(vector<Shape*>::const_iterator it = shapes.begin(); it != shapes.end(); ++it) {
-                if(((*it)->num_sides) == num_sides) {
-                    cout << (*it)->shape_type << endl;
+                if(((*it)->get_num_sides()) == num_sides) {
+                    cout << (*it)->get_shape_type() << endl;
                 }
             }
         }
@@ -268,7 +238,7 @@ class ShapeSorter {
             sort(sorted_areas.begin(), sorted_areas.end(), ShapeSorter::compare_area);
 
             for(vector<Shape*>::iterator it = sorted_areas.begin(); it != sorted_areas.end(); ++it) {
-                cout << (*it)->shape_type << "\t\t" << (*it)->area() << endl;
+                cout << (*it)->get_shape_type() << "\t\t" << (*it)->area() << endl;
             }
         }
 
@@ -278,7 +248,7 @@ class ShapeSorter {
             sort(sorted_per.begin(), sorted_per.end(), ShapeSorter::compare_perimeter);
 
             for(vector<Shape*>::iterator it = sorted_per.begin(); it != sorted_per.end(); ++it) {
-                cout << (*it)->shape_type << "\t\t" <<(*it)->perimeter() << endl;
+                cout << (*it)->get_shape_type() << "\t\t" <<(*it)->perimeter() << endl;
             }
         }
 };
@@ -287,49 +257,12 @@ class ShapeSorter {
 /**
  *  Main method
 **/
-int main(int, char **) {
-    // Create a square
-    Square square(5);
-    // Print details of square
-    square.print_type();
-    square.print_num_sides();
-    square.print_side_length();
-    cout << "Area: " << square.area() << endl;
-    cout << "Perimeter: " << square.perimeter() << endl;
-    cout << endl;
-
-
-    // Create a rectangle
-    Rectangle rectangle(5, 10);
-    // Print details of rectangle
-    rectangle.print_type();
-    rectangle.print_num_sides();
-    rectangle.print_side_lengths();
-    cout << "Area: " << rectangle.area() << endl;
-    cout << "Perimeter: " << rectangle.perimeter() << endl;
-    cout << endl;
-
-    // Create a circle
-    Circle circle(5);
-    // Print details of circle
-    circle.print_type();
-    circle.print_num_sides();
-    circle.print_radius_length();
-    cout << "Area: " << circle.area() << endl;
-    cout << "Perimeter: " << circle.perimeter() << endl;
-    cout << endl;
-
-
-    // Create a triangle
-    Triangle triangle(10, 5);
-    // Print details of triangle
-    triangle.print_type();
-    triangle.print_num_sides();
-    triangle.print_side_lengths();
-    cout << "Area: " << triangle.area() << endl;
-    cout << "Perimeter: " << triangle.perimeter() << endl;
-    cout << endl;
-
+int main() {
+	// Shapes
+	Square square(5);
+	Rectangle rectangle(5, 10);
+	Circle circle(5);
+	Triangle triangle(10, 5);
 
     // Add shapes into a vector
     vector<Shape*> shapes;
@@ -337,6 +270,16 @@ int main(int, char **) {
     shapes.push_back(&rectangle);
     shapes.push_back(&circle);
     shapes.push_back(&triangle);
+	
+	// Loop through each shape
+	for each (Shape *shape in shapes) {
+		shape->print_type();
+		shape->print_num_sides();
+		cout << "Area: " << shape->area() << endl;
+		cout << "Perimeter: " << shape->perimeter() << endl;
+		cout << endl;
+	}
+
 
     // Print chosen types
     cout << "\n\nShape sorting section\n\n" << endl;
