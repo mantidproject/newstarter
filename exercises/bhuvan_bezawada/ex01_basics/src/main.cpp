@@ -72,14 +72,24 @@ vector<string> split(const string& s) {
 /**
  * Main function.
 **/
-int main(int, char **) {
+int main() {
     // Get file name from user and store
     cout << "Please enter the name of the file: " << endl;
     string file_name;
     cin >> file_name;
+	ifstream input_file(file_name);
+	
+	// Try to load the file
+	if(!input_file) {
+		cerr << "Error, there was a problem opening/reading the file." << endl;
+		exit(EXIT_FAILURE);
+	}
 
-    // Load the file
-    ifstream input_file(file_name);
+	// Check if file is empty
+	// Adapted from https://stackoverflow.com/questions/2390912/checking-for-an-empty-file-in-c
+	if(input_file.peek() == std::ifstream::traits_type::eof()) {
+		cerr << "Error, the file was empty!" << endl;
+	}
 
     // To store line of text and words and their counts
     string line;
@@ -87,9 +97,10 @@ int main(int, char **) {
 
     // Loop through each line
     while(getline(input_file, line)) {
+
         // Get the list of words in each line
         vector<string> words = split(line);
-        
+
         // Process each word
         for (vector<string>::const_iterator it = words.begin(); it != words.end(); it++) {
             // Dereference the iterator to get back the word
@@ -102,7 +113,7 @@ int main(int, char **) {
                 
                 // Remove all punctuation and white space
                 // Convert upper case letters to lowercase letters
-                if(ispunct(word[i]) || isspace(word[i])) {
+                if(ispunct(word[i])) {
                     word.erase(i--, 1);
                 } else if(isupper(word[i])) {
                     word[i] = tolower(word[i]);
@@ -115,6 +126,8 @@ int main(int, char **) {
             }
         }
     }
+
+	cout << "END..." << endl;
 
     // Header for output
     cout << "Word" << "\t\t" << "Usage" << endl;
