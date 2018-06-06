@@ -53,11 +53,11 @@ public:
  **/
 class Square : public Shape {
 
-  // Own side length
+// Own side length
 private:
   double width;
 
-  // Method implementations
+// Method implementations
 public:
   // Constructor
   Square(double widthLen) : Shape("Square", 4) { width = widthLen; }
@@ -74,12 +74,12 @@ public:
  **/
 class Rectangle : public Shape {
 
-  // Own side lengths
+// Own side lengths
 private:
   double width;
   double height;
 
-  // Method implementations
+// Method implementations
 public:
   // Constructor
   Rectangle(double widthLen, double heightLen) : Shape("Rectangle", 4) {
@@ -99,11 +99,11 @@ public:
  **/
 class Circle : public Shape {
 
-  // Own radius
+// Own radius
 private:
   double radius;
 
-  // Method implementations
+// Method implementations
 public:
   // Constructor
   Circle(double radiusLen) : Shape("Circle", 0) { radius = radiusLen; }
@@ -120,12 +120,12 @@ public:
  **/
 class Triangle : public Shape {
 
-  // Own height and base
+// Own height and base
 private:
   double height;
   double base;
 
-  // Method implementations
+// Method implementations
 public:
   // Constructor
   Triangle(double heightLen, double baseLen) : Shape("Triangle", 3) {
@@ -135,8 +135,7 @@ public:
 
   // Calculates and returns the perimeter
   double perimeter() {
-    return (base +
-            2 * sqrt(height * height + (base * base) / 4));
+    return (base + 2 * sqrt(height * height + (base * base) / 4));
   }
 
   // Calculates and returns the area
@@ -196,7 +195,8 @@ public:
   // Print the shapes by perimeter descending
   void printPerimeterDescending(vector<Shape *> shapes) {
     vector<Shape *> sortedPerimeters = shapes;
-    sort(sortedPerimeters.begin(), sortedPerimeters.end(), ShapeSorter::comparePerimeter);
+    sort(sortedPerimeters.begin(), sortedPerimeters.end(),
+         ShapeSorter::comparePerimeter);
 
     for (vector<Shape *>::iterator it = sortedPerimeters.begin();
          it != sortedPerimeters.end(); ++it) {
