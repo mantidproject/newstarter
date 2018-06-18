@@ -1,3 +1,11 @@
+/**
+* PROGRAM DESCRIPTION:
+*
+* A command line program to sort shapes and display the area and perimeter 
+* of each shape.
+*
+**/
+
 // Imports
 #include <algorithm>
 #include <iostream>
@@ -6,7 +14,7 @@
 #include <string>
 #include <vector>
 
-// Namespace to use
+// Namespace being used
 using namespace std;
 
 /**

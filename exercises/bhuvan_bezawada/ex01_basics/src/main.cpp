@@ -2,7 +2,7 @@
  * PROGRAM DESCRIPTION:
  *
  * A command line program to read in a text file and give the occurrences of the
- *words.
+ * words.
  *
  **/
 
