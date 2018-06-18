@@ -231,11 +231,12 @@ int main() {
   shapes.push_back(&triangle);
 
   // Loop through each shape
-  for each(Shape * shape in shapes) {
-      shape->printType();
-      shape->printNumSides();
-      cout << "Area: " << shape->area() << endl;
-      cout << "Perimeter: " << shape->perimeter() << endl;
+    for (vector<Shape *>::iterator it = shapes.begin();
+         it != shapes.end(); ++it) {
+      (*it)->printType();
+      (*it)->printNumSides();
+      cout << "Area: " << (*it)->area() << endl;
+      cout << "Perimeter: " << (*it)->perimeter() << endl;
       cout << endl;
     }
 
