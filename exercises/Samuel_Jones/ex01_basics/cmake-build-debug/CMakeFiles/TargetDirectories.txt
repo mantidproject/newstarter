@@ -1,0 +1,3 @@
+/home/sam/Repos/newstarter/exercises/Samuel_Jones/ex01_basics/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/sam/Repos/newstarter/exercises/Samuel_Jones/ex01_basics/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sam/Repos/newstarter/exercises/Samuel_Jones/ex01_basics/cmake-build-debug/CMakeFiles/WordCounter.dir

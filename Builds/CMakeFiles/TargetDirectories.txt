@@ -1,0 +1,8 @@
+/home/sam/Repos/newstarter/Builds/CMakeFiles/edit_cache.dir
+/home/sam/Repos/newstarter/Builds/CMakeFiles/rebuild_cache.dir
+/home/sam/Repos/newstarter/Builds/ex01_basics/CMakeFiles/edit_cache.dir
+/home/sam/Repos/newstarter/Builds/ex01_basics/CMakeFiles/rebuild_cache.dir
+/home/sam/Repos/newstarter/Builds/ex01_basics/CMakeFiles/WordCounter.dir
+/home/sam/Repos/newstarter/Builds/ex02_oo_basics/CMakeFiles/edit_cache.dir
+/home/sam/Repos/newstarter/Builds/ex02_oo_basics/CMakeFiles/rebuild_cache.dir
+/home/sam/Repos/newstarter/Builds/ex02_oo_basics/CMakeFiles/Shapes.dir

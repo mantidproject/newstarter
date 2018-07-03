@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sam/Repos/newstarter/exercises/Samuel_Jones/ex01_basics/src/main.cpp
+iostream
+-
+fstream
+-
+vector
+-
+cstring
+-
+list
+-
+
