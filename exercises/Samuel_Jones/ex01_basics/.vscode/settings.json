@@ -6,6 +6,9 @@
         "streambuf": "cpp",
         "vector": "cpp",
         "*.tcc": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "iosfwd": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp"
     }
 }
