@@ -9,6 +9,7 @@ private:
     std::string m_type;
 public:
     Shape(std::string type);
+    std::string getType();
 };
 
 #endif /*SHAPE_H_*/

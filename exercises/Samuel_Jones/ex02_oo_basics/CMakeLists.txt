@@ -23,6 +23,7 @@ set ( SRC_FILES
   src/Rectangle.cpp
   src/Circle.cpp
   src/Triangle.cpp
+  src/ShapeSorter.cpp
   # add any additional source files here
 )
 
@@ -33,6 +34,7 @@ set ( HDR_FILES
   src/Rectangle.h
   src/Circle.h
   src/Triangle.h
+  src/ShapeSorter.h
 )
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )
