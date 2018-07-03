@@ -6,9 +6,9 @@
 class Shape
 {
 private:
-    std::string type;
+    std::string m_type;
 public:
-    Shape();
+    Shape(std::string type);
 };
 
 #endif /*SHAPE_H_*/

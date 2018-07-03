@@ -4,7 +4,7 @@
 #include "Shape.h"
 #include "math.h"
 
-class Triangle : Shape
+class Triangle : public Shape
 {
 private:
     int m_height;

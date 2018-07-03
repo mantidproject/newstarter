@@ -1,6 +1,6 @@
 #include "Square.h"
 
-Square::Square(int side1):m_side1(side1)
+Square::Square(int side1):m_side1(side1), Shape("Square")
 {
 }
 

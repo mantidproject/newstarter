@@ -1,6 +1,6 @@
 #include "Rectangle.h"
 
-Rectangle::Rectangle(int side1, int side2):m_side1(side1), m_side2(side2)
+Rectangle::Rectangle(int side1, int side2):m_side1(side1), m_side2(side2), Shape("Rectangle")
 {
 }
 

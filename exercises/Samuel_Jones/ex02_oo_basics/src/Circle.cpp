@@ -1,8 +1,8 @@
 #include "Shape.h"
 #include "Circle.h"
 
-Circle::Circle(int radius):m_radius(radius)
-{
+Circle::Circle(int radius):m_radius(radius), Shape("Circle")
+{  
 }
 
 float Circle::getPerimeter(){
