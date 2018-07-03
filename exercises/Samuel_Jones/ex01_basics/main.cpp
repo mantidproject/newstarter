@@ -12,9 +12,9 @@ using namespace std;
 bool doesFileExist(string &);
 string getFileName();
 void readWords(vector<string> *, ifstream &);
-void findOccurencesofWords(vector<string>, vector< vector<string> > *);
+void findOccurencesofWords(vector<string>, vector< pair<string,int> > *);
 bool notDelim(char);
-bool sortingWords(const vector<string>&, const vector<string>&);
+bool sortingWords(const pair<string,int>&, const pair<string,int>&);
 
 /**
  * Skeleton main routine
@@ -27,7 +27,7 @@ int main(int, char **)
 
     //Load the ascii file
     vector<string> fileStrings;
-    vector< vector<string> > uniqueWords;
+    vector< pair<string, int> > uniqueWords;
 
     ifstream fs;
     fs.open(fileName.c_str());
@@ -47,11 +47,10 @@ int main(int, char **)
     //Sort the lists based on the number of times it is present
     sort(uniqueWords.begin(), uniqueWords.end(), sortingWords);
 
-
+    //Print out to console should be easily replaced with file using a filestream
     for(auto i = 0u; i<uniqueWords.size(); i++){
-        vector<string> currentWord = uniqueWords.front();
-        uniqueWords.at(i);
-        cout << currentWord.front() << "\t\t" << currentWord.back() << endl;
+        pair<string,int> currentWord = uniqueWords.at(i);
+        cout << currentWord.first << "\t\t" << currentWord.second << endl;
     }
 }
 
@@ -86,7 +85,7 @@ void readWords(vector<string> *words, ifstream &fs){
             tempWord+=contents[i];
         } else if(tempWord != "" && tempWord.length() >= 4){
             //Make sure word is all upper case
-            transform(tempWord.begin(), tempWord.end(), tempWord.begin(), ::toupper);
+            transform(tempWord.begin(), tempWord.end(), tempWord.begin(), ::tolower);
 
             words->push_back(tempWord);
             tempWord = "";
@@ -94,6 +93,8 @@ void readWords(vector<string> *words, ifstream &fs){
             tempWord = "";
         }
     }
+    //Catch the final word and add it to the list as it will be forgotten.
+    words->push_back(tempWord);
 }
 
 //If the charecter is one of the delimeters return false
@@ -119,16 +120,17 @@ bool notDelim(char c){
     }
 }
 
-void findOccurencesofWords(vector<string> words, vector< vector<string> > *uniqueWords){
+void findOccurencesofWords(vector<string> words, vector< pair<string, int> > *uniqueWords){
     string currentWord = "";
-    string lastWord = "";
+    string lastWord;
     bool inSet = false;
     bool alreadyThere = false;
-    int currentTally = 0;
+    int currentTally = 1;
     //Make sure that the vector is sorted
     sort(words.begin(), words.end());
 
     for(auto i = 0u; i<words.size(); i++){
+        lastWord = currentWord;
         currentWord = words.at(i);
         //If new word is same as last word then then check if new set
         if(currentWord == lastWord){
@@ -142,24 +144,29 @@ void findOccurencesofWords(vector<string> words, vector< vector<string> > *uniqu
             }
         } else {
             //Check whether or not the set has ended
-            if(inSet && !alreadyThere){
+            //if(inSet /*&& !alreadyThere*/){
                 //Add new set to the vector of lists and reset values
-                vector<string> newSet;
-                newSet.push_back(lastWord);
-                newSet.push_back(to_string(currentTally));
-                currentTally = 0;
+                pair<string, int> newSet;
+                newSet.first = lastWord;
+                newSet.second = currentTally;
+                currentTally = 1;
                 uniqueWords->push_back(newSet);
                 alreadyThere = true;
-            }else{
+            //}else{
                 //It's just a new wordset so is it really a problem???
-                alreadyThere = false;
-                currentTally++;
-            }
+                //alreadyThere = false;
+                //currentTally++;
+            //}
         }
         lastWord = currentWord;
     }
+    //Catch the last one and put it into a pair.
+    pair<string, int> newSet;
+    newSet.first = lastWord;
+    newSet.second = currentTally;
+    uniqueWords->push_back(newSet);
 }
 
-bool sortingWords (const vector<string> &a, const vector<string> &b){
-    return a[1] > b[1];
+bool sortingWords (const pair<string,int> &a, const pair<string,int> &b){
+    return a.second > b.second;
 }

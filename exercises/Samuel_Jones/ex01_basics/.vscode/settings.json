@@ -5,6 +5,7 @@
         "istream": "cpp",
         "streambuf": "cpp",
         "vector": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "array": "cpp"
     }
 }
