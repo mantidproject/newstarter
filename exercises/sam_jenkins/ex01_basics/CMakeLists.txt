@@ -18,11 +18,15 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
-  # add any additional source files here
+  src/stringManip.cpp
+  src/mapFunctions.cpp
+  
 )
 
 set ( HDR_FILES
-  # add any additional header files here
+  src/stringManip.h
+  src/mapFunctions.h
+  
 )
 
 add_executable ( WordCounter ${SRC_FILES} ${HDR_FILES} )
