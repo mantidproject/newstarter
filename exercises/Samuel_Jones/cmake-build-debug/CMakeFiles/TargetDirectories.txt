@@ -1,8 +1,0 @@
-/home/sam/Repos/newstarter/exercises/Samuel_Jones/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/sam/Repos/newstarter/exercises/Samuel_Jones/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/sam/Repos/newstarter/exercises/Samuel_Jones/cmake-build-debug/ex01_basics/CMakeFiles/rebuild_cache.dir
-/home/sam/Repos/newstarter/exercises/Samuel_Jones/cmake-build-debug/ex01_basics/CMakeFiles/edit_cache.dir
-/home/sam/Repos/newstarter/exercises/Samuel_Jones/cmake-build-debug/ex01_basics/CMakeFiles/WordCounter.dir
-/home/sam/Repos/newstarter/exercises/Samuel_Jones/cmake-build-debug/ex02_oo_basics/CMakeFiles/rebuild_cache.dir
-/home/sam/Repos/newstarter/exercises/Samuel_Jones/cmake-build-debug/ex02_oo_basics/CMakeFiles/edit_cache.dir
-/home/sam/Repos/newstarter/exercises/Samuel_Jones/cmake-build-debug/ex02_oo_basics/CMakeFiles/Shapes.dir
