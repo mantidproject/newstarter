@@ -16,6 +16,7 @@ bool not_space(const char& c)
 
 void strip_string(string& input)
 {
+	//remove these delimiters from the begining and ending of words
 	string delimiters = " .,?:;\'\"()!";
 	while (input.length() > 4 && delimiters.find(input.back()) != string::npos) {
 		input.pop_back();
