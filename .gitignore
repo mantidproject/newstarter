@@ -29,3 +29,6 @@ exercises/Samuel_Jones/ex02_oo_basics/.vscode/*
 exercises/Samuel_Jones/cmake-build-debug/*
 exercises/Samuel_Jones/ex01_basics/.idea/*
 exercises/Samuel_Jones/ex01_basics/main.cpp
+exercises/Samuel_Jones/ex01_basics/a.out
+exercises/Samuel_Jones/ex02_oo_basics/a.out
+exercises/Samuel_Jones/ex01_basics/results.txt
