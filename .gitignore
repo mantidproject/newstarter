@@ -32,3 +32,8 @@ exercises/Samuel_Jones/ex01_basics/main.cpp
 exercises/Samuel_Jones/ex01_basics/a.out
 exercises/Samuel_Jones/ex02_oo_basics/a.out
 exercises/Samuel_Jones/ex01_basics/results.txt
+exercises/Samuel_Jones/ex02_oo_basics/bin/*
+exercises/Samuel_Jones/ex02_oo_basics/CMakeFiles/*
+exercises/Samuel_Jones/ex02_oo_basics/Makefile
+exercises/Samuel_Jones/ex02_oo_basics/cmake_install.cmake
+exercises/Samuel_Jones/ex02_oo_basics/CMakeCache.txt

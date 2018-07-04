@@ -10,6 +10,7 @@ private:
 public:
     Shape(std::string type);
     std::string getType();
+    virtual ~Shape() = default;
 };
 
 #endif /*SHAPE_H_*/

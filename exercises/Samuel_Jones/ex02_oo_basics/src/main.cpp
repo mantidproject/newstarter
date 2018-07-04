@@ -4,12 +4,14 @@
 #include "Circle.h"
 #include "Triangle.h"
 #include <vector>
+#include <memory>
 
 int main(int, char **)
 {
-    std::vector<Shape> shapes;
-    shapes.push_back(Circle(10));
-    shapes.push_back(Square(10));
-    shapes.push_back(Rectangle(10,10));
-    shapes.push_back(Triangle(10,10));
+    std::vector<std::unique_ptr<Shape>> shapes;
+
+    shapes.emplace_back(std::make_unique<Circle>(10));
+    shapes.emplace_back(std::make_unique<Square>(10));
+    shapes.emplace_back(std::make_unique<Rectangle>(10,10));
+    shapes.emplace_back(std::make_unique<Triangle>(10,10));
 }
