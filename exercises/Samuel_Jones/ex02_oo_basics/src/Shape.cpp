@@ -4,14 +4,14 @@ Shape::Shape(std::string type):m_type(type)
 {
 }
 
-std::string Shape::getType(){
+std::string Shape::getType() const{
     return m_type;
 }
 
-double Shape::getPerimeter(){
+double Shape::getPerimeter() const{
     return 0;
 }
 
-double Shape::getArea(){
+double Shape::getArea() const{
     return 0;
 }

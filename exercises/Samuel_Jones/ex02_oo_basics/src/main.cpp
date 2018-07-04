@@ -8,6 +8,7 @@
 #include <memory>
 #include <iostream>
 #include <string>
+#include "make_unique.h"
 
 int main(int, char **)
 {
@@ -35,6 +36,7 @@ int main(int, char **)
                 //Print out shapes that match a chosen type                
                 std::cout << "What type of shape should be printed?" << std::endl;
                 std::cin >> response2;
+                std::cout << std::endl;
 
                 sorter.printOutShapesOfType(shapes, response2);
                 break;
@@ -44,15 +46,20 @@ int main(int, char **)
 
                 std::cout << "How many sides?" << std::endl;
                 std::cin >> response3;
+                std::cout << std::endl;
 
                 sorter.printOutShapesOfSides(shapes, response3);
                 break;
             case '3':
                 //Print out the Shapes in order if Area descending
+                std::cout << std::endl;
+                
                 sorter.printOutShapesInOrderOfArea(shapes);
                 break;
             case '4':
                 //Print out the shapes in order of perimeter descending
+                std::cout << std::endl;
+
                 sorter.printOutShapesInOrderOfPerimeter(shapes);
                 break;
         }

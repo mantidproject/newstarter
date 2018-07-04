@@ -35,6 +35,7 @@ set ( HDR_FILES
   src/Circle.h
   src/Triangle.h
   src/ShapeSorter.h
+  src/make_unique.h
 )
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )

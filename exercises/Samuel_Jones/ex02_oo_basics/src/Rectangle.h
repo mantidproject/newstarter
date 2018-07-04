@@ -10,8 +10,8 @@ private:
     int m_side2;
 public:
     Rectangle(int, int);
-    double getPerimeter();
-    double getArea();
+    double getPerimeter() const;
+    double getArea() const;
 };
 
 #endif /*RECTANGLE_H_*/

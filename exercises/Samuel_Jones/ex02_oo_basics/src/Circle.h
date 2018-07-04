@@ -9,8 +9,8 @@ private:
     int m_radius;
 public:
     Circle(int);
-    double getPerimeter();
-    double getArea();
+    double getPerimeter()const;
+    double getArea()const;
 };
 
 constexpr auto pi = 3.14159265358979323846;

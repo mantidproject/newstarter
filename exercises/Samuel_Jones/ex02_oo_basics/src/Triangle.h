@@ -11,8 +11,8 @@ private:
     int m_base;
 public:
     Triangle(int, int);
-    double getPerimeter();
-    double getArea();
+    double getPerimeter()const;
+    double getArea()const;
 };
 
 #endif /*TRIANGLE_H_*/

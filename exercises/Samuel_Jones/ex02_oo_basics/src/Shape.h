@@ -9,10 +9,10 @@ private:
     std::string m_type;
 public:
     Shape(std::string type);
-    std::string getType();
+    std::string getType() const;
     virtual ~Shape() = default;
-    virtual double getPerimeter();
-    virtual double getArea();
+    virtual double getPerimeter() const;
+    virtual double getArea() const;
 };
 
 #endif /*SHAPE_H_*/
