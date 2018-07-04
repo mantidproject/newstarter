@@ -4,15 +4,15 @@
 #include "Shape.h"
 #include "math.h"
 
-class Triangle : public Shape
-{
+class Triangle : public Shape {
 private:
-    int m_height;
-    int m_base;
+  int m_height;
+  int m_base;
+
 public:
-    Triangle(int, int);
-    double getPerimeter()const;
-    double getArea()const;
+  Triangle(int, int);
+  double getPerimeter() const;
+  double getArea() const;
 };
 
 #endif /*TRIANGLE_H_*/

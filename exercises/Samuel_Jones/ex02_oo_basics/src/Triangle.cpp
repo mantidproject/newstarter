@@ -1,13 +1,10 @@
 #include "Triangle.h"
 
-Triangle::Triangle(int base, int height): Shape("Triangle"), m_height(height), m_base(base)
-{
+Triangle::Triangle(int base, int height)
+    : Shape("Triangle"), m_height(height), m_base(base) {}
+
+double Triangle::getPerimeter() const {
+  return m_base + 2 * (sqrt((m_height * m_height) + ((m_base * m_base) / 4)));
 }
 
-double Triangle::getPerimeter()const{
-    return m_base + 2*(sqrt((m_height*m_height)+((m_base*m_base)/4)));
-}
-
-double Triangle::getArea()const{
-    return (m_base*m_height)/2;
-}
+double Triangle::getArea() const { return (m_base * m_height) / 2; }

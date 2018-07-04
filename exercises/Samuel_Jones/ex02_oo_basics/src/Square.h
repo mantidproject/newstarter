@@ -3,14 +3,14 @@
 
 #include "Shape.h"
 
-class Square : public Shape
-{
+class Square : public Shape {
 private:
-    int m_side1;
+  int m_side1;
+
 public:
-    Square(int);
-    double getPerimeter() const;
-    double getArea() const;
+  Square(int);
+  double getPerimeter() const;
+  double getArea() const;
 };
 
 #endif /*SQUARE_H_*/

@@ -5,8 +5,8 @@
 #include "Square.h"
 #include "Triangle.h"
 #include "make_unique.h"
-#include <memory>
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 

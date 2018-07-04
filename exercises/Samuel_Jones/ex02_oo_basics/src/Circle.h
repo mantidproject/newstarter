@@ -3,14 +3,14 @@
 
 #include "Shape.h"
 
-class Circle : public Shape
-{
+class Circle : public Shape {
 private:
-    int m_radius;
+  int m_radius;
+
 public:
-    Circle(int);
-    double getPerimeter()const;
-    double getArea()const;
+  Circle(int);
+  double getPerimeter() const;
+  double getArea() const;
 };
 
 constexpr auto pi = 3.14159265358979323846;
