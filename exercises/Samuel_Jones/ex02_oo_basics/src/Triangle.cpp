@@ -1,6 +1,6 @@
 #include "Triangle.h"
 
-Triangle::Triangle(int base, int height):m_base(base), m_height(height), Shape("Triangle")
+Triangle::Triangle(int base, int height): Shape("Triangle"), m_height(height), m_base(base)
 {
 }
 

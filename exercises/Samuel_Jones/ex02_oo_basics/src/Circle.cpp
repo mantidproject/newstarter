@@ -1,7 +1,7 @@
 #include "Shape.h"
 #include "Circle.h"
 
-Circle::Circle(int radius):m_radius(radius), Shape("Circle")
+Circle::Circle(int radius):Shape("Circle"), m_radius(radius)
 {  
 }
 
