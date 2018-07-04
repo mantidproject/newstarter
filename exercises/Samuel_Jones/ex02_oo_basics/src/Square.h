@@ -9,8 +9,8 @@ private:
     int m_side1;
 public:
     Square(int);
-    float getPerimeter();
-    float getArea();
+    double getPerimeter();
+    double getArea();
 };
 
 #endif /*SQUARE_H_*/

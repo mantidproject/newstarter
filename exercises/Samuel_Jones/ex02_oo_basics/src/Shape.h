@@ -11,8 +11,8 @@ public:
     Shape(std::string type);
     std::string getType();
     virtual ~Shape() = default;
-    virtual float getPerimeter();
-    virtual float getArea();
+    virtual double getPerimeter();
+    virtual double getArea();
 };
 
 #endif /*SHAPE_H_*/

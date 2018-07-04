@@ -5,10 +5,10 @@ Circle::Circle(int radius):m_radius(radius), Shape("Circle")
 {  
 }
 
-float Circle::getPerimeter(){
+double Circle::getPerimeter(){
     return 2*pi*m_radius;
 }
 
-float Circle::getArea(){
+double Circle::getArea(){
     return pi*(m_radius*m_radius);
 }

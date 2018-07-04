@@ -8,10 +8,10 @@ std::string Shape::getType(){
     return m_type;
 }
 
-float Shape::getPerimeter(){
+double Shape::getPerimeter(){
     return 0;
 }
 
-float Shape::getArea(){
+double Shape::getArea(){
     return 0;
 }
