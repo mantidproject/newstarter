@@ -20,7 +20,7 @@ set ( SRC_FILES
   src/main.cpp
   src/Rectangle.cpp
   src/Shapes.cpp
-  src/square.cpp
+  src/Square.cpp
   src/Triangle.cpp
   # add any additional source files here
 )
