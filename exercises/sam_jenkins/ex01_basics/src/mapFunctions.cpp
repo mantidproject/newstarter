@@ -5,7 +5,7 @@
 
 
 
-using std::string; using std::unordered_map; using std::vector;
+using std::string; using std::unordered_map; using std::vector; using std::pair;
 
 unordered_map<string, int> countof(const string& input)
 {
@@ -33,12 +33,17 @@ unordered_map<string, int> countof(const string& input)
 	return wordtable;
 }
 
+bool compare(const pair<string, int>& left, const pair<string, int>& right)
+{
+	return left.second > right.second;
+}
+
 vector<std::pair<string, int>> mapToVector(unordered_map<string, int>map)
 {
 	//iterate across the map, copying it into a vector of pairs
 	vector<std::pair<string, int>> sortingVector(map.begin(), map.end());
 	//sort the vector via the second value descending
-	std::sort(sortingVector.begin(), sortingVector.end(), [](auto &left, auto&right) {
-		return left.second > right.second; });
+	std::sort(sortingVector.begin(), sortingVector.end(), compare);
 	return sortingVector;
 }
+
