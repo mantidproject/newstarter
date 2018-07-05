@@ -1,7 +1,7 @@
 #include <string>
 class Shapes {
 public:
-	Shapes::Shapes() :type("undefined"), sides(0) {};
+	Shapes() :type("undefined"), sides(0) {};
 	std::string getType()
 	{
 		return type;
