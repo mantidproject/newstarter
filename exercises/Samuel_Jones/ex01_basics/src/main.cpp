@@ -23,7 +23,7 @@ bool sortingWords(const pair<string, int> &, const pair<string, int> &);
 int main(int, char **)
 {
     //Get the file name from the user via command line
-    string fileName = getFileName();
+    const auto fileName = getFileName();
 
     //Load the ascii file
     vector<string> fileStrings;
@@ -81,11 +81,12 @@ bool doesFileExist(string &fileName)
 void readWords(vector<string> *words, ifstream &fs)
 {
     //Create the stream buffer for content into a string.
-    string contents((istreambuf_iterator<char>(fs)), istreambuf_iterator<char>());
+    const string contents((istreambuf_iterator<char>(fs)), istreambuf_iterator<char>());
 
     //Create the word utilising the buffer iterators
     string tempWord;
-    for (auto i = 0u; i < contents.length(); i++)
+    auto maxCharecters = contents.length();
+    for (auto i = 0u; i < maxCharecters; i++)
     {
         if (notDelim(contents[i]))
         {
