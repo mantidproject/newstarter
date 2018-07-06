@@ -5,8 +5,8 @@ class Square : public Shapes {
 public:
 	Square();
 	Square(double side);
-	double calcPerimiter();
-	double calcArea();
+	double calcPerimiter()const;
+	double calcArea()const;
 private:
 	double side;
 };

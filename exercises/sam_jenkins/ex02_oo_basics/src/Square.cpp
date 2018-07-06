@@ -1,23 +1,18 @@
 #include "Shapes.h"
-class Square : public Shapes {
-public:
-	Square() :side(1) 
+#include "Square.h"
+	Square::Square() :side(1) 
 	{
 		type = "Square";
 		sides = 4;
 	}
-	Square(double side):side(side)
+	Square::Square(double side):side(side)
 	{
 		type = "Square";
 		sides = 4;
 	}
-	double calcPerimiter() {
+	double Square::calcPerimiter()const {
 		return 4 * side;
 	}
-	double calcArea() {
+	double Square::calcArea()const {
 		return side*side;
 	}
-private:
-	double side;
-	
-};

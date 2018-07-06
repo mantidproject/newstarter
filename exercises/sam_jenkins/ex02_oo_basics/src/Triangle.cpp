@@ -1,24 +1,22 @@
 #include "Shapes.h"
 #include <ctgmath>
-class Triangle : public Shapes {
-public:
-	Triangle() :base(1), height(1)
+#include "Triangle.h"
+
+	Triangle::Triangle() :base(1), height(1)
 	{
 		type = "Triangle";
 		sides = 3;
 	}
-	Triangle(double base, double height) :base(base)
+	Triangle::Triangle(double base, double height) :base(base) ,height(height)
 	{
 		type = "Triangle";
 		sides = 3;
 	}
-	double calcPerimiter() const{
+	double Triangle::calcPerimiter()const {
 		return(base + 2 * (sqrt(pow(height, 2) + (pow(base, 2) / 4))));
 	}
-	double calcArea() const{
-		return (base*height)/2;
+	double Triangle::calcArea()const {
+	
+	
+		return (base * height)/2;
 	}
-private:
-	double height;
-	double base;
-};

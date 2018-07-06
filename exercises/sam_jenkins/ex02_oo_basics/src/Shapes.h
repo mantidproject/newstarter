@@ -5,12 +5,12 @@
 class Shapes {
 public:
 	Shapes();
-	virtual double calcPerimiter()=0;
-	virtual double calcArea()=0;
-	virtual std::string print() = 0;
-	std::string getType();
+	virtual double calcPerimiter() const =0;
+	virtual double calcArea() const =0;
+	//virtual std::string print() = 0;
+	std::string getType()const;
 	
-	int getSides();
+	int getSides()const;
 protected:
 	std::string type;
 	int sides;

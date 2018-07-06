@@ -1,18 +1,13 @@
 #include <string>
-class Shapes {
-public:
-	Shapes() :type("undefined"), sides(0) {};
-	std::string getType()
+#include "Shapes.h"
+	Shapes::Shapes() :type("undefined"), sides(0) {};
+	std::string Shapes::getType()const
 	{
 		return type;
 	}
-	int getSides()
+	int Shapes::getSides()const
 	{
 		return sides;
 	}
 	
 	
-protected:
-	std::string type;
-	int sides;
-};

@@ -5,8 +5,8 @@ class Triangle : public Shapes {
 public:
 	Triangle();
 	Triangle(double base, double height);
-	double calcPerimiter() const;
-	double calcArea() const;
+	double calcPerimiter()const;
+	double calcArea()const;
 private:
 	double height;
 	double base;
