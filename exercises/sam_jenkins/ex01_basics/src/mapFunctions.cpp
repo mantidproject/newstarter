@@ -11,12 +11,11 @@ unordered_map<string, int> countof(const string& input)
 {
 	//create a unordered map and string input stream
 	unordered_map<string, int>wordtable;
-	std::istringstream iss(input);
 	//create an iterator to loop through the string
 	auto i = input.begin();
 	while (i != input.end()) {
 		//find the first non space character
-		i = find_if(i, input.end(), not_space);
+		i = find_if_not(i, input.end(), space);
 		//find the next space from that point
 		auto j = find_if(i, input.end(), space);
 		//take the substring between i and j, strip it of punctuation and add it to the map

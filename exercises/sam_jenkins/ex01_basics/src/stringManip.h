@@ -5,7 +5,7 @@
 #include <regex>
 
 bool space(const char& c);
-bool not_space(const char& c);
+
 void strip_string(std::string& input);
 
 #endif

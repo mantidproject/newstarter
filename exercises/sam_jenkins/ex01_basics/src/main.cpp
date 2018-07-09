@@ -24,16 +24,17 @@ int main(int argc, char **argv) {
 		transform(read.begin(), read.end(), read.begin(), ::tolower);
 
 		//create an unordered map to count words
-		unordered_map<string, int> count =countof(read);
+		const unordered_map<string, int> count =countof(read);
 		//convert it to a sorted vector of pairs
-		vector<std::pair<string, int>> output = mapToVector(count);
+		const vector<std::pair<string, int>> output = mapToVector(count);
 		//output to the file Out.txt
-		ofstream outputfile("Out.txt");
-		outputfile << std::setw(15) << "word" << std::setw(9) << "usage" << endl << endl;
+		ofstream outputFile("Out.txt");
+		outputFile << std::setw(15) << "word" << std::setw(9) << "usage" << endl << endl;
 		for (vector<std::pair<string, int>>::const_iterator it = output.begin();
 			it != output.end(); ++it) {
-			outputfile <<std::setw(15) << it->first <<std::setw(6) << it->second << endl;
+			outputFile <<std::setw(15) << it->first <<std::setw(6) << it->second << endl;
 		}
+		outputFile.close();
 	}
 	else {
 		cout << "could not find file: " << argv[1] << endl;
