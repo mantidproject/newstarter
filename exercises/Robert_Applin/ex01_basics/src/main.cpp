@@ -88,7 +88,8 @@ void removeShorterThanFive(std::vector<std::string> &strings) {
  * @return A string transformed to lower case
  */
 std::string toLower(std::string str) {
-  std::transform(str.begin(), str.end(), str.begin(), std::tolower);
+  std::transform(str.begin(), str.end(), str.begin(),
+                 static_cast<int (*)(int)>(std::tolower));
   return str;
 }
 
