@@ -8,7 +8,7 @@ double Rectangle::getWidth() const { return m_width; }
 
 double Rectangle::getHeight() const { return m_height; }
 
-std::string Rectangle::getType() const { return "Rectangle"; }
+std::string Rectangle::getType() const { return "rectangle"; }
 
 std::size_t Rectangle::getNumberOfEdges() const { return 4; }
 

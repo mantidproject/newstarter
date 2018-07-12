@@ -1,10 +1,12 @@
 #include "Circle.h"
 
-Circle::Circle(double radius)
-    : m_radius(radius), m_area(3.14159 * radius * radius),
-      m_perimeter(2.0 * 3.14159 * radius) {}
+#include <cmath>
 
-std::string Circle::getType() const { return "Circle"; }
+Circle::Circle(double radius)
+    : m_radius(radius), m_area(M_PI * radius * radius),
+      m_perimeter(2.0 * M_PI * radius) {}
+
+std::string Circle::getType() const { return "circle"; }
 
 std::size_t Circle::getNumberOfEdges() const { return 1; }
 
