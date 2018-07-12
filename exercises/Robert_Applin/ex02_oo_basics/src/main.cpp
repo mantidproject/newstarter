@@ -17,8 +17,8 @@
 #include "Triangle.h"
 
 std::string toLower(std::string str) {
-	std::transform(str.begin(), str.end(), str.begin(), std::tolower);
-	return str;
+  std::transform(str.begin(), str.end(), str.begin(), std::tolower);
+  return str;
 }
 
 std::size_t getUnsignedFrom(std::istream &input) {
