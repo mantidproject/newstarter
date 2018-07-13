@@ -25,7 +25,7 @@ int main(){
     // max word length
     size_t size = 0;
 
-    //write each line into line
+    //write each word into line
     string line;
 
     // create input file object
