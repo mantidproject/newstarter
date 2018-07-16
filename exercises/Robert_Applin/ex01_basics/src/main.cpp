@@ -13,11 +13,15 @@
 #include <unordered_set>
 #include <vector>
 
-using WordCount = std::vector<std::pair<std::string, std::size_t>>;
+using WordCountPair = std::pair<std::string, std::size_t>;
+using WordCount = std::vector<WordCountPair>;
 
 /**
+ * function finds the end point of a word.
+ * @params Iterators representing the start and end points of an
+ *         iteration. The characters used to split up each word.
  * @return An iterator pointing to the next letter contained
- *         in the supplied set.
+ *         in the supplied string.
  */
 std::string::const_iterator
 findNextCharacter(std::string::const_iterator fromIterator,
@@ -31,8 +35,11 @@ findNextCharacter(std::string::const_iterator fromIterator,
 }
 
 /**
+ * function finds the starting point of a word.
+ * @params Iterators representing the start and end points of an
+ *         iteration. The characters used to split up each word.
  * @return An iterator pointing to the next letter not
- *         contained in the supplied set.
+ *         contained in the supplied string.
  */
 std::string::const_iterator
 findNextNotCharacter(std::string::const_iterator fromIterator,
@@ -46,6 +53,9 @@ findNextNotCharacter(std::string::const_iterator fromIterator,
 }
 
 /**
+ * function separates each word, placing them in a vector of strings.
+ * @params Iterators representing the start and end points of an
+ *         iteration. The characters used to split up each word.
  * @return A vector of sub strings split around delimiters
  */
 std::vector<std::string> splitBy(std::string::const_iterator fromIterator,
@@ -63,39 +73,42 @@ std::vector<std::string> splitBy(std::string::const_iterator fromIterator,
 }
 
 /**
+ * function identifies which word has a higher count.
+ * @params Two std::pairs containing a word and their count
  * @return A true if count1 is larger than count2
  */
-bool compareCounts(const std::pair<std::string, std::size_t> &count1,
-                   const std::pair<std::string, std::size_t> &count2) {
+bool compareCounts(const WordCountPair &count1, const WordCountPair &count2) {
   return count1.second > count2.second;
 }
 
 /**
- * @return True if the string is shorter than 5 characters
- */
-bool isShorterThanFive(const std::string &str) { return str.length() < 5; }
-
-/**
- * Removes any words shorter than five from the vector
+ * function removes any words shorter than five from the vector
+ * @params A vector of words
+ * @return void
  */
 void removeShorterThanFive(std::vector<std::string> &strings) {
-  auto it = std::remove_if(strings.begin(), strings.end(), isShorterThanFive);
+  auto it =
+      std::remove_if(strings.begin(), strings.end(),
+                     [](const std::string str) { return str.length() < 5; });
   // Remove invalid indices
   strings.erase(it, strings.end());
 }
 
 /**
+ * function transforms a string to lower case
+ * @params A string representing a word
  * @return A string transformed to lower case
  */
 std::string toLower(std::string str) {
   std::transform(str.begin(), str.end(), str.begin(),
-                 static_cast<int (*)(int)>(std::tolower));
+                 [](const char str2) { return std::tolower(str2); });
   return str;
 }
 
 /**
- * Add one to the count for a string, or creates a new mapping for a
- * new string and sets its count to one.
+ * function adds one to the count for a string.
+ * @params A map containing each word and their count
+ * @return void
  */
 void addToCount(std::unordered_map<std::string, std::size_t> &count,
                 const std::string &str) {
@@ -107,8 +120,9 @@ void addToCount(std::unordered_map<std::string, std::size_t> &count,
 }
 
 /**
- * Loops through the strings in substrings and records the
- * number of occurences for each string.
+ * function records the number of occurences of each word.
+ * @params A vector of words and a map containing each word and their count
+ * @return void
  */
 void countWords(const std::vector<std::string> &substrings,
                 std::unordered_map<std::string, std::size_t> &count) {
@@ -117,37 +131,48 @@ void countWords(const std::vector<std::string> &substrings,
 }
 
 /**
- * Splits the string into each word, removes short words and changes
- * each word to lower case before counting the number of occurances.
+ * function splits the string into each word, removes short words and
+ * changes each word to lower case before counting the number of occurences.
+ * @params The string to be word counted, the characters each word will be split
+ *         around and a map containing each word and their count
+ * @return void
  */
 void countWords(const std::string &str, const std::string &delimiters,
                 std::unordered_map<std::string, std::size_t> &count) {
   auto words = splitBy(str.begin(), str.end(), delimiters);
   removeShorterThanFive(words);
-  std::transform(words.begin(), words.end(), words.begin(), toLower);
+  for (auto &word : words) {
+    word = toLower(word);
+  }
   countWords(words, count);
 }
 
 /**
+ * function gets each line of the provided file
+ * @params The istream opened to read the file and the characters each word
+ *         will be split around.
  * @return A vector pair containing each word paired to their usage count.
  */
 WordCount countWords(std::istream &start, const std::string &delimiters) {
   std::unordered_map<std::string, std::size_t> count;
   for (std::string line; std::getline(start, line);)
     countWords(line, delimiters, count);
-  return std::vector<std::pair<std::string, std::size_t>>(count.begin(),
-                                                          count.end());
+  return WordCount(count.begin(), count.end());
 }
 
 /**
+ * function attempts to access the provided file
+ * @params The file name, and the characters each word will be split around.
  * @return A vector pair containing each word paired to their usage count.
  */
 WordCount countWordsInFile(const std::string &filename,
                            const std::string &delimiters) {
   std::ifstream filestream(filename);
-  if (!filestream)
+  if (!filestream) {
+    filestream.close();
     throw std::runtime_error("Error occured when attempting to load file: " +
                              filename);
+  }
 
   auto wordCounts = countWords(filestream, delimiters);
   filestream.close();
@@ -155,6 +180,8 @@ WordCount countWordsInFile(const std::string &filename,
 }
 
 /**
+ * function sorts the words in order of their count
+ * @params The file name, and the characters each word will be split around.
  * @return A vector pair containing each word sorted from highest usage to
  *         lowest usage.
  */
@@ -166,7 +193,10 @@ WordCount countWordsInFileAndSort(const std::string &filename,
 }
 
 /**
- * Formats and outputs each word with their usage
+ * function formats and outputs each word along with their count
+ * @params A vector pair containing each word and their count, the output
+ *         stream, and the number of charaters to be used for each output line.
+ * @return void
  */
 void outputWordCount(const WordCount &wordCounts, std::ostream &output,
                      std::size_t wordStreamSize, std::size_t countStreamSize) {
@@ -176,7 +206,11 @@ void outputWordCount(const WordCount &wordCounts, std::ostream &output,
 }
 
 /**
- * Gets the file name and outputs Word and Usage headings
+ * function gets the file name and outputs Word and Usage headings
+ * @params The input stream, the output stream, the characters each word will
+ *         be split around, and the number of charaters to be used for each
+ *         output line.
+ * @return void
  */
 void getFileAndOutputWordCount(std::istream &input, std::ostream &output,
                                const std::string &delimiters,
