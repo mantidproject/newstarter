@@ -12,7 +12,7 @@
 using std::string; using std::max; using std::find_if_not;
 using std::ifstream; using std::fstream; using std::isalpha; 
 using std::getline; using std::map; using std::pair; using std::transform;
-using std::isspace; using std::endl; using std::vector; using std::tolower;
+ using std::endl; using std::vector; using std::tolower;
 using std::cout; using std::find; using std::ofstream;
 using std::find_if; using std::vector; using std::setw;
 
@@ -49,7 +49,7 @@ int main(){
             while(i != line.end()){
 				
                 // ignore leading blanks
-                i = find_if_not(i, line.end(), isspace);
+				i = find_if_not(i, line.end(), ::isspace);
 
 				// ignore leading characters
 				i = find_if(i, line.end(), isalpha);
