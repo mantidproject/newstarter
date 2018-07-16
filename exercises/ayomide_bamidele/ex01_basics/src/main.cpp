@@ -115,6 +115,8 @@ int main(){
 	// close outfile
 	outfile.close();
 
+	cout << "Done";		
+
     return 0;
 }
 
