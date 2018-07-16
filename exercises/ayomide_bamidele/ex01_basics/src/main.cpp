@@ -10,9 +10,9 @@
 
 
 using std::string; using std::max; using std::find_if_not;
-using std::ifstream; using std::fstream; using std::isalpha; 
+using std::ifstream; using std::fstream;
 using std::getline; using std::map; using std::pair; using std::transform;
- using std::endl; using std::vector; using std::tolower;
+ using std::endl; using std::vector;
 using std::cout; using std::find; using std::ofstream;
 using std::find_if; using std::vector; using std::setw;
 
@@ -52,7 +52,7 @@ int main(){
 				i = find_if_not(i, line.end(), ::isspace);
 
 				// ignore leading characters
-				i = find_if(i, line.end(), isalpha);
+				i = find_if(i, line.end(), ::isalpha);
 
 				// if line is all whitespaces or has reached the end
 				if (i == line.end()) {
@@ -60,7 +60,7 @@ int main(){
 				}
 
                 // find end of next word
-                auto j = find_if(i, line.end(), isspace);
+                auto j = find_if(i, line.end(), ::isspace);
 
                 // copy the characters in [i, j) and increment the counter
                 // or add to occurences after checking conditions
@@ -70,7 +70,7 @@ int main(){
 					string word = string(i, j);
 
 					// make word lowercase
-					transform(word.begin(), word.end(), word.begin(), tolower);
+					transform(word.begin(), word.end(), word.begin(), ::tolower);
 
 					// remove non alphabetic characters at the end of word
 					while (!isalpha(word.back())) {
@@ -119,7 +119,7 @@ int main(){
 }
 
 // check if a character in sample is in word
-// and sees if the number of characters is > limit
+// and see if the number of characters is > limit
 bool pass(string str, string sample, size_t limit) {
 
 	if (str.size() > limit) {
@@ -127,6 +127,7 @@ bool pass(string str, string sample, size_t limit) {
 			if (str.find(i)) {
 				return true;
 			}
+			return true;
 		}
 	}
 	else {
