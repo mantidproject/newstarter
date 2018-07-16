@@ -21,7 +21,7 @@ public:
   std::vector<Shape const *>::const_iterator end() const;
 
 private:
-  std::vector<Shape const *> const m_shapes;
+  const std::vector<Shape const *> m_shapes;
 };
 
 std::ostream &operator<<(std::ostream &output, ShapeSorter const &sorter);

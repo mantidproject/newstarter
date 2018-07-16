@@ -13,9 +13,9 @@ public:
   double getArea() const override;
 
 private:
-  double const m_radius;
-  double const m_area;
-  double const m_perimeter;
+  const double m_radius;
+  const double m_area;
+  const double m_perimeter;
 };
 
 #endif

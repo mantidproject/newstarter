@@ -15,10 +15,10 @@ public:
   double getPerimeter() const override;
 
 private:
-  double const m_base;
-  double const m_height;
-  double const m_area;
-  double const m_perimeter;
+  const double m_base;
+  const double m_height;
+  const double m_area;
+  const double m_perimeter;
 };
 
 #endif

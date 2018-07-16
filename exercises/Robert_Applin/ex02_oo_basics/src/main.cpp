@@ -16,16 +16,25 @@
 #include "Square.h"
 #include "Triangle.h"
 
+ /**
+  * function transforms a string to lower case
+  * @params A string representing a word
+  * @return A string transformed to lower case
+  */
 std::string toLower(std::string str) {
   std::transform(str.begin(), str.end(), str.begin(),
-                 static_cast<int (*)(int)>(std::tolower));
+                 [](const char c) { return std::tolower(c); });
   return str;
 }
 
+/**
+ * function checks validity of inputed positive whole number
+ * @params Input stream
+ * @return A whole positive number
+ */
 std::size_t getUnsignedFrom(std::istream &input) {
   double value;
   input >> value;
-
   if (!input || value <= 0 || value - std::floor(value) != 0) {
     input.clear();
     throw std::runtime_error(
@@ -34,13 +43,18 @@ std::size_t getUnsignedFrom(std::istream &input) {
   return static_cast<std::size_t>(value);
 }
 
+/**
+ * function gets string and transforms it to lower case
+ * @params Input stream
+ * @return Lower case string
+ */
 std::string getLowerStringFrom(std::istream &input) {
   std::string value;
   input >> value;
   return toLower(value);
 }
 
-int main(int, char **) {
+int main(int argc, char *argv[]) {
   std::vector<Shape const *> shapes;
 
   Circle circle(3);
