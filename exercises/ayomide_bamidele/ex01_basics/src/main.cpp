@@ -124,7 +124,7 @@ bool pass(string str, string sample, size_t limit) {
 
 	if (str.size() > limit) {
 		for (auto i : sample) {
-			if (str.find(i)) {
+			if (! str.find(i)) {
 				return true;
 			}
 		}
