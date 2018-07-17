@@ -83,7 +83,7 @@ vector<pair<string, int>> maptoVecSorter(const map<string, int> &map) {
  */
 
 int writeToFile(ostream &outfile, const vector<pair<string, int>> &vecPairs,
-                int maxWordLength) {
+                size_t maxWordLength) {
 
   outfile << "Word" << setw(maxWordLength - 2) << "Occurrence" << setw(4)
           << endl;
@@ -99,7 +99,7 @@ int writeToFile(ostream &outfile, const vector<pair<string, int>> &vecPairs,
 
 int main() {
   const auto allowedPunctuations{".,?'\"!():"};
-  const int wordLimit = 4;
+  const size_t wordLimit = 4;
   size_t maxWordLength = 0;
   ifstream inFile("Holmes.txt");
   ofstream outFile("Holmes Counter.txt");
@@ -109,7 +109,7 @@ int main() {
   if (inFile.is_open()) {
     while (getline(inFile, lineOfText)) {
       transform(lineOfText.begin(), lineOfText.end(), lineOfText.begin(),
-                tolower);
+                ::tolower);
       auto lineIterator = lineOfText.begin();
       while (lineIterator != lineOfText.end()) {
 
