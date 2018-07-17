@@ -98,7 +98,7 @@ int writeToFile(ostream &outfile, const vector<pair<string, int>> &vecPairs,
 }
 
 int main() {
-  const auto allowedPunctuations{".,?'\"!():"};
+  const auto allowedPunctuations(".,?'\"!():");
   const size_t wordLimit = 4;
   size_t maxWordLength = 0;
   ifstream inFile("Holmes.txt");
