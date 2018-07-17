@@ -48,24 +48,6 @@ std::ostream &printShapeTo(std::ostream &output, Shape const &shape) {
   return output;
 }
 
-/**
- * function to compare the areas of two shapes
- * @params two shapes
- * @return true boolean if shape1's area > shape2's area
- */
-bool compareVolume(Shape const *shape1, Shape const *shape2) {
-  return shape1->getArea() > shape2->getArea();
-}
-
-/**
- * function to compare the perimeters of two shapes
- * @params two shapes
- * @return true boolean if shape1's perimeter > shape2's perimeter
- */
-bool comparePerimeter(Shape const *shape1, Shape const *shape2) {
-  return shape1->getPerimeter() > shape2->getPerimeter();
-}
-
 } // namespace
 
 // Moves shapes into m_shapes, leaving shapes empty
@@ -105,7 +87,10 @@ ShapeSorter::filterByNumberOfEdges(std::size_t numberOfEdges) const {
  * @return ShapeSorter of sorted shapes
  */
 ShapeSorter ShapeSorter::sortByVolume() const {
-  return ShapeSorter(sortShapes(m_shapes, compareVolume));
+  return ShapeSorter(
+      sortShapes(m_shapes, [](Shape const *shape1, Shape const *shape2) {
+        return shape1->getArea() > shape2->getArea();
+      }));
 }
 
 /**
@@ -114,7 +99,10 @@ ShapeSorter ShapeSorter::sortByVolume() const {
  * @return ShapeSorter of sorted shapes
  */
 ShapeSorter ShapeSorter::sortByPerimeter() const {
-  return ShapeSorter(sortShapes(m_shapes, comparePerimeter));
+  return ShapeSorter(
+      sortShapes(m_shapes, [](Shape const *shape1, Shape const *shape2) {
+        return shape1->getPerimeter() > shape2->getPerimeter();
+      }));
 }
 
 // Used by overloaded stream operator to find beginning of the shapesorter
