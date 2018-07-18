@@ -52,7 +52,6 @@ bool isSpaceOrPunctuation(char character) {
  * values in the map
  */
 vector<pair<string, int>> maptoVecSorter(const map<string, int> &map) {
-
   // vector of pairs to sort
   vector<pair<string, int>> sortVector(map.begin(), map.end());
 
