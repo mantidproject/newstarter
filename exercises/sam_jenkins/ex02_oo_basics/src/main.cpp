@@ -10,32 +10,33 @@
 #include "Circle.h"
 #include "Triangle.h"
 #include "ShapeSorter.h"
-using std::cout; using std::cin; using std::endl; using std::string; using std::vector;
-
+#include <memory>
+using namespace std;
+const int SIDES_TO_PRINT = 4;
+const string SHAPE_TO_PRINT = "Triangle";
 int main(int, char **)
 {
-	vector<Shapes*> shapes(10);
-	shapes[0] = new Square(5);
-	shapes[1] = new Circle(7);
-	shapes[2] = new Rectangle(10, 5);
-	shapes[3] = new Triangle(10, 5);
-	shapes[4] = new Square(9);
-	shapes[5] = new Circle(3);
-	shapes[6] = new Rectangle(2, 4);
-	shapes[7] = new Triangle(5, 6);
-	shapes[8] = new Square(1);
-	shapes[9] = new Circle(2);
-
+	vector<unique_ptr<Shapes>> shapes;
+	shapes.reserve(10);
+	shapes.emplace_back(make_unique<Square>(5));
+	shapes.emplace_back(make_unique<Circle>(7));
+	shapes.emplace_back(make_unique<Rectangle>(10, 5));
+	shapes.emplace_back(make_unique<Triangle>(10, 5));
+	shapes.emplace_back(make_unique<Square>(9));
+	shapes.emplace_back(make_unique<Circle>(3));
+	shapes.emplace_back(make_unique<Rectangle>(2, 4));
+	shapes.emplace_back(make_unique<Triangle>(5, 6));
+	shapes.emplace_back(make_unique<Square>(1));
+	shapes.emplace_back(make_unique<Circle>(2));
+	
 	
 		
+	auto sorter = ShapeSorter();
+	sorter.areaSort(shapes);
+	sorter.perimiterSort(shapes);
+	sorter.sidesPrint(SIDES_TO_PRINT,shapes);
+	sorter.typePrint(SHAPE_TO_PRINT,shapes);
 	
-	ShapeSorter::areaSort(shapes);
-	ShapeSorter::perimiterSort(shapes);
-	ShapeSorter::sidesPrint(4,shapes);
-	ShapeSorter::typePrint("Triangle",shapes);
-	for (int i = 0; i < 10; i++) {
-		delete shapes[i];
-	}
 	
 	return 0;
 }

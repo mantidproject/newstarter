@@ -4,8 +4,10 @@
 #include <cctype>
 #include <regex>
 
+///Function to find spaces and hyphens
 bool space(const char& c);
 
-void strip_string(std::string& input);
+///Function to remove all delimiters from string
+void stripString(std::string& input);
 
 #endif

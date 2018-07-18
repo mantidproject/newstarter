@@ -2,7 +2,7 @@
 #include <cctype>
 #include <regex>
 using std::string;
-
+const int MINIMUM_WORD_LENGTH = 4;
 
 bool space(const char& c)
 {
@@ -10,14 +10,16 @@ bool space(const char& c)
 }
 
 
-void strip_string(string& input)
+void stripString(string& input)
 {
 	//remove these delimiters from the begining and ending of words
 	const string delimiters = " .,?:;\'\"()!";
-	while (input.length() > 4 && delimiters.find(input.back()) != string::npos) {
+
+	while (input.length() > MINIMUM_WORD_LENGTH && delimiters.find(input.back()) != string::npos) {
 		input.pop_back();
 	}
-	while (input.length() > 4 && delimiters.find(input.front()) != string::npos) {
+
+	while (input.length() > MINIMUM_WORD_LENGTH && delimiters.find(input.front()) != string::npos) {
 		input.erase(0, 1);
 
 	}

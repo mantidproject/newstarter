@@ -4,9 +4,9 @@
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
-using std::vector; using std::string; using std::cout;
-using std::endl; using std::sort; using std::setw;
-
+using namespace std;
+const int COLUMN_WIDTH1 = 9;
+const int COLUMN_WIDTH2 = 4;
 
 bool compareArea(const Shapes* s1, const Shapes *s2)
 {
@@ -18,41 +18,53 @@ bool comparePerimiter(const Shapes* s1, const Shapes *s2)
 	return(s1->calcPerimiter() > s2->calcPerimiter());
 }
 
-void ShapeSorter::typePrint(string type, vector<Shapes*> shapes)
+void ShapeSorter::typePrint(const string &type, const ShapeVec &shapes)
 {
-	for (vector<Shapes*>::size_type i = 0; i!= shapes.size(); ++i){
-		if (shapes[i]->getType() == type) {
-			cout << " Type: " << setw(9)<<shapes[i]->getType() << " Sides: " << setw(4) << shapes[i]->getSides() << " Area: " << setw(9) << shapes[i]->calcArea() << " Perimiter: " << setw(9) << shapes[i]->calcPerimiter() << endl;
+	for (const auto &shape : shapes) {
+		if (shape->getType() == type) {
+			cout << " Type: " << setw(COLUMN_WIDTH1) << shape->getType() << " Sides: ";
+			cout << setw(COLUMN_WIDTH2) << shape->getSides() << " Area: " << setw(COLUMN_WIDTH1) << shape->calcArea();
+			cout << " Perimiter: " << setw(COLUMN_WIDTH1) << shape->calcPerimiter() << endl;
 		}
 
 	}
 	cout << endl;
 }
 
-void ShapeSorter::sidesPrint(int sides, vector<Shapes*> shapes) 
+void ShapeSorter::sidesPrint(const int &sides, const ShapeVec &shapes)
 {
-	for (vector<Shapes*>::size_type i = 0; i != shapes.size(); ++i) {
-		if (shapes[i]->getSides() == sides) {
-			cout << " Type: " << setw(9) << shapes[i]->getType() << " Sides: " << setw(4) << shapes[i]->getSides() << " Area: " << setw(9) << shapes[i]->calcArea() << " Perimiter: " << setw(9) << shapes[i]->calcPerimiter() << endl;
+	for (const auto &shape : shapes) {
+		if (shape->getSides() == sides) {
+			cout << " Type: " << setw(COLUMN_WIDTH1) << shape->getType() << " Sides: ";
+			cout << setw(COLUMN_WIDTH2) << shape->getSides() << " Area: " << setw(COLUMN_WIDTH1) << shape->calcArea();
+			cout << " Perimiter: " << setw(COLUMN_WIDTH1) << shape->calcPerimiter() << endl;
 		}
 
 	}	
 	cout << endl;
 }
 
-void ShapeSorter::areaSort(vector<Shapes*>shapes)
+void ShapeSorter::areaSort(ShapeVec &shapes)
 {
-	sort(shapes.begin(), shapes.end(), compareArea);
-	for (vector<Shapes*>::size_type i = 0; i != shapes.size(); ++i) {
-		cout << " Type: " << setw(9) << shapes[i]->getType() << " Sides: " << setw(4) << shapes[i]->getSides() << " Area: " << setw(9) << shapes[i]->calcArea() << " Perimiter: " << setw(9) << shapes[i]->calcPerimiter() << endl;
+	sort(shapes.begin(), shapes.end(), [](const unique_ptr<Shapes> &left, const unique_ptr<Shapes> &right) {
+		return left->calcArea() > right->calcArea();
+	});
+	for (const auto &shape : shapes) {
+		cout << " Type: " << setw(COLUMN_WIDTH1) << shape->getType() << " Sides: ";
+		cout << setw(COLUMN_WIDTH2) << shape->getSides() << " Area: " << setw(COLUMN_WIDTH1) << shape->calcArea();
+		cout << " Perimiter: " << setw(COLUMN_WIDTH1) << shape->calcPerimiter() << endl;
 	}
 	cout << endl;
 }
-void ShapeSorter::perimiterSort(vector<Shapes*>shapes) 
+void ShapeSorter::perimiterSort(ShapeVec &shapes)
 {
-	sort(shapes.begin(), shapes.end(), comparePerimiter);
-	for (vector<Shapes*>::size_type i = 0; i != shapes.size(); ++i) {
-		cout << " Type: " << setw(9) << shapes[i]->getType() << " Sides: " << setw(4) << shapes[i]->getSides() << " Area: " << setw(9) << shapes[i]->calcArea() << " Perimiter: " << setw(9) << shapes[i]->calcPerimiter() << endl;
+	sort(shapes.begin(), shapes.end(), [](const unique_ptr<Shapes> &left, const unique_ptr<Shapes> &right) {
+		return left->calcPerimiter() > right->calcPerimiter();
+	});
+	for (const auto &shape : shapes) {
+		cout << " Type: " << setw(COLUMN_WIDTH1) << shape->getType() << " Sides: ";
+		cout << setw(COLUMN_WIDTH2) << shape->getSides() << " Area: " << setw(COLUMN_WIDTH1) << shape->calcArea();
+		cout << " Perimiter: " << setw(COLUMN_WIDTH1) << shape->calcPerimiter() << endl;
 	}
 	cout << endl;
 }
