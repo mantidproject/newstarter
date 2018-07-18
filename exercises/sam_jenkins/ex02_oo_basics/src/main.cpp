@@ -18,6 +18,7 @@ int main(int, char **)
 {
 	vector<unique_ptr<Shapes>> shapes;
 	shapes.reserve(10);
+
 	shapes.emplace_back(make_unique<Square>(5));
 	shapes.emplace_back(make_unique<Circle>(7));
 	shapes.emplace_back(make_unique<Rectangle>(10, 5));

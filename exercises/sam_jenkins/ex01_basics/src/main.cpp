@@ -5,9 +5,7 @@
 #include <vector>
 #include "MapFunctions.h"
 
-
 using namespace std;
-
 
 int main(int argc, char **argv) {
 	//check for valid number of arguements

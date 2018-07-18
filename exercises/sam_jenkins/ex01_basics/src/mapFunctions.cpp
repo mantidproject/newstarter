@@ -3,8 +3,6 @@
 #include <vector>
 #include "StringManip.h"
 
-
-
 using namespace std;
 const int MINIMUM_WORD_LENGTH = 4;
 unordered_map<string, int> countof(const string& input)

@@ -1,6 +1,5 @@
 #include <string>
-#include <cctype>
-#include <regex>
+
 using std::string;
 const int MINIMUM_WORD_LENGTH = 4;
 
