@@ -15,15 +15,12 @@ using namespace std;
  * allowedPunctuations
  *
  * @param word a string
- * @param allowedPunctuations a string of not alphanumeric characters
- * @param siseLimit size_t integer
  * @return returns false if word has less than sizeLimit characters or if a non
  * alphanumeric character in word is in punctuations
  */
-bool checkSizeAndPunctuation(const string &word,
-                             const string &allowedPunctuations,
-                             const size_t &sizeLimit) {
-
+bool checkSizeAndPunctuation(const string &word) {
+  const string allowedPunctuations(".,?'\"!():");
+  const size_t sizeLimit = 4;
   if (word.size() <= sizeLimit) {
     return false;
   }
@@ -43,16 +40,12 @@ bool checkSizeAndPunctuation(const string &word,
  * @return returns true if character is whitespace or non alphanumeric
  */
 bool isSpaceOrPunctuation(char character) {
-
-  if (isspace(character) || !isalpha(character))
-    return true;
-
-  return false;
+  return (isspace(character) || !isalpha(character));
 }
 
 /**
- * Takes a map of <string, int> and returns a vector according to the values in
- * the map.
+ * Takes a map of <string, int> and returns a vector sorted according to the
+ * values in the map.
  *
  * @param map a map of <string, int>
  * @return returns the sorted vector of pair<string, int> according to the
@@ -75,31 +68,29 @@ vector<pair<string, int>> maptoVecSorter(const map<string, int> &map) {
  * Takes an output file and a vector of <string, int> pairs and writes the key
  * value pairs to the file
  *
- * @param outfile output file
+ * @param outFile output file
  * @param vecPairs vector of <string, int> pairs
  * @param maxWordLength length of longest word, used to determine the space used
  * in output stream
  * @return returns 0 if successful
  */
 
-int writeToFile(ostream &outfile, const vector<pair<string, int>> &vecPairs,
+int writeToFile(ofstream &outFile, const vector<pair<string, int>> &vecPairs,
                 size_t maxWordLength) {
 
-  outfile << "Word" << setw(maxWordLength - 2) << "Occurrence" << setw(4)
-          << endl;
+  outFile << "Word" << setw(maxWordLength) << "Occurrence" << endl;
 
   for (const auto &occurencePair : vecPairs) {
-    outfile << occurencePair.first
-            << setw(maxWordLength - occurencePair.first.size() + 2)
-            << occurencePair.second << setw(4) << endl;
+    outFile << occurencePair.first
+            << setw(maxWordLength - occurencePair.first.size())
+            << occurencePair.second << endl;
   }
 
+  outFile.close();
   return 0;
 }
 
 int main() {
-  const auto allowedPunctuations(".,?'\"!():");
-  const size_t wordLimit = 4;
   size_t maxWordLength = 0;
   ifstream inFile("Holmes.txt");
   ofstream outFile("Holmes Counter.txt");
@@ -121,17 +112,16 @@ int main() {
         auto nextWordIterator =
             find_if(lineIterator, lineOfText.end(), isSpaceOrPunctuation);
 
-        // add word to occurrences
-        if (lineIterator != lineOfText.end()) {
-          auto word = string(lineIterator, nextWordIterator);
+        auto word = string(lineIterator, nextWordIterator);
 
-          if (!checkSizeAndPunctuation(word, allowedPunctuations, wordLimit)) {
-            lineIterator = nextWordIterator;
-            continue;
-          } else {
-            ++occurences[word];
-            maxWordLength = max(maxWordLength, word.size());
-          }
+        // add word to occurrences
+        if (lineIterator == lineOfText.end() ||
+            !checkSizeAndPunctuation(word)) {
+          lineIterator = nextWordIterator;
+          continue;
+        } else {
+          ++occurences[word];
+          maxWordLength = max(maxWordLength, word.size());
         }
         lineIterator = nextWordIterator;
       }
@@ -143,8 +133,6 @@ int main() {
 
   auto sortedVector = maptoVecSorter(occurences);
   writeToFile(outFile, sortedVector, maxWordLength);
-
-  outFile.close();
 
   return 0;
 }
