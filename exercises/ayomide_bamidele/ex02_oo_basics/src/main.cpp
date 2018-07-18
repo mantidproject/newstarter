@@ -1,5 +1,13 @@
+#include <algorithm>
+#include <cmath>
 #include <iostream>
+#include <string>
+#include <vector>
+#include "Shape.h"
 
 int main() {
-	return 0;
+
+	std::vector<Shape*> vecShapes;
+
+  return 0;
 }
