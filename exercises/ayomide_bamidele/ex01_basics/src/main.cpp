@@ -93,7 +93,7 @@ int main() {
   size_t maxWordLength = 0;
   ifstream inFile("Holmes.txt");
   ofstream outFile("Holmes Counter.txt");
-  map<string, int> occurrences;
+  map<string, int> occurences;
   string lineOfText;
 
   if (inFile.is_open()) {
@@ -119,7 +119,7 @@ int main() {
           lineIterator = nextWordIterator;
           continue;
         } else {
-          ++occurrences[word];
+          ++occurences[word];
           maxWordLength = max(maxWordLength, word.size());
         }
         lineIterator = nextWordIterator;
@@ -130,7 +130,7 @@ int main() {
     cout << "File could not be opened" << endl;
   }
 
-  auto sortedVector = maptoVecSorter(occurrences);
+  auto sortedVector = maptoVecSorter(occurences);
   writeToFile(outFile, sortedVector, maxWordLength);
 
   return 0;
