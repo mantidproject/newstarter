@@ -19,16 +19,16 @@ int main(int, char **)
 	vector<unique_ptr<Shapes>> shapes;
 	shapes.reserve(10);
 
-	shapes.emplace_back(make_unique<Square>(5));
-	shapes.emplace_back(make_unique<Circle>(7));
-	shapes.emplace_back(make_unique<Rectangle>(10, 5));
-	shapes.emplace_back(make_unique<Triangle>(10, 5));
-	shapes.emplace_back(make_unique<Square>(9));
-	shapes.emplace_back(make_unique<Circle>(3));
-	shapes.emplace_back(make_unique<Rectangle>(2, 4));
-	shapes.emplace_back(make_unique<Triangle>(5, 6));
-	shapes.emplace_back(make_unique<Square>(1));
-	shapes.emplace_back(make_unique<Circle>(2));
+	shapes.push_back(unique_ptr<Square>(new Square(5)));
+	shapes.push_back(unique_ptr<Circle>(new Circle(7)));
+	shapes.push_back(unique_ptr<Rectangle>(new Rectangle(10, 5)));
+	shapes.push_back(unique_ptr<Triangle>(new Triangle(10, 5)));
+	shapes.push_back(unique_ptr<Square>(new Square(9)));
+	shapes.push_back(unique_ptr<Circle>(new Circle(3)));
+	shapes.push_back(unique_ptr<Rectangle>(new Rectangle(2, 4)));
+	shapes.push_back(unique_ptr<Triangle>(new Triangle(5, 6)));
+	shapes.push_back(unique_ptr<Square>(new Square( 1)));
+	shapes.push_back(unique_ptr<Circle>(new Circle(2)));
 	
 	
 		
