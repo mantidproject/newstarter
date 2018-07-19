@@ -1,9 +1,7 @@
 #include "Rectangle.h"
 #include <iostream>
 
-Rectangle::Rectangle(double x, double y) : breadth(x), length(y) {
-  std::cout << "Rectangle Created" << std::endl;
-}
+Rectangle::Rectangle(double x, double y) : breadth(x), length(y) {}
 
 double Rectangle::area() const { return length * breadth; }
 

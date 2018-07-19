@@ -3,9 +3,7 @@
 #include <iostream>
 #include <string>
 
-Triangle::Triangle(double b, double h) : base(b), height(h) {
-  std::cout << "Triangle Created" << std::endl;
-}
+Triangle::Triangle(double b, double h) : base(b), height(h) {}
 
 double Triangle::area() const { return 0.5 * base * height; }
 

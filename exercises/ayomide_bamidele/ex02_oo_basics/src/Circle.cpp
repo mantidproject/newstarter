@@ -1,9 +1,7 @@
 #include "Circle.h"
 #include <iostream>
 
-Circle::Circle(double r) : radius(r) {
-  std::cout << "Circle Created" << std::endl;
-}
+Circle::Circle(double r) : radius(r) {}
 
 double Circle::area() const { return 3.14 * radius * radius; }
 

@@ -1,9 +1,7 @@
 #include "Square.h"
 #include <iostream>
 
-Square::Square(double x) : length(x) {
-  std::cout << "Square Created" << std::endl;
-}
+Square::Square(double x) : length(x) {}
 
 double Square::area() const { return length * length; }
 
