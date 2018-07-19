@@ -18,14 +18,14 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
-  src/stringManip.cpp
-  src/mapFunctions.cpp
+  src/StringManip.cpp
+  src/MapFunctions.cpp
   
 )
 
 set ( HDR_FILES
-  src/stringManip.h
-  src/mapFunctions.h
+  src/StringManip.h
+  src/MapFunctions.h
   
 )
 
