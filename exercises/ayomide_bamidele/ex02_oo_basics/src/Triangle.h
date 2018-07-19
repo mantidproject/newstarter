@@ -7,10 +7,12 @@ private:
   int sides = 3;
 
 public:
+  int getNoOfSides() const;
+  std::string getType() const;
   double base, height;
   Triangle(double base, double height);
-  double perimeter();
-  double area();
+  double perimeter() const;
+  double area() const;
   ~Triangle() = default;
 };
 

@@ -9,11 +9,12 @@ private:
   int sides = 4;
 
 public:
+  int getNoOfSides() const;
   double length, breadth;
-
+  std::string getType() const;
   Rectangle(double x, double y);
-  double area();
-  double perimeter();
+  double area() const;
+  double perimeter() const;
 
   ~Rectangle() = default;
 };

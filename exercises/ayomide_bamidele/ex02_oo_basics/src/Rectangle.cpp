@@ -5,6 +5,10 @@ Rectangle::Rectangle(double x, double y) : breadth(x), length(y) {
   std::cout << "Rectangle Created" << std::endl;
 }
 
-double Rectangle::area() { return length * breadth; }
+double Rectangle::area() const { return length * breadth; }
 
-double Rectangle::perimeter() { return 2 * (length + breadth); }
+double Rectangle::perimeter() const { return 2 * (length + breadth); }
+
+std::string Rectangle::getType() const { return type; }
+
+int Rectangle::getNoOfSides() const { return sides; }

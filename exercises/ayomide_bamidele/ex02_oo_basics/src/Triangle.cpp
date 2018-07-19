@@ -7,8 +7,12 @@ Triangle::Triangle(double b, double h) : base(b), height(h) {
   std::cout << "Triangle Created" << std::endl;
 }
 
-double Triangle::area() { return 0.5 * base * height; }
+double Triangle::area() const { return 0.5 * base * height; }
 
-double Triangle::perimeter() {
+double Triangle::perimeter() const {
   return base + 2 * std::sqrt(height * height + base * base / 4);
 }
+
+std::string Triangle::getType() const { return type; }
+
+int Triangle::getNoOfSides() const { return sides; }

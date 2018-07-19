@@ -9,10 +9,12 @@ private:
   int sides = 1;
 
 public:
+  int getNoOfSides() const;
+  std::string getType() const;
   double radius;
   Circle(double r);
-  double area();
-  double perimeter();
+  double area() const;
+  double perimeter() const;
   ~Circle() = default;
 };
 #endif // !CIRCLE_H
