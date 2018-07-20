@@ -6,11 +6,10 @@
 
 class ShapeSorter {
 public:
-  int printByType(const std::vector<Shape*> &shapes, const std::string &type);
-  int printBySide(const std::vector<Shape*> &shapes, const int &noOfSides);
-  int printByVolume(std::vector<Shape*> shapes);
-  int printByPerimeter(std::vector<Shape*> shapes);
-  ~ShapeSorter() = default;
+  void printByType(const std::vector<Shape*> &shapes, const std::string &type);
+  void printBySide(const std::vector<Shape*> &shapes, const int &noOfSides);
+  void printByVolume(std::vector<Shape*> shapes);
+  void printByPerimeter(std::vector<Shape*> shapes);
 };
 
 #endif // !SHAPESORTER_H

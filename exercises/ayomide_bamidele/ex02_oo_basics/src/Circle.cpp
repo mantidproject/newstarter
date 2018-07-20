@@ -1,11 +1,13 @@
 #include "Circle.h"
 #include <iostream>
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 Circle::Circle(double r) : radius(r) {}
 
-double Circle::area() const { return 3.14 * radius * radius; }
+double Circle::area() const { return M_PI * radius * radius; }
 
-double Circle::perimeter() const { return 6.28 * radius; }
+double Circle::perimeter() const { return 2 * M_PI * radius; }
 
 std::string Circle::getType() const { return type; }
 

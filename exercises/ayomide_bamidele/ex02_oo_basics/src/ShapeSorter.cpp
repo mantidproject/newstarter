@@ -5,17 +5,16 @@
 #include <string>
 #include <vector>
 
-int ShapeSorter::printByType(const std::vector<Shape *> &shapes,
+void ShapeSorter::printByType(const std::vector<Shape *> &shapes,
                              const std::string &type) {
   for (const auto &shape : shapes) {
     if (shape->getType() == type) {
       std::cout << shape->getType() << " has the right type\n" << std::endl;
     }
   }
-  return 0;
 }
 
-int ShapeSorter::printBySide(const std::vector<Shape *> &shapes,
+void ShapeSorter::printBySide(const std::vector<Shape *> &shapes,
                              const int &noOfSides) {
   for (const auto &shape : shapes) {
     if (shape->getNoOfSides() == noOfSides) {
@@ -23,10 +22,9 @@ int ShapeSorter::printBySide(const std::vector<Shape *> &shapes,
                 << std::endl;
     }
   }
-  return 0;
 }
 
-int ShapeSorter::printByVolume(std::vector<Shape *> shapes) {
+void ShapeSorter::printByVolume(std::vector<Shape *> shapes) {
 
   std::sort(shapes.begin(), shapes.end(),
             [](Shape *&a, Shape *&b) { return a->area() < b->area(); });
@@ -34,10 +32,9 @@ int ShapeSorter::printByVolume(std::vector<Shape *> shapes) {
   for (const auto &shape : shapes) {
     std::cout << shape->getType() << " " << shape->area() << "\n" <<  std::endl;
   }
-  return 0;
 }
 
-int ShapeSorter::printByPerimeter(std::vector<Shape *> shapes) {
+void ShapeSorter::printByPerimeter(std::vector<Shape *> shapes) {
 
   std::sort(shapes.begin(), shapes.end(), [](Shape *&a, Shape *&b) {
     return a->perimeter() < b->perimeter();
@@ -46,5 +43,4 @@ int ShapeSorter::printByPerimeter(std::vector<Shape *> shapes) {
   for (const auto &shape : shapes) {
     std::cout << shape->getType() << " " << shape->perimeter() << "\n" << std::endl;
   }
-  return 0;
 }

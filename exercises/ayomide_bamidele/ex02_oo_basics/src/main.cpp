@@ -18,11 +18,11 @@ int main() {
   std::cout << "Square: length = 1" << std::endl;
   std::cout << "Rectangle: length = 1, breadth = 1\n" << std::endl;
 
-  auto circle = Circle(1.0);
-  auto triangle = Triangle(1, 1);
-  auto square = Square(1);
-  auto rectangle = Rectangle(1, 1);
-  auto sorter = ShapeSorter();
+  Circle circle(1.0);
+  Triangle triangle(1, 1);
+  Square square(1);
+  Rectangle rectangle(1, 1);
+  ShapeSorter sorter;
 
   std::vector<Shape *> vecShapes{&circle, &triangle, &square, &rectangle};
 

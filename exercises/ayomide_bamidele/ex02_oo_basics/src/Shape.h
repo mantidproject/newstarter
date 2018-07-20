@@ -4,13 +4,12 @@
 
 class Shape {
 private:
-  std::string type = "Shape";
+ const std::string type = "Shape";
 
 public:
   virtual std::string getType() const = 0;
   virtual int getNoOfSides() const = 0;
   virtual double area() const = 0;
   virtual double perimeter() const = 0;
-  ~Shape() = default;
 };
 #endif // !SHAPE_H

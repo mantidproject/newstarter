@@ -5,8 +5,8 @@
 #include <string>
 class Circle : public Shape {
 private:
-  std::string type = "Circle";
-  int sides = 1;
+  const std::string type = "Circle";
+  const int sides = 1;
 
 public:
   int getNoOfSides() const;
@@ -15,6 +15,5 @@ public:
   Circle(double r);
   double area() const;
   double perimeter() const;
-  ~Circle() = default;
 };
 #endif // !CIRCLE_H

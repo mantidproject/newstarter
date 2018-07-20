@@ -5,9 +5,8 @@
 
 class Square : public Shape {
 private:
-  std::string type = "Square";
-  int sides = 4;
-  static int id;
+  const std::string type = "Square";
+  const int sides = 4;
 
 public:
   int getNoOfSides() const;
@@ -16,7 +15,5 @@ public:
   Square(double x);
   double area() const;
   double perimeter() const;
-
-  ~Square() = default;
 };
 #endif // !SQUARE_H

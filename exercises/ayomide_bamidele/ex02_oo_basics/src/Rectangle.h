@@ -5,8 +5,8 @@
 
 class Rectangle : public Shape {
 private:
-  std::string type = "Rectangle";
-  int sides = 4;
+  const std::string type = "Rectangle";
+  const int sides = 4;
 
 public:
   int getNoOfSides() const;
@@ -15,8 +15,6 @@ public:
   Rectangle(double x, double y);
   double area() const;
   double perimeter() const;
-
-  ~Rectangle() = default;
 };
 
 #endif // !RECTANGLE_H
