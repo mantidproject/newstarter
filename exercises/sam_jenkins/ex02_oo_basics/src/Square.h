@@ -4,11 +4,11 @@
 class Square : public Shapes {
 public:
 	Square();
-	Square(double side);
+	Square(double length);
 	double calcPerimiter()const;
 	double calcArea()const;
 private:
-	double side;
+	double length;
 };
 
 

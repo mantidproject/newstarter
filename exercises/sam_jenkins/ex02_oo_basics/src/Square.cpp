@@ -1,16 +1,16 @@
 #include "Shapes.h"
 #include "Square.h"
-	Square::Square() :Shapes("Square", 4), side(1)
+	Square::Square() :Shapes("Square", 4), length(1)
 	{
 
 	}
-	Square::Square(double side) :Shapes("Square", 4), side(side)
+	Square::Square(double side) :Shapes("Square", 4), length(side)
 	{
 
 	}
 	double Square::calcPerimiter()const {
-		return 4 * side;
+		return getSides() * length;
 	}
 	double Square::calcArea()const {
-		return side*side;
+		return length*length;
 	}
