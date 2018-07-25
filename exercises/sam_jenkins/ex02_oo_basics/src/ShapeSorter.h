@@ -3,7 +3,9 @@
 #include "Shapes.h"
 #include <memory>
 #include <vector>
+
 class ShapeSorter {
+
 public:
 	using ShapeVec = std::vector<std::unique_ptr<Shapes>>;
 	void typePrint(const std::string &type,const ShapeVec &shapes);

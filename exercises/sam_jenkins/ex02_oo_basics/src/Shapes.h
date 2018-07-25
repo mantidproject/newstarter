@@ -2,13 +2,14 @@
 #ifndef GUARD_Shapes_h
 #define GUARD_Shapes_h
 #include <string>
+
 class Shapes {
+
 public:
 	
 	virtual double calcPerimiter() const =0;
 	virtual double calcArea() const =0;
 	std::string getType()const;
-	
 	inline int getSides()const
 	{
 		return sides;
