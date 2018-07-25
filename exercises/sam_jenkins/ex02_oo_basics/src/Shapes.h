@@ -9,7 +9,7 @@ public:
 	virtual double calcArea() const =0;
 	std::string getType()const;
 	
-	inline int Shapes::getSides()const
+	inline int getSides()const
 	{
 		return sides;
 	}
