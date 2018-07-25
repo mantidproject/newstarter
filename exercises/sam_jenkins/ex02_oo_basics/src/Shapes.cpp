@@ -5,9 +5,6 @@
 	{
 		return type;
 	}
-	int Shapes::getSides()const
-	{
-		return sides;
-	}
+
 	
 	
