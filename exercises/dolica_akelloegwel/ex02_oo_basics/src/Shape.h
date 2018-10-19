@@ -12,7 +12,6 @@ protected:
 	std::string CreateBaseMessage() const;
 
 public:
-	Shape();
 	~Shape();
 	virtual double GetPerimeter() const = 0;
 	virtual double GetArea() const = 0;

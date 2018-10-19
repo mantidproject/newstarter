@@ -1,5 +1,13 @@
 #include "ShapeSorter.h"
 
+bool ShapeSorter::AreaComparator(const Shape &s1, const Shape &s2)
+{
+	return s2.GetArea() < s1.GetArea() || (s1.GetArea() >= s2.GetArea() && s1.GetArea() < s2.GetArea());
+}
+bool ShapeSorter::PerimeterComparator(const Shape &s1, const Shape &s2)
+{
+	return s2.GetPerimeter() < s1.GetPerimeter() || (s1.GetPerimeter() >= s2.GetPerimeter() && s1.GetPerimeter() < s2.GetPerimeter());
+}
 void ShapeSorter::PrintBasedOnType(std::vector<std::reference_wrapper<Shape>> shapes, std::string type)
 {
 	// Print shapes that have a given type
@@ -19,14 +27,8 @@ std::vector<std::reference_wrapper<Shape>> ShapeSorter::SortByAreaDesc(std::vect
 	// Create a copy of the shapes vector
 	std::vector<std::reference_wrapper<Shape>> copyShapes(shapes);
 
-	// Create a lambda expression for comparing area values
-	auto areaCompare = [](const Shape &s1, const Shape &s2)
-	{
-		return s2.GetArea() < s1.GetArea() || !(s1.GetArea() < s2.GetArea()) && s1.GetArea() < s2.GetArea();
-	};
-
 	// Sort the copied vector
-	std::sort(copyShapes.begin(), copyShapes.end(), areaCompare);
+	std::sort(copyShapes.begin(), copyShapes.end(), AreaComparator);
 
 	return copyShapes;
 }
@@ -35,14 +37,8 @@ std::vector<std::reference_wrapper<Shape>> ShapeSorter::SortByPerimeterDesc(std:
 	// Create a copy of the shapes vector
 	std::vector<std::reference_wrapper<Shape>> copyShapes(shapes);
 
-	// Create a lambda expression for sorting by perimeter values
-	auto perimCompare = [](const Shape &s1, const Shape &s2)
-	{
-		return s2.GetPerimeter() < s1.GetPerimeter() || !(s1.GetPerimeter() < s2.GetPerimeter()) && s1.GetPerimeter() < s2.GetPerimeter();
-	};
-
 	// Sort the copied vector
-	std::sort(copyShapes.begin(), copyShapes.end(), perimCompare);
+	std::sort(copyShapes.begin(), copyShapes.end(), PerimeterComparator);
 
 	return copyShapes;
 }
