@@ -18,7 +18,7 @@ struct CountCompare
 
 bool ContainsDashes(const std::string &compositeWord)
 {
-	return compositeWord.find("-") != std::string::npos;
+	return compositeWord.find('-') != std::string::npos;
 }
 std::vector<std::string> SplitWords(const std::string &compositeWord)
 {
