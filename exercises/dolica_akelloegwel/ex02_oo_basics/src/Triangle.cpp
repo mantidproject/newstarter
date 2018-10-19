@@ -40,6 +40,6 @@ std::string Triangle::GetMessage() const
 	std::string triangleMessage = "Triangle Properties:\n";
 	triangleMessage += "  Base: " + std::to_string(m_base) + "\n";
 	triangleMessage += "  Height: " + std::to_string(m_height);
-	triangleMessage += CreateBaseMessage();
+	triangleMessage += CreateBaseMessage(GetPerimeter(),GetArea());
 	return triangleMessage;
 }

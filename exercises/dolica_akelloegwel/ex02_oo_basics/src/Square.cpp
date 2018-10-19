@@ -34,6 +34,6 @@ std::string Square::GetMessage() const
 	// Construct and set a message used for overloading <<
 	std::string squareMessage = "Square Properties:\n";
 	squareMessage += "  Side: " + std::to_string(m_side);
-	squareMessage += CreateBaseMessage();
+	squareMessage += CreateBaseMessage(GetPerimeter(),GetArea());
 	return squareMessage;
 }

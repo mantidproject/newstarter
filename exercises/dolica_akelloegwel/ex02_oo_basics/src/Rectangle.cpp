@@ -40,6 +40,6 @@ std::string Rectangle::GetMessage() const
 	std::string rectMessage = "Rectangle Properties: \n";
 	rectMessage += "  Width: " + std::to_string(m_width) + "\n";
 	rectMessage += "  Height: " + std::to_string(m_height);
-	rectMessage += CreateBaseMessage();
+	rectMessage += CreateBaseMessage(GetPerimeter(),GetArea());
 	return rectMessage;
 }

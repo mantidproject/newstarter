@@ -35,6 +35,6 @@ set ( HDR_FILES
   src/Circle.h
   src/ShapeSorter.h
   # add any additional header files here
-)
+        src/ShapeImplementationCommon.cpp src/ShapeImplementationCommon.h)
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )

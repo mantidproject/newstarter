@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include "ShapeImplementationCommon.h"
 #include <iostream>
 #include <math.h>
 #include <vector>
@@ -8,9 +8,6 @@
 
 class Shape
 {
-protected:
-	std::string CreateBaseMessage() const;
-
 public:
 	~Shape();
 	virtual double GetPerimeter() const = 0;

@@ -1,0 +1,35 @@
+[settings]
+    arch=x86_64
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++11
+    compiler.version=7
+    os=Linux
+
+[requires]
+    gtest/3121b20-dm3
+
+[options]
+
+
+[full_settings]
+    arch=x86_64
+    arch_build=x86_64
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++11
+    compiler.version=7
+    os=Linux
+    os_build=Linux
+
+[full_requires]
+    gtest/3121b20-dm3@ess-dmsc/stable:9bfdcfa2bb925892ecf42e2a018a3f3529826676
+
+[full_options]
+    gtest:shared=False
+
+[recipe_hash]
+
+
+[env]
+

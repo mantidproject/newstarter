@@ -1,8 +1,3 @@
-//
-// Created by dolica on 19/10/18.
-//
+#include <string>
 
-#ifndef PROJECT_SHAPEIMPLEMENTATIONCOMMON_H
-#define PROJECT_SHAPEIMPLEMENTATIONCOMMON_H
-
-#endif //PROJECT_SHAPEIMPLEMENTATIONCOMMON_H
+std::string CreateBaseMessage(double perim, double area);

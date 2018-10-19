@@ -34,6 +34,6 @@ std::string Circle::GetMessage() const
 	// Construct a message for use when overloading <<
 	std::string circleMessage = "Circle Properties: \n";
 	circleMessage += "  Radius: " + std::to_string(m_radius);
-	circleMessage += CreateBaseMessage();
+	circleMessage += CreateBaseMessage(GetPerimeter(),GetArea());
 	return circleMessage;
 }
