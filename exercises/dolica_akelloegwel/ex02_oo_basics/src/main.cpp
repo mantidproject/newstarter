@@ -9,24 +9,13 @@
 
 int main(int, char **)
 {
-	// Create various shapes
-	double squareSide = 2.5;
-
-	double recWidth = 2;
-	double recHeight = 5;
-
-	double circleRadius = 5;
-
-	double triangleBase = 3;
-	double triangleHeight = 4;
-
 	// Create a vector and place the shapes in it
 	std::vector<std::unique_ptr<Shape>> myShapes;
 
-	myShapes.push_back(std::make_unique<Square>(squareSide));
-	myShapes.push_back(std::make_unique<Rectangle>(recWidth,recHeight));
-	myShapes.push_back(std::make_unique<Circle>(circleRadius));
-	myShapes.push_back(std::make_unique<Triangle>(triangleBase, triangleHeight));
+	myShapes.push_back(std::make_unique<Square>(2.5 /* squareSide */));
+	myShapes.push_back(std::make_unique<Rectangle>(2 /* recWidth */, 5 /* recHeight */));
+	myShapes.push_back(std::make_unique<Circle>(5 /* circleRadius */));
+	myShapes.push_back(std::make_unique<Triangle>(3 /* triangleBase */, 4 /* triangleHeight */));
 
 	// Examine behaviour of the shape sorter
 	ShapeSorter shapeSorter = ShapeSorter();
