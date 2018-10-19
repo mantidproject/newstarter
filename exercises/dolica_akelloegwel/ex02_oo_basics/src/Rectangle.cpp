@@ -30,6 +30,10 @@ double Rectangle::GetHeight() const
 {
 	return m_height;
 }
+Rectangle* Rectangle::clone() const
+{
+	return new Rectangle(*this);
+}
 std::string Rectangle::GetMessage() const
 {
 	// Construct and set the message that will be displayed when the object is printed

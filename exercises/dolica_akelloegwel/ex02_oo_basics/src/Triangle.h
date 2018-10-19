@@ -16,6 +16,7 @@ public:
 	int GetNumSides() const;
 	double GetBase() const;
 	double GetHeight() const;
+	Triangle* clone() const;
 	std::string GetMessage() const;
 };
 

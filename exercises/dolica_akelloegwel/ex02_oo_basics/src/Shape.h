@@ -18,5 +18,6 @@ public:
 	virtual std::string GetType() const = 0;
 	virtual int GetNumSides() const = 0;
 	virtual std::string GetMessage() const = 0;
-	friend std::ostream &operator<<(std::ostream & os, const Shape &shape);
+	virtual Shape* clone() const = 0;
+	friend std::ostream &operator<<(std::ostream &os, const Shape &shape);
 };

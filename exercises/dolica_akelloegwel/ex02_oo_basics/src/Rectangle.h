@@ -16,5 +16,6 @@ public:
 	int GetNumSides() const;
 	double GetWidth() const;
 	double GetHeight() const;
+  Rectangle* clone() const;
 	std::string GetMessage() const;
 };

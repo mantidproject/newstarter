@@ -25,6 +25,10 @@ double Square::GetSide() const
 {
 	return m_side;
 }
+Square* Square::clone() const
+{
+	return new Square(*this);
+}
 std::string Square::GetMessage() const
 {
 	// Construct and set a message used for overloading <<

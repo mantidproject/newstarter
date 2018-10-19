@@ -14,5 +14,6 @@ public:
 	std::string GetType() const;
 	int GetNumSides() const;
 	double GetRadius() const;
+	Circle* clone() const;
 	std::string GetMessage() const;
 };

@@ -13,7 +13,7 @@ set ( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin )
 set_property ( GLOBAL PROPERTY USE_FOLDERS ON )
 
 if ( CMAKE_COMPILER_IS_GNUCXX )
-  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
+  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14" )
 endif ()
 
 add_definitions ( -D_USE_MATH_DEFINES )

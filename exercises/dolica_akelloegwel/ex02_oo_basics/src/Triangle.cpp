@@ -30,6 +30,10 @@ double Triangle::GetHeight() const
 {
 	return m_height;
 }
+Triangle* Triangle::clone() const
+{
+	return new Triangle(*this);
+}
 std::string Triangle::GetMessage() const
 {
 	// Construct and set a message for use when overloading <<

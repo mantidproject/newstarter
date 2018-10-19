@@ -11,26 +11,26 @@ int main(int, char **)
 {
 	// Create various shapes
 	double squareSide = 2.5;
-	Square mySquare = Square(squareSide);
+	std::unique_ptr<Square> square_ptr(new Square(squareSide));
 
 	double recWidth = 2;
 	double recHeight = 5;
-	Rectangle myRectangle = Rectangle(recWidth, recHeight);
+	std::unique_ptr<Rectangle> rectangle_ptr(new Rectangle(recWidth, recHeight));
 
 	double circleRadius = 5;
-	Circle myCircle = Circle(circleRadius);
+	std::unique_ptr<Circle> circle_ptr(new Circle(circleRadius));
 
 	double triangleBase = 3;
 	double triangleHeight = 4;
-	Triangle myTriangle = Triangle(triangleBase, triangleHeight);
+	std::unique_ptr<Triangle> triangle_ptr(new Triangle(triangleBase, triangleHeight));
 
 	// Create a vector and place the shapes in it
-	std::vector<std::reference_wrapper<Shape> > myShapes;
+	std::vector<std::unique_ptr<Shape>> myShapes;
 
-	myShapes.push_back(mySquare);
-	myShapes.push_back(myRectangle);
-	myShapes.push_back(myCircle);
-	myShapes.push_back(myTriangle);
+	myShapes.push_back(std::move(square_ptr));
+	myShapes.push_back(std::move(rectangle_ptr));
+	myShapes.push_back(std::move(circle_ptr));
+	myShapes.push_back(std::move(triangle_ptr));
 
 	// Examine behaviour of the shape sorter
 	ShapeSorter shapeSorter = ShapeSorter();

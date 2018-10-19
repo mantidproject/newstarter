@@ -14,5 +14,6 @@ public:
 	std::string GetType() const;
 	int GetNumSides() const;
 	double GetSide() const;
+	Square* clone() const;
 	std::string GetMessage() const;
 };

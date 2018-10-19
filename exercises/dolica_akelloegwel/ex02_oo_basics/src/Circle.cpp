@@ -25,6 +25,10 @@ double Circle::GetRadius() const
 {
 	return m_radius;
 }
+Circle* Circle::clone() const
+{
+	return new Circle(*this);
+}
 std::string Circle::GetMessage() const
 {
 	// Construct a message for use when overloading <<

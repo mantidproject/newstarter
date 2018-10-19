@@ -1,49 +1,54 @@
 #include "ShapeSorter.h"
 
-bool ShapeSorter::AreaComparator(const Shape &s1, const Shape &s2)
+bool ShapeSorter::AreaComparator(const std::unique_ptr<Shape> &s1, const std::unique_ptr<Shape> &s2)
 {
-	return s2.GetArea() < s1.GetArea() || (s1.GetArea() >= s2.GetArea() && s1.GetArea() < s2.GetArea());
+	return s2->GetArea() < s1->GetArea() || (s1->GetArea() >= s2->GetArea() && s1->GetArea() < s2->GetArea());
 }
-bool ShapeSorter::PerimeterComparator(const Shape &s1, const Shape &s2)
+bool ShapeSorter::PerimeterComparator(const std::unique_ptr<Shape> &s1, const std::unique_ptr<Shape> &s2)
 {
-	return s2.GetPerimeter() < s1.GetPerimeter() || (s1.GetPerimeter() >= s2.GetPerimeter() && s1.GetPerimeter() < s2.GetPerimeter());
+	return s2->GetPerimeter() < s1->GetPerimeter() || (s1->GetPerimeter() >= s2->GetPerimeter() && s1->GetPerimeter() < s2->GetPerimeter());
 }
-void ShapeSorter::PrintBasedOnType(std::vector<std::reference_wrapper<Shape>> shapes, std::string type)
+void ShapeSorter::PrintBasedOnType(const std::vector<std::unique_ptr<Shape>> &shapes, std::string type) const
 {
 	// Print shapes that have a given type
-	for (int i = 0; i < shapes.size(); i++)
-		if (shapes[i].get().GetType().compare(type) == 0)
-			std::cout << shapes[i].get() << std::endl;
+	for (auto &shape : shapes)
+		if (shape.get()->GetType() == type)
+			std::cout << *shape.get() << std::endl;
 }
-void ShapeSorter::PrintBasedOnNSides(std::vector<std::reference_wrapper<Shape>> shapes, int numSides)
+void ShapeSorter::PrintBasedOnNSides(const std::vector<std::unique_ptr<Shape>> &shapes, int numSides) const
 {
 	// Print shapes that have a given number of sides
-	for (int i = 0; i < shapes.size(); i++)
-		if (shapes[i].get().GetNumSides() == numSides)
-			std::cout << shapes[i].get() << std::endl;
+	for (auto &shape : shapes)
+		if (shape.get()->GetNumSides() == numSides)
+			std::cout << *shape.get() << std::endl;
 }
-std::vector<std::reference_wrapper<Shape>> ShapeSorter::SortByAreaDesc(std::vector<std::reference_wrapper<Shape>> shapes)
+std::vector<std::unique_ptr<Shape>> ShapeSorter::SortByAreaDesc(const std::vector<std::unique_ptr<Shape>> &shapes) const
 {
 	// Create a copy of the shapes vector
-	std::vector<std::reference_wrapper<Shape>> copyShapes(shapes);
+	std::vector<std::unique_ptr<Shape>> copyShapes;
+
+	for (auto &shape : shapes)
+     copyShapes.push_back(std::unique_ptr<Shape>(shape->clone()));
 
 	// Sort the copied vector
 	std::sort(copyShapes.begin(), copyShapes.end(), AreaComparator);
 
 	return copyShapes;
 }
-std::vector<std::reference_wrapper<Shape>> ShapeSorter::SortByPerimeterDesc(std::vector<std::reference_wrapper<Shape>> shapes)
+std::vector<std::unique_ptr<Shape>> ShapeSorter::SortByPerimeterDesc(const std::vector<std::unique_ptr<Shape>> &shapes) const
 {
-	// Create a copy of the shapes vector
-	std::vector<std::reference_wrapper<Shape>> copyShapes(shapes);
+	std::vector<std::unique_ptr<Shape>> copyShapes;
+
+  for (auto &shape : shapes)
+    copyShapes.push_back(std::unique_ptr<Shape>(shape->clone()));
 
 	// Sort the copied vector
 	std::sort(copyShapes.begin(), copyShapes.end(), PerimeterComparator);
 
 	return copyShapes;
 }
-void ShapeSorter::PrintShapes(std::vector<std::reference_wrapper<Shape>> shapes)
+void ShapeSorter::PrintShapes(const std::vector<std::unique_ptr<Shape>> &shapes) const
 {
-	for (int i = 0; i < shapes.size(); i++)
-		std::cout << shapes[i].get() << std::endl;
+	for (auto &shape : shapes)
+		std::cout << *shape.get() << std::endl;
 }
