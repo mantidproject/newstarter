@@ -10,7 +10,7 @@
 int main(int, char **)
 {
 	// Create a vector and place the shapes in it
-	std::vector<std::unique_ptr<const Shape>> myShapes;
+	std::vector<ShapeSorter::Shape_cuptr> myShapes;
 
 	myShapes.push_back(std::make_unique<Square>(2.5 /* squareSide */));
 	myShapes.push_back(std::make_unique<Rectangle>(2 /* recWidth */, 5 /* recHeight */));
