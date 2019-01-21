@@ -11,6 +11,7 @@
 #include <iterator>
 #include <iomanip>
 
+using WordFrequency = std::pair<std::string, int>;
 
  //returns true if the character is punctuation
 bool find_punctuation(char c)
@@ -65,7 +66,7 @@ bool compare(std::pair<std::string, int> a, std::pair<std::string, int> b)
 }
 
 //counts and sorts the words
-std::vector<std::pair<std::string, int> > count_words(std::vector<std::string> s)
+std::vector<std::pair<std::string, int> > count_words(const std::vector<std::string>& s)
 {
 
 	std::map<std::string, int> count;
@@ -82,6 +83,46 @@ std::vector<std::pair<std::string, int> > count_words(std::vector<std::string> s
 	return ordered;
 }
 
+void count_words(std::istream& in, std::ostream& out)
+{
+	std::string s;
+	std::vector<std::string> find;
+	while (std::getline(in, s))
+	{
+		auto line = find_words(s);
+		find.insert(find.end(), line.cbegin(), line.cend());
+	}
+	std::vector<WordFrequency> words = count_words(find);
+
+	//formatting output
+	//find longest word
+	unsigned int max_length = 0;
+	for (const auto &wordAndCount : words)
+	{
+		max_length = (wordAndCount.first.length() > max_length) ? wordAndCount.first.length() : max_length;
+	}
+
+	out << std::left << std::setw(max_length) << "Word" << "\t" << "Usage" << std::endl << std::endl;
+	for (const auto &wordAndCount : words)
+	{
+		out << std::left << std::setw(max_length) << wordAndCount.first << "\t" << wordAndCount.second << std::endl;
+	}
+}
+
+void count_words_in_file(const std::string & in_filename, const std::string & out_filename)
+{
+	std::ifstream infile(in_filename);
+	std::ofstream outfile(out_filename);
+	if (infile.is_open())
+	{
+		count_words(infile, outfile);
+	}
+	else
+	{
+		throw std::invalid_argument("Unable to open input file: " + in_filename);
+	}
+}
+
 int main(int argc, char **argv)
 { 
 
@@ -91,41 +132,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		std::ifstream infile(argv[1]);
-		std::ofstream outfile("results");
-		if (infile)
-		{
-			std::string s;
-			std::vector<std::string> find;
-			while (std::getline(infile, s))
-			{
-				std::vector<std::string> line = find_words(s);
-				for (std::vector<std::string>::const_iterator it = line.begin(); it != line.end(); ++it)
-				{
-					find.push_back(*it);
-				}
-			}
-			std::vector<std::pair<std::string, int> > words = count_words(find);
-
-			//formatting output
-			//find longest word
-			int max_length = 0;
-			for (std::vector<std::pair<std::string, int> >::const_iterator i = words.begin(); i != words.end(); ++i)
-			{
-				max_length = (i->first.length() > max_length) ? i->first.length() : max_length;
-			}
-
-
-			outfile << std::left << std::setw(max_length) << "Word" << "\t"  << "Usage" << std::endl << std::endl;
-			for (std::vector<std::pair<std::string, int> >::const_iterator i = words.begin(); i != words.end(); ++i)
-			{
-				outfile << std::left << std::setw(max_length) << i->first << "\t"  << i->second << std::endl;
-			}
-		}
-		else
-		{
-			std::cerr << "cannot open file " << argv[1] << std::endl;
-		}
+		count_words_in_file(argv[1], "results");
 	}
 	return 0;
 }  
