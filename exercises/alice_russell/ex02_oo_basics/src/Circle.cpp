@@ -1,24 +1,26 @@
 #include "Circle.h"
 
-static const double PI = 3.141592653589793238463;
-
-double Circle::find_perimeter() const
+//calculates the perimeter of the circle
+double Circle::perimeter() const
 {
 	
-	return PI * radius * 2;
+	return M_PI * radius * 2;
 }
 
-double Circle::find_area() const
+//calculates the area of the circle
+double Circle::area() const
 {
-	return PI * radius * radius;
+	return M_PI * radius * radius;
 }
 
-std::string Circle::get_type() const
+//return the type circle
+std::string Circle::type() const
 {
 	return "Circle";
 }
 
-unsigned int Circle::get_sides() const
+//returns the number of sides - 1
+unsigned int Circle::sides() const
 {
 	return 1;
 }

@@ -1,21 +1,25 @@
 #include "Rectangle.h"
 
-double Rectangle::find_perimeter() const
+//calculates the perimeter of the rectangle 
+double Rectangle::perimeter() const
 {
 	return side1 * 2 + side2 * 2;
 }
 
-double Rectangle::find_area() const
+//calculates the area of the rectangle 
+double Rectangle::area() const
 {
 	return side1 * side2;
 }
 
-std::string Rectangle::get_type() const
+//returns the type rectangle 
+std::string Rectangle::type() const
 {
 	return "Rectangle";
 }
 
-unsigned int Rectangle::get_sides() const
+//returns the number of sides - 4 
+unsigned int Rectangle::sides() const
 {
 	return 4;
 }

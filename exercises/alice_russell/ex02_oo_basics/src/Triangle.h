@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TRIANGLE_H_
+#define TRIANGLE_H_
+
 #include "Shape.h"
 
 class Triangle : public Shape
@@ -8,8 +10,10 @@ private:
 	const double base;
 public:
 	Triangle(double h, double b):height(h), base(b) {}
-	double find_perimeter() const;
-	double find_area() const;
-	std::string get_type() const;
-	unsigned int get_sides() const;
+	double perimeter() const override;
+	double area() const override;
+	std::string type() const override;
+	unsigned int sides() const override;
 };
+
+#endif //TRIANGLE_H_

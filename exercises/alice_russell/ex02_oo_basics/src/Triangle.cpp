@@ -1,21 +1,25 @@
 #include "Triangle.h"
 
-double Triangle::find_perimeter() const
+//calculates the perimeter of the triangle 
+double Triangle::perimeter() const
 {
 	return base + 2.0 * sqrt(height*height + (base*base / 4.0));
 }
 
-double Triangle::find_area() const
+//calculates the area of the triangle 
+double Triangle::area() const
 {
 	return 0.5 * base * height;
 }
 
-std::string Triangle::get_type() const
+//retruns the type triangle 
+std::string Triangle::type() const
 {
 	return "Triangle";
 }
 
-unsigned int Triangle::get_sides() const
+//returns the number of sides - 3
+unsigned int Triangle::sides() const
 {
 	return 3;
 }

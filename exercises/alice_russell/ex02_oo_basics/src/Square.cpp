@@ -1,21 +1,25 @@
 #include "Square.h"
 
-double Square::find_perimeter() const
+//calculates the perimeter of the square 
+double Square::perimeter() const
 {
 	return side * 4;
 }
 
-double Square::find_area() const
+//calculates the area of the square 
+double Square::area() const
 {
 	return side * 2;
 }
 
-std::string Square::get_type() const
+//returns the type square 
+std::string Square::type() const
 {
 	return "Square";
 }
 
-unsigned int Square::get_sides() const
+//return the number of sides - 4 
+unsigned int Square::sides() const
 {
 	return 4;
 }

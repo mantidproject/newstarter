@@ -1,10 +1,11 @@
 # include "Shape.h"
 
-void Shape::print_details(std::ostream & out)
+//prints all the details of the shape
+void Shape::print_details(std::ostream & out) const
 {
-	out << "Type: " << get_type() 
-		<< "\t Sides: " << get_sides() 
-		<< "\t Area: " << find_area() 
-		<< "\t Perimeter: " << find_perimeter() 
+	out << "Type: " << type() 
+		<< "\t Sides: " << sides() 
+		<< "\t Area: " << area() 
+		<< "\t Perimeter: " << perimeter() 
 		<< std::endl;
 }
