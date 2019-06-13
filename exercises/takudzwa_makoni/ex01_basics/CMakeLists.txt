@@ -17,7 +17,8 @@ include ( CommonSetup )
 ###############################################################################
 
 set ( SRC_FILES
-  src/main.cpp
+  #src/main.cpp 
+  src/exercise01.cpp
   # add any additional source files here
 )
 
