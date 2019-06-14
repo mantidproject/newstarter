@@ -23,6 +23,14 @@ set ( SRC_FILES
 
 set ( HDR_FILES
   # add any additional header files here
+  src/shape.h
+  src/square.h
+  src/rectangle.h
+  src/isoTriangle.h
+  src/circle.h
+  src/shapeSorter.h
+
+
 )
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )
