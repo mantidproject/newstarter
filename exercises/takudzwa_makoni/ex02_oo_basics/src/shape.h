@@ -7,7 +7,7 @@
 class shape {
 
 public:
-	virtual int numOfSides() const = 0; 
+	virtual unsigned int numOfSides() const = 0; 
 	virtual std::string name() const = 0;
 
 	virtual double area() const = 0;

@@ -8,12 +8,12 @@ class isoTriangle : public shape { // isosceles triangle class
 private:
 
 	static std::string m_name;
-	const int m_numOfSides = 3;
+	const unsigned int m_numOfSides = 3;
 	double m_base, m_height;
 
 public:
 
-	virtual int numOfSides() const override{ return m_numOfSides; }
+	virtual unsigned int numOfSides() const override{ return m_numOfSides; }
 	virtual std::string name() const override{ return m_name; }
 
 	virtual double area() const override { return 0.5 * m_base* m_height; }

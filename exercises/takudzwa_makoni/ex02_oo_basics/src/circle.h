@@ -9,7 +9,7 @@ private:
 
 	
 	static std::string m_name;
-	const int m_numOfSides = 1;
+	const unsigned int m_numOfSides = 1;
 	const double m_pi = 3.14159;
 	double m_radius;
 
@@ -17,7 +17,7 @@ private:
 public:
 
 	 
-	virtual int numOfSides() const override { return m_numOfSides; }
+	virtual unsigned int numOfSides() const override { return m_numOfSides; }
 	virtual std::string name() const override { return m_name; }
 
 	virtual double area() const override { return m_pi * m_radius * m_radius; } //removed override

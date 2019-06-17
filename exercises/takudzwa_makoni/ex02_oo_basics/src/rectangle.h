@@ -8,12 +8,12 @@ class rectangle : public shape {
 private:
 
 	static std::string m_name;
-	const int m_numOfSides = 4;
+	const unsigned int m_numOfSides = 4;
 	double m_sideWidth, m_sideHeight;
 
 public:
 
-	virtual int numOfSides() const override{ return m_numOfSides; }
+	virtual unsigned int numOfSides() const override{ return m_numOfSides; }
 	virtual std::string name() const override{ return m_name; }
 
 	virtual double area() const override { return m_sideHeight * m_sideWidth; }
