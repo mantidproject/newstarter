@@ -2,7 +2,10 @@
 
 
 #include <iostream>
+#include <cctype>
 #include <math.h>
+#include <stdio.h>
+#include <ctype.h>
 #include <utility>
 #include <vector>
 #include <string>

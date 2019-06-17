@@ -28,19 +28,6 @@ private:
 
 public:
 
-	void printContainer() {
-
-		for (std::vector<shape*>::size_type i = 0; i != shapes.size(); i++) {
-			std::cout << shapes[i]->name() + " ";
-		};
-		std::cout << "\n\n";
-	}
-
-
-	// set the container to be compared/searched through
-	void setContainer(std::vector<shape*> userInShapes) { shapes = userInShapes; } // error handling
-
-
 
 	void printMatchForSide(int chosenNumOfSides) {
 	
@@ -58,12 +45,12 @@ public:
 	void printMatchForType(std::string chosenType) {
 
 		std::cout << "\nMATCHES FOR TYPE \"" << chosenType << "\"\n";
-		for (std::vector<shape*>::size_type i = 0; i != shapes.size(); i++)
-
+		for (std::vector<shape*>::size_type i = 0; i != shapes.size(); i++){
+		std::transform(chosenType.begin(), chosenType.end(), chosenType.begin(), std::toupper);
 		{
 			//works so that if searchword is triangle, will find all matches. e.g. isosceles-triangle or equilateral-triangle etc.
 			if (shapes[i]->name().find(chosenType) != std::string::npos ) { std::cout << *(shapes[i]) << "\n"; }
-			else { std::cout << "no matches found.\n"; };
+			 };
 		}
 
 		std::cout << "\n\n";
