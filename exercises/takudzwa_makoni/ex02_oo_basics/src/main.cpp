@@ -1,8 +1,9 @@
 
-//#include "pch.h"
+
 
 #include <iostream>
 #include <math.h>
+#include <utility>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -14,31 +15,19 @@
 #include "shapeSorter.h"
 
 
-square s; circle c; rectangle r; isoTriangle t;
-std::vector<shape*> shapeVector({ &s, &c, &r, &t });
-shapeSorter polysort;
+
 
 
 int main() {
 	
-	//set dimensions of shape objects
-	s.sideLength = 3;
-	r.sideHeight, r.sideWidth = 3,4;
-	c.radius = 4;
-	t.base, t.height = 2, 3;
+	square sqr(2); circle cir(3); rectangle rec(4,5); isoTriangle tri(2,3);
+	std::vector< shape* > shapeVector({ &sqr, &cir, &rec, &tri }); // unique pointer?? 
+	shapeSorter polysort(shapeVector);
 
-	//set chosen values
-	polysort.chosenNumOfSides = 3;
-	polysort.chosenType = "triangle";
-
-	//set vector of shapes to be sorted to shapeVector.
-	polysort.shapes = shapeVector;
-
-	polysort.printMatchForSide();
-	polysort.printMatchForType();
-	polysort.printOrderForArea();
 	polysort.printOrderForPerim();
-
+	polysort.printOrderForArea();
+	polysort.printMatchForSide(3);
+	polysort.printMatchForType("triangle");
 	std::cin.get();
 
 	return 0;

@@ -1,31 +1,27 @@
 #ifndef ISOTRIANGLE_H
 #define ISOTRIANGLE_H
 
+
+
 class isoTriangle : public shape { // isosceles triangle class
 
 private:
 
-	
-	const std::string name;
-	const int numOfSides;
-
+	const std::string m_name = "ISOSCELES-TRIANGLE";
+	const int m_numOfSides = 3;
+	double m_base, m_height;
 
 public:
 
-	double base, height;
+	virtual int numOfSides() const override{ return m_numOfSides; }
+	virtual std::string name() const override{ return m_name; }
 
-	virtual int getNumOfSides() const override{ return numOfSides; }
-	virtual std::string getName() const override{ return name; }
+	virtual double area() const override { return 0.5 * m_base* m_height; }
+	virtual double perimeter() const override { return 2 * (sqrt(m_height * m_height) + ((m_base * m_base) / 4)); }
 
-	virtual double getArea()	const override { return 0.5 * base* height; }
-	virtual double getPerimeter() const override{ return 2 * (sqrt(height * height) + ((base * base) / 4)); }
+	isoTriangle(double base, double height) : m_base(base), m_height(height) {};
+	
 
-	//constructor
-	isoTriangle::isoTriangle() : name("isosceles-triangle"), numOfSides(3) {
-
-		//empty
-
-	};
 };
 
 #endif

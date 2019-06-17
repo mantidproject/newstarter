@@ -1,29 +1,32 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
+
+
 class circle : public shape { // circle class
 
 private:
 
 	
-	const std::string name;
-	const int numOfSides;
-	const double pi = 3.14159;
+	const std::string m_name = "CIRCLE"; // make static
+	const int m_numOfSides = 1;
+	const double m_pi = 3.14159;
+	double m_radius;
+
 
 public:
 
-	double radius;
+	 
+	virtual int numOfSides() const override { return m_numOfSides; }
+	virtual std::string name() const override { return m_name; }
 
-	virtual int getNumOfSides() const override { return numOfSides; }
-	virtual std::string getName() const override { return name; }
+	virtual double area() const override { return m_pi * m_radius * m_radius; } //removed override
+	virtual double perimeter() const  override { return m_pi * 2 * m_radius; }	//removed override
 
-	virtual double getArea() const override { return pi * radius * radius; }
-	virtual double getPerimeter() const override { return pi * 2 * radius; }
 
-	//constructor
-	circle::circle() : name("circle"), numOfSides(1) {
 
-		radius = 1;
+	circle(double radius) : m_radius(radius) {
+	
 	};
 
 };

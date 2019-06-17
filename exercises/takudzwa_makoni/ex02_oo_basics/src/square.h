@@ -1,27 +1,25 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
+
+
 class square : public shape {
 
 private:
 
-	const std::string name;
-	const int numOfSides;
+    const std::string m_name= "SQUARE";
+	const int m_numOfSides = 4;
+	double m_length;
 
 public:
 	
-	double sideLength;
+	virtual int numOfSides() const override{ return m_numOfSides; }
+	virtual std::string name() const override { return m_name; }
 
-	virtual int getNumOfSides() const override{ return numOfSides; }
-	virtual std::string getName() const override { return name; }
+	virtual double area() const override { return m_length * m_length; }
+	virtual double perimeter() const override { return 4 * m_length; }
 
-	virtual double getArea() const override { return sideLength * sideLength; }
-	virtual double getPerimeter() const override { return 4 * sideLength; }
-
-	//contructor
-	square::square() : name("square"), numOfSides(4) {
-	
-		sideLength = 1;
+	square(double length) : m_length(length) {
 	
 	};
 

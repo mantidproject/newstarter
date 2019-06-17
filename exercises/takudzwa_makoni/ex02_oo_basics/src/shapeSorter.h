@@ -3,45 +3,71 @@
 
 #include "shape.h"
 
+// << OPERATOR OVERLOAD FOR SHAPE CLASS
+std::ostream& operator << (std::ostream& stream, const shape& other) {
+
+	stream << "name: " << other.name() << ", area: " << other.area() << ", perimeter: " << other.perimeter() << ", sides: " << other.numOfSides();
+	return stream;
+
+}
+
 namespace {
 
-	bool comparePerim(const shape* a, const shape* b) { return a->getPerimeter() < b->getPerimeter(); }
-	bool compareArea(const shape* a, const shape* b) { return a->getArea() < b->getArea(); }
+	bool comparePerim(const shape* a, const shape* b) { return a->perimeter() < b->perimeter(); }
+	bool compareArea(const shape* a, const shape* b) { return a->area() < b->area(); }
 }
 
 
-struct shapeSorter {
+class shapeSorter {
+
+private:
+	//int chosenNumOfSides;
+	//std::string chosenType;
+	std::vector<shape*> shapes;
+	
 
 public:
-	int chosenNumOfSides;
-	std::string chosenType;
-	std::vector<shape*> shapes;
 
-	void printMatchForSide() {
+	void printContainer() {
+
+		for (std::vector<shape*>::size_type i = 0; i != shapes.size(); i++) {
+			std::cout << shapes[i]->name() + " ";
+		};
+		std::cout << "\n\n";
+	}
+
+
+	// set the container to be compared/searched through
+	void setContainer(std::vector<shape*> userInShapes) { shapes = userInShapes; } // error handling
+
+
+
+	void printMatchForSide(int chosenNumOfSides) {
 	
-		std::cout << "\nMATCHES FOR SIDE: " << chosenNumOfSides <<"\n";
+		std::cout << "\nMATCHES FOR SIDE \"" << chosenNumOfSides <<"\"\n";
 		for (std::vector<shape*>::size_type i = 0; i != shapes.size(); i++)
 
 		{
-			if (shapes[i]->getNumOfSides() == chosenNumOfSides) { std::cout << shapes[i]->getName() << " "; };
+			if (shapes[i]->numOfSides() == chosenNumOfSides) { std::cout << *(shapes[i]) << " "; };
 		}
 
 		std::cout << "\n\n";
-		std::cin.get();
+
 	};
 
-	void printMatchForType() {
+	void printMatchForType(std::string chosenType) {
 
-		std::cout << "\nMATCHES FOR TYPE: " << chosenType << "\n";
+		std::cout << "\nMATCHES FOR TYPE \"" << chosenType << "\"\n";
 		for (std::vector<shape*>::size_type i = 0; i != shapes.size(); i++)
 
 		{
 			//works so that if searchword is triangle, will find all matches. e.g. isosceles-triangle or equilateral-triangle etc.
-			if (shapes[i]->getName().find(chosenType) != std::string::npos ) { std::cout << shapes[i]->getName() << " "; };
+			if (shapes[i]->name().find(chosenType) != std::string::npos ) { std::cout << *(shapes[i]) << "\n"; }
+			else { std::cout << "no matches found.\n"; };
 		}
 
 		std::cout << "\n\n";
-		std::cin.get();
+
 	};
 
 
@@ -51,11 +77,11 @@ public:
 		std::cout << "AREAS BY DESCENDING ORDER:\n";
 		std::sort(shapes.begin(), shapes.end(), compareArea);
 		for (auto a : shapes) {
-			std::cout << a->getName() << " ";
+			std::cout << *a << "\n";
 		}
 
 		std::cout << "\n\n";
-		std::cin.get();
+
 
 	};
 
@@ -64,18 +90,14 @@ public:
 		std::cout << "PERIMETERS BY DESCENDING ORDER:\n";
 		std::sort(shapes.begin(), shapes.end(), comparePerim);
 		for (auto a : shapes) {
-			std::cout << a->getName() << " ";
+			std::cout << *a << "\n";
 		}
 
 		std::cout << "\n\n";
-		std::cin.get();
+
 	};
 
-	shapeSorter::shapeSorter() {
-	
-		chosenNumOfSides = 4;
-		chosenType = "square";
-	}
+	shapeSorter(std::vector<shape*> shapesContainer) : shapes(shapesContainer) {}
 
 };
 
