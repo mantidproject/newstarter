@@ -13,8 +13,8 @@ std::ostream& operator << (std::ostream& stream, const shape& other) {
 
 namespace {
 
-	bool comparePerim(const shape* a, const shape* b) { return a->perimeter() < b->perimeter(); }
-	bool compareArea(const shape* a, const shape* b) { return a->area() < b->area(); }
+	bool comparePerim(const std::unique_ptr<shape>& a, const std::unique_ptr<shape>& b) { return a->perimeter() < b->perimeter(); }
+	bool compareArea(const std::unique_ptr<shape>& a, const std::unique_ptr<shape>& b) { return a->area() < b->area(); }
 }
 
 
@@ -23,7 +23,7 @@ class shapeSorter {
 private:
 	//int chosenNumOfSides;
 	//std::string chosenType;
-	std::vector<shape*> shapes;
+	std::vector<std::unique_ptr<shape>> shapes;
 	
 
 public:
@@ -32,7 +32,7 @@ public:
 	void printMatchForSide(int chosenNumOfSides) {
 	
 		std::cout << "\nMATCHES FOR SIDE \"" << chosenNumOfSides <<"\"\n";
-		for (std::vector<shape*>::size_type i = 0; i != shapes.size(); i++)
+		for (size_t i = 0; i != shapes.size(); i++)
 
 		{
 			if (shapes[i]->numOfSides() == chosenNumOfSides) { std::cout << *(shapes[i]) << " "; };
@@ -45,7 +45,7 @@ public:
 	void printMatchForType(std::string chosenType) {
 
 		std::cout << "\nMATCHES FOR TYPE \"" << chosenType << "\"\n";
-		for (std::vector<shape*>::size_type i = 0; i != shapes.size(); i++){
+		for (size_t i = 0; i != shapes.size(); i++){
 		std::transform(chosenType.begin(), chosenType.end(), chosenType.begin(), std::toupper);
 		{
 			//works so that if searchword is triangle, will find all matches. e.g. isosceles-triangle or equilateral-triangle etc.
@@ -63,7 +63,7 @@ public:
 
 		std::cout << "AREAS BY DESCENDING ORDER:\n";
 		std::sort(shapes.begin(), shapes.end(), compareArea);
-		for (auto a : shapes) {
+		for (const auto& a : shapes) {
 			std::cout << *a << "\n";
 		}
 
@@ -76,7 +76,7 @@ public:
 
 		std::cout << "PERIMETERS BY DESCENDING ORDER:\n";
 		std::sort(shapes.begin(), shapes.end(), comparePerim);
-		for (auto a : shapes) {
+		for (const auto& a : shapes) {
 			std::cout << *a << "\n";
 		}
 
@@ -84,7 +84,7 @@ public:
 
 	};
 
-	shapeSorter(std::vector<shape*> shapesContainer) : shapes(shapesContainer) {}
+	shapeSorter(std::vector<std::unique_ptr<shape>>&& shapesContainer) : shapes(std::move(shapesContainer)) {}
 
 };
 

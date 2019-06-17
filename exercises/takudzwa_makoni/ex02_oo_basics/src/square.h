@@ -7,7 +7,7 @@ class square : public shape {
 
 private:
 
-    const std::string m_name= "SQUARE";
+	static std::string m_name;
 	const int m_numOfSides = 4;
 	double m_length;
 

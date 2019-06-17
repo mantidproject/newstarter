@@ -7,7 +7,7 @@ class rectangle : public shape {
 
 private:
 
-	const std::string m_name = "RECTANGLE"; 
+	static std::string m_name;
 	const int m_numOfSides = 4;
 	double m_sideWidth, m_sideHeight;
 

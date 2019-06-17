@@ -17,22 +17,31 @@
 #include "circle.h"
 #include "shapeSorter.h"
 
-
-
-
+std::string circle::m_name = "CIRCLE";
+std::string square::m_name = "SQUARE";
+std::string rectangle::m_name = "RECTANGLE";
+std::string isoTriangle::m_name = "ISOSCELES-TRIANGLE";
 
 int main() {
 	
-	square sqr(2); circle cir(3); rectangle rec(4,5); isoTriangle tri(2,3);
-	std::vector< shape* > shapeVector({ &sqr, &cir, &rec, &tri }); // unique pointer?? 
-	shapeSorter polysort(shapeVector);
+
+	std::vector< std::unique_ptr<shape> > shapeVector;
+
+	shapeVector.push_back(std::unique_ptr<shape>(new square(2)));
+	shapeVector.push_back(std::unique_ptr<shape>(new circle(3)));
+	shapeVector.push_back(std::unique_ptr<shape>(new rectangle(4,5)));
+	shapeVector.push_back(std::unique_ptr<shape>(new isoTriangle(2,3)));
+
+	//shapeVector.push_back(std::make_unique<square>(2));
+	shapeSorter polysort(std::move(shapeVector));
+
 
 	polysort.printOrderForPerim();
 	polysort.printOrderForArea();
 	polysort.printMatchForSide(3);
 	polysort.printMatchForType("triangle");
+
 	std::cin.get();
 
 	return 0;
 }
-

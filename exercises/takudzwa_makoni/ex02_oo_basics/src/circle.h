@@ -8,7 +8,7 @@ class circle : public shape { // circle class
 private:
 
 	
-	const std::string m_name = "CIRCLE"; // make static
+	static std::string m_name;
 	const int m_numOfSides = 1;
 	const double m_pi = 3.14159;
 	double m_radius;
