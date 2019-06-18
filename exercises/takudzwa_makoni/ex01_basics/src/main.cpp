@@ -1,5 +1,3 @@
-
-#include "pch.h"
 #include <iostream>
 #include <fstream>
 #include <list>
@@ -7,11 +5,10 @@
 #include <string>
 #include <algorithm>
 #include <cctype>
-#include <iomanip>
+#include <vector>
 
 
-using namespace std;
-list<string> searchList = {"which","holmes","there","could","photograph"}; // list of words to be searched.
+std::vector<std::string> searchList = { "which","holmes","there","could","photograph" }; // list of words to be searched.
 
 
 // return true if special character exists in c.
@@ -23,7 +20,7 @@ bool isSpecialCharacter(char c)
 	case ')':
 	case '.':
 	case ',':
-	case '"': // still need backslash?
+	case '"':
 	case '?':
 	case '!':
 	case '\'':
@@ -36,17 +33,16 @@ bool isSpecialCharacter(char c)
 
 
 //count number of occurences in file and cout result
-void printCount(const string& searchWord, ifstream& fileObj) {
-	
+void printCount(const std::string& searchWord, std::ifstream& fileObj) {
+
 	//std::string temp = searchWord; no longer required?
 
-	
+
 	int count = 0;
-	string word; //word from file
+	std::string word; //word from file
 	while (fileObj >> word) {
 		std::transform(word.begin(), word.end(), word.begin(), std::tolower); //convert all characters of word to lower
-		word.erase(std::remove_if(word.begin(), word.end(), &isSpecialCharacter), word.end()); //remove special characters from word.
-		
+		std::remove_if(word.begin(), word.end(), &isSpecialCharacter); //remove special characters TODO possible implementation of std::any_of
 		if (word == searchWord) {
 			++count;
 		}
@@ -57,44 +53,44 @@ void printCount(const string& searchWord, ifstream& fileObj) {
 	const char formatSeparator = ' ';
 
 	//cout number of matches
-	cout << left << setw(formatWidth) << setfill(formatSeparator) << searchWord;
-	cout << left << setw(formatWidth) << setfill(formatSeparator) << count;
-	cout << endl;
+	std::cout << std::left << std::setw(formatWidth) << std::setfill(formatSeparator) << searchWord;
+	std::cout << std::left << std::setw(formatWidth) << std::setfill(formatSeparator) << count;
+	std::cout << "\n";
 
 }
 
 
 int main()
 {
-	ifstream testFile;
+	std::ifstream testFile;
 	testFile.open("Holmes.txt");
 
 	if (!testFile.is_open()) {
 
-		cout << "no such file." << endl;
+		return 1;
 	}
 
 	else
 
 	{
-		cout << "file loaded successfully." << endl << endl;
-		cout << "matches found:" << endl;
-		
-		// loop through searchlist
-		for (list<string>::iterator iter = searchList.begin(); iter != searchList.end(); ++iter ) { 
+		std::cout << "file loaded successfully." << "\n\n";
+		std::cout << "matches found:\n";
 
-			printCount(*iter, testFile); //cout search word and number of occurences.
-			
+		// loop through searchlist
+
+		for (const auto & word : searchList) {
+			printCount(word, testFile); //cout search word and number of occurences.
+
 			// return to beginning of file each iteration, otherwise other elements in searchList count 0.
 			testFile.clear();
-			testFile.seekg(0, ios::beg); 
+			testFile.seekg(0, std::ios::beg);
 		}
 
-		cin.get();
-		return 0;
+		std::cin.get();
+
 	}
 
 	testFile.close();
-
+	return 0;
 }
 
