@@ -12,6 +12,7 @@
 #include <string>		//std::string
 #include <algorithm>	//std::transform
 #include <memory>		//std::unique_ptr
+#include <ostream>		//std::ostream
 
 #include "shape.h"
 #include "square.h"
@@ -20,22 +21,29 @@
 #include "circle.h"
 #include "shapeSorter.h"
 
-const std::string circle::m_name = "CIRCLE";
-const std::string square::m_name = "SQUARE";
-const std::string rectangle::m_name = "RECTANGLE";
-const std::string isoTriangle::m_name = "ISOSCELES-TRIANGLE";
+
+
+
+//bool comparePerim(const std::unique_ptr<Shape>& a, const std::unique_ptr<Shape>& b) ;
+//bool compareArea(const std::unique_ptr<Shape>& a, const std::unique_ptr<Shape>& b) ;
+
+
+
 
 int main() {
 	
 
-	std::vector< std::unique_ptr<shape> > shapeVector;
 
-	shapeVector.push_back(std::unique_ptr<shape>(new square(2)));
-	shapeVector.push_back(std::unique_ptr<shape>(new circle(3)));
-	shapeVector.push_back(std::unique_ptr<shape>(new rectangle(4,5)));
-	shapeVector.push_back(std::unique_ptr<shape>(new isoTriangle(2,3)));
 
-	shapeSorter polysort(std::move(shapeVector));
+	std::vector< std::unique_ptr<Shape> > shapeVector;
+
+
+	shapeVector.push_back(std::unique_ptr<Shape>(new Square(2)));
+	shapeVector.push_back(std::unique_ptr<Shape>(new Circle(3)));
+	shapeVector.push_back(std::unique_ptr<Shape>(new Rectangle(4,5)));
+	shapeVector.push_back(std::unique_ptr<Shape>(new IsoTriangle(2,3)));
+
+	ShapeSorter polysort(std::move(shapeVector));
 
 	polysort.printOrderForPerim();
 	polysort.printOrderForArea();

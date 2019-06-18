@@ -1,26 +1,28 @@
 #ifndef ISOTRIANGLE_H
 #define ISOTRIANGLE_H
 
+#include <string>
 #include <math.h> //sqrt
+#include "shape.h"
 
 
-class isoTriangle : public shape { // isosceles triangle class
 
-private:
-
-	static const std::string m_name;
-	const unsigned int m_numOfSides = 3;
-	double m_base, m_height;
+class IsoTriangle : public Shape { // isosceles triangle class
 
 public:
 
-	virtual unsigned int numOfSides() const override{ return m_numOfSides; }
-	virtual std::string name() const override{ return m_name; }
+	IsoTriangle(double base, double height);
 
-	virtual double area() const override { return 0.5 * m_base* m_height; }
-	virtual double perimeter() const override { return 2 * (sqrt(m_height * m_height) + ((m_base * m_base) / 4)); }
+	virtual unsigned int numOfSides() const override; 
+	virtual std::string shapeType() const override; 
 
-	isoTriangle(double base, double height) : m_base(base), m_height(height) {};
+	virtual double area() const override; 
+	virtual double perimeter() const override;
+
+private:
+
+	const unsigned int m_numOfSides = 3;
+	double m_base, m_height;
 	
 
 };

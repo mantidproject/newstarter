@@ -1,26 +1,29 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
+#include <string>
+#include "shape.h"
 
 
-class rectangle : public shape {
-
-private:
-
-	static const  std::string m_name;
-	const unsigned int m_numOfSides = 4;
-	double m_sideWidth, m_sideHeight;
+class Rectangle : public Shape {
 
 public:
 
-	virtual unsigned int numOfSides() const override{ return m_numOfSides; }
-	virtual std::string name() const override{ return m_name; }
+	Rectangle(double width, double height);
 
-	virtual double area() const override { return m_sideHeight * m_sideWidth; }
-	virtual double perimeter() const override { return (2 * m_sideWidth) + (2 * m_sideHeight); }
+	virtual unsigned int numOfSides() const override;
+	virtual double area() const override;
+	virtual double perimeter() const override;
+	virtual std::string shapeType() const override;
 
-	rectangle(double width, double height) : m_sideWidth(width), m_sideHeight(height) {};
+private:
+
+	
+	const unsigned int m_numOfSides = 4;
+	double m_sideHeight, m_sideWidth;
 
 };
+
+
 
 #endif

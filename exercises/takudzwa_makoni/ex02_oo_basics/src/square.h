@@ -1,27 +1,27 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
+#include <string>
+#include "shape.h"
+
+//class square : public shape;
 
 
-class square : public shape {
-
-private:
-
-	static const std::string m_name;
-	const unsigned int m_numOfSides = 4;
-	double m_length;
+class Square : public Shape {
 
 public:
 	
-	virtual unsigned int numOfSides() const override{ return m_numOfSides; }
-	virtual std::string name() const override { return m_name; }
+	Square(double length);
 
-	virtual double area() const override { return m_length * m_length; }
-	virtual double perimeter() const override { return 4 * m_length; }
+	virtual unsigned int numOfSides() const override; 
+	virtual std::string shapeType() const override; 
+	virtual double area() const override;
+	virtual double perimeter() const override;
 
-	square(double length) : m_length(length) {
-	
-	};
+private:
+
+	const unsigned int m_numOfSides = 4;
+	double m_length;
 
 };
 

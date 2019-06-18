@@ -18,6 +18,12 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
+  src/circle.cpp
+  src/square.cpp
+  src/rectangle.cpp
+  src/isoTriangle.cpp
+  src/shapeSorter.cpp
+  src/shape.cpp
   # add any additional source files here
 )
 
