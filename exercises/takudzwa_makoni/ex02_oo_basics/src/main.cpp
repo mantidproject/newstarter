@@ -2,12 +2,7 @@
 
 
 #include <iostream>		//std::cout, std::cin
-//#include <cctype>
-//#include <math.h>
-//#include <stdio.h>
-//#include <ctype.h>
-//#include <locale>
-//#include <utility>
+
 #include <vector>		//std::vector
 #include <string>		//std::string
 #include <algorithm>	//std::transform
@@ -32,25 +27,22 @@
 
 int main() {
 	
+	std::vector< std::unique_ptr<Shape> > shapeVector;	//vector containing unique pointers to shape class oblects
 
 
+	shapeVector.push_back(std::unique_ptr<Shape>(new Square(2)));		//add unique pointer to square object to shapeVector
+	shapeVector.push_back(std::unique_ptr<Shape>(new Circle(3)));		//add unique pointer to circle object to shapeVector
+	shapeVector.push_back(std::unique_ptr<Shape>(new Rectangle(4,5)));	//add unique pointer to rectangle object to shapeVector
+	shapeVector.push_back(std::unique_ptr<Shape>(new IsoTriangle(2,3)));//add unique pointer to isosceles-triangle object to shapeVector
 
-	std::vector< std::unique_ptr<Shape> > shapeVector;
+	ShapeSorter polysort(std::move(shapeVector));	//initialise shapesorter with shapeVector
 
+	polysort.printOrderForPerim();			//display shapes ordered by perimeter
+	polysort.printOrderForArea();			//display shapes ordered by area
+	polysort.printMatchForSide(3);			//show matches, if any, for shape with number of sides '3' in shapeVector
+	polysort.printMatchForType("triangle");	//show matches, if any, for shape with type similar to or exactly 'triangle' in shapeVector
 
-	shapeVector.push_back(std::unique_ptr<Shape>(new Square(2)));
-	shapeVector.push_back(std::unique_ptr<Shape>(new Circle(3)));
-	shapeVector.push_back(std::unique_ptr<Shape>(new Rectangle(4,5)));
-	shapeVector.push_back(std::unique_ptr<Shape>(new IsoTriangle(2,3)));
-
-	ShapeSorter polysort(std::move(shapeVector));
-
-	polysort.printOrderForPerim();
-	polysort.printOrderForArea();
-	polysort.printMatchForSide(3);
-	polysort.printMatchForType("triangle");
-
-	std::cin.get();
+	std::cin.get(); //wait for user input before terminating.
 
 	return 0;
 }

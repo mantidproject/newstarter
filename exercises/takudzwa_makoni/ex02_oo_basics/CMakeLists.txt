@@ -23,7 +23,7 @@ set ( SRC_FILES
   src/rectangle.cpp
   src/isoTriangle.cpp
   src/shapeSorter.cpp
-  src/shape.cpp
+
   # add any additional source files here
 )
 
