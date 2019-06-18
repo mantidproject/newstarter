@@ -24,7 +24,6 @@ struct ComparableToSpecial {
 bool isSpecialCharacter(char c)
 {
 	std::string specialChars("()!?,.\":\\");
-	std::string specialChar();
 	if (std::any_of(specialChars.begin(), specialChars.end(), ComparableToSpecial(c))) { return true; }
 	
 }
