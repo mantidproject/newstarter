@@ -12,7 +12,7 @@ std::vector<std::string> searchList = { "which","holmes","there","could","photog
 
 struct ComparableToSpecial {
 
-	ComparableToSpecial(char c) : inputChar(c) {}
+	ComparableToSpecial(char inChar) : inputChar(inChar) {}
 
 	const char inputChar;
 	bool operator()(char c) const { return c == inputChar;  }
@@ -23,7 +23,7 @@ struct ComparableToSpecial {
 // return true if special character exists in c.
 bool isSpecialCharacter(char c)
 {
-	std::string specialChars("()!?,.\":\\");
+	std::string specialChars = "()!?,.\":\\";
 	if (std::any_of(specialChars.begin(), specialChars.end(), ComparableToSpecial(c))) { return true; }
 	
 }
