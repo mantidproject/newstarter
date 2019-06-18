@@ -8,7 +8,7 @@ class isoTriangle : public shape { // isosceles triangle class
 
 private:
 
-	static std::string m_name;
+	static const std::string m_name;
 	const unsigned int m_numOfSides = 3;
 	double m_base, m_height;
 

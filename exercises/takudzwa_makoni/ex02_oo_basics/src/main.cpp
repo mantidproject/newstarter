@@ -20,10 +20,10 @@
 #include "circle.h"
 #include "shapeSorter.h"
 
-std::string circle::m_name = "CIRCLE";
-std::string square::m_name = "SQUARE";
-std::string rectangle::m_name = "RECTANGLE";
-std::string isoTriangle::m_name = "ISOSCELES-TRIANGLE";
+const std::string circle::m_name = "CIRCLE";
+const std::string square::m_name = "SQUARE";
+const std::string rectangle::m_name = "RECTANGLE";
+const std::string isoTriangle::m_name = "ISOSCELES-TRIANGLE";
 
 int main() {
 	
