@@ -1,5 +1,7 @@
 #ifndef SHAPESORTER_H
 #define SHAPESORTER_H
+#include <memory>
+#include <vector>
 
 #include "shape.h"
 

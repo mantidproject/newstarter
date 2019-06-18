@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <memory>
 #include "shape.h"
 #include "square.h"
 #include "rectangle.h"
