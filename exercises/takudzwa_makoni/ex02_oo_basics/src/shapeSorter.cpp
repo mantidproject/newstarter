@@ -30,7 +30,7 @@ void ShapeSorter::printMatchForType(std::string chosenType) const {
 	std::cout << "\nMATCHES FOR TYPE \"" << chosenType << "\"\n";
 	for (size_t i = 0; i != m_shapes.size(); i++) {
 
-		std::transform(chosenType.begin(), chosenType.end(), chosenType.begin(), [](unsigned char c) -> unsigned char { return std::toupper(c); });
+		std::transform(chosenType.begin(), chosenType.end(), chosenType.begin(), [](unsigned char c) -> unsigned char { return ::toupper(c); });
 
 		{
 			if (m_shapes[i]->shapeType().find(chosenType) != std::string::npos) { std::cout << *(m_shapes[i]) << "\n"; } //find match in file
