@@ -1,10 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include <list>
-#include <iomanip>
-#include <string>
-#include <algorithm>
-#include <cctype>
+#include <iomanip>		
+#include <string>		//std::string
+#include <algorithm>	//std::transform
+#include <cctype>		//std::tolower
 #include <vector>
 
 
@@ -41,7 +40,8 @@ void printCount(const std::string& searchWord, std::ifstream& fileObj) {
 	int count = 0;
 	std::string word; //word from file
 	while (fileObj >> word) {
-		std::transform(word.begin(), word.end(), word.begin(), std::tolower); //convert all characters of word to lower
+	
+		std::transform(word.begin(), word.end(), word.begin(), [](unsigned char c) -> unsigned char { return std::tolower(c); }); //std::tolower); //convert all characters of word to lower
 		std::remove_if(word.begin(), word.end(), &isSpecialCharacter); //remove special characters TODO possible implementation of std::any_of
 		if (word == searchWord) {
 			++count;
