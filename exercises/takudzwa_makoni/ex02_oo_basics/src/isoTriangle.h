@@ -1,6 +1,7 @@
 #ifndef ISOTRIANGLE_H
 #define ISOTRIANGLE_H
 
+#include <math.h> //sqrt
 
 
 class isoTriangle : public shape { // isosceles triangle class

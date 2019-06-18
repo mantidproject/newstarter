@@ -1,16 +1,18 @@
 
 
 
-#include <iostream>
-#include <cctype>
-#include <math.h>
-#include <stdio.h>
-#include <ctype.h>
-#include <utility>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <memory>
+#include <iostream>		//std::cout, std::cin
+//#include <cctype>
+//#include <math.h>
+//#include <stdio.h>
+//#include <ctype.h>
+//#include <locale>
+//#include <utility>
+#include <vector>		//std::vector
+#include <string>		//std::string
+#include <algorithm>	//std::transform
+#include <memory>		//std::unique_ptr
+
 #include "shape.h"
 #include "square.h"
 #include "rectangle.h"
@@ -33,9 +35,7 @@ int main() {
 	shapeVector.push_back(std::unique_ptr<shape>(new rectangle(4,5)));
 	shapeVector.push_back(std::unique_ptr<shape>(new isoTriangle(2,3)));
 
-	//shapeVector.push_back(std::make_unique<square>(2));
 	shapeSorter polysort(std::move(shapeVector));
-
 
 	polysort.printOrderForPerim();
 	polysort.printOrderForArea();
