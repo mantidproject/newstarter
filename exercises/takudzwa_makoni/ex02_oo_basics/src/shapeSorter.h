@@ -2,8 +2,7 @@
 #define SHAPESORTER_H
 #include <memory>		//std::unique_ptr
 #include <vector>		//std::vector
-//#include <locale>		//std::toupper
-#include <cctype>
+#include <cctype>		//std::toupper
 #include <algorithm>	//std::transform
 #include <ostream>		//std:: ostream operator
 
@@ -52,7 +51,7 @@ public:
 
 		std::cout << "\nMATCHES FOR TYPE \"" << chosenType << "\"\n";
 		for (size_t i = 0; i != shapes.size(); i++){
-			std::transform(chosenType.begin(), chosenType.end(), chosenType.begin(), [](unsigned char c) -> unsigned char { return std::toupper(c); }); // std::toupper);
+			std::transform(chosenType.begin(), chosenType.end(), chosenType.begin(), [](unsigned char c) -> unsigned char { return std::toupper(c); });
 		{
 			//works so that if searchword is triangle, will find all matches. e.g. isosceles-triangle or equilateral-triangle etc.
 			if (shapes[i]->name().find(chosenType) != std::string::npos ) { std::cout << *(shapes[i]) << "\n"; }
