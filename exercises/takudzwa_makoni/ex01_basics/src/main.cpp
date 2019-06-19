@@ -25,7 +25,8 @@ bool isSpecialCharacter(char c)
 {
 	std::string specialChars = "()!?,.\":\\";
 	if (std::any_of(specialChars.begin(), specialChars.end(), ComparableToSpecial(c))) { return true; }
-	
+	else { return false; }
+
 }
 
 
