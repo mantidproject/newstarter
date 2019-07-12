@@ -18,6 +18,8 @@ using std::pair;
  * @return int 0 on success, >0 otherwise.
  */
 int wordCounterInterface() {
+    //Number of characters a word must have to be counted.
+    const int characters = 5;
     // Ask for a file path. 
     cout << "Please enter the file path:";
     string path;
@@ -31,7 +33,7 @@ int wordCounterInterface() {
 
     // Check if the file exists. 
     if(filein.is_open()) {
-        map<string, int> counts = countWords(filein);
+        map<string, int> counts = countWords(filein, characters);
         vector<pair<int, string> > sorted{sortMap(counts)};
         cout << "Please enter the output path (paths that do not reach existing files will create new ones):";
         cin >> path;
@@ -70,18 +72,18 @@ string::size_type findMaxSize(const vector<pair<int, string>> v) {
 }
 
 /**
- * @brief Count the number of words >4 characters. 
+ * @brief Count the number of words with a number characters. 
  * Excludes punctuation and ignores case. 
  * 
  * @param in Input file stream of words. 
  * @return map<string, int> Map of words and counts.
  */
-map<string, int> countWords(ifstream& in) {
+map<string, int> countWords(ifstream& in, int chars) {
     map<string, int> words;
     string s;
     while(in >> s) {
         cleanWord(s);
-        if(s.size() > 4) {
+        if(s.size() >= chars) {
             ++words[s];
         }
     }

@@ -6,8 +6,6 @@
 #include <fstream>
 #include <vector>
 
-std::map<std::string, int> countWords(std::ifstream& in);
-
 bool isBadPunct(char c);
 
 int wordCounterInterface();
@@ -22,4 +20,6 @@ std::vector<std::pair<int, std::string>> sortMap(std::map<std::string, int>);
 
 std::string::size_type findMaxSize(const std::vector<std::pair<int, std::string>> v);
 
-#endif
+std::map<std::string, int> countWords(std::ifstream& in, int chars);
+
+#endif MAIN_H_

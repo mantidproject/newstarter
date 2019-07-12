@@ -22,3 +22,11 @@ builds/*
 *.exe
 *.out
 *.app
+
+exercises/conor_finn/\.vscode/c_cpp_properties\.json
+
+exercises/conor_finn/\.vscode/launch\.json
+
+exercises/conor_finn/\.vscode/settings\.json
+
+exercises/conor_finn/\.vscode/tasks\.json
