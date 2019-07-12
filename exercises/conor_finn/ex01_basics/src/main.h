@@ -22,4 +22,4 @@ std::string::size_type findMaxSize(const std::vector<std::pair<int, std::string>
 
 std::map<std::string, int> countWords(std::ifstream& in, int chars);
 
-#endif MAIN_H_
+#endif //MAIN_H_
