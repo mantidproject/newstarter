@@ -1,6 +1,3 @@
-/**
- * Skeleton main routine
- */
 #include "main.h"
 #include <algorithm>
 #include <functional>
@@ -161,6 +158,6 @@ void cleanWord(string& s) {
  * 
  * @return int 0 on success, any other number otherwise. 
  */
-int main(int, char **) {
+int main(int argc, char ** argv) {
     return wordCounterInterface();
 }
