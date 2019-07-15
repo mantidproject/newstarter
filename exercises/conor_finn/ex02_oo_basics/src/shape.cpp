@@ -1,0 +1,32 @@
+#include "shape.h"
+#include<iostream>
+
+/**
+ * @brief Construct a new Shape:: Shape object
+ * 
+ * @param s Number of sides. 
+ * @param n Name of shape.
+ */
+Shape::Shape(int s, std::string n) { 
+  sides = s; 
+  name = n;
+}
+
+/**
+ * @brief Accessor method for number of sides.
+ * 
+ * @return int Number of sides. 
+ */
+int Shape::getSides() {
+  return sides;
+}
+
+/**
+ * @brief Accessor method for shape name. 
+ * 
+ * @return std::string Name of shape. 
+ */
+std::string Shape::getName() {
+  return name;
+}
+
