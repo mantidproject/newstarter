@@ -12,10 +12,6 @@ public:
                                  const int &sides);
   static void printOrderedByArea(std::vector<Shape *>);
   static void printOrderedByPerimiter(std::vector<Shape *>);
-
-private:
-  static bool compareArea(Shape *&a, Shape *&b);
-  static bool comparePerimiter(Shape *&a, Shape *&b);
 };
 
 #endif

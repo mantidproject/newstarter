@@ -40,36 +40,13 @@ void ShapeSorter::printMatchingSides(const std::vector<Shape *> &shapes,
 }
 
 /**
- * @brief Compariton method for the area of shape pointers.
- *
- * @param a The first shape pointer.
- * @param b The second shape pointer.
- * @return true If the first shape has a larger area than the second.
- * @return false If the first has a smaller or equal area.
- */
-bool ShapeSorter::compareArea(Shape *&a, Shape *&b) {
-  return (a->area() > b->area());
-}
-
-/**
- * @brief Comparison method for the perimiter of shapes.
- *
- * @param a Pointer to the first shape.
- * @param b Pointer to the second shape.
- * @return true If a has a larger perimiter than b.
- * @return false If a has a smaller or equal perimiter to b.
- */
-bool ShapeSorter::comparePerimiter(Shape *&a, Shape *&b) {
-  return (a->perimiter() > b->perimiter());
-}
-
-/**
  * @brief Print details of shapes ordered by area.
  *
  * @param shapes A vector of shape pointers.
  */
 void ShapeSorter::printOrderedByArea(std::vector<Shape *> shapes) {
-  std::sort(shapes.begin(), shapes.end(), compareArea);
+  std::sort(shapes.begin(), shapes.end(),
+            [](Shape *a, Shape *b) { return a->area() > b->area(); });
   int counter = 1;
   for (auto i = shapes.begin(); i != shapes.end(); i++) {
     std::cout << "Shape " << counter << ":\n";
@@ -84,7 +61,8 @@ void ShapeSorter::printOrderedByArea(std::vector<Shape *> shapes) {
  * @param shapes A vector of shape pointers.
  */
 void ShapeSorter::printOrderedByPerimiter(std::vector<Shape *> shapes) {
-  std::sort(shapes.begin(), shapes.end(), comparePerimiter);
+  std::sort(shapes.begin(), shapes.end(),
+            [](Shape *a, Shape *b) { return a->perimiter() > b->perimiter(); });
   int counter = 1;
   for (auto i = shapes.begin(); i != shapes.end(); i++) {
     std::cout << "Shape " << counter << ":\n";
