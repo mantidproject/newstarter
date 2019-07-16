@@ -1,6 +1,5 @@
 #include "circle.h"
 #include "rectangle.h"
-#include "shape.h"
 #include "shapeSorter.h"
 #include "square.h"
 #include "triangle.h"
@@ -47,5 +46,8 @@ int main(int, char **) {
   std::cout << std::endl << "Ordered By Perimiter:\n\n";
   ShapeSorter::printOrderedByPerimiter(shapes);
 
+  for (Shape *s : shapes) {
+    delete s;
+  }
   std::cout << "Done!" << std::endl;
 }
