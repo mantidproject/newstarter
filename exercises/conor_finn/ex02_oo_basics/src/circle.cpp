@@ -14,7 +14,7 @@ Circle::Circle(int r) : Shape(1, "Circle") { radius = r; }
  *
  * @return double
  */
-double Circle::area() { return pow(M_PI * radius, 2); }
+double Circle::area() { return M_PI * pow(radius, 2); }
 
 /**
  * @brief Calculate perimiter of a circle

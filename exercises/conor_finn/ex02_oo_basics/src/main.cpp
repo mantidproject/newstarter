@@ -1,12 +1,12 @@
-#include <iostream>
-#include <vector>
-
 #include "circle.h"
 #include "rectangle.h"
 #include "shape.h"
 #include "shapeSorter.h"
 #include "square.h"
 #include "triangle.h"
+
+#include <iostream>
+#include <vector>
 
 int main(int, char **) {
   std::vector<Shape *> shapes;
@@ -27,12 +27,25 @@ int main(int, char **) {
   shapes.push_back(s1);
   shapes.push_back(c1);
 
-  ShapeSorter sorter;
-
   // Printing squares.
-  sorter.printMatchingName(shapes, "Square");
-  // Printing rectangles.
-  sorter.printMatchingName(shapes, "Triangle");
+  std::cout << "Squares: \n\n";
+  ShapeSorter::printMatchingName(shapes, "Square");
 
-  std::cout << "Done!";
+  // Printing triangles.
+  std::cout << std::endl << "Triangles: \n\n";
+  ShapeSorter::printMatchingName(shapes, "Triangle");
+
+  // Printing 4 Sided shapes.
+  std::cout << std::endl << "4 Sided Shapes:\n\n";
+  ShapeSorter::printMatchingSides(shapes, 4);
+
+  // Printing in order of area.
+  std::cout << std::endl << "Ordered By Area:\n\n";
+  ShapeSorter::printOrderedByArea(shapes);
+
+  // Printing in order of perimiter.
+  std::cout << std::endl << "Ordered By Perimiter:\n\n";
+  ShapeSorter::printOrderedByPerimiter(shapes);
+
+  std::cout << "Done!" << std::endl;
 }

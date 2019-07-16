@@ -31,7 +31,7 @@ std::string Shape::getName() { return name; }
  *
  */
 void Shape::printInfo() {
-  std::cout << "This shape is a " << name << ".\n"
-            << "It has a perimiter of: " << perimiter()
-            << ", and an area of:" << area() << std::endl;
+  std::cout << "  This shape is a " << name << ".\n"
+            << "  It has a perimiter of: " << perimiter()
+            << ", and an area of: " << area() << std::endl;
 }

@@ -10,7 +10,6 @@ private:
 
 public:
   Shape(int s, std::string n);
-  Shape() : sides(0), name("") {}
 
   // Pure virtual functions. Overidden.
   virtual double perimiter() = 0;
