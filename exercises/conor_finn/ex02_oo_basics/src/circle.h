@@ -3,14 +3,14 @@
 
 #include "shape.h"
 
-class Circle: public Shape {
-  private:
-    int radius;
-  
-  public:
-    Circle(int radius);
-    double perimiter();
-    double area();
+class Circle : public Shape {
+private:
+  int radius;
+
+public:
+  Circle(int radius);
+  double perimiter();
+  double area();
 };
 
 #endif
