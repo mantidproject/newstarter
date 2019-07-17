@@ -6,21 +6,23 @@
 #include <map>
 #include <vector>
 
-bool isBadPunct(char c);
+bool isBadPunct(char &character);
 
 int wordCounterInterface();
 
 int main(int, char **);
 
-void cleanWord(std::string &s);
+void cleanWord(std::string &word);
 
-void toLowerCase(std::string &s);
+void toLowerCase(std::string &word);
 
-std::vector<std::pair<int, std::string>> sortMap(std::map<std::string, int>);
+std::vector<std::pair<int, std::string>>
+sortMap(const std::map<std::string, int> &map);
 
 std::string::size_type
-findMaxSize(const std::vector<std::pair<int, std::string>> v);
+findMaxStringSize(const std::vector<std::pair<int, std::string>> &stringPairs);
 
-std::map<std::string, int> countWords(std::ifstream &in, int chars);
+std::map<std::string, int> countWords(std::ifstream &in,
+                                      const int &minWordLength);
 
 #endif // MAIN_H_
