@@ -9,7 +9,7 @@
  * @return int 0 on success, >0 otherwise.
  */
 int wordCounterInterface() {
-  const int MIN_WORD_LENGTH = 5;
+  const int MIN_WORD_LENGTH{5};
   // Ask for a file path.
   std::cout << "Please enter the file path:";
   std::string path;
@@ -21,34 +21,44 @@ int wordCounterInterface() {
   // Check if the file exists.
   if (fileIn.is_open()) {
     std::map<std::string, int> counts = countWords(fileIn, MIN_WORD_LENGTH);
-    std::vector<std::pair<int, std::string>> sortedByWordCount{sortMap(counts)};
+    auto sortedByWordCount{sortMap(counts)};
     fileIn.close();
-    std::cout
-        << "Please enter the output path (paths that do not reach existing "
-           "files will create new ones):";
-    std::cin >> path;
-    std::ofstream fileOut{path.c_str()};
-    if (fileOut.is_open()) {
-      // Write headings to the file.
-      std::string::size_type maxWordLength =
-          findMaxStringSize(sortedByWordCount);
-      fileOut << "Word" + std::string(maxWordLength - 4, ' ') + "\tCounts"
-              << std::endl;
-      // Write the list of words to the file.
-      for (auto &wordCountPair : sortedByWordCount) {
-        fileOut << wordCountPair.second +
-                       std::string(
-                           maxWordLength - (wordCountPair.second.size()), ' ') +
-                       "\t"
-                << wordCountPair.first << std::endl;
-      }
-      fileOut.close();
-      return 0;
-    } else {
-      std::cout << "Invalid output path." << std::endl;
-    }
+    return writeToFile(sortedByWordCount);
   } else {
     std::cout << "Invalid input path or blank file." << std::endl;
+    return 1;
+  }
+}
+
+/**
+ * @brief Format and write a vector of pairs to a file supplied by the user.
+ *
+ * @param words Vector to write.
+ * @return int 0 on success, 1 otherwise.
+ */
+int writeToFile(std::vector<std::pair<int, std::string>> words) {
+  std::cout << "Please enter the output path (paths that do not reach existing "
+               "files will create new ones):";
+  std::string path;
+  std::cin >> path;
+  std::ofstream fileOut{path.c_str()};
+  if (fileOut.is_open()) {
+    // Write headings to the file.
+    std::string::size_type maxWordLength = findMaxStringSize(words);
+    fileOut << "Word" + std::string(maxWordLength - 4, ' ') + "\tCounts"
+            << std::endl;
+    // Write the list of words to the file.
+    for (auto &wordCountPair : words) {
+      fileOut << wordCountPair.second +
+                     std::string(maxWordLength - (wordCountPair.second.size()),
+                                 ' ') +
+                     "\t"
+              << wordCountPair.first << std::endl;
+    }
+    fileOut.close();
+    return 0;
+  } else {
+    std::cout << "Invalid output path." << std::endl;
     return 1;
   }
 }
@@ -62,9 +72,9 @@ int wordCounterInterface() {
 std::string::size_type
 findMaxStringSize(const std::vector<std::pair<int, std::string>> &pairs) {
   std::string::size_type max = 0;
-  for (const std::pair<int, std::string> &p : pairs) {
-    if (p.second.size() > max) {
-      max = p.second.size();
+  for (const auto &pair : pairs) {
+    if (pair.second.size() > max) {
+      max = pair.second.size();
     }
   }
   return max;
@@ -81,11 +91,11 @@ findMaxStringSize(const std::vector<std::pair<int, std::string>> &pairs) {
 std::map<std::string, int> countWords(std::ifstream &in,
                                       const int &minWordLength) {
   std::map<std::string, int> words;
-  std::string s;
-  while (in >> s) {
-    cleanWord(s);
-    if (s.size() >= minWordLength) {
-      ++words[s];
+  std::string word;
+  while (in >> word) {
+    cleanWord(word);
+    if (word.size() >= minWordLength) {
+      ++words[word];
     }
   }
   return words;
@@ -113,11 +123,11 @@ bool sortInRev(const std::pair<int, std::string> &a,
 std::vector<std::pair<int, std::string>>
 sortMap(const std::map<std::string, int> &wordMap) {
   std::vector<std::pair<int, std::string>> pairs;
-  std::pair<int, std::string> p;
-  for (auto i = wordMap.begin(); i != wordMap.end(); ++i) {
-    p.first = i->second;
-    p.second = i->first;
-    pairs.push_back(p);
+  std::pair<int, std::string> pair;
+  for (auto const word : wordMap) {
+    pair.first = word.second;
+    pair.second = word.first;
+    pairs.push_back(pair);
   }
   std::sort(pairs.begin(), pairs.end(), sortInRev);
   return pairs;
@@ -130,10 +140,10 @@ sortMap(const std::map<std::string, int> &wordMap) {
  * @return true If invalid.
  * @return false if valid or alphanumeric.
  */
-bool isBadPunct(char &c) {
+bool isBadPunct(char &character) {
   static const std::string badPunct = ".,?'\"!():";
-  return !(isalnum(c) ||
-           std::find(badPunct.begin(), badPunct.end(), c) == badPunct.end());
+  return !(isalnum(character) || std::find(badPunct.begin(), badPunct.end(),
+                                           character) == badPunct.end());
 }
 
 /**
@@ -141,9 +151,9 @@ bool isBadPunct(char &c) {
  *
  * @param s The string to convert.
  */
-void toLowerCase(std::string &s) {
-  for (std::string::size_type i = 0; i < s.size(); ++i) {
-    s[i] = tolower(s[i]);
+void toLowerCase(std::string &str) {
+  for (std::string::size_type i = 0; i < str.size(); ++i) {
+    str[i] = tolower(str[i]);
   }
 }
 
@@ -153,9 +163,9 @@ void toLowerCase(std::string &s) {
  *
  * @param s The string to clean.
  */
-void cleanWord(std::string &s) {
-  s.erase(std::remove_if(s.begin(), s.end(), isBadPunct), s.end());
-  toLowerCase(s);
+void cleanWord(std::string &word) {
+  word.erase(std::remove_if(word.begin(), word.end(), isBadPunct), word.end());
+  toLowerCase(word);
 }
 
 /**

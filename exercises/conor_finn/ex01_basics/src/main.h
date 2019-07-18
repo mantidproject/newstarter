@@ -25,4 +25,6 @@ findMaxStringSize(const std::vector<std::pair<int, std::string>> &stringPairs);
 std::map<std::string, int> countWords(std::ifstream &in,
                                       const int &minWordLength);
 
+int writeToFile(std::vector<std::pair<int, std::string>> words);
+
 #endif // MAIN_H_
