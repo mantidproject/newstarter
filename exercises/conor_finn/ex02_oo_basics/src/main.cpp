@@ -8,7 +8,7 @@
 #include <vector>
 
 int main(int, char **) {
-  std::vector<Shape *> shapes;
+  std::vector<const Shape *> shapes;
 
   // Make some shapes.
   Rectangle *r1 = new Rectangle(5, 10);
@@ -30,24 +30,20 @@ int main(int, char **) {
   std::cout << "Squares: \n\n";
   ShapeSorter::printMatchingName(shapes, "Square");
 
-  // Printing triangles.
-  std::cout << std::endl << "Triangles: \n\n";
-  ShapeSorter::printMatchingName(shapes, "Triangle");
-
   // Printing 4 Sided shapes.
-  std::cout << std::endl << "4 Sided Shapes:\n\n";
+  std::cout << "\n4 Sided Shapes:\n\n";
   ShapeSorter::printMatchingSides(shapes, 4);
 
   // Printing in order of area.
-  std::cout << std::endl << "Ordered By Area:\n\n";
+  std::cout << "\nOrdered By Area:\n\n";
   ShapeSorter::printOrderedByArea(shapes);
 
   // Printing in order of perimiter.
-  std::cout << std::endl << "Ordered By Perimiter:\n\n";
+  std::cout << "\nOrdered By Perimiter:\n\n";
   ShapeSorter::printOrderedByPerimiter(shapes);
 
-  for (Shape *s : shapes) {
+  for (const Shape *s : shapes) {
     delete s;
   }
-  std::cout << "Done!" << std::endl;
+  std::cout << "Done!\n";
 }

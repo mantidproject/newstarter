@@ -5,19 +5,19 @@
 
 class Shape {
 private:
-  int sides;
-  std::string name;
+  const int sides;
+  const std::string name;
 
 public:
   Shape(int s, std::string n);
 
   // Pure virtual functions. Overidden.
-  virtual double perimiter() = 0;
-  virtual double area() = 0;
+  virtual double perimiter() const = 0;
+  virtual double area() const = 0;
 
-  int getSides();
-  std::string getName();
-  void printInfo();
+  int getNumberOfSides() const;
+  std::string getName() const;
+  void printInfo() const;
 };
 
 #endif

@@ -5,13 +5,13 @@
 
 class Triangle : public Shape {
 private:
-  int height;
-  int base;
+  const int height;
+  const int base;
 
 public:
   Triangle(int height, int base);
-  double perimiter();
-  double area();
+  double perimiter() const override;
+  double area() const override;
 };
 
 #endif

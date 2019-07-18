@@ -6,21 +6,19 @@
  * @param s1 Width of rectangle.
  * @param s2 Length of rectangle.
  */
-Rectangle::Rectangle(int s1, int s2) : Shape(4, "Rectangle") {
-  side1 = s1;
-  side2 = s2;
-}
+Rectangle::Rectangle(int s1, int s2)
+    : Shape(4, "Rectangle"), side1(s1), side2(s2) {}
 
 /**
  * @brief Calcualte perimiter.
  *
  * @return double Perimiter result.
  */
-double Rectangle::perimiter() { return (side1 * 2) + (side2 * 2); }
+double Rectangle::perimiter() const { return (side1 * 2) + (side2 * 2); }
 
 /**
  * @brief Calcualte area.
  *
  * @return double Area result.
  */
-double Rectangle::area() { return side1 * side2; }
+double Rectangle::area() const { return side1 * side2; }

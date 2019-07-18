@@ -5,12 +5,12 @@
 
 class Square : public Shape {
 private:
-  int side1;
+  const int side1;
 
 public:
   Square(int sideLen);
-  double perimiter();
-  double area();
+  double perimiter() const override;
+  double area() const override;
 };
 
 #endif

@@ -5,12 +5,12 @@
 
 class Circle : public Shape {
 private:
-  int radius;
+  const int radius;
 
 public:
   Circle(int radius);
-  double perimiter();
-  double area();
+  double perimiter() const override;
+  double area() const override;
 };
 
 #endif

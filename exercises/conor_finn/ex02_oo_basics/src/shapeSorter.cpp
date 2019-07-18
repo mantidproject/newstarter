@@ -9,16 +9,13 @@
  * @param shapes Vector containing pointers to the shapes.
  * @param n The name to match.
  */
-void ShapeSorter::printMatchingName(const std::vector<Shape *> &shapes,
+void ShapeSorter::printMatchingName(const std::vector<const Shape *> &shapes,
                                     const std::string &n) {
-  int counter = 1;
-  for (auto i = shapes.begin(); i != shapes.end(); i++) {
-    if ((*i)->getName() == n) {
-      std::cout << "Shape " << counter << ":\n";
-      (*i)->printInfo();
-      ++counter;
-    }
-  }
+  std::vector<const Shape *> matching(shapes.size());
+  auto it = std::copy_if(shapes.begin(), shapes.end(), matching.begin(),
+                         [n](const Shape *s) { return (s->getName()) == n; });
+  matching.resize(std::distance(matching.begin(), it));
+  printShapes(matching);
 }
 
 /**
@@ -27,16 +24,14 @@ void ShapeSorter::printMatchingName(const std::vector<Shape *> &shapes,
  * @param shapes Vector of shape pointers.
  * @param n Number of sides to match.
  */
-void ShapeSorter::printMatchingSides(const std::vector<Shape *> &shapes,
+void ShapeSorter::printMatchingSides(const std::vector<const Shape *> &shapes,
                                      const int &n) {
-  int counter = 1;
-  for (auto i = shapes.begin(); i != shapes.end(); i++) {
-    if ((*i)->getSides() == n) {
-      std::cout << "Shape " << counter << ":\n";
-      (*i)->printInfo();
-      ++counter;
-    }
-  }
+  std::vector<const Shape *> matching(shapes.size());
+  auto it =
+      std::copy_if(shapes.begin(), shapes.end(), matching.begin(),
+                   [n](const Shape *s) { return s->getNumberOfSides() == n; });
+  matching.resize(std::distance(matching.begin(), it));
+  printShapes(matching);
 }
 
 /**
@@ -44,15 +39,11 @@ void ShapeSorter::printMatchingSides(const std::vector<Shape *> &shapes,
  *
  * @param shapes A vector of shape pointers.
  */
-void ShapeSorter::printOrderedByArea(std::vector<Shape *> shapes) {
-  std::sort(shapes.begin(), shapes.end(),
-            [](Shape *a, Shape *b) { return a->area() > b->area(); });
-  int counter = 1;
-  for (auto i = shapes.begin(); i != shapes.end(); i++) {
-    std::cout << "Shape " << counter << ":\n";
-    (*i)->printInfo();
-    ++counter;
-  }
+void ShapeSorter::printOrderedByArea(std::vector<const Shape *> shapes) {
+  std::sort(shapes.begin(), shapes.end(), [](const Shape *a, const Shape *b) {
+    return a->area() > b->area();
+  });
+  printShapes(shapes);
 }
 
 /**
@@ -60,13 +51,23 @@ void ShapeSorter::printOrderedByArea(std::vector<Shape *> shapes) {
  *
  * @param shapes A vector of shape pointers.
  */
-void ShapeSorter::printOrderedByPerimiter(std::vector<Shape *> shapes) {
-  std::sort(shapes.begin(), shapes.end(),
-            [](Shape *a, Shape *b) { return a->perimiter() > b->perimiter(); });
+void ShapeSorter::printOrderedByPerimiter(std::vector<const Shape *> shapes) {
+  std::sort(shapes.begin(), shapes.end(), [](const Shape *a, const Shape *b) {
+    return a->perimiter() > b->perimiter();
+  });
+  printShapes(shapes);
+}
+
+/**
+ * @brief Print the some info about the shapes from a vector.
+ *
+ * @param shapes
+ */
+void ShapeSorter::printShapes(std::vector<const Shape *> &shapes) {
   int counter = 1;
-  for (auto i = shapes.begin(); i != shapes.end(); i++) {
+  for (const auto &i : shapes) {
     std::cout << "Shape " << counter << ":\n";
-    (*i)->printInfo();
+    i->printInfo();
     ++counter;
   }
 }

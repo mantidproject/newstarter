@@ -6,12 +6,15 @@
 
 class ShapeSorter {
 public:
-  static void printMatchingName(const std::vector<Shape *> &shapes,
+  static void printMatchingName(const std::vector<const Shape *> &shapes,
                                 const std::string &name);
-  static void printMatchingSides(const std::vector<Shape *> &shapes,
+  static void printMatchingSides(const std::vector<const Shape *> &shapes,
                                  const int &sides);
-  static void printOrderedByArea(std::vector<Shape *>);
-  static void printOrderedByPerimiter(std::vector<Shape *>);
+  static void printOrderedByArea(std::vector<const Shape *>);
+  static void printOrderedByPerimiter(std::vector<const Shape *>);
+
+private:
+  static void printShapes(std::vector<const Shape *> &shapes);
 };
 
 #endif

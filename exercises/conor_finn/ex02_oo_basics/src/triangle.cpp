@@ -7,17 +7,14 @@
  * @param h Height of triangle.
  * @param b Base of triangle.
  */
-Triangle::Triangle(int h, int b) : Shape(3, "Triangle") {
-  height = h;
-  base = b;
-}
+Triangle::Triangle(int h, int b) : Shape(3, "Triangle"), height(h), base(b) {}
 
 /**
  * @brief Calculate perimiter.
  *
  * @return double Perimiter of triangle.
  */
-double Triangle::perimiter() {
+double Triangle::perimiter() const {
   return (base + (2 * (sqrt(pow(height, 2) + (pow(base, 2) / 4)))));
 }
 
@@ -26,4 +23,4 @@ double Triangle::perimiter() {
  *
  * @return double Area of triangle.
  */
-double Triangle::area() { return (base * height) / 2; }
+double Triangle::area() const { return (base * height) / 2; }
