@@ -17,4 +17,4 @@ private:
   static void printShapes(std::vector<const Shape *> &shapes);
 };
 
-#endif
+#endif // SHAPE_SORTER_H_
