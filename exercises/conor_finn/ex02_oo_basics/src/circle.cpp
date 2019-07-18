@@ -6,7 +6,7 @@
  *
  * @param r Radius of circle.
  */
-Circle::Circle(int r) : Shape(1, "Circle"), radius(r) {}
+Circle::Circle(int r) : Shape(1, "Circle"), m_radius(r) {}
 
 /**
  * @brief Calculate area of circle
@@ -14,7 +14,7 @@ Circle::Circle(int r) : Shape(1, "Circle"), radius(r) {}
  *
  * @return double
  */
-double Circle::area() const { return M_PI * pow(radius, 2); }
+double Circle::area() const { return M_PI * pow(m_radius, 2); }
 
 /**
  * @brief Calculate perimiter of a circle
@@ -22,4 +22,4 @@ double Circle::area() const { return M_PI * pow(radius, 2); }
  *
  * @return double
  */
-double Circle::perimiter() const { return 2 * M_PI * radius; }
+double Circle::perimiter() const { return 2 * M_PI * m_radius; }

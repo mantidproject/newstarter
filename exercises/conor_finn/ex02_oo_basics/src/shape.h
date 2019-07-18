@@ -5,8 +5,8 @@
 
 class Shape {
 private:
-  const int sides;
-  const std::string name;
+  const int m_sides;
+  const std::string m_name;
 
 public:
   Shape(int s, std::string n);
@@ -20,4 +20,4 @@ public:
   void printInfo() const;
 };
 
-#endif
+#endif // SHAPE_H

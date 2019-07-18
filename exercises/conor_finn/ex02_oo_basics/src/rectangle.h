@@ -5,8 +5,8 @@
 
 class Rectangle : public Shape {
 private:
-  const int side1;
-  const int side2;
+  const int m_side1;
+  const int m_side2;
 
 public:
   Rectangle(int s1, int s2);
@@ -14,4 +14,4 @@ public:
   double area() const override;
 };
 
-#endif
+#endif // RECTANGLE_H

@@ -5,8 +5,8 @@
 
 class Triangle : public Shape {
 private:
-  const int height;
-  const int base;
+  const int m_height;
+  const int m_base;
 
 public:
   Triangle(int height, int base);
@@ -14,4 +14,4 @@ public:
   double area() const override;
 };
 
-#endif
+#endif // TRIANGLE_H_

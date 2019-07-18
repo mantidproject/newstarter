@@ -5,7 +5,7 @@
 
 class Circle : public Shape {
 private:
-  const int radius;
+  const int m_radius;
 
 public:
   Circle(int radius);
@@ -13,4 +13,4 @@ public:
   double area() const override;
 };
 
-#endif
+#endif // CIRCLE_H_

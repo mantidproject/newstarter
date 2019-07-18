@@ -5,7 +5,7 @@
 
 class Square : public Shape {
 private:
-  const int side1;
+  const int m_side1;
 
 public:
   Square(int sideLen);
@@ -13,4 +13,4 @@ public:
   double area() const override;
 };
 
-#endif
+#endif // SQUARE_H_
