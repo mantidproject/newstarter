@@ -20,4 +20,4 @@ public:
   void printInfo() const;
 };
 
-#endif // SHAPE_H
+#endif // SHAPE_H_

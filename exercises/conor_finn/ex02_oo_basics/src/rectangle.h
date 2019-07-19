@@ -14,4 +14,4 @@ public:
   double area() const override;
 };
 
-#endif // RECTANGLE_H
+#endif // RECTANGLE_H_
