@@ -27,8 +27,7 @@ int main(int argc, char **argv)
     return -1;
   }
 
-  for (std::string arg : arguments) {
-    std::cout << arg << std::endl;
-  }
+  std::for_each(arguments.begin(), arguments.end(), [](std::string arg){std::cout << arg << std::endl;});
+
   return 0;
 }
