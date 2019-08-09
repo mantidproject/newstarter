@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <boost/filesystem.hpp>
 #include <iostream>
+#include <iterator>
 #include <map>
 #include <numeric>
 #include <sstream>
@@ -53,23 +54,28 @@ string string_strip(string word){
 }
 
 
+map<string, int> add_word(map<string, int> acc, string word) {
+  word = string_strip(word);
+  if (word.size() < 4) {
+    return acc;
+  }
+  transform(word.begin(), word.end(), word.begin(), ::tolower);
+  if (acc.count(word)) {
+    acc[word] += 1;
+  } else{
+    acc[word] = 1;
+  }
+  return acc;
+}
+
+
 map<string, int> load_file(map<string, int> acc, string f) {
   //Add the words from a file into a map
   ifstream infile(f);
-  string word;
-  while (infile >> word) {
-    word = string_strip(word);
-    if (word.size() < 4) {
-      continue;
-    }
-    transform(word.begin(), word.end(), word.begin(), ::tolower);
-    if (acc.count(word)) {
-	acc[word] += 1;
-    } else{
-	acc[word] = 1;
-    }
-  }
-  return acc;
+  istream_iterator<string> words(infile);
+  istream_iterator<string> eos; //end of iterator stream
+
+  return accumulate(words, eos, acc, add_word);
 }
 
 void print_map_line(pair<string, int> value) {
