@@ -29,6 +29,7 @@ bool valid_char(char x) {
   case '(':
   case ')':
   case '`':
+  case ':':
   case '_':
     return false;
   default:
