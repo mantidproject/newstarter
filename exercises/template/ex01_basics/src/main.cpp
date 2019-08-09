@@ -40,7 +40,7 @@ bool pair_compare(pair<string, int>a, pair<string, int> b) {
   // Sort pairs descending by integer value, then ascending by string value.
   if (a.second > b.second) { return true; }
   if (a.second < b.second) { return false; }
-  if (a.first > b.first) { return false; }
+  if (a.first < b.first) { return true; }
   return false;
 }
 
