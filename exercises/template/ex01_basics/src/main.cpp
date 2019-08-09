@@ -10,14 +10,18 @@
 #include <sstream>
 #include <vector>
 
-bool fileMissing(std::string f) {
+using namespace std;
+
+bool fileMissing(string f) {
   return !boost::filesystem::exists(f);
 }
 
-std::map<std::string, int> load_file(std::map<std::string, int> acc, std::string f) {
-  std::ifstream infile(f);
-  std::string word;
+
+map<string, int> load_file(map<string, int> acc, string f) {
+  ifstream infile(f);
+  string word;
   while (infile >> word) {
+    // transform(word.begin(), word.end(), word.begin(), tolower);
     if (acc.count(word)) {
 	acc[word] += 1;
     } else{
@@ -30,24 +34,24 @@ std::map<std::string, int> load_file(std::map<std::string, int> acc, std::string
 int main(int argc, char **argv)
 {
   if(argc <= 1) {
-    std::cout << "Missing file name" << std::endl;
+    cout << "Missing file name" << endl;
     return -1;
   }
 
-  std::vector<std::string> arguments(argv+1, argc+argv);
+  vector<string> arguments(argv+1, argc+argv);
 
-  auto missing = std::find_if(arguments.begin(), arguments.end(), fileMissing);
+  auto missing = find_if(arguments.begin(), arguments.end(), fileMissing);
 
   if (missing != arguments.end()) {
-    std::cout << "Cannot find file " << *missing << std::endl;
+    cout << "Cannot find file " << *missing << endl;
     return -1;
   }
 
-  std::map<std::string, int> combined;
-  combined = std::accumulate(arguments.begin(), arguments.end(), combined, load_file);
+  map<string, int> combined;
+  combined = accumulate(arguments.begin(), arguments.end(), combined, load_file);
 
   for (auto i : combined) {
-    std::cout << i.first << " ==> " << i.second << std::endl;
+    cout << i.first << " ==> " << i.second << endl;
   }
 
   return 0;
