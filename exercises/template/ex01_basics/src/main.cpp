@@ -55,6 +55,7 @@ string string_strip(string word){
 
 
 map<string, int> add_word(map<string, int> acc, string word) {
+  // Add a single word to the map
   word = string_strip(word);
   if (word.size() < 4) {
     return acc;
@@ -79,6 +80,7 @@ map<string, int> load_file(map<string, int> acc, string f) {
 }
 
 void print_map_line(pair<string, int> value) {
+  //print a line out of the map
   cout << value.first << "\t" << value.second << endl;
 }
 
