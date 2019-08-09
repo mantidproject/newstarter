@@ -72,6 +72,10 @@ map<string, int> load_file(map<string, int> acc, string f) {
   return acc;
 }
 
+void print_map_line(pair<string, int> value) {
+  cout << value.first << "\t" << value.second << endl;
+}
+
 int main(int argc, char **argv)
 {
   if(argc <= 1) {
@@ -98,9 +102,7 @@ int main(int argc, char **argv)
   sort(result.begin(), result.end(), pair_compare);
 
   // Display that results
-  for (auto i : result) {
-    cout << i.first << " ==> " << i.second << endl;
-  }
+  for_each(result.begin(), result.end(), print_map_line);
 
   return 0;
 }
