@@ -16,12 +16,37 @@ bool fileMissing(string f) {
   return !boost::filesystem::exists(f);
 }
 
+bool valid_char(char x) {
+  switch (x) {
+  case '.':
+  case '\'':
+  case '"':
+  case '?':
+  case ',':
+  case '!':
+  case '(':
+  case ')':
+  case '`':
+  case '_':
+    return false;
+  default:
+    return true;
+  }
+}
+
+string string_strip(string word){
+  string result;
+  copy_if(word.begin(), word.end(), back_inserter(result), valid_char);
+  return result;
+}
+
 
 map<string, int> load_file(map<string, int> acc, string f) {
   ifstream infile(f);
   string word;
   while (infile >> word) {
-    // transform(word.begin(), word.end(), word.begin(), tolower);
+    word = string_strip(word);
+    transform(word.begin(), word.end(), word.begin(), ::tolower);
     if (acc.count(word)) {
 	acc[word] += 1;
     } else{
