@@ -22,7 +22,6 @@ public:
   explicit Circle(double r) {
     radius = r;
   }
-  ~Circle() { }
   int sides() override {
     return 1;
   }
@@ -34,6 +33,27 @@ public:
   }
   string type() override {
     return "circle";
+  }
+};
+
+class Square : public Shape {
+private:
+  double side;
+public:
+  explicit Square(double s) {
+    side = s;
+  }
+  int sides() override {
+    return 4;
+  }
+  double perimeter() override {
+    return 4 * side;
+  }
+  double area() override {
+    return side*side;
+  }
+  string type() override {
+    return "square";
   }
 };
 
