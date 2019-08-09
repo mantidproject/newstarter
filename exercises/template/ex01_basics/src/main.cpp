@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <boost/filesystem.hpp>
 #include <iostream>
+#include <map>
 #include <numeric>
 #include <sstream>
 #include <vector>
@@ -13,11 +14,16 @@ bool fileMissing(std::string f) {
   return !boost::filesystem::exists(f);
 }
 
-std::string load_file(std::string acc, std::string f) {
+std::map<std::string, int> load_file(std::map<std::string, int> acc, std::string f) {
   std::ifstream infile(f);
   std::stringstream buffer;
   buffer << infile.rdbuf();
-  return acc + buffer.str();
+  if (acc.count(buffer.str()) >= 1) {
+    acc[buffer.str()] += 1;
+  } else{
+    acc[buffer.str()] = 1;
+  }
+  return acc;
 }
 
 int main(int argc, char **argv)
@@ -36,10 +42,12 @@ int main(int argc, char **argv)
     return -1;
   }
 
-  std::string combined = "";
+  std::map<std::string, int> combined;
   combined = std::accumulate(arguments.begin(), arguments.end(), combined, load_file);
 
-  std::cout << combined << std::endl;
+  for (auto i : combined) {
+    std::cout << i.first << " ==> " << i.second << std::endl;
+  }
 
   return 0;
 }
