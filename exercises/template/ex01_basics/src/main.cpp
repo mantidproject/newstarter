@@ -3,7 +3,8 @@
  */
 
 #include <algorithm>
-#include <boost/filesystem.hpp>
+#include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <iterator>
 #include <map>
@@ -15,7 +16,7 @@ using namespace std;
 
 bool fileMissing(string f) {
   //Determine if a file is missing
-  return !boost::filesystem::exists(f);
+  return !filesystem::exists(f);
 }
 
 bool valid_char(char x) {
