@@ -16,12 +16,13 @@ bool fileMissing(std::string f) {
 
 std::map<std::string, int> load_file(std::map<std::string, int> acc, std::string f) {
   std::ifstream infile(f);
-  std::stringstream buffer;
-  buffer << infile.rdbuf();
-  if (acc.count(buffer.str()) >= 1) {
-    acc[buffer.str()] += 1;
-  } else{
-    acc[buffer.str()] = 1;
+  std::string word;
+  while (infile >> word) {
+    if (acc.count(word)) {
+	acc[word] += 1;
+    } else{
+	acc[word] = 1;
+    }
   }
   return acc;
 }
