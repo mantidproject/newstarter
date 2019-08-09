@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <math.h>
+#include <vector>
 
 using namespace std;
 
@@ -59,9 +60,12 @@ public:
 
 int main(int, char **)
 {
-  Circle trial(5);
-  cout << "Hello, World!" << endl;
-  cout << trial.sides() << endl;
-  cout << trial.perimeter() << endl;
-  cout << trial.area() << endl;
+  //FIXME: This currently leaks memory
+  vector<Shape*> shapes = {new Circle(5), new Square(5)};
+  for (auto shape : shapes) {
+    cout << shape->type() << endl;
+    cout << shape->sides() << endl;
+    cout << shape->perimeter() << endl;
+    cout << shape->area() << endl;
+  }
 }
