@@ -59,6 +59,9 @@ map<string, int> load_file(map<string, int> acc, string f) {
   string word;
   while (infile >> word) {
     word = string_strip(word);
+    if (word.size() < 4) {
+      continue;
+    }
     transform(word.begin(), word.end(), word.begin(), ::tolower);
     if (acc.count(word)) {
 	acc[word] += 1;
