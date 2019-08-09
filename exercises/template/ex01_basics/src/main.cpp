@@ -13,11 +13,11 @@ bool fileMissing(std::string f) {
   return !boost::filesystem::exists(f);
 }
 
-std::string load_file(std::string f) {
+std::string load_file(std::string acc, std::string f) {
   std::ifstream infile(f);
   std::stringstream buffer;
   buffer << infile.rdbuf();
-  return buffer.str();
+  return acc + buffer.str();
 }
 
 int main(int argc, char **argv)
@@ -36,11 +36,8 @@ int main(int argc, char **argv)
     return -1;
   }
 
-  std::vector<std::string> contents;
-  contents.resize(arguments.size());
-  std::transform(arguments.begin(), arguments.end(), contents.begin(), load_file);
   std::string combined = "";
-  combined = std::accumulate(contents.begin(), contents.end(), combined);
+  combined = std::accumulate(arguments.begin(), arguments.end(), combined, load_file);
 
   std::cout << combined << std::endl;
 
