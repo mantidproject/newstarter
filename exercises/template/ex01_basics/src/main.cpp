@@ -3,7 +3,6 @@
  */
 
 #include <algorithm>
-#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -16,7 +15,8 @@ using namespace std;
 
 bool fileMissing(string f) {
   //Determine if a file is missing
-  return !filesystem::exists(f);
+  ifstream test(f);
+  return !test.good();
 }
 
 bool valid_char(char x) {
