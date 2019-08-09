@@ -58,10 +58,33 @@ public:
   }
 };
 
+class Rectangle : public Shape {
+private:
+  double width;
+  double height;
+public:
+  explicit Rectangle(double w, double h) {
+    width = w;
+    height = h;
+  }
+  int sides() override {
+    return 4;
+  }
+  double perimeter() override {
+    return 2 * (width + height);
+  }
+  double area() override {
+    return width*height;
+  }
+  string type() override {
+    return "rectangle";
+  }
+};
+
 int main(int, char **)
 {
   //FIXME: This currently leaks memory
-  vector<Shape*> shapes = {new Circle(5), new Square(5)};
+  vector<Shape*> shapes = {new Circle(5), new Square(5), new Rectangle(3, 7)};
   for (auto shape : shapes) {
     cout << shape->type() << endl;
     cout << shape->sides() << endl;
