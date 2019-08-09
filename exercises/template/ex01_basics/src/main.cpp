@@ -34,6 +34,13 @@ bool valid_char(char x) {
   }
 }
 
+bool pair_compare(pair<string, int>a, pair<string, int> b) {
+  if (a.second > b.second) { return true; }
+  if (a.second < b.second) { return false; }
+  if (a.first > b.first) { return false; }
+  return false;
+}
+
 string string_strip(string word){
   string result;
   copy_if(word.begin(), word.end(), back_inserter(result), valid_char);
@@ -75,7 +82,9 @@ int main(int argc, char **argv)
   map<string, int> combined;
   combined = accumulate(arguments.begin(), arguments.end(), combined, load_file);
 
-  for (auto i : combined) {
+  auto result = vector<pair<string, int>>(combined.begin(), combined.end());
+  sort(result.begin(), result.end(), pair_compare);
+  for (auto i : result) {
     cout << i.first << " ==> " << i.second << endl;
   }
 
