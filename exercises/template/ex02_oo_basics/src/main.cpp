@@ -117,9 +117,7 @@ class ShapeSorter {
 private:
   vector<shared_ptr<Shape>> contents;
 public:
-  ShapeSorter(vector<shared_ptr<Shape>> &c) {
-    contents = c;
-  }
+  explicit ShapeSorter(vector<shared_ptr<Shape>> &c) : contents(c) {};
   void print() {
     //print all shapes
     for (auto &shape : contents) {
@@ -130,7 +128,7 @@ public:
     //print shapes with given number of sides
     for_each(contents.begin(), contents.end(), [side_count](shared_ptr<Shape> value){if (value->sides() == side_count) value->print();});
   }
-  void typed(string type) {
+  void typed(const string &type) {
     //print shapes of a given type
     for_each(contents.begin(), contents.end(), [type](shared_ptr<Shape> value){if (value->type() == type) value->print();});
   }
