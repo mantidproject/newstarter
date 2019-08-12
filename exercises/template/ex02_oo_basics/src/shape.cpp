@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iostream>
 
-ostream &operator<<(ostream &os, const Shape *shape) {
+ostream &operator<<(ostream &os, const unique_ptr<Shape> &shape) {
   // Print the important parts of a shape
   os << "A " << shape->type();
   os << " with " << shape->sides() << " sides";
@@ -44,14 +44,14 @@ void ShapeSorter::print() const {
 void ShapeSorter::sides(const int side_count) const {
   // print shapes with given number of sides
   for_each(contents.begin(), contents.end(),
-	   [side_count](shared_ptr<Shape> value) {
+	   [side_count](const unique_ptr<Shape> &value) {
 	     if (value->sides() == side_count)
 	       cout << value << endl;
 	   });
 }
 void ShapeSorter::typed(const string &type) const {
   // print shapes of a given type
-  for_each(contents.begin(), contents.end(), [type](shared_ptr<Shape> value) {
+  for_each(contents.begin(), contents.end(), [type](const unique_ptr<Shape> &value) {
 					       if (value->type() == type)
 						 cout << value << endl;
 					     });
@@ -60,7 +60,7 @@ void ShapeSorter::typed(const string &type) const {
 void ShapeSorter::area_sort() {
   // Sort contents by area and print
   sort(contents.begin(), contents.end(),
-       [](shared_ptr<Shape> a, shared_ptr<Shape> b) {
+       [](unique_ptr<Shape> &a, unique_ptr<Shape> &b) {
 	 return a->area() > b->area();
        });
   print();
@@ -69,7 +69,7 @@ void ShapeSorter::area_sort() {
 void ShapeSorter::perimeter_sort() {
   // Sort contents by perimeter and print
   sort(contents.begin(), contents.end(),
-       [](shared_ptr<Shape> a, shared_ptr<Shape> b) {
+       [](unique_ptr<Shape> &a, unique_ptr<Shape> &b) {
 	 return a->perimeter() > b->perimeter();
        });
   print();

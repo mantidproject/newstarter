@@ -12,12 +12,11 @@
 using namespace std;
 
 int main(int, char **) {
-  vector<shared_ptr<Shape>> shapes = {
-  (shared_ptr<Shape>(new Circle(5))),
-  (shared_ptr<Shape>(new Square(5))),
-  (shared_ptr<Shape>(new Rectangle(1, 11))),
-  (shared_ptr<Shape>(new Triangle(5, 6)))
-  };
+  vector<unique_ptr<Shape>> shapes;
+  shapes.push_back(unique_ptr<Shape>(new Circle(5)));
+  shapes.push_back(unique_ptr<Shape>(new Square(5)));
+  shapes.push_back(unique_ptr<Shape>(new Rectangle(1, 11)));
+  shapes.push_back(unique_ptr<Shape>(new Triangle(5, 6)));
 
   ShapeSorter sorter(shapes);
   sorter.sides(4);

@@ -71,10 +71,10 @@ public:
 
 class ShapeSorter {
 private:
-  vector<shared_ptr<Shape>> contents;
+  vector<unique_ptr<Shape>> contents;
 
 public:
-  explicit ShapeSorter(vector<shared_ptr<Shape>> &c) : contents(c){};
+  explicit ShapeSorter(vector<unique_ptr<Shape>> &c) : contents(move(c)){};
   void print() const;
   void sides(const int side_count) const;
   void typed(const string &type) const;
