@@ -128,11 +128,11 @@ public:
   }
   void sides(int side_count) {
     //print shapes with given number of sides
-    for_each(contents.begin(), contents.end(), [side_count, this](shared_ptr<Shape> value){if (value->sides() == side_count) value->print();});
+    for_each(contents.begin(), contents.end(), [side_count](shared_ptr<Shape> value){if (value->sides() == side_count) value->print();});
   }
   void typed(string type) {
     //print shapes of a given type
-    for_each(contents.begin(), contents.end(), [type, this](shared_ptr<Shape> value){if (value->type() == type) value->print();});
+    for_each(contents.begin(), contents.end(), [type](shared_ptr<Shape> value){if (value->type() == type) value->print();});
   }
 
   void area_sort() {
