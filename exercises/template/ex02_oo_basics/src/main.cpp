@@ -105,17 +105,31 @@ public:
   }
 };
 
+class ShapeSorter {
+private:
+  vector<shared_ptr<Shape>> contents;
+public:
+  ShapeSorter(vector<shared_ptr<Shape>> &c) {
+    contents = c;
+  }
+  void print() {
+    for (auto &shape : contents) {
+      cout << shape->type() << endl;
+      cout << shape->sides() << endl;
+      cout << shape->perimeter() << endl;
+      cout << shape->area() << endl;
+    }
+  }
+};
+
 int main(int, char **)
 {
-  vector<unique_ptr<Shape>> shapes;
-  shapes.push_back(unique_ptr<Shape>(new Circle(5)));
-  shapes.push_back(unique_ptr<Shape>(new Square(5)));
-  shapes.push_back(unique_ptr<Shape>(new Rectangle(3, 7)));
-  shapes.push_back(unique_ptr<Shape>(new Triangle(5, 6)));
-  for (auto &shape : shapes) {
-    cout << shape->type() << endl;
-    cout << shape->sides() << endl;
-    cout << shape->perimeter() << endl;
-    cout << shape->area() << endl;
-  }
+  vector<shared_ptr<Shape>> shapes;
+  shapes.push_back(shared_ptr<Shape>(new Circle(5)));
+  shapes.push_back(shared_ptr<Shape>(new Square(5)));
+  shapes.push_back(shared_ptr<Shape>(new Rectangle(3, 7)));
+  shapes.push_back(shared_ptr<Shape>(new Triangle(5, 6)));
+
+  ShapeSorter sorter(shapes);
+  sorter.print();
 }
