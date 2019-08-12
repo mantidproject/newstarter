@@ -16,6 +16,13 @@ public:
   virtual double perimeter() = 0;
   virtual double area() = 0;
   virtual string type() = 0;
+  void print() {
+    // Print the important parts of a shape
+    cout << "A " << type();
+    cout << " with " << sides() << " sides";
+    cout << ", a permieter of " << perimeter();
+    cout << ", and and area of " << area() << "." << endl;
+  }
 };
 
 class Circle : public Shape {
@@ -109,13 +116,6 @@ public:
 class ShapeSorter {
 private:
   vector<shared_ptr<Shape>> contents;
-  void print_shape(shared_ptr<Shape> shape) {
-    // Print the important parts of a shape
-    cout << "A " << shape->type();
-    cout << " with " << shape->sides() << " sides";
-    cout << ", a permieter of " << shape->perimeter();
-    cout << ", and and area of " << shape->area() << "." << endl;
-  }
 public:
   ShapeSorter(vector<shared_ptr<Shape>> &c) {
     contents = c;
@@ -123,16 +123,16 @@ public:
   void print() {
     //print all shapes
     for (auto &shape : contents) {
-      print_shape(shape);
+      shape->print();
     }
   }
   void sides(int side_count) {
     //print shapes with given number of sides
-    for_each(contents.begin(), contents.end(), [side_count, this](shared_ptr<Shape> value){if (value->sides() == side_count) print_shape(value);});
+    for_each(contents.begin(), contents.end(), [side_count, this](shared_ptr<Shape> value){if (value->sides() == side_count) value->print();});
   }
   void typed(string type) {
     //print shapes of a given type
-    for_each(contents.begin(), contents.end(), [type, this](shared_ptr<Shape> value){if (value->type() == type) print_shape(value);});
+    for_each(contents.begin(), contents.end(), [type, this](shared_ptr<Shape> value){if (value->type() == type) value->print();});
   }
 
   void area_sort() {
