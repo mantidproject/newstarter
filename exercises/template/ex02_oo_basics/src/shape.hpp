@@ -1,6 +1,6 @@
-#ifndef SHAPES_HPP
+#ifndef SHAPE_HPP
 
-#define SHAPES_HPP
+#define SHAPE_HPP
 
 #include <algorithm>
 #include <iostream>
@@ -18,14 +18,7 @@ public:
   virtual string type() const = 0;
 };
 
-ostream &operator<<(ostream &os, const Shape *shape) {
-  // Print the important parts of a shape
-  os << "A " << shape->type();
-  os << " with " << shape->sides() << " sides";
-  os << ", a permieter of " << shape->perimeter();
-  os << ", and and area of " << shape->area();
-  return os;
-}
+ostream &operator<<(ostream &os, const Shape *shape);
 
 class Circle : public Shape {
 private:
@@ -33,10 +26,10 @@ private:
 
 public:
   explicit Circle(double r) { radius = r; }
-  int sides() const override { return 1; }
-  double perimeter() const override { return 2 * M_PI * radius; }
-  double area() const override { return M_PI * radius * radius; }
-  string type() const override { return "circle"; }
+  int sides() const override;
+  double perimeter() const override;
+  double area() const override;
+  string type() const override;
 };
 
 class Square : public Shape {
@@ -45,10 +38,10 @@ private:
 
 public:
   explicit Square(double s) { side = s; }
-  int sides() const override { return 4; }
-  double perimeter() const override { return 4 * side; }
-  double area() const override { return side * side; }
-  string type() const override { return "square"; }
+  int sides() const override;
+  double perimeter() const override;
+  double area() const override;
+  string type() const override;
 };
 
 class Rectangle : public Shape {
@@ -61,10 +54,10 @@ public:
     width = w;
     height = h;
   }
-  int sides() const override { return 4; }
-  double perimeter() const override { return 2 * (width + height); }
-  double area() const override { return width * height; }
-  string type() const override { return "rectangle"; }
+  int sides() const override;
+  double perimeter() const override;
+  double area() const override;
+  string type() const override;
 };
 
 class Triangle : public Shape {
@@ -77,12 +70,10 @@ public:
     base = b;
     height = h;
   }
-  int sides() const override { return 3; }
-  double perimeter() const override {
-    return base + 2 * sqrt(height * height + base * base / 4);
-  }
-  double area() const override { return 0.5 * base * height; }
-  string type() const override { return "triangle"; }
+  int sides() const override;
+  double perimeter() const override;
+  double area() const override;
+  string type() const override;
 };
 
 class ShapeSorter {

@@ -18,10 +18,12 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
+  src/shape.cpp
   # add any additional source files here
 )
 
 set ( HDR_FILES
+  src/shape.hpp
   # add any additional header files here
 )
 
