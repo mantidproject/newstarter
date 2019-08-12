@@ -13,14 +13,14 @@
 
 using namespace std;
 
-bool fileMissing(const string& f) {
-  //Determine if a file is missing
+bool fileMissing(const string &f) {
+  // Determine if a file is missing
   ifstream test(f);
   return !test.good();
 }
 
 bool valid_char(const char x) {
-  //Determine if a character is common punctuation
+  // Determine if a character is common punctuation
   switch (x) {
   case '.':
   case '\'':
@@ -39,23 +39,28 @@ bool valid_char(const char x) {
   }
 }
 
-bool pair_compare(const pair<string, int>a, const pair<string, int> b) {
+bool pair_compare(const pair<string, int> a, const pair<string, int> b) {
   // Sort pairs descending by integer value, then ascending by string value.
-  if (a.second > b.second) { return true; }
-  if (a.second < b.second) { return false; }
-  if (a.first < b.first) { return true; }
+  if (a.second > b.second) {
+    return true;
+  }
+  if (a.second < b.second) {
+    return false;
+  }
+  if (a.first < b.first) {
+    return true;
+  }
   return false;
 }
 
-string string_strip(const string& word){
-  //Remove invalid characters from a string
+string string_strip(const string &word) {
+  // Remove invalid characters from a string
   string result;
   copy_if(word.begin(), word.end(), back_inserter(result), valid_char);
   return result;
 }
 
-
-map<string, int> add_word(map<string, int> acc, const string& base_word) {
+map<string, int> add_word(map<string, int> acc, const string &base_word) {
   // Add a single word to the map
   string word = string_strip(base_word);
   if (word.size() < 4) {
@@ -64,35 +69,33 @@ map<string, int> add_word(map<string, int> acc, const string& base_word) {
   transform(word.begin(), word.end(), word.begin(), ::tolower);
   if (acc.count(word)) {
     acc[word] += 1;
-  } else{
+  } else {
     acc[word] = 1;
   }
   return acc;
 }
 
-
-map<string, int> load_file(map<string, int> acc, const string& f) {
-  //Add the words from a file into a map
+map<string, int> load_file(map<string, int> acc, const string &f) {
+  // Add the words from a file into a map
   ifstream infile(f);
   istream_iterator<string> words(infile);
-  istream_iterator<string> eos; //end of iterator stream
+  istream_iterator<string> eos; // end of iterator stream
 
   return accumulate(words, eos, acc, add_word);
 }
 
 void print_map_line(const pair<string, int> value) {
-  //print a line out of the map
+  // print a line out of the map
   cout << value.first << "\t" << value.second << endl;
 }
 
-int main(const int argc, const char **argv)
-{
-  if(argc <= 1) {
+int main(const int argc, const char **argv) {
+  if (argc <= 1) {
     cout << "Missing file name" << endl;
     return -1;
   }
 
-  vector<string> arguments(argv+1, argc+argv);
+  vector<string> arguments(argv + 1, argc + argv);
 
   // Make sure that all the files are present
   auto missing = find_if(arguments.begin(), arguments.end(), fileMissing);
@@ -104,7 +107,8 @@ int main(const int argc, const char **argv)
 
   // Read all the files into a map
   map<string, int> combined;
-  combined = accumulate(arguments.begin(), arguments.end(), combined, load_file);
+  combined =
+      accumulate(arguments.begin(), arguments.end(), combined, load_file);
 
   // Sort the map by occurance and word
   auto result = vector<pair<string, int>>(combined.begin(), combined.end());
