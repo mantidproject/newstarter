@@ -117,7 +117,7 @@ public:
     // Sort contents by area and print
     sort(contents.begin(), contents.end(),
          [](shared_ptr<Shape> a, shared_ptr<Shape> b) {
-           return a->area() < b->area();
+           return a->area() > b->area();
          });
     print();
   }
@@ -126,7 +126,7 @@ public:
     // Sort contents by perimeter and print
     sort(contents.begin(), contents.end(),
          [](shared_ptr<Shape> a, shared_ptr<Shape> b) {
-           return a->perimeter() < b->perimeter();
+           return a->perimeter() > b->perimeter();
          });
     print();
   }
@@ -140,7 +140,7 @@ int main(int, char **) {
   shapes.push_back(shared_ptr<Shape>(new Triangle(5, 6)));
 
   ShapeSorter sorter(shapes);
-  sorter.sides(3);
+  sorter.sides(4);
   cout << endl;
   sorter.typed("circle");
   cout << endl;
