@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <math.h>
+#include <memory>
 #include <vector>
 
 using namespace std;
@@ -83,9 +84,11 @@ public:
 
 int main(int, char **)
 {
-  //FIXME: This currently leaks memory
-  vector<Shape*> shapes = {new Circle(5), new Square(5), new Rectangle(3, 7)};
-  for (auto shape : shapes) {
+  vector<unique_ptr<Shape>> shapes;
+  shapes.push_back(unique_ptr<Shape>(new Circle(5)));
+  shapes.push_back(unique_ptr<Shape>(new Square(5)));
+  shapes.push_back(unique_ptr<Shape>(new Rectangle(3, 7)));
+  for (auto &shape : shapes) {
     cout << shape->type() << endl;
     cout << shape->sides() << endl;
     cout << shape->perimeter() << endl;
