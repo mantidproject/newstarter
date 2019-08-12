@@ -97,7 +97,7 @@ public:
       cout << shape << endl;
     }
   }
-  void sides(int side_count) {
+  void sides(const int side_count) {
     // print shapes with given number of sides
     for_each(contents.begin(), contents.end(),
              [side_count](shared_ptr<Shape> value) {
