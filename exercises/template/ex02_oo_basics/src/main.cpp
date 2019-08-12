@@ -131,16 +131,19 @@ public:
     for_each(contents.begin(), contents.end(), [side_count, this](shared_ptr<Shape> value){if (value->sides() == side_count) print_shape(value);});
   }
   void typed(string type) {
+    //print shapes of a given type
     for_each(contents.begin(), contents.end(), [type, this](shared_ptr<Shape> value){if (value->type() == type) print_shape(value);});
   }
 
   void area_sort() {
+    //Sort contents by area and print
     sort(contents.begin(), contents.end(),
 	 [](shared_ptr<Shape> a, shared_ptr<Shape> b) { return a->area() < b->area(); });
     print();
   }
 
   void perimeter_sort() {
+    //Sort contents by perimeter and print
     sort(contents.begin(), contents.end(),
 	 [](shared_ptr<Shape> a, shared_ptr<Shape> b) {
 	   return a->perimeter() < b->perimeter();
@@ -159,7 +162,6 @@ int main(int, char **)
   shapes.push_back(shared_ptr<Shape>(new Triangle(5, 6)));
 
   ShapeSorter sorter(shapes);
-  // sorter.print();
   sorter.sides(3);
   cout << endl;
   sorter.typed("circle");
