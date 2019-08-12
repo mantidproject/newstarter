@@ -25,7 +25,7 @@ private:
   double radius;
 
 public:
-  explicit Circle(double r) { radius = r; }
+  explicit Circle(double r) : radius(r) {}
   int sides() const override;
   double perimeter() const override;
   double area() const override;
@@ -37,7 +37,7 @@ private:
   double side;
 
 public:
-  explicit Square(double s) { side = s; }
+  explicit Square(double s) : side(s) {}
   int sides() const override;
   double perimeter() const override;
   double area() const override;
@@ -50,10 +50,7 @@ private:
   double height;
 
 public:
-  explicit Rectangle(double w, double h) {
-    width = w;
-    height = h;
-  }
+  explicit Rectangle(double w, double h) : width(w), height(h) {}
   int sides() const override;
   double perimeter() const override;
   double area() const override;
@@ -66,10 +63,7 @@ private:
   double height;
 
 public:
-  explicit Triangle(double b, double h) {
-    base = b;
-    height = h;
-  }
+  explicit Triangle(double b, double h) :base(b), height(h) {}
   int sides() const override;
   double perimeter() const override;
   double area() const override;
