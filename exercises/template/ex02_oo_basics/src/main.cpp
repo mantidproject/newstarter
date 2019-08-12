@@ -2,6 +2,7 @@
  * Skeleton main routine
  */
 
+#include <algorithm>
 #include <iostream>
 #include <math.h>
 #include <memory>
@@ -108,18 +109,44 @@ public:
 class ShapeSorter {
 private:
   vector<shared_ptr<Shape>> contents;
+  void print_shape(shared_ptr<Shape> shape) {
+    cout << shape->type() << endl;
+    cout << shape->sides() << endl;
+    cout << shape->perimeter() << endl;
+    cout << shape->area() << endl;
+  }
 public:
   ShapeSorter(vector<shared_ptr<Shape>> &c) {
     contents = c;
   }
   void print() {
+    //print all shapes
     for (auto &shape : contents) {
-      cout << shape->type() << endl;
-      cout << shape->sides() << endl;
-      cout << shape->perimeter() << endl;
-      cout << shape->area() << endl;
+      print_shape(shape);
     }
   }
+  void sides(int side_count) {
+    //print shapes with given number of sides
+    for_each(contents.begin(), contents.end(), [side_count, this](shared_ptr<Shape> value){if (value->sides() == side_count) print_shape(value);});
+  }
+  void typed(string type) {
+    for_each(contents.begin(), contents.end(), [type, this](shared_ptr<Shape> value){if (value->type() == type) print_shape(value);});
+  }
+
+  void area_sort() {
+    sort(contents.begin(), contents.end(),
+	 [](shared_ptr<Shape> a, shared_ptr<Shape> b) { return a->area() < b->area(); });
+    print();
+  }
+
+  void perimeter_sort() {
+    sort(contents.begin(), contents.end(),
+	 [](shared_ptr<Shape> a, shared_ptr<Shape> b) {
+	   return a->perimeter() < b->perimeter();
+	 });
+    print();
+  }
+
 };
 
 int main(int, char **)
@@ -127,9 +154,17 @@ int main(int, char **)
   vector<shared_ptr<Shape>> shapes;
   shapes.push_back(shared_ptr<Shape>(new Circle(5)));
   shapes.push_back(shared_ptr<Shape>(new Square(5)));
-  shapes.push_back(shared_ptr<Shape>(new Rectangle(3, 7)));
+  shapes.push_back(shared_ptr<Shape>(new Rectangle(1, 11)));
   shapes.push_back(shared_ptr<Shape>(new Triangle(5, 6)));
 
   ShapeSorter sorter(shapes);
-  sorter.print();
+  // sorter.print();
+  sorter.sides(3);
+  cout << endl;
+  sorter.typed("circle");
+  cout << endl;
+  sorter.area_sort();
+  cout << endl;
+  sorter.perimeter_sort();
+  cout << endl;
 }
