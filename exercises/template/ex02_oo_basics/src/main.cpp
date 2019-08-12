@@ -82,12 +82,36 @@ public:
   }
 };
 
+class Triangle : public Shape {
+private:
+  double base;
+  double height;
+public:
+  explicit Triangle(double b, double h) {
+    base = b;
+    height = h;
+  }
+  int sides() override {
+    return 3;
+  }
+  double perimeter() override {
+    return base + 2 * sqrt(height*height + base*base/4);
+  }
+  double area() override {
+    return 0.5*base*height;
+  }
+  string type() override {
+    return "triangle";
+  }
+};
+
 int main(int, char **)
 {
   vector<unique_ptr<Shape>> shapes;
   shapes.push_back(unique_ptr<Shape>(new Circle(5)));
   shapes.push_back(unique_ptr<Shape>(new Square(5)));
   shapes.push_back(unique_ptr<Shape>(new Rectangle(3, 7)));
+  shapes.push_back(unique_ptr<Shape>(new Triangle(5, 6)));
   for (auto &shape : shapes) {
     cout << shape->type() << endl;
     cout << shape->sides() << endl;
