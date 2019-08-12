@@ -2,7 +2,6 @@
 
 #define SHAPE_HPP
 
-#include <algorithm>
 #include <iostream>
 #include <math.h>
 #include <memory>
@@ -76,45 +75,11 @@ private:
 
 public:
   explicit ShapeSorter(vector<shared_ptr<Shape>> &c) : contents(c){};
-  void print() {
-    // print all shapes
-    for (auto &shape : contents) {
-      cout << shape << endl;
-    }
-  }
-  void sides(const int side_count) {
-    // print shapes with given number of sides
-    for_each(contents.begin(), contents.end(),
-	     [side_count](shared_ptr<Shape> value) {
-	       if (value->sides() == side_count)
-		 cout << value << endl;
-	     });
-  }
-  void typed(const string &type) {
-    // print shapes of a given type
-    for_each(contents.begin(), contents.end(), [type](shared_ptr<Shape> value) {
-      if (value->type() == type)
-	cout << value << endl;
-    });
-  }
-
-  void area_sort() {
-    // Sort contents by area and print
-    sort(contents.begin(), contents.end(),
-	 [](shared_ptr<Shape> a, shared_ptr<Shape> b) {
-	   return a->area() > b->area();
-	 });
-    print();
-  }
-
-  void perimeter_sort() {
-    // Sort contents by perimeter and print
-    sort(contents.begin(), contents.end(),
-	 [](shared_ptr<Shape> a, shared_ptr<Shape> b) {
-	   return a->perimeter() > b->perimeter();
-	 });
-    print();
-  }
+  void print() const;
+  void sides(const int side_count) const;
+  void typed(const string &type) const;
+  void area_sort();
+  void perimeter_sort();
 };
 
 #endif
