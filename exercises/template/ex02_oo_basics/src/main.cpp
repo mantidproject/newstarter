@@ -12,18 +12,20 @@ using namespace std;
 
 class Shape {
 public:
-  virtual int sides() = 0;
-  virtual double perimeter() = 0;
-  virtual double area() = 0;
-  virtual string type() = 0;
-  void print() {
-    // Print the important parts of a shape
-    cout << "A " << type();
-    cout << " with " << sides() << " sides";
-    cout << ", a permieter of " << perimeter();
-    cout << ", and and area of " << area() << "." << endl;
-  }
+  virtual int sides() const = 0;
+  virtual double perimeter() const = 0;
+  virtual double area() const = 0;
+  virtual string type() const = 0;
 };
+
+ostream &operator<<(ostream &os, const Shape *shape) {
+  // Print the important parts of a shape
+  os << "A " << shape->type();
+  os << " with " << shape->sides() << " sides";
+  os << ", a permieter of " << shape->perimeter();
+  os << ", and and area of " << shape->area();
+  return os;
+}
 
 class Circle : public Shape {
 private:
@@ -31,10 +33,10 @@ private:
 
 public:
   explicit Circle(double r) { radius = r; }
-  int sides() override { return 1; }
-  double perimeter() override { return 2 * M_PI * radius; }
-  double area() override { return M_PI * radius * radius; }
-  string type() override { return "circle"; }
+  int sides() const override { return 1; }
+  double perimeter() const override { return 2 * M_PI * radius; }
+  double area() const override { return M_PI * radius * radius; }
+  string type() const override { return "circle"; }
 };
 
 class Square : public Shape {
@@ -43,10 +45,10 @@ private:
 
 public:
   explicit Square(double s) { side = s; }
-  int sides() override { return 4; }
-  double perimeter() override { return 4 * side; }
-  double area() override { return side * side; }
-  string type() override { return "square"; }
+  int sides() const override { return 4; }
+  double perimeter() const override { return 4 * side; }
+  double area() const override { return side * side; }
+  string type() const override { return "square"; }
 };
 
 class Rectangle : public Shape {
@@ -59,10 +61,10 @@ public:
     width = w;
     height = h;
   }
-  int sides() override { return 4; }
-  double perimeter() override { return 2 * (width + height); }
-  double area() override { return width * height; }
-  string type() override { return "rectangle"; }
+  int sides() const override { return 4; }
+  double perimeter() const override { return 2 * (width + height); }
+  double area() const override { return width * height; }
+  string type() const override { return "rectangle"; }
 };
 
 class Triangle : public Shape {
@@ -75,12 +77,12 @@ public:
     base = b;
     height = h;
   }
-  int sides() override { return 3; }
-  double perimeter() override {
+  int sides() const override { return 3; }
+  double perimeter() const override {
     return base + 2 * sqrt(height * height + base * base / 4);
   }
-  double area() override { return 0.5 * base * height; }
-  string type() override { return "triangle"; }
+  double area() const override { return 0.5 * base * height; }
+  string type() const override { return "triangle"; }
 };
 
 class ShapeSorter {
@@ -92,7 +94,7 @@ public:
   void print() {
     // print all shapes
     for (auto &shape : contents) {
-      shape->print();
+      cout << shape << endl;
     }
   }
   void sides(int side_count) {
@@ -100,14 +102,14 @@ public:
     for_each(contents.begin(), contents.end(),
              [side_count](shared_ptr<Shape> value) {
                if (value->sides() == side_count)
-                 value->print();
+                 cout << value << endl;
              });
   }
   void typed(const string &type) {
     // print shapes of a given type
     for_each(contents.begin(), contents.end(), [type](shared_ptr<Shape> value) {
       if (value->type() == type)
-        value->print();
+        cout << value << endl;
     });
   }
 
