@@ -110,10 +110,11 @@ class ShapeSorter {
 private:
   vector<shared_ptr<Shape>> contents;
   void print_shape(shared_ptr<Shape> shape) {
-    cout << shape->type() << endl;
-    cout << shape->sides() << endl;
-    cout << shape->perimeter() << endl;
-    cout << shape->area() << endl;
+    // Print the important parts of a shape
+    cout << "A " << shape->type();
+    cout << " with " << shape->sides() << " sides";
+    cout << ", a permieter of " << shape->perimeter();
+    cout << ", and and area of " << shape->area() << "." << endl;
   }
 public:
   ShapeSorter(vector<shared_ptr<Shape>> &c) {
