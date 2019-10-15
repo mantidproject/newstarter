@@ -23,11 +23,13 @@ int removePunctuation(std::string &iString)
 
     std::string::iterator itr = iString.begin() ;
 
+    std::string punctuation(".!,\"?");
+
     while (itr != iString.end())
     {
 
         char c = *itr;
-        if ( (c == '.') || (c == '!') || (c == ',') ||(c == '\'') || (c == '\"') || (c == '?'))
+        if ( punctuation.find(c) != std::string::npos )
         {
             itr = iString.erase(itr);
         }else{
