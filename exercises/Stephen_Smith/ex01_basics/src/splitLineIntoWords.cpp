@@ -1,6 +1,4 @@
-// Splits a string into its asscoiated words, separated by hyphens and spaces. 
-
-#include "../include/split.h"
+#include "../include/splitLineIntoWords.h"
 
 
 
@@ -15,8 +13,8 @@ bool notSpaceOrHyphen ( char c)
     return !(( c == '-') || (isspace(c)));
 
 }
-
-std::vector<std::string> split(const std::string& line)
+// Splits a line into words using spaces and hyphens as delimiters between the words 
+std::vector<std::string> splitLineIntoWords(const std::string& line)
 {
 
     // iterator over the string

@@ -9,7 +9,7 @@
 
 namespace{
 
-    const double PI  =3.141592653589793238463;
+    const double PI=3.141592653589793238463;
 
 }
 
@@ -25,6 +25,8 @@ public:
     // Getters
     virtual int getNumSides() const = 0;
     virtual std::string getShapeName() const =0;
+
+    // Return private members area and perimeter
     double getArea() const;
     double getPerimeter() const;
 
@@ -68,11 +70,7 @@ private:
 
     // Radius
     double m_radius;
-    // Area
-    double m_area;
 
-    // Perimeter
-    double m_perimeter;
 
     // Private method to calculate area
     double calculateArea()
@@ -155,6 +153,7 @@ public:
 
 private:
 
+    // Length of each side of the square
     double m_sideLength;
 
     // Private method to calculate area
@@ -193,6 +192,8 @@ public:
     void printShapeDimensions() const override;
 
 private:
+
+    // Triangle dimensions
     double m_base;
     double m_height;
 

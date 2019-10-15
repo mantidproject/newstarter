@@ -7,9 +7,8 @@
 // // Constructor
 BaseShape::BaseShape(){};
 
-// virtual destructor
+// Destructor
 BaseShape::~BaseShape(){};
-
 
 // Getters
 double BaseShape::getArea() const{
@@ -164,7 +163,7 @@ const std::string Triangle::SHAPENAME =std::string("Triangle");
 
 
 // Square constructors
-// Default construcor -- initialise length to zero 
+// Default construcor -- initialise length and area to zero 
 Triangle::Triangle()
 {
     this->m_base = 0.0;
@@ -174,7 +173,7 @@ Triangle::Triangle()
 }
 
 // Constructor
-// Input param = square length
+// Input param = side length of square
 Triangle::Triangle(const double base, const double height)
 {
     // Set base and height

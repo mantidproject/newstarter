@@ -7,7 +7,7 @@
 #include <fstream>
 #include <map>
 #include <iomanip>
-#include "../include/split.h"
+#include "../include/splitLineIntoWords.h"
 
 
 
@@ -17,13 +17,13 @@ namespace{
     const int MIN_WORD_LENGTH=5;
 }
 
-// Remove punctuation from an input string
+// Remove punctuation from the input word
 int removePunctuation(std::string &iString)
 {
 
     std::string::iterator itr = iString.begin() ;
 
-    std::string punctuation(".!,\"?");
+    static const std::string punctuation(".!,\"?!");
 
     while (itr != iString.end())
     {
@@ -41,7 +41,9 @@ int removePunctuation(std::string &iString)
     return 0;
 
 }
-// Function to compare number of times a word has been seen
+
+// Function to compare counts of two words eached stored in std::pair with the associated count
+// Input paramter = std::pair of <word,count>
 bool compareWordCounts(std::pair<std::string,int> a,std::pair<std::string,int> b)
 {
     return (a.second > b.second);
@@ -49,31 +51,30 @@ bool compareWordCounts(std::pair<std::string,int> a,std::pair<std::string,int> b
 
 
 
-int main(int argc, char ** argv)
+int main(int argc, char * argv[])
 {
 
 
     // Initial variables
-    std::string input_filename;
     std::ifstream file;
     bool fileopen = false;
 
-    // Request filename from user
-    while ( fileopen != true){
-
-        std::cout << "Input filename: " ;
-        std::cin >> input_filename;
-
-        file.open(input_filename);
-
-        if (file.is_open())
-        {
-            fileopen = true;
-        }else{
-            std::cout << "ERROR: could not find file, enter new filename" << std::endl;
-        }
-
+    if ( argc < 2)
+    {
+        std::cout << "Error: No filename entered." << std::endl;
+        return -1;
     }
+
+    // Open file
+    std::string input_filename(argv[1]);
+    file.open(input_filename);
+
+    if ( !file.is_open())
+    {
+        std::cout << "Error: Could not find input file." << std::endl;
+        return -1;
+    }
+
 
     // Map to store word, and asscoiated word count
     std::map<std::string,int> wordCounts;
@@ -81,11 +82,11 @@ int main(int argc, char ** argv)
     // Loop over each line of the file
     std::string line;
 
+
+    // Process each line of the file
     while(getline(file,line))
     {
-
-        std::vector<std::string> lineWords = split(line); 
-
+        std::vector<std::string> lineWords = splitLineIntoWords(line); 
 
         if (!lineWords.empty())
         {
@@ -97,14 +98,15 @@ int main(int argc, char ** argv)
                 // remove punctuation
                 removePunctuation(word);
                 // count number of letters in word
-                int word_length = word.length();
+                std::string::size_type word_length = word.length();
                 
                 // add word of length (>= MIN_WORD_LENGTH) to map container ;
                 if ( word_length >= MIN_WORD_LENGTH)
                 {
-                    
+                    // Add word and count to map
                     auto retPair = wordCounts.insert(std::pair<std::string,int>(word,1));
 
+                    // Test if the pair was added successfully to the map. 
                     if (retPair.second == false)
                     {
                         // element already existed, increment count
@@ -119,11 +121,9 @@ int main(int argc, char ** argv)
     }
 
 
-
-    // close the file
     file.close();
 
-    // Sort the words - put words into a vector container
+    // Extract each <word,count> pair into a vector container
     std::vector<std::pair<std::string,int>> sortedWordCount;
     
     for (auto word : wordCounts)
@@ -140,10 +140,12 @@ int main(int argc, char ** argv)
     std::string output_filename = "sorted_" + input_filename ;
     std::ofstream outputfile(output_filename, std::ofstream::out);
     
-    outputfile << std::setw(20) << "Word" << std::setw(20) << "count" << std::endl;
-    for (auto wordAndCount : sortedWordCount)
+    if (outputfile.is_open())
     {
-        outputfile << std::setw(20) << wordAndCount.first << std::setw(20) << wordAndCount.second << std::endl;
+        outputfile << std::setw(20) << "Word" << std::setw(20) << "count" << std::endl;
+        for (auto wordAndCount : sortedWordCount)
+        {
+            outputfile << std::setw(20) << wordAndCount.first << std::setw(20) << wordAndCount.second << std::endl;
+        }
     }
-    
 }
