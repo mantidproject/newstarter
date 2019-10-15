@@ -28,7 +28,7 @@ int main(int, char **)
     // Sort shapes
     ShapeSorter shapeSorter(shapes);
 
-
+    // Test print functions
     shapeSorter.printShapeByType("Circle");
     shapeSorter.printShapeBySides(4);
     shapeSorter.printShapesByArea();
