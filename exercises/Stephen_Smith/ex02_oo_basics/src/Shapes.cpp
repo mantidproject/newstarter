@@ -30,8 +30,8 @@ const std::string Circle::SHAPENAME =std::string("Circle");
 Circle::Circle()
 {
     this->m_radius = 0.0;
-    this->m_area=0.0;
-    this->m_perimeter = 0.0;
+    this->setArea(0.0);
+    this->setPerimeter(0.0);
 }
 Circle::Circle(const double radius)
 {
