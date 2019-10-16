@@ -18,13 +18,13 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
-  src/split.cpp
+  src/splitLineIntoWords.cpp
   # add any additional source files here
 )
 
 set ( HDR_FILES
   # add any additional header files here
-  include/split.h
+  include/splitLineIntoWords.h
 )
 
 
