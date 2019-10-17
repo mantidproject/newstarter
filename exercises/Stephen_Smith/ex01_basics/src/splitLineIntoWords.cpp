@@ -10,7 +10,11 @@ bool notSpaceOrHyphen ( char c)
 {
     return !(( c == '-') || (isspace(c)));
 }
-// Splits a line into words using spaces and hyphens as delimiters between the words 
+/**
+  * Splits a line into words using spaces and hyphens as delimiters between the words 
+  * @param line Contains the input line 
+  * @return a vector of the words extracted from the line
+ */
 std::vector<std::string> splitLineIntoWords(const std::string& line)
 {
     // iterator over the string
