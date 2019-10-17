@@ -1,6 +1,0 @@
-C:/Users/lot53126/Documents/NewStarter/newstarter/CMakeFiles/ALL_BUILD.dir
-C:/Users/lot53126/Documents/NewStarter/newstarter/CMakeFiles/ZERO_CHECK.dir
-C:/Users/lot53126/Documents/NewStarter/newstarter/ex01_basics/CMakeFiles/WordCounter.dir
-C:/Users/lot53126/Documents/NewStarter/newstarter/ex01_basics/CMakeFiles/ALL_BUILD.dir
-C:/Users/lot53126/Documents/NewStarter/newstarter/ex02_oo_basics/CMakeFiles/Shapes.dir
-C:/Users/lot53126/Documents/NewStarter/newstarter/ex02_oo_basics/CMakeFiles/ALL_BUILD.dir
