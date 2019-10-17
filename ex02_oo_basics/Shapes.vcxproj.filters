@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\src\Shapes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\src\Circle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\src\Square.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\src\Rectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\src\Triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\src\ShapeSorter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\include\Shapes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\include\Circle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\include\Square.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\include\Rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\include\Triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\include\ShapeSorter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6D1E3088-8D96-37C8-ABCE-AD4DAB05ABEB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9406B5FB-7EAE-3830-8BD9-448AF7B48927}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

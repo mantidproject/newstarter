@@ -1,9 +1,9 @@
 ﻿  Circle.cpp
-  main.cpp
   Rectangle.cpp
-  Shapes.cpp
   ShapeSorter.cpp
+  Shapes.cpp
   Square.cpp
   Triangle.cpp
+  main.cpp
   Generating Code...
   ex02_Stephen_Smith.vcxproj -> C:\Users\lot53126\Documents\NewStarter\newstarter\exercises\Stephen_Smith\ex02_oo_basics\Debug\ex02_Stephen_Smith.exe
