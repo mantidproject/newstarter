@@ -2,7 +2,7 @@
 #define TRIANGLE_H_
 
 #include "Shapes.h"
-
+#include <cmath>
 /**
  * This class contains an abstraction of a triangle
  */
