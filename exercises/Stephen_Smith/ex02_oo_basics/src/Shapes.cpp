@@ -1,5 +1,6 @@
 // BaseShape class implementation
 #include "../include/Shapes.h"
+
 /** Constructor
  * Empty constructor
  */

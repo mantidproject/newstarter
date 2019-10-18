@@ -1,5 +1,6 @@
 #ifndef CIRCLE_H_
 #define CIRCLE_H_
+
 #include "Shapes.h"
 
 namespace {

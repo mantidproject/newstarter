@@ -1,12 +1,10 @@
 #ifndef SHAPESORTER_H_
 #define SHAPESORTER_H_
+// Forward declaration of BaseShape
+class BaseShape;
+#include <vector>
+#include <string>
 
-#include "Shapes.h"
-#include "Square.h"
-#include "Rectangle.h"
-#include "Triangle.h"
-#include "Circle.h"
-#include <algorithm>
 /**
  * This class stores a number of shapes, and provides
  * operations based on the number of sides, area, perimeter,

@@ -1,4 +1,9 @@
 #include "../include/ShapeSorter.h"
+#include "../include/Shapes.h"
+#include "../include/Square.h"
+#include "../include/Rectangle.h"
+#include "../include/Triangle.h"
+#include "../include/Circle.h"
 
 using namespace std;
 int main(int, char **)

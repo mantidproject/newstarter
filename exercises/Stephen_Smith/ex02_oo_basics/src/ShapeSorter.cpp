@@ -1,5 +1,7 @@
 #include "../include/ShapeSorter.h"
+#include "../include/Shapes.h"
 #include <iostream>
+#include <algorithm>
 /** Constructor
  * Empty constructor
  */

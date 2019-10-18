@@ -2,6 +2,7 @@
 #define SQUARE_H_
 
 #include "Shapes.h"
+
 /**
  * This class contains an abstraction of a square
  */

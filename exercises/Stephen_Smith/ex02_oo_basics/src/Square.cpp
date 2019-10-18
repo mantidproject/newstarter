@@ -1,7 +1,6 @@
 // Square class implementation
 #include "../include/Square.h"
 #include <iostream>
-
 const int Square::NUMSIDES = 4;
 const std::string Square::SHAPENAME = std::string("Square");
 /** Constructor

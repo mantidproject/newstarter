@@ -3,8 +3,6 @@
 
 #include <string>
 #include <vector>
-#include <memory>
-#include <math.h>  
 
 class BaseShape{
 public:

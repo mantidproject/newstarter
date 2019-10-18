@@ -1,6 +1,8 @@
 #ifndef TRIANGLE_H_
 #define TRIANGLE_H_
+
 #include "Shapes.h"
+
 /**
  * This class contains an abstraction of a triangle
  */

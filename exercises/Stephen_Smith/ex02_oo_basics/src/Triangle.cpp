@@ -1,7 +1,6 @@
 //Triangle class implementation
 #include "../include/Triangle.h"
 #include <iostream>
-
 const int Triangle::NUMSIDES = 3;
 const std::string Triangle::SHAPENAME = std::string("Triangle");
 

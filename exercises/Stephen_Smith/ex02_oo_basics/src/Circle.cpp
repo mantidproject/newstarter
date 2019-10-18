@@ -1,7 +1,6 @@
 // Circle class implementation
 #include <iostream>
 #include "../include/Circle.h"
-
 const int Circle::NUMSIDES = 1;
 const std::string Circle::SHAPENAME = std::string("Circle");
 /** Constructor

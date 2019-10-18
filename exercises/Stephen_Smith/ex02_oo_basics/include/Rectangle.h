@@ -1,6 +1,8 @@
 #ifndef RECTANGLE_H_
 #define RECTANGLE_H_
+
 #include "Shapes.h"
+
 /**
  * This class contains an abstraction of a rectangle
  */
