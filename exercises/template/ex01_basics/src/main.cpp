@@ -20,16 +20,16 @@ namespace {
     return !test.good();
   }
 
-  std::string stringStrip(const std::string &word) {
+  void stringStrip(std::string &word) {
     // Remove invalid characters from a string
-    std::string result;
-    std::copy_if(word.begin(), word.end(), back_inserter(result), [](char letter){return !ispunct(letter);});
-    return result;
+    word.erase(std::remove_if(word.begin(), word.end(),
+			      [](char letter){return ispunct(letter);}),
+	       word.end());
   }
 
-  std::map<std::string, int> addWord(std::map<std::string, int> acc, const std::string &baseWord) {
+  std::map<std::string, int> addWord(std::map<std::string, int> acc, std::string word) {
     // Add a single word to the map
-    std::string word = stringStrip(baseWord);
+    stringStrip(word);
     if (word.size() < 4) {
       return acc;
     }
