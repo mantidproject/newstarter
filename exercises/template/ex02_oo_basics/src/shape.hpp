@@ -11,7 +11,7 @@ using namespace std;
 
 class Shape {
 public:
-  virtual int sides() const = 0;
+  virtual unsigned int sides() const = 0;
   virtual double perimeter() const = 0;
   virtual double area() const = 0;
   virtual string type() const = 0;
@@ -25,7 +25,7 @@ private:
 
 public:
   explicit Circle(double r) : radius(r) {}
-  int sides() const override;
+  unsigned int sides() const override;
   double perimeter() const override;
   double area() const override;
   string type() const override;
@@ -37,7 +37,7 @@ private:
 
 public:
   explicit Square(double s) : side(s) {}
-  int sides() const override;
+  unsigned int sides() const override;
   double perimeter() const override;
   double area() const override;
   string type() const override;
@@ -50,7 +50,7 @@ private:
 
 public:
   explicit Rectangle(double w, double h) : width(w), height(h) {}
-  int sides() const override;
+  unsigned int sides() const override;
   double perimeter() const override;
   double area() const override;
   string type() const override;
@@ -63,7 +63,7 @@ private:
 
 public:
   explicit Triangle(double b, double h) :base(b), height(h) {}
-  int sides() const override;
+  unsigned int sides() const override;
   double perimeter() const override;
   double area() const override;
   string type() const override;

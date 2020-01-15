@@ -12,22 +12,22 @@ ostream &operator<<(ostream &os, const unique_ptr<Shape> &shape) {
   return os;
 };
 
-int Circle::sides() const { return 1; }
 double Circle::perimeter() const { return 2 * M_PI * radius; }
 double Circle::area() const { return M_PI * radius * radius; }
+unsigned int Circle::sides() const { return 1; }
 string Circle::type() const { return "circle"; }
 
-int Square::sides() const { return 4; }
 double Square::perimeter() const { return 4 * side; }
 double Square::area() const { return side * side; }
+unsigned int Square::sides() const { return 4; }
 string Square::type() const { return "square"; }
 
-int Rectangle::sides() const { return 4; }
 double Rectangle::perimeter() const { return 2 * (width + height); }
 double Rectangle::area() const { return width * height; }
+unsigned int Rectangle::sides() const { return 4; }
 string Rectangle::type() const { return "rectangle"; }
 
-int Triangle::sides() const { return 3; }
+unsigned int Triangle::sides() const { return 3; }
 double Triangle::perimeter() const {
   return base + 2 * sqrt(height * height + base * base / 4);
 }
