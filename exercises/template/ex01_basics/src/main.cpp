@@ -3,6 +3,7 @@
  */
 
 #include <algorithm>
+#include <ctype.h>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -19,25 +20,6 @@ bool fileMissing(const string &f) {
   return !test.good();
 }
 
-bool valid_char(const char x) {
-  // Determine if a character is common punctuation
-  switch (x) {
-  case '.':
-  case '\'':
-  case '"':
-  case '?':
-  case ',':
-  case '!':
-  case '(':
-  case ')':
-  case '`':
-  case ':':
-  case '_':
-    return false;
-  default:
-    return true;
-  }
-}
 
 bool pair_compare(const pair<string, int> a, const pair<string, int> b) {
   // Sort pairs descending by integer value, then ascending by string value.
@@ -56,7 +38,7 @@ bool pair_compare(const pair<string, int> a, const pair<string, int> b) {
 string string_strip(const string &word) {
   // Remove invalid characters from a string
   string result;
-  copy_if(word.begin(), word.end(), back_inserter(result), valid_char);
+  std::copy_if(word.begin(), word.end(), back_inserter(result), [](char letter){return !ispunct(letter);});
   return result;
 }
 
