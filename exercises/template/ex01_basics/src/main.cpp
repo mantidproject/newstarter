@@ -12,41 +12,44 @@
 #include <sstream>
 #include <vector>
 
-bool fileMissing(const std::string &f) {
-  // Determine if a file is missing
-  std::ifstream test(f);
-  return !test.good();
-}
+namespace {
 
-std::string stringStrip(const std::string &word) {
-  // Remove invalid characters from a string
-  std::string result;
-  std::copy_if(word.begin(), word.end(), back_inserter(result), [](char letter){return !ispunct(letter);});
-  return result;
-}
+  bool fileMissing(const std::string &f) {
+    // Determine if a file is missing
+    std::ifstream test(f);
+    return !test.good();
+  }
 
-std::map<std::string, int> addWord(std::map<std::string, int> acc, const std::string &baseWord) {
-  // Add a single word to the map
-  std::string word = stringStrip(baseWord);
-  if (word.size() < 4) {
+  std::string stringStrip(const std::string &word) {
+    // Remove invalid characters from a string
+    std::string result;
+    std::copy_if(word.begin(), word.end(), back_inserter(result), [](char letter){return !ispunct(letter);});
+    return result;
+  }
+
+  std::map<std::string, int> addWord(std::map<std::string, int> acc, const std::string &baseWord) {
+    // Add a single word to the map
+    std::string word = stringStrip(baseWord);
+    if (word.size() < 4) {
+      return acc;
+    }
+    std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+    if (acc.count(word)) {
+      acc[word] += 1;
+    } else {
+      acc[word] = 1;
+  }
     return acc;
   }
-  std::transform(word.begin(), word.end(), word.begin(), ::tolower);
-  if (acc.count(word)) {
-    acc[word] += 1;
-  } else {
-    acc[word] = 1;
+
+  std::map<std::string, int> loadFile(std::map<std::string, int> &acc, const std::string &f) {
+    // Add the words from a file into a map
+    std::ifstream infile(f);
+    std::istream_iterator<std::string> words(infile);
+    std::istream_iterator<std::string> eos; // end of iterator stream
+
+    return accumulate(words, eos, acc, addWord);
   }
-  return acc;
-}
-
-std::map<std::string, int> loadFile(std::map<std::string, int> &acc, const std::string &f) {
-  // Add the words from a file into a map
-  std::ifstream infile(f);
-  std::istream_iterator<std::string> words(infile);
-  std::istream_iterator<std::string> eos; // end of iterator stream
-
-  return accumulate(words, eos, acc, addWord);
 }
 
 
