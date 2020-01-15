@@ -18,16 +18,16 @@ bool fileMissing(const std::string &f) {
   return !test.good();
 }
 
-std::string string_strip(const std::string &word) {
+std::string stringStrip(const std::string &word) {
   // Remove invalid characters from a string
   std::string result;
   std::copy_if(word.begin(), word.end(), back_inserter(result), [](char letter){return !ispunct(letter);});
   return result;
 }
 
-std::map<std::string, int> add_word(std::map<std::string, int> acc, const std::string &base_word) {
+std::map<std::string, int> addWord(std::map<std::string, int> acc, const std::string &baseWord) {
   // Add a single word to the map
-  std::string word = string_strip(base_word);
+  std::string word = stringStrip(baseWord);
   if (word.size() < 4) {
     return acc;
   }
@@ -40,13 +40,13 @@ std::map<std::string, int> add_word(std::map<std::string, int> acc, const std::s
   return acc;
 }
 
-std::map<std::string, int> load_file(std::map<std::string, int> &acc, const std::string &f) {
+std::map<std::string, int> loadFile(std::map<std::string, int> &acc, const std::string &f) {
   // Add the words from a file into a map
   std::ifstream infile(f);
   std::istream_iterator<std::string> words(infile);
   std::istream_iterator<std::string> eos; // end of iterator stream
 
-  return accumulate(words, eos, acc, add_word);
+  return accumulate(words, eos, acc, addWord);
 }
 
 
@@ -69,7 +69,7 @@ int main(const int argc, const char **argv) {
   // Read all the files into a map
   std::map<std::string, int> combined;
   combined =
-    std::accumulate(arguments.begin(), arguments.end(), combined, load_file);
+    std::accumulate(arguments.begin(), arguments.end(), combined, loadFile);
 
   // Sort the map by occurance and word
   auto result = std::vector<std::pair<std::string, int>>(combined.begin(), combined.end());
