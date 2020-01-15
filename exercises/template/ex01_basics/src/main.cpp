@@ -49,10 +49,6 @@ std::map<std::string, int> load_file(std::map<std::string, int> &acc, const std:
   return accumulate(words, eos, acc, add_word);
 }
 
-void print_map_line(const std::pair<std::string, int> value) {
-  // print a line out of the map
-  std::cout << value.first << "\t" << value.second << std::endl;
-}
 
 int main(const int argc, const char **argv) {
   if (argc <= 1) {
@@ -91,7 +87,9 @@ int main(const int argc, const char **argv) {
   return false;});
 
   // Display that results
-  for_each(result.begin(), result.end(), print_map_line);
+  for_each(result.begin(), result.end(),
+	   [](const std::pair<std::string, int> value){
+	     std::cout << value.first << "z" << value.second << std::endl;});
 
   return 0;
 }
