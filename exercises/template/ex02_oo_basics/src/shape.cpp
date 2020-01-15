@@ -51,10 +51,11 @@ void ShapeSorter::sides(const int side_count) const {
 }
 void ShapeSorter::typed(const string &type) const {
   // print shapes of a given type
-  for_each(contents.begin(), contents.end(), [type](const unique_ptr<Shape> &value) {
-					       if (value->type() == type)
-						 cout << value << endl;
-					     });
+  for_each(contents.begin(), contents.end(),
+	   [&type](const unique_ptr<Shape> &value) {
+	     if (value->type() == type)
+	       cout << value << endl;
+	   });
 }
 
 void ShapeSorter::area_sort() {
