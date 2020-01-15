@@ -21,10 +21,10 @@ ostream &operator<<(ostream &os, const Shape *shape);
 
 class Circle : public Shape {
 private:
-  double radius;
+  double m_radius;
 
 public:
-  explicit Circle(double r) : radius(r) {}
+  explicit Circle(double r) : m_radius(r) {}
   unsigned int sides() const override;
   double perimeter() const override;
   double area() const override;
@@ -33,10 +33,10 @@ public:
 
 class Square : public Shape {
 private:
-  double side;
+  double m_side;
 
 public:
-  explicit Square(double s) : side(s) {}
+  explicit Square(double s) : m_side(s) {}
   unsigned int sides() const override;
   double perimeter() const override;
   double area() const override;
@@ -45,11 +45,11 @@ public:
 
 class Rectangle : public Shape {
 private:
-  double width;
-  double height;
+  double m_width;
+  double m_height;
 
 public:
-  explicit Rectangle(double w, double h) : width(w), height(h) {}
+  explicit Rectangle(double w, double h) : m_width(w), m_height(h) {}
   unsigned int sides() const override;
   double perimeter() const override;
   double area() const override;
@@ -58,11 +58,11 @@ public:
 
 class Triangle : public Shape {
 private:
-  double base;
-  double height;
+  double m_base;
+  double m_height;
 
 public:
-  explicit Triangle(double b, double h) :base(b), height(h) {}
+  explicit Triangle(double b, double h) : m_base(b), m_height(h) {}
   unsigned int sides() const override;
   double perimeter() const override;
   double area() const override;

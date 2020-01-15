@@ -12,26 +12,26 @@ ostream &operator<<(ostream &os, const unique_ptr<Shape> &shape) {
   return os;
 };
 
-double Circle::perimeter() const { return 2 * M_PI * radius; }
-double Circle::area() const { return M_PI * radius * radius; }
 unsigned int Circle::sides() const { return 1; }
+double Circle::perimeter() const { return 2 * M_PI * m_radius; }
+double Circle::area() const { return M_PI * m_radius * m_radius; }
 string Circle::type() const { return "circle"; }
 
-double Square::perimeter() const { return 4 * side; }
-double Square::area() const { return side * side; }
 unsigned int Square::sides() const { return 4; }
+double Square::perimeter() const { return 4 * m_side; }
+double Square::area() const { return m_side * m_side; }
 string Square::type() const { return "square"; }
 
-double Rectangle::perimeter() const { return 2 * (width + height); }
-double Rectangle::area() const { return width * height; }
 unsigned int Rectangle::sides() const { return 4; }
+double Rectangle::perimeter() const { return 2 * (m_width + m_height); }
+double Rectangle::area() const { return m_width * m_height; }
 string Rectangle::type() const { return "rectangle"; }
 
 unsigned int Triangle::sides() const { return 3; }
 double Triangle::perimeter() const {
-  return base + 2 * sqrt(height * height + base * base / 4);
+  return m_base + 2 * sqrt(m_height * m_height + m_base * m_base / 4);
 }
-double Triangle::area() const { return 0.5 * base * height; }
+double Triangle::area() const { return 0.5 * m_base * m_height; }
 string Triangle::type() const { return "triangle"; }
 
 
