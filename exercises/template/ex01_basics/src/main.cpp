@@ -18,20 +18,6 @@ bool fileMissing(const std::string &f) {
   return !test.good();
 }
 
-bool pair_compare(const std::pair<std::string, int> a, const std::pair<std::string, int> b) {
-  // Sort pairs descending by integer value, then ascending by string value.
-  if (a.second > b.second) {
-    return true;
-  }
-  if (a.second < b.second) {
-    return false;
-  }
-  if (a.first < b.first) {
-    return true;
-  }
-  return false;
-}
-
 std::string string_strip(const std::string &word) {
   // Remove invalid characters from a string
   std::string result;
@@ -91,7 +77,18 @@ int main(const int argc, const char **argv) {
 
   // Sort the map by occurance and word
   auto result = std::vector<std::pair<std::string, int>>(combined.begin(), combined.end());
-  sort(result.begin(), result.end(), pair_compare);
+  sort(result.begin(), result.end(), [](const std::pair<std::string, int> &a, const std::pair<std::string, int> &b){
+  // Sort pairs descending by integer value, then ascending by string value.
+  if (a.second > b.second) {
+    return true;
+  }
+  if (a.second < b.second) {
+    return false;
+  }
+  if (a.first < b.first) {
+    return true;
+  }
+  return false;});
 
   // Display that results
   for_each(result.begin(), result.end(), print_map_line);
