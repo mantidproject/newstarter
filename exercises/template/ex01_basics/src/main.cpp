@@ -12,16 +12,13 @@
 #include <sstream>
 #include <vector>
 
-using namespace std;
-
-bool fileMissing(const string &f) {
+bool fileMissing(const std::string &f) {
   // Determine if a file is missing
-  ifstream test(f);
+  std::ifstream test(f);
   return !test.good();
 }
 
-
-bool pair_compare(const pair<string, int> a, const pair<string, int> b) {
+bool pair_compare(const std::pair<std::string, int> a, const std::pair<std::string, int> b) {
   // Sort pairs descending by integer value, then ascending by string value.
   if (a.second > b.second) {
     return true;
@@ -35,20 +32,20 @@ bool pair_compare(const pair<string, int> a, const pair<string, int> b) {
   return false;
 }
 
-string string_strip(const string &word) {
+std::string string_strip(const std::string &word) {
   // Remove invalid characters from a string
-  string result;
+  std::string result;
   std::copy_if(word.begin(), word.end(), back_inserter(result), [](char letter){return !ispunct(letter);});
   return result;
 }
 
-map<string, int> add_word(map<string, int> acc, const string &base_word) {
+std::map<std::string, int> add_word(std::map<std::string, int> acc, const std::string &base_word) {
   // Add a single word to the map
-  string word = string_strip(base_word);
+  std::string word = string_strip(base_word);
   if (word.size() < 4) {
     return acc;
   }
-  transform(word.begin(), word.end(), word.begin(), ::tolower);
+  std::transform(word.begin(), word.end(), word.begin(), ::tolower);
   if (acc.count(word)) {
     acc[word] += 1;
   } else {
@@ -57,43 +54,43 @@ map<string, int> add_word(map<string, int> acc, const string &base_word) {
   return acc;
 }
 
-map<string, int> load_file(map<string, int> acc, const string &f) {
+std::map<std::string, int> load_file(std::map<std::string, int> &acc, const std::string &f) {
   // Add the words from a file into a map
-  ifstream infile(f);
-  istream_iterator<string> words(infile);
-  istream_iterator<string> eos; // end of iterator stream
+  std::ifstream infile(f);
+  std::istream_iterator<std::string> words(infile);
+  std::istream_iterator<std::string> eos; // end of iterator stream
 
   return accumulate(words, eos, acc, add_word);
 }
 
-void print_map_line(const pair<string, int> value) {
+void print_map_line(const std::pair<std::string, int> value) {
   // print a line out of the map
-  cout << value.first << "\t" << value.second << endl;
+  std::cout << value.first << "\t" << value.second << std::endl;
 }
 
 int main(const int argc, const char **argv) {
   if (argc <= 1) {
-    cout << "Missing file name" << endl;
+    std::cout << "Missing file name" << std::endl;
     return -1;
   }
 
-  vector<string> arguments(argv + 1, argc + argv);
+  std::vector<std::string> arguments(argv + 1, argc + argv);
 
   // Make sure that all the files are present
-  auto missing = find_if(arguments.begin(), arguments.end(), fileMissing);
+  auto missing = std::find_if(arguments.begin(), arguments.end(), fileMissing);
 
   if (missing != arguments.end()) {
-    cout << "Cannot find file " << *missing << endl;
+    std::cout << "Cannot find file " << *missing << std::endl;
     return -1;
   }
 
   // Read all the files into a map
-  map<string, int> combined;
+  std::map<std::string, int> combined;
   combined =
-      accumulate(arguments.begin(), arguments.end(), combined, load_file);
+    std::accumulate(arguments.begin(), arguments.end(), combined, load_file);
 
   // Sort the map by occurance and word
-  auto result = vector<pair<string, int>>(combined.begin(), combined.end());
+  auto result = std::vector<std::pair<std::string, int>>(combined.begin(), combined.end());
   sort(result.begin(), result.end(), pair_compare);
 
   // Display that results
