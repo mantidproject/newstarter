@@ -3,6 +3,10 @@
 #include <algorithm>
 #include <iostream>
 
+const int circleFaces = 1;
+const int triangleFaces = 3;
+const int quadralateralFaces = 4;
+
 ostream &operator<<(ostream &os, const unique_ptr<Shape> &shape) {
   // Print the important parts of a shape
   os << "A " << shape->type();
@@ -12,22 +16,22 @@ ostream &operator<<(ostream &os, const unique_ptr<Shape> &shape) {
   return os;
 };
 
-unsigned int Circle::sides() const { return 1; }
+unsigned int Circle::sides() const { return circleFaces; }
 double Circle::perimeter() const { return 2 * M_PI * m_radius; }
 double Circle::area() const { return M_PI * m_radius * m_radius; }
 string Circle::type() const { return "circle"; }
 
-unsigned int Square::sides() const { return 4; }
+unsigned int Square::sides() const { return quadralateralFaces; }
 double Square::perimeter() const { return 4 * m_side; }
 double Square::area() const { return m_side * m_side; }
 string Square::type() const { return "square"; }
 
-unsigned int Rectangle::sides() const { return 4; }
+unsigned int Rectangle::sides() const { return quadralateralFaces; }
 double Rectangle::perimeter() const { return 2 * (m_width + m_height); }
 double Rectangle::area() const { return m_width * m_height; }
 string Rectangle::type() const { return "rectangle"; }
 
-unsigned int Triangle::sides() const { return 3; }
+unsigned int Triangle::sides() const { return triangleFaces; }
 double Triangle::perimeter() const {
   return m_base + 2 * sqrt(m_height * m_height + m_base * m_base / 4);
 }
