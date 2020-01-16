@@ -41,13 +41,13 @@ string Triangle::type() const { return "triangle"; }
 
 void ShapeSorter::print() const {
   // print all shapes
-  for (auto &shape : contents) {
+  for (auto &shape : m_shapes) {
     cout << shape << endl;
   }
 }
 void ShapeSorter::sides(const int side_count) const {
   // print shapes with given number of sides
-  for_each(contents.begin(), contents.end(),
+  for_each(m_shapes.begin(), m_shapes.end(),
 	   [side_count](const unique_ptr<Shape> &value) {
 	     if (value->sides() == side_count)
 	       cout << value << endl;
@@ -55,7 +55,7 @@ void ShapeSorter::sides(const int side_count) const {
 }
 void ShapeSorter::typed(const string &type) const {
   // print shapes of a given type
-  for_each(contents.begin(), contents.end(),
+  for_each(m_shapes.begin(), m_shapes.end(),
 	   [&type](const unique_ptr<Shape> &value) {
 	     if (value->type() == type)
 	       cout << value << endl;
@@ -64,7 +64,7 @@ void ShapeSorter::typed(const string &type) const {
 
 void ShapeSorter::area_sort() {
   // Sort contents by area and print
-  sort(contents.begin(), contents.end(),
+  sort(m_shapes.begin(), m_shapes.end(),
        [](unique_ptr<Shape> &a, unique_ptr<Shape> &b) {
 	 return a->area() > b->area();
        });
@@ -73,7 +73,7 @@ void ShapeSorter::area_sort() {
 
 void ShapeSorter::perimeter_sort() {
   // Sort contents by perimeter and print
-  sort(contents.begin(), contents.end(),
+  sort(m_shapes.begin(), m_shapes.end(),
        [](unique_ptr<Shape> &a, unique_ptr<Shape> &b) {
 	 return a->perimeter() > b->perimeter();
        });
