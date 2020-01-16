@@ -45,7 +45,7 @@ void ShapeSorter::print() const {
     cout << shape << endl;
   }
 }
-void ShapeSorter::sides(const int side_count) const {
+void ShapeSorter::sides(const unsigned int side_count) const {
   // print shapes with given number of sides
   for_each(m_shapes.begin(), m_shapes.end(),
 	   [side_count](const unique_ptr<Shape> &value) {

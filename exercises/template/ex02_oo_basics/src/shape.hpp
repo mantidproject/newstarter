@@ -76,7 +76,7 @@ private:
 public:
   explicit ShapeSorter(vector<unique_ptr<Shape>> &c) : m_shapes(move(c)){};
   void print() const;
-  void sides(const int side_count) const;
+  void sides(const unsigned int side_count) const;
   void typed(const string &type) const;
   void area_sort();
   void perimeter_sort();
