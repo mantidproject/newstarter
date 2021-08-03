@@ -46,36 +46,37 @@ class Triangle: public Shape  {
         }
 };
 
-bool comp1 (Shape i, Shape j){ return (i.area<j.area)}
-bool comp2 (Shape i, Shape j){ return (i.perimeter<j.perimeter)}
+bool comp1 (Shape i, Shape j){ return (i.area<j.area);}
+bool comp2 (Shape i, Shape j){ return (i.perimeter<j.perimeter);}
 
 class ShapeSorter { //objects don't have names in C++ so what am I printing?
     public:
         void type(std::vector<Shape> shapes, std::string type){
             for (int i=0; i<=shapes.size();i++){
-                if(std::typeid(shapes[i]) == std::typeid(type)){
+                if(typeid(shapes[i]) == typeid(type)){
                     std::cout << shapes[i].area;
                 }
             }
         }
-        void type(std::vector<Shape> shapes, std::int sides){
+        void type(std::vector<Shape> shapes, int sides){
+            std::string type;
             switch(sides){
                 case 1:
-                    sides = "Circle";
+                    type = "Circle";
                     break;
                 case 3:
-                    sides = "Triangle";
+                    type = "Triangle";
                     break;
                 case 4:
                     for (int i=0; i<=shapes.size();i++){
-                        if(std::typeid(shapes[i]) == std::typeid("Rectangle") || std::typeid(shapes[i]) == std::typeid("Square")){
+                        if(typeid(shapes[i]) == typeid("Rectangle") || typeid(shapes[i]) == typeid("Square")){
                             std::cout << shapes[i].area;
                         }
                     }
                     break;
             }
             for (int i=0; i<=shapes.size();i++){
-                if(std::typeid(shapes[i]) == std::typeid(sides)){
+                if(typeid(shapes[i]) == typeid(type)){
                     std::cout << shapes[i].area;
                 }
             }
