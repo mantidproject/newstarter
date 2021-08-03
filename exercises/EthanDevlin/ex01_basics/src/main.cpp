@@ -29,7 +29,7 @@ int main()
     std::string word;
     while (inFile >> word)
     {
-        //splits hypenated words
+        //splits hypenated
         std::size_t found = word.find('-');
         if (found!=std::string::npos)
         {
