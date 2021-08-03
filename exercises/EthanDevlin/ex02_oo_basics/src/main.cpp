@@ -45,25 +45,46 @@ class Triangle: public Shape  {
             perimeter = base+2*(pow((pow(height,2)+pow(base,2)/4),0.5));
         }
 };
-bool comp (Shape i, Shape j){ return (i.area<j.area)}
-class ShapeSorter {
+
+bool comp1 (Shape i, Shape j){ return (i.area<j.area)}
+bool comp2 (Shape i, Shape j){ return (i.perimeter<j.perimeter)}
+
+class ShapeSorter { //objects don't have names in C++ so what am I printing?
     public:
         void type(std::vector<Shape> shapes, std::string type){
             for (int i=0; i<=shapes.size();i++){
                 if(std::typeid(shapes[i]) == std::typeid(type)){
-                    std::cout << shapes[i];
+                    std::cout << shapes[i].area;
                 }
             }
         }
-        void type(std::vector<Shape> shapes, std::string sides){
+        void type(std::vector<Shape> shapes, std::int sides){
             switch(sides){
                 case 1:
                     sides = "Circle";
                     break;
+                case 3:
+                    sides = "Triangle";
+                    break;
+                case 4:
+                    for (int i=0; i<=shapes.size();i++){
+                        if(std::typeid(shapes[i]) == std::typeid("Rectangle") || std::typeid(shapes[i]) == std::typeid("Square")){
+                            std::cout << shapes[i].area;
+                        }
+                    }
+                    break;
+            }
+            for (int i=0; i<=shapes.size();i++){
+                if(std::typeid(shapes[i]) == std::typeid(sides)){
+                    std::cout << shapes[i].area;
+                }
             }
         }
         void area(std::vector<Shape> shapes){
-            std::sort (shapes.begin(), shapes.end(), comp);
+            std::sort (shapes.begin(), shapes.end(), comp1);
+        }
+        void perimeter(std::vector<Shape> shapes){
+            std::sort (shapes.begin(), shapes.end(), comp2);
         }
 
 };
@@ -72,6 +93,4 @@ int main()
     Square square (4);
     std::vector<Shape> shapes;
     shapes.push_back(square);
-    std::cout << shapes[0].area;
-
 }
