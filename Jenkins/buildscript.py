@@ -3,7 +3,7 @@
 Python Buildscript for Jenkins
 
 Very basic at the moment. It finds every directory under
-$WORKSPACE/exercises, excluding the one named "template" and builds all
+$WORKSPACE/exercises-cpp, excluding the one named "template" and builds all
 projects under there in separate directories.
 
 It assumes the WORKSPACE environment variable exists and points to the root
@@ -22,7 +22,7 @@ except KeyError:
     print("WORKSPACE environment variable not found.\nThe build script assumes that a WORKSPACE environment variable points at the root of the source directory.")
     sys.exit(1)
 
-PROJECTS_ROOT = os.path.abspath(os.path.join(WORKSPACE, "exercises"))
+PROJECTS_ROOT = os.path.abspath(os.path.join(WORKSPACE, "exercises-cpp"))
 HELLO_WORLD_DIR_NAME = "hello_world"
 TEMPLATE_DIR_NAME = "template"  # skip this directory
 

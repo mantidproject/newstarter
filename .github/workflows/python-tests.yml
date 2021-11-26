@@ -1,0 +1,26 @@
+name: python-tests
+on: [pull_request]
+
+jobs:
+  test-python-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache example data
+        uses: actions/cache@v2
+        id: example-data
+        with:
+          path: ~/files
+          key: example-data-5
+
+      - name: Download example data
+        if: steps.example-data.outputs.cache-hit != 'true'
+        run: |
+          mkdir ~/files
+          wget https://github.com/martyngigg/cpp-examples/raw/master/Holmes.txt -O ~/files/Holmes.txt
+
+      - name: Run Python tests
+        run: |
+          ls -lh ~/files
+          python3 ${GITHUB_WORKSPACE}/tests/test_python.py
