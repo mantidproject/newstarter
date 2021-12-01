@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from re import split
+from os.path import exists
 import argparse
 
 
@@ -9,16 +10,18 @@ def main():
     args = parser.parse_args()
 
     file_content = read_content(args.filename)
-    word_count = create_word_dictionary(file_content)
-    print_list('Word   Usage\n', sorted(word_count.items(), key=lambda x: x[1], reverse=True))
+    if file_content is not None:
+        word_count = create_word_dictionary(file_content)
+        print_list('Word   Usage\n', sorted(word_count.items(), key=lambda x: x[1], reverse=True))
 
 
 def read_content(filename):
-    try:
-        file = open(filename, mode='rt', encoding='utf-8')
-        return file.readlines()
-    finally:
-        file.close()
+    if exists(filename):
+        with open(filename, mode='rt', encoding='utf-8') as file:
+            return file.readlines()
+    else:
+        print("Could not read file contents. No file could be found at: {0}".format(filename))
+        return None
 
 
 def create_word_dictionary(content):
