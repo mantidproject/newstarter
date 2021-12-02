@@ -6,9 +6,9 @@ import shape_sorter as ss
 def main():
     shape_list = [Square(4), Rectangle(4, 2), Circle(5), Triangle(3, 5), Square(3)]
     print_header('Same Type')
-    ss.ShapeSorter.print_by_type('Square', shape_list)
+    ss.ShapeSorter.print_type_match('Square', shape_list)
     print_header('Same number of sides')
-    ss.ShapeSorter.print_by_num_sides(4, shape_list)
+    ss.ShapeSorter.print_num_sides_match(4, shape_list)
     print_header('Ordered by area')
     ss.ShapeSorter.print_by_area_desc(shape_list)
     print_header('Ordered by perimeter')
