@@ -12,10 +12,15 @@ def main():
     file_content = read_content(args.filename)
     if file_content is not None:
         word_count = create_word_dictionary(file_content)
-        print_list('Word   Usage\n', sorted(word_count.items(), key=lambda x: x[1], reverse=True))
+        print_list('Word   Usage', sorted(word_count.items(), key=lambda x: x[1], reverse=True))
 
 
 def read_content(filename):
+    """
+    Reads in all the lines from the file at the given path
+    :param filename: the path to the file to be read
+    :return: list[str] or None if the file couldn't be found
+    """
     if exists(filename):
         with open(filename, mode='rt', encoding='utf-8') as file:
             return file.readlines()
@@ -25,6 +30,12 @@ def read_content(filename):
 
 
 def create_word_dictionary(content):
+    """
+    Transforms the given list of strings into a dictionary that gives the number of times each word appears
+    The final count is case and punctuation insensitive
+    :param content: the list of strings to be transformed
+    :return: dictionary of words to the count
+    """
     word_count = {}
     for line in content:
         words = split(r'\W+', line.replace("\'", ''))
@@ -37,9 +48,15 @@ def create_word_dictionary(content):
     return word_count
 
 
-def print_list(heading, dictionary):
-    print(heading)
-    for key, value in dictionary:
+def print_list(heading, tuple_list):
+    """
+    Prints a heading and the contents of the given list of tuples to the console
+    :param heading: the heading to be printed above the list contents
+    :param tuple_list: the list of tuples to be printed
+    :return: output is printed to the console
+    """
+    print('{0}\n'.format(heading))
+    for key, value in tuple_list:
         print(key, '   ', value)
 
 
