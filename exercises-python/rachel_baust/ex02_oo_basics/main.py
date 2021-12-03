@@ -43,7 +43,7 @@ class Shape(ABC):
         pass
 
     def print_shape(self):
-        print('Shape: {0}, Area: {1}, Perimeter: {2}'.format(self.type, self.area(), self.perimeter()))
+        print(f'Shape: {self.type}, Area: {self.area()}, Perimeter: {self.perimeter()}')
 
 
 class Square(Shape):
