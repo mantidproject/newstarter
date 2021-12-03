@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from re import split
-from os.path import exists
 from collections import defaultdict
 import argparse
 
@@ -22,11 +21,14 @@ def read_content(filename):
     :param filename: the path to the file to be read
     :return: list[str] or None if the file couldn't be found
     """
-    if exists(filename):
+    try:
         with open(filename, mode='rt', encoding='utf-8') as file:
             return file.readlines()
-    else:
+    except FileNotFoundError:
         print("Could not read file contents. No file could be found at: {0}".format(filename))
+        return None
+    except OSError as e:
+        print("Error occurred when attempting to open file: {0}\nException: {1}".format(filename, str(e)))
         return None
 
 
