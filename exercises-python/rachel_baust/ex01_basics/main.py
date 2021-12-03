@@ -55,7 +55,7 @@ def print_list(heading, tuple_list):
     :param tuple_list: the list of tuples to be printed
     :return: output is printed to the console
     """
-    print('{0}\n'.format(heading))
+    print(heading)
     for key, value in tuple_list:
         print(key, '   ', value)
 
