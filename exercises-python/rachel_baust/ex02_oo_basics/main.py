@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from math import pi, pow as sq, sqrt
 from shape_sorter import ShapeSorter
+from abc import ABC, abstractmethod
 
 
 def main():
@@ -19,11 +20,27 @@ def print_header(text):
     print('\n{0}\n--------------------'.format(text))
 
 
-class Shape:
+class Shape(ABC):
 
     def __init__(self, shape_type, num_sides):
         self.type = shape_type
         self.num_sides = num_sides
+
+    @abstractmethod
+    def area(self):
+        """
+        Calculates the area of the shape
+        :return: value for the area of the shape
+        """
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        """
+        Calculates the perimeter of the shape
+        :return: value for the perimeter of the shape
+        """
+        pass
 
     def print_shape(self):
         print('Shape: {0}, Area: {1}, Perimeter: {2}'.format(self.type, self.area(), self.perimeter()))
