@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from re import split
 from os.path import exists
+from collections import defaultdict
 import argparse
 
 
@@ -36,15 +37,12 @@ def create_word_dictionary(content):
     :param content: the list of strings to be transformed
     :return: dictionary of words to the count
     """
-    word_count = {}
+    word_count = defaultdict(int)
     for line in content:
         words = split(r'\W+', line.replace("\'", ''))
         for word in words:
             if len(word) > 4:
-                if word.casefold() in word_count:
-                    word_count[word.casefold()] += 1
-                else:
-                    word_count[word.casefold()] = 1
+                word_count[word.casefold()] += 1
     return word_count
 
 
