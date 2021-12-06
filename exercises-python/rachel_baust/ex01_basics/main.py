@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from re import split
 from collections import defaultdict
+from typing import Optional
 import argparse
 
 
@@ -9,13 +10,13 @@ def main():
     parser.add_argument('filename', help='The path to the file')
     args = parser.parse_args()
 
-    file_content = read_content(args.filename)
+    file_content: Optional[list[str]] = read_content(args.filename)
     if file_content is not None:
-        word_count = create_word_dictionary(file_content)
+        word_count: defaultdict[str, int] = create_word_dictionary(file_content)
         print_list('Word   Usage', sorted(word_count.items(), key=lambda x: x[1], reverse=True))
 
 
-def read_content(filename):
+def read_content(filename: str) -> Optional[list[str]]:
     """
     Reads in all the lines from the file at the given path
     :param filename: the path to the file to be read
@@ -32,14 +33,14 @@ def read_content(filename):
         return None
 
 
-def create_word_dictionary(content):
+def create_word_dictionary(content: list[str]) -> defaultdict[str, int]:
     """
     Transforms the given list of strings into a dictionary that gives the number of times each word appears
     The final count is case and punctuation insensitive
     :param content: the list of strings to be transformed
     :return: dictionary of words to the count
     """
-    word_count = defaultdict(int)
+    word_count: defaultdict[str, int] = defaultdict(int)
     for line in content:
         words = split(r'\W+', line.replace("\'", ''))
         for word in words:
@@ -48,7 +49,7 @@ def create_word_dictionary(content):
     return word_count
 
 
-def print_list(heading, tuple_list):
+def print_list(heading: str, tuple_list: list[tuple[str, int]]) -> None:
     """
     Prints a heading and the contents of the given list of tuples to the console
     :param heading: the heading to be printed above the list contents
