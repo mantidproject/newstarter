@@ -67,7 +67,7 @@ public:
 	}
 
 	float area() const override {
-		return _base * _height;
+		return (_base * _height)/2;
 	}
 
 	void print() const override {
