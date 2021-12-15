@@ -203,13 +203,13 @@ public:
 
 			switch (x) {
 				case 0: //square
-					_shapes.push_back(new square(randomFloat(1.0, maxLength)));
+					_shapes.push_back(unique_ptr<square> new square(randomFloat(1.0, maxLength)));
 				case 1: //rectangle
-					_shapes.push_back(new rectangle(randomFloat(1.0, maxLength), randomFloat(1.0, maxLength)));
+					_shapes.push_back(unique_ptr<rectangle> new rectangle(randomFloat(1.0, maxLength), randomFloat(1.0, maxLength)));
 				case 2: //triangle
-					_shapes.push_back(new triangle(randomFloat(1.0, maxLength), randomFloat(1.0, maxLength)));
+					_shapes.push_back(unique_ptr<triangle> new triangle(randomFloat(1.0, maxLength), randomFloat(1.0, maxLength)));
 				case 3: //circle
-					_shapes.push_back(new circle(randomFloat(1.0, maxLength)));
+					_shapes.push_back(unique_ptr<circle> new circle(randomFloat(1.0, maxLength)));
 			}
 		}
 	}
