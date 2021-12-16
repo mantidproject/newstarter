@@ -6,19 +6,20 @@
 #include <algorithm>
 #include <cstdlib> 
 #include <ctime>
+#include <memory>
 
-class shape{
+class shape {
 public:
-	int sideNo() const{
+	int sideNo() const {
 		return _sideNo;
 	}
 
-	std::string shapeType() const{
+	std::string shapeType() const {
 		return _shapeType;
 	}
 
 	virtual float perimiter() const = 0;
-	
+
 	virtual float area() const = 0;
 
 	virtual void print() const = 0;
@@ -33,7 +34,7 @@ protected:
 class square : public shape {
 public:
 	square(const float& side1Len)
-		:_side1Len{side1Len} {
+		:_side1Len{ side1Len } {
 		_shapeType = "square";
 		_sideNo = 4;
 	}
@@ -51,7 +52,7 @@ public:
 	}
 
 private:
-		float _side1Len;
+	float _side1Len;
 };
 
 class triangle : public shape {
@@ -63,11 +64,11 @@ public:
 	}
 
 	float perimiter() const override {
-		return _base + 2/sqrt(pow(_height,2) + (pow(_base,2)/4));
+		return _base + 2 / sqrt(pow(_height, 2) + (pow(_base, 2) / 4));
 	}
 
 	float area() const override {
-		return (_base * _height)/2;
+		return (_base * _height) / 2;
 	}
 
 	void print() const override {
@@ -81,7 +82,7 @@ private:
 
 class rectangle : public shape {
 public:
-	rectangle(const float& side1Len, const float& side2Len) 
+	rectangle(const float& side1Len, const float& side2Len)
 		:_side1Len{ side1Len }, _side2Len{ side2Len } {
 		_shapeType = "rectangle";
 		_sideNo = 4;
@@ -106,8 +107,8 @@ private:
 
 class circle : public shape {
 public:
-	circle(const float& radius) 
-		:_radius{radius} {
+	circle(const float& radius)
+		:_radius{ radius } {
 		_shapeType = "circle";
 		_sideNo = 1;
 	}
@@ -117,7 +118,7 @@ public:
 	}
 
 	float area() const override {
-		return M_PI * pow(_radius,2);
+		return M_PI * pow(_radius, 2);
 	}
 
 	void print() const override {
@@ -130,11 +131,11 @@ private:
 
 class shapeSorter {
 public:
-	shapeSorter(std::vector<shape*>& shapes)
-		:_shapes{ shapes }{}
+	shapeSorter(std::vector<std::unique_ptr<shape>>& shapes)
+		:_shapes{ shapes } {}
 
 	void printShapes(std::string shapeType) {
-		std::vector<shape*>::iterator it;
+		std::vector<std::unique_ptr<shape>>::iterator it;
 
 		for (it = _shapes.begin(); it != _shapes.end(); ++it) {
 			if ((*it)->shapeType() == shapeType) {
@@ -144,9 +145,9 @@ public:
 	}
 
 	void printShapes(int sideNo) {
-		std::vector<shape*>::iterator it;
+		std::vector<std::unique_ptr<shape>>::iterator it;
 
-		for(it = _shapes.begin(); it != _shapes.end(); ++it) {
+		for (it = _shapes.begin(); it != _shapes.end(); ++it) {
 			if ((*it)->sideNo() == sideNo) {
 				(*it)->print();
 			}
@@ -164,10 +165,10 @@ public:
 	}
 
 private:
-	std::vector<shape*>& _shapes;
+	std::vector<std::unique_ptr<shape>>& _shapes;
 
 	void printShapes() {
-		std::vector<shape*>::iterator it;
+		std::vector<std::unique_ptr<shape>>::iterator it;
 
 		for (it = _shapes.begin(); it != _shapes.end(); ++it) {
 			(*it)->print();
@@ -176,7 +177,7 @@ private:
 
 	struct dec_area_sort
 	{
-		bool operator() (shape* shape1, shape* shape2)
+		bool operator() (std::unique_ptr<shape>& shape1, std::unique_ptr<shape>& shape2)
 		{
 			return (shape1->area() > shape2->area());
 		}
@@ -184,15 +185,15 @@ private:
 
 	struct dec_perimiter_sort
 	{
-		bool operator() (shape* shape1, shape* shape2)
+		bool operator() (std::unique_ptr<shape>& shape1, std::unique_ptr<shape>& shape2)
 		{
 			return (shape1->perimiter() > shape2->perimiter());
 		}
 	};
 };
 
-class shapeGenerator{
-public: 
+class shapeGenerator {
+public:
 	shapeGenerator() {
 		srand((unsigned)time(0));
 	}
@@ -202,24 +203,32 @@ public:
 			int x = rand() % 4;
 
 			switch (x) {
-				case 0: //square
-					_shapes.push_back(unique_ptr<square> new square(randomFloat(1.0, maxLength)));
-				case 1: //rectangle
-					_shapes.push_back(unique_ptr<rectangle> new rectangle(randomFloat(1.0, maxLength), randomFloat(1.0, maxLength)));
-				case 2: //triangle
-					_shapes.push_back(unique_ptr<triangle> new triangle(randomFloat(1.0, maxLength), randomFloat(1.0, maxLength)));
-				case 3: //circle
-					_shapes.push_back(unique_ptr<circle> new circle(randomFloat(1.0, maxLength)));
+			case 0: { //square
+				std::unique_ptr<square> newShape = std::make_unique<square>(randomFloat(1.0, maxLength));
+				_shapes.push_back(std::move(newShape));
+				}
+			case 1: {//rectangle
+				std::unique_ptr<rectangle> newShape = std::make_unique<rectangle>(randomFloat(1.0, maxLength), randomFloat(1.0, maxLength));
+				_shapes.push_back(std::move(newShape));
+				}
+			case 2: {//triangle
+				std::unique_ptr<triangle> newShape = std::make_unique<triangle>(randomFloat(1.0, maxLength), randomFloat(1.0, maxLength));
+				_shapes.push_back(std::move(newShape));
+				}
+			case 3: {//circle
+				std::unique_ptr<circle> newShape = std::make_unique<circle>(randomFloat(1.0, maxLength));
+				_shapes.push_back(std::move(newShape));
+				}
 			}
 		}
 	}
 
-	std::vector<shape*> returnShapes() {
+	std::vector<std::unique_ptr<shape>>& returnShapes() {
 		return _shapes;
 	}
 
 private:
-	std::vector<shape*> _shapes;
+	std::vector<std::unique_ptr<shape>> _shapes;
 
 	float randomFloat(float a, float b) {
 		float random = ((float)rand()) / (float)RAND_MAX;
@@ -238,12 +247,12 @@ int main() {
 	float maxLength = 4.0;
 	int searchSides = 4;
 	std::string searchType = "circle";
-	
+
 	//GENERATE SHAPES
 	shapeGenerator testGenerator;
 	testGenerator.generateShapes(shapeNo, maxLength);
 
-	std::vector<shape*> shapes = testGenerator.returnShapes();
+	std::vector<std::unique_ptr<shape>>& shapes = testGenerator.returnShapes();
 
 	//SORT SHAPES
 	shapeSorter testSorter(shapes);
