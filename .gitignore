@@ -22,3 +22,5 @@ builds/*
 *.exe
 *.out
 *.app
+/exercises-cpp/donald_chung/out/build/x64-Debug
+/.vs
