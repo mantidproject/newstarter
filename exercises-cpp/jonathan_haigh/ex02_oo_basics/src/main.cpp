@@ -71,7 +71,6 @@ public:
 	void match_type(std::string name) {
 		for (Shape el : shape_list) {
 			if (el.name == name) {
-				//std::cout << el.print_values() << std::endl;
 				el.print_values();
 			}
 		}
