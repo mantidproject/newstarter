@@ -67,15 +67,31 @@ def sanitize_text(text: str):
 # count instances of words longer than 4 characters
 def count_words(text: str):
     """
-    Count instances of words longer than 4 characters
-    """
-    pass
+    Count instances of words longer than 4 characters and return as
+    a sorted array of tuples in ascending order [(word, count), (word, count)]
 
+    @param text: str - text to count words in
+    @return: list - sorted array of tuples in ascending order [(word, count), (word, count)]
+    """
+
+    words_frequency_list = []
+    string_list = text.split()
+    unique_words = set(string_list) # set of unique words
+
+    # Append words and frequency to list where words are longer than 4 characters
+    for words in unique_words:
+        if len(words) > 4:
+            words_frequency_list.append((words, string_list.count(words)))
+
+    return sorted( words_frequency_list, key=lambda t: t[1], reverse=True)
 
 # validate if file exists and is a file
 def validate_file(filename: str):
     """
     Validate if file exists and is a file
+
+    @param filename: str - filename to validate
+    @exception: OSError - if file does not exist or is not a file
     """
 
     # check file exists
