@@ -14,6 +14,8 @@ You only need to consider the following punctuation characters .,?'"!():
 return error and status information to the user of the command line tool.
 5). Print the results to screen showing the unique words and the number of
 uses in descending order of usage, e.g.
+
+Script usage: `python main.py text.txt`
 """
 
 import sys
@@ -109,26 +111,26 @@ def validate_file(filename: str):
         print(f"{filename} is not a text file")
         sys.exit(1)
 
-# sort words by usage in descending order
-def sort_words_by_usage(words: dict):
+def print_words(words: list):
     """
-    Sort words by usage High to Low
-    """
-    pass
+    Print out words and usage nicely in two evenly spaced columns Word and Usage
 
-# print out words and usage
-def print_words(words: dict):
+    @param words: list - list of tuples [(word, count), (word, count)]
     """
-    Print out words and usage
-    """
-    pass
+    print("Word".ljust(20), "Usage")
+    print("----".ljust(20), "-----")
+    for word in words:
+        print(word[0].ljust(20), word[1])
+
 
 def main():
     """Main method"""
-    # read in text file from user flags passed in
+    # Read in text file from user flags passed in
     filename = sys.argv[1]
     text = read_text_file(filename)
     sanitized_text = sanitize_text(text)
+    word_frequency = count_words(sanitized_text)
+    print_words(word_frequency)
 
 if __name__ == "__main__":
     main()
