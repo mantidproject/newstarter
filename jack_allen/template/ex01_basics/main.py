@@ -2,22 +2,16 @@
 
 """
 A script to answer the solution for Exercise 1 which is to create a command line program:
-
 Write a command line program that will:
-
 1). Take a filename of an ascii file as an argument (you can use the example file here)
-
 2). Load that ascii file.
-
 3). Count the number of occurrences of unique words (longer than 4 characters and
 split hyphenated words, treating each part as different words).
 It should be case and punctuation insensitive.
 You only need to consider the following punctuation characters .,?'"!():
 (hint: you will need a backslash escape character for the double-quote)
-
 4). Consider handling of common error cases, such as the wrong file name specified. R
-eturn error and status information to the user of the command line tool.
-
+return error and status information to the user of the command line tool.
 5). Print the results to screen showing the unique words and the number of
 uses in descending order of usage, e.g.
 """
@@ -31,6 +25,9 @@ def read_text_file(filename: str):
     Read in a text file and return a string.
     Reading in the file as a string will allow us to manipulate the text
     (choosing not to stream assuming the file is small)))
+
+    @param filename: str - filename to read in
+    @return: str - The raw pre-processed text from the file
     """
     # check file exsists and return error if not
     validate_file(filename)
@@ -45,19 +42,15 @@ def read_text_file(filename: str):
 
     return text
 
-
-# Split hyphenated strings
-def split_hyphenated_strings(hyphenated_word:str):
+def sanitize_text(text: str):
     """
-    Split hyphenated words into two seperate words and return as seperate string values
-    """
-    pass
+    Sanitize raw text to:
+     - strip out punctuation from text such as .,?'"!() :
+     - separate hyphenated words
+     - standardize to lower case
 
-
-# strip out punctuation from text such as .,?'"!():
-def strip_punctuation(text: str):
-    """
-    Strip out punctuation from text such as .,?'"!():
+    @param text: str - raw text to sanitize
+    @return: str - sanitized text
     """
     special_characters = [".", ",", "?", "'", '"', "!", "(", ")", ":"]
     text = text.lower() # convert to lower case
@@ -65,11 +58,11 @@ def strip_punctuation(text: str):
     for word in text:
         if word in special_characters:
             text = text.replace(word, "")
-    
-    text.strip('\"') # removes double quotes
 
+    text.strip('"') # removes double quotes
+
+    text = text.replace("-", " ") # split hyphenated words
     return text
-        
 
 # count instances of words longer than 4 characters
 def count_words(text: str):
@@ -119,8 +112,7 @@ def main():
     # read in text file from user flags passed in
     filename = sys.argv[1]
     text = read_text_file(filename)
-    sanitisied_text = strip_punctuation(text)
-    print(sanitisied_text)
+    sanitized_text = sanitize_text(text)
 
 if __name__ == "__main__":
     main()
