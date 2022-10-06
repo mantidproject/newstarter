@@ -17,7 +17,7 @@ Write a command line program that will:
     5). Print the results to screen showing the unique words and the number of
     uses in descending order of usage, e.g.
 
-Script usage: 
+Script usage:
 The text file used as input must be in the same directory as the script to work
 
 Run the following command in your terminal to run the script: `python main.py text.txt`
