@@ -1,3 +1,12 @@
+fullstop .
+comma ,
+question ?
+single speech mark'
+double speech mark "
+explanation mark!
+open bracket (
+close bracket )
+double colon :
 Now you are ready to code the solution to the exercise in your chosen native build environment.
 As you work use the git commands to commit to your branch and push to GitHub.
 When you think you have completed the exercise you can use the continuous integration build servers to check your work. To do this you first need to create a pull-request. See create a pull request for your branch so that it can be reviewed by a senior developer.

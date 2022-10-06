@@ -57,9 +57,19 @@ def split_hyphenated_strings(hyphenated_word:str):
 # strip out punctuation from text such as .,?'"!():
 def strip_punctuation(text: str):
     """
-    Strip out punctuation from text
+    Strip out punctuation from text such as .,?'"!():
     """
-    pass
+    special_characters = [".", ",", "?", "'", '"', "!", "(", ")", ":"]
+    text = text.lower() # convert to lower case
+    # Strip text of special characters such as uch as .,?'"!():
+    for word in text:
+        if word in special_characters:
+            text = text.replace(word, "")
+    
+    text.strip('\"') # removes double quotes
+
+    return text
+        
 
 # count instances of words longer than 4 characters
 def count_words(text: str):
@@ -109,7 +119,8 @@ def main():
     # read in text file from user flags passed in
     filename = sys.argv[1]
     text = read_text_file(filename)
-    print(text)
+    sanitisied_text = strip_punctuation(text)
+    print(sanitisied_text)
 
 if __name__ == "__main__":
     main()
