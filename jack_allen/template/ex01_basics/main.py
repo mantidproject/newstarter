@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
 
 """
-A script to answer the solution for Exercise 1 which is to create a command line program:
-Write a command line program that will:
-1). Take a filename of an ascii file as an argument (you can use the example file here)
-2). Load that ascii file.
-3). Count the number of occurrences of unique words (longer than 4 characters and
-split hyphenated words, treating each part as different words).
-It should be case and punctuation insensitive.
-You only need to consider the following punctuation characters .,?'"!():
-(hint: you will need a backslash escape character for the double-quote)
-4). Consider handling of common error cases, such as the wrong file name specified. R
-return error and status information to the user of the command line tool.
-5). Print the results to screen showing the unique words and the number of
-uses in descending order of usage, e.g.
+A script following function programming paradigm to answer the solution
+for Exercise 1 which is to create a command line program:
 
-Script usage: `python main.py text.txt`
+Write a command line program that will:
+    1). Take a filename of an ascii file as an argument (you can use the example file here)
+    2). Load that ascii file.
+    3). Count the number of occurrences of unique words (longer than 4 characters and
+    split hyphenated words, treating each part as different words).
+    It should be case and punctuation insensitive.
+    You only need to consider the following punctuation characters .,?'"!():
+    (hint: you will need a backslash escape character for the double-quote)
+    4). Consider handling of common error cases, such as the wrong file name specified. R
+    return error and status information to the user of the command line tool.
+    5). Print the results to screen showing the unique words and the number of
+    uses in descending order of usage, e.g.
+
+Script usage: 
+The text file used as input must be in the same directory as the script to work
+
+Run the following command in your terminal to run the script: `python main.py text.txt`
 """
 
 import sys
@@ -31,15 +36,14 @@ def read_text_file(filename: str):
     @param filename: str - filename to read in
     @return: str - The raw pre-processed text from the file
     """
-    # check file exsists and return error if not
-    validate_file(filename)
+    validate_file(filename)  # check file exists and return error if not
 
     # open file and read in contents
     try:
         with open(filename, "r", encoding="UTF-8") as text_file:
             text = text_file.read()
-    except OSError as fileerror:
-        print(f"Error reading file {filename}: {fileerror}")
+    except OSError as file_error:
+        print(f"Error reading file {filename}: {file_error}")
         sys.exit(1)
 
     return text
@@ -67,7 +71,7 @@ def sanitize_text(text: str):
     return text
 
 # count instances of words longer than 4 characters
-def count_words(text: str):
+def sorted_word_frequency(text: str):
     """
     Count instances of words longer than 4 characters and return as
     a sorted array of tuples in ascending order [(word, count), (word, count)]
@@ -126,11 +130,11 @@ def print_words(words: list):
 def main():
     """Main method"""
     # Read in text file from user flags passed in
-    filename = sys.argv[1]
-    text = read_text_file(filename)
-    sanitized_text = sanitize_text(text)
-    word_frequency = count_words(sanitized_text)
-    print_words(word_frequency)
+    filename = sys.argv[1] # get filename from user flags
+    text = read_text_file(filename) # read in text file
+    sanitized_text = sanitize_text(text) # sanitize raw text
+    word_frequency = sorted_word_frequency(sanitized_text) # count word frequency
+    print_words(word_frequency) # print words
 
 if __name__ == "__main__":
     main()
