@@ -43,18 +43,22 @@ class Square(Shape):
         self.side = side
 
     @property
-    def get_area(self):
+    def get_area(self) -> int:
         """
         Calculate area of square
+
+        @return: area of square
         """
-        pass
+        return self.side * self.side
 
     @property
-    def get_perimeter(self):
+    def get_perimeter(self) -> int:
         """
         Calculate perimeter of square
+
+        @return: perimeter of square
         """
-        pass
+        return self.side * self.sides
 
 
 class Rectangle(Shape):
@@ -65,21 +69,24 @@ class Rectangle(Shape):
         super().__init__("Rectangle", 4)
         self.side1 = side1
         self.side2 = side2
-        # self.sides = 4
 
     @property
-    def get_area(self):
+    def get_area(self) -> int:
         """
         Calculate area of rectangle
+
+        @return: area of rectangle
         """
-        pass
+        return self.side1 * self.side2
 
     @property
     def get_perimeter(self):
         """
         Calculate perimeter of rectangle
+
+        @return: perimeter of rectangle
         """
-        pass
+        return (self.side1 * 2) + (self.side2 * 2)
 
 
 class Circle(Shape):
@@ -91,18 +98,23 @@ class Circle(Shape):
         self.radius = radius
 
     @property
-    def get_area(self):
+    def get_area(self) -> float:
         """
         Calculate area of circle
+
+        @return: area of circle
         """
-        pass
+        return self.radius * self.radius * 3.14
 
     @property
     def get_perimeter(self):
         """
         Calculate perimeter of circle
+
+        @return: perimeter of circle
         """
-        pass
+        return 2 * 3.14 * self.radius
+
 
 
 class Triangle(Shape):
@@ -115,25 +127,29 @@ class Triangle(Shape):
         self.base = base
 
     @property
-    def get_area(self):
+    def get_area(self) -> float:
         """
         Calculate area of triangle
+
+        @return: area of triangle
         """
-        pass
+        return (self.base * self.height) / 2
 
     @property
-    def get_perimeter(self):
+    def get_perimeter(self) -> float:
         """
         Calculate perimeter of triangle
+
+        @return: perimeter of triangle
         """
-        pass
+        return self.base + 2 * (self.height ** 2 + (self.base ** 2 / 4)) ** 0.5
 
 def main():
     """
     Main method to run the program
     """
-    # Create a list of shapes
-    shapes = []
+   # Create a list of shapes
+    shapes = [Square(5), Rectangle(5, 10), Circle(5), Triangle(5, 10)]
 
 if __name__ == "__main__":
     main()
