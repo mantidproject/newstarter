@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+#pylint: disable=anomalous-backslash-in-string
 """
 Solution for Exercise 2
 
@@ -20,18 +20,23 @@ Write a command line program that:
         4. Print out the Shapes in order of perimeter descending
 """
 
+#pylint: disable=too-few-public-methods
 class Shape:
     """
     Superclass for all shapes to to be defined:
     square (side1),
     rectangle(side1, side2), circle(radius), triangle(height, base). assuming triangle is isosceles.
     """
-    def __init__(self, type: str, sides: int):
-        self.type = type
+    def __init__(self, shape_type: str, sides: int):
+        """
+        shape_type: type of shape
+        sides: number of sides
+        """
+        self.shape_type = shape_type
         self.sides = sides
 
     def __str__(self) -> str:
-        return f"{self.type} with {self.sides} sides"
+        return f"{self.shape_type} with {self.sides} sides"
 
 
 class Square(Shape):
@@ -152,14 +157,14 @@ class ShapeSorter:
     def __init__(self, shapes: list):
         self.shapes = shapes
 
-    def print_shapes_by_type(self, type: str) -> None:
+    def print_shapes_by_type(self, shape_type: str) -> None:
         """
-        Print shapes by type
+        Print shapes by type of shape
 
-        @param type: type of shape
+        @param shape_type: type of shape
         """
         for shape in self.shapes:
-            if shape.type.lower() == type.lower():
+            if shape.shape_type.lower() == shape_type.lower():
                 print(shape)
 
     def print_shapes_by_sides(self, sides: int) -> None:
