@@ -33,6 +33,101 @@ class Shape:
     def __str__(self) -> str:
         return f"{self.type} with {self.sides} sides"
 
+
+class Square(Shape):
+    """
+    Square class
+    """
+    def __init__(self, side: int):
+        super().__init__("Square", 4)
+        self.side = side
+
+    @property
+    def get_area(self):
+        """
+        Calculate area of square
+        """
+        pass
+
+    @property
+    def get_perimeter(self):
+        """
+        Calculate perimeter of square
+        """
+        pass
+
+
+class Rectangle(Shape):
+    """
+    Rectangle class
+    """
+    def __init__(self, side1: int, side2: int):
+        super().__init__("Rectangle", 4)
+        self.side1 = side1
+        self.side2 = side2
+        # self.sides = 4
+
+    @property
+    def get_area(self):
+        """
+        Calculate area of rectangle
+        """
+        pass
+
+    @property
+    def get_perimeter(self):
+        """
+        Calculate perimeter of rectangle
+        """
+        pass
+
+
+class Circle(Shape):
+    """
+    Circle class
+    """
+    def __init__(self, radius: int):
+        super().__init__("Circle", 0)
+        self.radius = radius
+
+    @property
+    def get_area(self):
+        """
+        Calculate area of circle
+        """
+        pass
+
+    @property
+    def get_perimeter(self):
+        """
+        Calculate perimeter of circle
+        """
+        pass
+
+
+class Triangle(Shape):
+    """
+    Triangle class
+    """
+    def __init__(self, height: int, base: int):
+        super().__init__("Triangle", 3)
+        self.height = height
+        self.base = base
+
+    @property
+    def get_area(self):
+        """
+        Calculate area of triangle
+        """
+        pass
+
+    @property
+    def get_perimeter(self):
+        """
+        Calculate perimeter of triangle
+        """
+        pass
+
 def main():
     """
     Main method to run the program
