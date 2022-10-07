@@ -144,6 +144,41 @@ class Triangle(Shape):
         """
         return self.base + 2 * (self.height ** 2 + (self.base ** 2 / 4)) ** 0.5
 
+
+class ShapeSorter:
+    """
+    Class to sort shapes
+    """
+    def __init__(self, shapes: list):
+        self.shapes = shapes
+
+    def print_shapes_by_type(self, type: str) -> None:
+        """
+        Print shapes by type
+
+        @param type: type of shape
+        """
+        pass
+
+    def print_shapes_by_sides(self, sides: int) -> None:
+        """
+        Print shapes by number of sides
+
+        @param sides: number of sides
+        """
+        pass
+
+    def print_shapes_by_area(self) -> None:
+        """
+        Print shapes by area
+        """
+        pass
+    def print_shapes_by_perimeter(self) -> None:
+        """
+        Print shapes by perimeter
+        """
+        pass
+
 def main():
     """
     Main method to run the program
