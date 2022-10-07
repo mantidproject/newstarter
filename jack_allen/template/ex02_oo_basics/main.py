@@ -158,7 +158,9 @@ class ShapeSorter:
 
         @param type: type of shape
         """
-        pass
+        for shape in self.shapes:
+            if shape.type.lower() == type.lower():
+                print(shape)
 
     def print_shapes_by_sides(self, sides: int) -> None:
         """
@@ -166,18 +168,23 @@ class ShapeSorter:
 
         @param sides: number of sides
         """
-        pass
+        for shape in self.shapes:
+            if shape.sides == sides:
+                print(shape)
 
     def print_shapes_by_area(self) -> None:
         """
         Print shapes by area
         """
-        pass
+        for shape in sorted(self.shapes, key=lambda x: x.get_area, reverse=True):
+            print(shape)
+
     def print_shapes_by_perimeter(self) -> None:
         """
         Print shapes by perimeter
         """
-        pass
+        for shape in sorted(self.shapes, key=lambda x: x.get_perimeter, reverse=True):
+            print(shape)
 
 def main():
     """
@@ -185,6 +192,13 @@ def main():
     """
    # Create a list of shapes
     shapes = [Square(5), Rectangle(5, 10), Circle(5), Triangle(5, 10)]
+
+    # Create ShapeSorter object and print shape by criteria
+    shape_sorter = ShapeSorter(shapes)
+    shape_sorter.print_shapes_by_type("Square")
+    shape_sorter.print_shapes_by_sides(4)
+    shape_sorter.print_shapes_by_area()
+    shape_sorter.print_shapes_by_perimeter()
 
 if __name__ == "__main__":
     main()
