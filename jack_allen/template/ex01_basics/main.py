@@ -26,6 +26,8 @@ Run the following command in your terminal to run the script: `python main.py te
 import sys
 import os
 
+from collections import Counter
+
 # Method to read a text file and return as a string
 def read_text_file(filename: str):
     """
@@ -48,7 +50,7 @@ def read_text_file(filename: str):
 
     return text
 
-def sanitize_text(text: str):
+def sanitize_text(text: str) -> str:
     """
     Sanitize raw text to:
      - strip out punctuation from text such as .,?'"!() :
@@ -59,19 +61,16 @@ def sanitize_text(text: str):
     @return: str - sanitized text
     """
     special_characters = [".", ",", "?", "'", '"', "!", "(", ")", ":"]
-    text = text.lower() # convert to lower case
-    # Strip text of special characters such as uch as .,?'"!():
-    for word in text:
+    # # Strip text of special characters such as uch as .,?'"!():
+    for word in text.lower():
         if word in special_characters:
             text = text.replace(word, "")
 
-    text.strip('"') # removes double quotes
+    text.strip('"') # Removes double quotes
 
-    text = text.replace("-", " ") # split hyphenated words
-    return text
+    return text.replace("-", " ") # Split hyphenated words
 
-# count instances of words longer than 4 characters
-def sorted_word_frequency(text: str):
+def sorted_word_frequency(text: str) -> list:
     """
     Count instances of words longer than 4 characters and return as
     a sorted array of tuples in ascending order [(word, count), (word, count)]
@@ -80,19 +79,12 @@ def sorted_word_frequency(text: str):
     @return: list - sorted array of tuples in ascending order [(word, count), (word, count)]
     """
 
-    words_frequency_list = []
-    string_list = text.split()
-    unique_words = set(string_list) # set of unique words
+    frequency = Counter(text.split()) # Count instances of words
 
-    # Append words and frequency to list where words are longer than 4 characters
-    for words in unique_words:
-        if len(words) > 4:
-            words_frequency_list.append((words, string_list.count(words)))
+    # Sort by value in ascending order
+    return sorted(frequency.items(), key=lambda pair: pair[1], reverse=True)
 
-    return sorted( words_frequency_list, key=lambda t: t[1], reverse=True)
-
-# validate if file exists and is a file
-def validate_file(filename: str):
+def validate_file(filename: str) -> bool:
     """
     Validate if file exists and is a file
 
@@ -100,41 +92,40 @@ def validate_file(filename: str):
     @exception: OSError - if file does not exist or is not a file
     """
 
-    # check file exists
+    # Check file exists
     if not os.path.exists(filename):
         print(f"File {filename} does not exist")
         sys.exit(1)
 
-    # check file is a file
+    # Check file is a file
     if not os.path.isfile(filename):
         print(f"{filename} is not a file")
         sys.exit(1)
 
-    # check file is a text file
+    # Check file is a text file
     if not filename.endswith(".txt"):
         print(f"{filename} is not a text file")
         sys.exit(1)
 
-def print_words(words: list):
+def print_words(words: list) -> None:
     """
     Print out words and usage nicely in two evenly spaced columns Word and Usage
 
-    @param words: list - list of tuples [(word, count), (word, count)]
+    @param words: list - sorted list of tuples [(word, count), (word, count)]
     """
     print("Word".ljust(20), "Usage")
     print("----".ljust(20), "-----")
     for word in words:
         print(word[0].ljust(20), word[1])
 
-
 def main():
     """Main method"""
     # Read in text file from user flags passed in
-    filename = sys.argv[1] # get filename from user flags
-    text = read_text_file(filename) # read in text file
-    sanitized_text = sanitize_text(text) # sanitize raw text
-    word_frequency = sorted_word_frequency(sanitized_text) # count word frequency
-    print_words(word_frequency) # print words
+    filename = sys.argv[1] # Get filename from user flags
+    text = read_text_file(filename) # Read in text file
+    sanitized_text = sanitize_text(text) # Sanitize raw text
+    word_frequency = sorted_word_frequency(sanitized_text) # Count word frequency
+    print_words(word_frequency) # Print words and usage
 
 if __name__ == "__main__":
     main()
