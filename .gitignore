@@ -22,3 +22,6 @@ builds/*
 *.exe
 *.out
 *.app
+
+# jetbrains workspace
+.idea/*
