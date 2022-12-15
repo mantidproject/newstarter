@@ -18,11 +18,11 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
-  # add any additional source files here
 )
 
 set ( HDR_FILES
-  # add any additional header files here
+  src/Shape.h
+  src/ShapeSorter.h
 )
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )
