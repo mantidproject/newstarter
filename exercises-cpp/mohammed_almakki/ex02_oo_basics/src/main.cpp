@@ -1,22 +1,23 @@
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "Shape.h"
 #include "ShapeSorter.h"
 
 int main(int, char **)
 {
-    Shape *sq1 = new Square(2);
+    auto sq1 = std::make_shared<Square>(2);
 
-    Shape *rect1 = new Rectangle(2, 4);
-    Shape *rect2 = new Rectangle(4, 14);
+    auto rect1 = std::make_shared<Rectangle>(2, 4);
+    auto rect2 = std::make_shared<Rectangle>(4, 14);
 
-    Shape *c1 = new Circle(2);
-    Shape *c2 = new Circle(10);
+    auto c1 = std::make_shared<Circle>(2);
+    auto c2 = std::make_shared<Circle>(10);
 
-    Shape *t1 = new Triangle(2, 4);
-    Shape *t2 = new Triangle(4, 10);
+    auto t1 = std::make_shared<Triangle>(2, 4);
+    auto t2 = std::make_shared<Triangle>(4, 10);
 
-    std::vector<Shape *> shapes;
+    std::vector<std::shared_ptr<Shape>> shapes;
 
     shapes.push_back(sq1);
     shapes.push_back(rect1);

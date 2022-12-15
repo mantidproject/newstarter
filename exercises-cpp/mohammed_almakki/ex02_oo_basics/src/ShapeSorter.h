@@ -8,7 +8,7 @@
 class ShapeSorter
 {
 public:
-    ShapeSorter(const std::vector<Shape *> &shapes) : shapes{shapes} {}
+    ShapeSorter(const std::vector<std::shared_ptr<Shape>> &shapes) : shapes{shapes} {}
 
     void printShapesWithType(const std::string &type)
     {
@@ -40,7 +40,7 @@ public:
 
         std::sort(
             sortedShapes.begin(), sortedShapes.end(),
-            [](Shape *left, Shape *right)
+            [](auto left, auto right)
             {
                 return left->getArea() > right->getArea();
             });
@@ -58,7 +58,7 @@ public:
 
         std::sort(
             sortedShapes.begin(), sortedShapes.end(),
-            [](Shape *left, Shape *right)
+            [](auto left, auto right)
             {
                 return left->getPerimeter() > right->getPerimeter();
             });
@@ -71,5 +71,5 @@ public:
     }
 
 private:
-    const std::vector<Shape *> &shapes;
+    const std::vector<std::shared_ptr<Shape>> &shapes;
 };
