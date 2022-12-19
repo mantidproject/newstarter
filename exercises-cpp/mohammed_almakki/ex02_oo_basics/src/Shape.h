@@ -1,49 +1,70 @@
 #pragma once
 
 #include <string>
+#include <math.h>
+
+enum class ShapeType { Shape, Rectangle, Square, Circle, Triangle };
 
 class Shape
 {
 public:
-    virtual std::string getType() = 0;
-    virtual int getSidesCount() = 0;
-    virtual double getArea() = 0;
-    virtual double getPerimeter() = 0;
+    virtual inline double getArea() const = 0;
+    virtual inline double getPerimeter() const = 0;
 
-    virtual std::string toString() = 0;
+    virtual inline ShapeType getType() const = 0;
+    virtual inline std::string toString() const = 0;
 
-    Shape(int noOfSides) : noOfSides{noOfSides} {}
+    inline int getSidesCount() const {
+        return noOfSides;
+    }
 
-private:
-    int noOfSides;
+    Shape(const int& noOfSides) : noOfSides{noOfSides} {}
+
+    private:
+        const int noOfSides;
 };
 
-class Square : public Shape
+class Rectangle : public Shape
 {
 public:
-    Square(double side1) : side1{side1}, Shape(2) {}
+    Rectangle(const double& side1, const double& side2) : side1{side1}, side2{side2}, Shape(2) {}
 
-    std::string getType()
+    inline ShapeType getType() const override
     {
-        return "Square";
+        return ShapeType::Rectangle;
     }
 
-    int getSidesCount()
+    inline double getArea() const override
     {
-        return 2;
+        return side1 * side2;
     }
 
-    double getArea()
+    inline double getPerimeter() const override
     {
-        return side1 * side1;
+        return 2 * side1 + 2 * side2;
     }
 
-    double getPerimeter()
+    inline std::string toString() const override
     {
-        return 4 * side1;
+        return "Rectangle(side1=" + std::to_string(side1) + ", side2=" + std::to_string(side2) + ")";
     }
 
-    std::string toString()
+private:
+    double side1;
+    double side2;
+};
+
+class Square : public Rectangle
+{
+public:
+    Square(double side1) : side1{side1}, Rectangle(side1, side1) {}
+
+    inline ShapeType getType() const override
+    {
+        return ShapeType::Rectangle;
+    }
+
+    inline std::string toString() const override
     {
         return "Square(side=" + std::to_string(side1) + ")";
     }
@@ -52,73 +73,33 @@ private:
     double side1;
 };
 
-class Rectangle : public Shape
-{
-public:
-    Rectangle(double side1, double side2) : side1{side1}, side2{side2}, Shape(2) {}
-
-    std::string getType()
-    {
-        return "Rectangle";
-    }
-
-    int getSidesCount()
-    {
-        return 2;
-    }
-
-    double getArea()
-    {
-        return side1 * side2;
-    }
-
-    double getPerimeter()
-    {
-        return 2 * side1 + 2 * side2;
-    }
-
-    std::string toString()
-    {
-        return "Rectangle(side1=" + std::to_string(side1) + ", side2=" + std::to_string(side2) + ")";
-    }
-
-private:
-    double side1, side2;
-};
-
 class Circle : public Shape
 {
 public:
     Circle(double radius) : radius{radius}, Shape(0) {}
 
-    std::string getType()
+    inline ShapeType getType() const override
     {
-        return "Circle";
+        return ShapeType::Circle;
     }
 
-    int getSidesCount()
+    inline double getArea() const override
     {
-        return 0;
+        return M_PI * radius * radius;
     }
 
-    double getArea()
+    inline double getPerimeter() const override
     {
-        return pi * radius * radius;
+        return 2 * M_PI * radius;
     }
 
-    double getPerimeter()
-    {
-        return 2 * pi * radius;
-    }
-
-    std::string toString()
+    inline std::string toString() const override
     {
         return "Circle(radius=" + std::to_string(radius) + ")";
     }
 
 private:
     double radius;
-    const double pi = 3.14159265358979323846;
 };
 
 class Triangle : public Shape
@@ -126,31 +107,27 @@ class Triangle : public Shape
 public:
     Triangle(double height, double base) : height{height}, base{base}, Shape(3) {}
 
-    std::string getType()
+    inline ShapeType getType() const override
     {
-        return "Triangle";
+        return ShapeType::Triangle;
     }
 
-    int getSidesCount()
-    {
-        return 3;
-    }
-
-    double getArea()
+    inline double getArea() const override
     {
         return 0.5 * height * base;
     }
 
-    double getPerimeter()
+    inline double getPerimeter() const override
     {
         return base + 2 * std::sqrt(height * height + (base * base) / 4);
     }
 
-    std::string toString()
+    inline std::string toString() const override
     {
         return "Triangle(height=" + std::to_string(height) + ", base=" + std::to_string(base) + ")";
     }
 
 private:
-    double height, base;
+    double height;
+    double base;
 };

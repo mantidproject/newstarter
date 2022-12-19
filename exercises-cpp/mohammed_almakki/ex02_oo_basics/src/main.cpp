@@ -28,7 +28,7 @@ int main(int, char **)
     shapes.push_back(t2);
 
     ShapeSorter sorter(shapes);
-    sorter.printShapesWithType("Rectangle");
+    sorter.printShapesWithType(ShapeType::Rectangle);
     sorter.printShapesWithSides(2);
     sorter.printOrderedShapesByArea();
     sorter.printOrderedShapesByPerimeter();
