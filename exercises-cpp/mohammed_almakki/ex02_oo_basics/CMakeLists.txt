@@ -18,6 +18,7 @@ include ( CommonSetup )
 
 set ( SRC_FILES
   src/main.cpp
+  src/ShapeSorter.cpp
 )
 
 set ( HDR_FILES

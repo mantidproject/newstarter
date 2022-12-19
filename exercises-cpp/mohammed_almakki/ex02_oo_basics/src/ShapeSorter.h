@@ -1,75 +1,24 @@
 #pragma once
 
+#include <functional>
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include "Shape.h"
+
+typedef std::function<bool(const std::shared_ptr<Shape>&)> ShapeFilterPredicate;
 
 class ShapeSorter
 {
 public:
     ShapeSorter(const std::vector<std::shared_ptr<Shape>> &shapes) : shapes{shapes} {}
 
-    void printShapesWithType(const std::string &type)
-    {
-        for (auto shape : shapes)
-        {
-            if (shape->getType() == type)
-            {
-                std::cout << shape->toString() << " ";
-            }
-        }
-        std::cout << "\n";
-    }
-
-    void printShapesWithSides(const int &sidesCount)
-    {
-        for (auto shape : shapes)
-        {
-            if (shape->getSidesCount() == sidesCount)
-            {
-                std::cout << shape->toString() << " ";
-            }
-        }
-        std::cout << "\n";
-    }
-
-    void printOrderedShapesByArea()
-    {
-        auto sortedShapes = shapes;
-
-        std::sort(
-            sortedShapes.begin(), sortedShapes.end(),
-            [](auto left, auto right)
-            {
-                return left->getArea() > right->getArea();
-            });
-
-        for (auto shape : sortedShapes)
-        {
-            std::cout << shape->toString() << " ";
-        }
-        std::cout << "\n";
-    }
-
-    void printOrderedShapesByPerimeter()
-    {
-        auto sortedShapes = shapes;
-
-        std::sort(
-            sortedShapes.begin(), sortedShapes.end(),
-            [](auto left, auto right)
-            {
-                return left->getPerimeter() > right->getPerimeter();
-            });
-
-        for (auto shape : sortedShapes)
-        {
-            std::cout << shape->toString() << " ";
-        }
-        std::cout << "\n";
-    }
+    void printShapesWithType(const ShapeType &type) const;
+    void printShapesWithSides(const int &sidesCount) const;
+    void printOrderedShapesByArea() const;
+    void printOrderedShapesByPerimeter() const;
 
 private:
+    void filterAndPrintByPredicate(const std::vector<std::shared_ptr<Shape>> &, const ShapeFilterPredicate&) const;
     const std::vector<std::shared_ptr<Shape>> &shapes;
 };
