@@ -44,7 +44,7 @@ int main(int argc, char** argv)
 	multimap<int, string> sortedWordCounter = sortWords(wordCounter, lengthOfLongestWord);
 
 	ofstream outputStream(outputFilePath);
-	outputStream << "Word\tUsage\n\r";
+	outputStream << "Word" + padding("Word", lengthOfLongestWord) + "    Usage\n\r";
 	auto w = sortedWordCounter.rbegin();
 	for (; w != sortedWordCounter.rend(); ++w)
 		outputStream << w->second + padding(w->second, lengthOfLongestWord) + "    " + to_string(w->first) + "\n";
