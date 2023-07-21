@@ -4,6 +4,7 @@
 using namespace std;
 
 string padding(string word, size_t targetLength);
+void extractWordsFromLine(string lineText, regex splitter, map<string, int> &wordCounter);
 
 int main(int argc, char** argv)
 {
@@ -34,21 +35,7 @@ int main(int argc, char** argv)
 	regex splitter("[ -.,?'\"!():]");
 
 	for ( lineText; getline(fileReader, lineText); )
-	{
-		sregex_token_iterator iter(lineText.begin(), lineText.end(), splitter, -1), end;
-		for ( ; iter != end; ++iter )
-		{
-			string word = *iter;
-			transform(word.begin(), word.end(), word.begin(), [](unsigned char c) { return tolower(c); });
-			if ( word.length() > 4 ) 
-			{
-				if ( wordCounter.count(word) == 0 )
-					wordCounter.insert({ word, 1 });
-				else
-					wordCounter[word]++;
-			}
-		}
-	}
+		extractWordsFromLine(lineText, splitter, wordCounter);
 
 	fileReader.close();
 
@@ -76,4 +63,21 @@ string padding(string word, size_t targetLength)
 	for (int i = 0; i < targetLength - word.length(); i++)
 		result += " ";
 	return result;
+}
+
+void extractWordsFromLine(string lineText, regex splitter, map<string, int> &wordCounter)
+{
+	sregex_token_iterator splitLine(lineText.begin(), lineText.end(), splitter, -1), end;
+	for (; splitLine != end; ++splitLine)
+	{
+		string word = *splitLine;
+		transform(word.begin(), word.end(), word.begin(), [](unsigned char c) { return tolower(c); });
+		if (word.length() > 4)
+		{
+			if (wordCounter.count(word) == 0)
+				wordCounter.insert({ word, 1 });
+			else
+				wordCounter[word]++;
+		}
+	}
 }
