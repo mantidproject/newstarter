@@ -63,8 +63,10 @@ int main(int argc, char** argv)
 
 	ofstream outputStream(outputFilePath);
 	outputStream << "Word\tUsage\n\r";
-	for (const auto w : sortedWordCounter)
-		outputStream << w.second + padding(w.second, lengthOfLongestWord) + "    " + to_string(w.first) + "\n";
+	auto w = sortedWordCounter.rbegin();
+	for (; w != sortedWordCounter.rend(); ++w)
+		outputStream << w->second + padding(w->second, lengthOfLongestWord) + "    " + to_string(w->first) + "\n";
+
 	outputStream.close();
 }
 
