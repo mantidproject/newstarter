@@ -5,6 +5,7 @@ using namespace std;
 
 string padding(string word, size_t targetLength);
 void extractWordsFromLine(string lineText, regex splitter, map<string, int> &wordCounter);
+multimap<int, string> sortWords(map<string, int>& wordCounter, size_t& lengthOfLongestWord);
 
 int main(int argc, char** argv)
 {
@@ -39,14 +40,8 @@ int main(int argc, char** argv)
 
 	fileReader.close();
 
-	multimap<int, string> sortedWordCounter;
 	size_t lengthOfLongestWord = 0;
-	for (const auto w : wordCounter) 
-	{
-		sortedWordCounter.insert({ w.second, w.first });
-		if ( w.first.length() > lengthOfLongestWord  )
-			lengthOfLongestWord = w.first.length();
-	}
+	multimap<int, string> sortedWordCounter = sortWords(wordCounter, lengthOfLongestWord);
 
 	ofstream outputStream(outputFilePath);
 	outputStream << "Word\tUsage\n\r";
@@ -80,4 +75,16 @@ void extractWordsFromLine(string lineText, regex splitter, map<string, int> &wor
 				wordCounter[word]++;
 		}
 	}
+}
+
+multimap<int, string> sortWords(map<string, int> &wordCounter, size_t& lengthOfLongestWord)
+{
+	multimap<int, string> sortedWordCounter;
+	for (const auto w : wordCounter)
+	{
+		sortedWordCounter.insert({ w.second, w.first });
+		if (w.first.length() > lengthOfLongestWord)
+			lengthOfLongestWord = w.first.length();
+	}
+	return sortedWordCounter;
 }
