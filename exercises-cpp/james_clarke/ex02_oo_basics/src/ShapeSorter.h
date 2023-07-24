@@ -7,11 +7,11 @@ using namespace std;
 
 class ShapeSorter {
 public:
-	ShapeSorter(vector<Shape*> shapes);
+	ShapeSorter(vector<shared_ptr<Shape>> shapes);
 	void OfType(string type);
 	void WithSides();
 	void AreaDescending();
 	void PerimeterDescending();
 private:
-	vector<Shape*> _shapes;
+	vector<shared_ptr<Shape>> _shapes;
 };

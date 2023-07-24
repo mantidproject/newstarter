@@ -1,6 +1,6 @@
 #include "ShapeSorter.h"
 
-ShapeSorter::ShapeSorter(vector<Shape*> shapes) {
+ShapeSorter::ShapeSorter(vector<shared_ptr<Shape>> shapes) {
 	_shapes = shapes;
 }
 
