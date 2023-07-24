@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <typeinfo>
@@ -13,5 +14,6 @@ public:
 	void AreaDescending();
 	void PerimeterDescending();
 private:
+	vector<shared_ptr<Shape>> copyPointers();
 	vector<shared_ptr<Shape>> _shapes;
 };
