@@ -26,4 +26,9 @@ int main(int, char**)
 
 	auto sorter = ShapeSorter(shapes);
 	sorter.OfType(shapes[0]->Type());
+	cout << '\n';
+	sorter.WithSides(4);
+	cout << '\n';
+	sorter.WithSides(6);
+	cout << '\n';
 };

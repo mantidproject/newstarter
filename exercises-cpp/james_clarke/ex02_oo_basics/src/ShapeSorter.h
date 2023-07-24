@@ -9,7 +9,7 @@ class ShapeSorter {
 public:
 	ShapeSorter(vector<shared_ptr<Shape>> shapes);
 	void OfType(string type);
-	void WithSides();
+	void WithSides(int numberOfSides);
 	void AreaDescending();
 	void PerimeterDescending();
 private:
