@@ -1,7 +1,9 @@
 import re
+import sys
 
 
-def main(input_file="Holmes.txt"):
+def main():
+    input_file = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] else 'Holmes.txt'
     splitter = "[ -.,?'\"!():\n]"
     word_counter = {}
 
