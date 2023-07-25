@@ -1,5 +1,6 @@
 # Builds directory
 builds/*
+exercises-python/james_clarke/.idea/*
 
 # Compiled Object files
 *.slo
@@ -22,3 +23,6 @@ builds/*
 *.exe
 *.out
 *.app
+
+# Other
+*.pyc
