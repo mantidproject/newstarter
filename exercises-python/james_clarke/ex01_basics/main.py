@@ -1,7 +1,7 @@
 import re
 
 
-def main(input_file = "C:/Mantid/Newstarter/newstarter/exercises-python/james_clarke/ex01_basics/Holmes.txt"):
+def main(input_file="Holmes.txt"):
     splitter = "[ -.,?'\"!():\n]"
     word_counter = {}
 
