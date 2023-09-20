@@ -29,7 +29,7 @@ def main():
     # Sort in decreasing order
     word_count = dict(sorted(word_count.items(), key=lambda x : -x[1]))
 
-    print(f'{"Word":10} : Usage')
+    print(f'{"Word":10} Usage')
     for i, word in enumerate(word_count):
         print(f'{word:10} : {word_count[word]}')
         if i==30: break
