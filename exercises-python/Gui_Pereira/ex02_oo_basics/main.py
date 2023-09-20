@@ -9,7 +9,7 @@ class Square:
         self.area = self.side1**2
 
     def __str__(self):
-        return f'S{self.side1}'
+        return f'Square {self.side1}'
 
 class Rectangle:
     def __init__(self, side1, side2):
@@ -20,7 +20,7 @@ class Rectangle:
         self.area = self.side1 * self.side2
 
     def __str__(self):
-        return f'R{self.side1}x{self.side2}'
+        return f'Rectangle {self.side1}x{self.side2}'
 
 class Circle:
     def __init__(self, radius):
@@ -30,7 +30,7 @@ class Circle:
         self.area = self.radius**2 * math.pi 
 
     def __str__(self):
-        return f'C{self.radius}'
+        return f'Circle {self.radius}'
      
 class Triangle:
     def __init__(self, base, height):
@@ -41,7 +41,7 @@ class Triangle:
         self.area = self.base * self.height / 2 
 
     def __str__(self):
-        return f'T{self.base}x{self.height}'
+        return f'Triangle {self.base}x{self.height}'
 
 class ShapeSorter:
 
