@@ -31,7 +31,7 @@ def main():
 
     print(f'{"Word":10} Usage')
     for i, word in enumerate(word_count):
-        print(f'{word:10} : {word_count[word]}')
+        print(f'{word:10} {word_count[word]}')
         if i==30: break
 
 
