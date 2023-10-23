@@ -26,10 +26,10 @@ def getfilename():
 	parser.add_argument('filename', nargs='+')
 	parser.add_argument('-l', '--lines', type=int) # give option to show top number of lines
 	args = parser.parse_args()
-	print(args)
-	print(f"Entered file is: {args.filename}")
+	#print(args)
+	#print(f"Entered file is: {args.filename}")
 	#check_file = os.path.exists(args.filename)
-	print(args.filename[0], args.lines)
+	#print(args.filename[0], args.lines)
 	return args.filename[0], args.lines
 
 def readfile(filename):
