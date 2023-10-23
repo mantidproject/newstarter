@@ -62,8 +62,9 @@ def main():
 	sortedValuesCounts = [x for x in sorted(zip(counts,values),reverse=True)]
 
 	# print out words in descending order of frequency
+	print('Word    Usage')
 	for i in sortedValuesCounts[0:numlines]:
-		print(i[0],i[1])
+		print(f"{i[1]}	{i[0]}")
 	pass
 
 
