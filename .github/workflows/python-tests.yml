@@ -20,6 +20,10 @@ jobs:
           mkdir ~/files
           wget https://github.com/martyngigg/cpp-examples/raw/master/Holmes.txt -O ~/files/Holmes.txt
 
+      - name: Install numpy
+        run: |
+          pip install numpy
+
       - name: Run Python tests
         run: |
           ls -lh ~/files
