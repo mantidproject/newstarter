@@ -28,58 +28,56 @@ import numpy as np
 
 # Shape Classes here
 class square():
+	type = "Square"
+	number_sides = 4
 	def __init__(self, side1):
 		self.side1 = side1
-		self.type = "Square"
-		self.number_sides = 4
 		self.Calc_perimeter()
 		self.Calc_area()
-
 	def printinfo(self):
 		print(f"This square has side {self.side1}, side number {self.number_sides}, perimeter {self.p}, area {self.a}")
-
 	def Calc_perimeter(self):
 		self.p = 4 * self.side1
 	def Calc_area(self):
 		self.a = self.side1**2
+
 class rectangle():
+	type = "Rectangle"
+	number_sides = 4
 	def __init__(self, side1, side2):
 		self.side1 = side1
 		self.side2 = side2
-		self.type = "Rectangle"
-		self.number_sides = 4
 		self.Calc_perimeter()
 		self.Calc_area()
-
 	def printinfo(self):
 		print(f"This rectangle has sides {self.side1} and {self.side2}, side number {self.number_sides}, perimeter {self.p}, area {self.a}")
 	def Calc_perimeter(self):
 		self.p = 2 * self.side1 + 2 * self.side2
 	def Calc_area(self):
 		self.a = self.side1 * self.side2
+
 class circle():
+	type = "Circle"
+	number_sides = 1
 	def __init__(self, radius):
 		self.radius = radius
-		self.type = "Circle"
-		self.number_sides = 1
 		self.Calc_perimeter()
 		self.Calc_area()
-
 	def printinfo(self):
 		print(f"This circle has radius {self.radius}, side number {self.number_sides}, perimeter {self.p}, area {self.a}")
 	def Calc_perimeter(self):
 		self.p = 2 * np.pi * self.radius
 	def Calc_area(self):
 		self.a = np.pi * self.radius**2
+
 class triangle():
+	type = "Triangle"
+	number_sides = 3
 	def __init__(self, height, base):
 		self.height = height
 		self.base = base
-		self.type = "Triangle"
-		self.number_sides = 3
 		self.Calc_perimeter()
 		self.Calc_area()
-
 	def printinfo(self):
 		print(f"This triangle has base {self.base} and height {self.height}, side number {self.number_sides}, perimeter {self.p}, area {self.a}")
 	def Calc_perimeter(self):

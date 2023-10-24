@@ -17,54 +17,53 @@ Print the results to screen showing the unique words and the number of uses in d
 import argparse
 import re
 import numpy as np
-#import os.path
-def getfilename():
+
+def get_user_arguments():
 	# take in filename from user in command line
 	parser = argparse.ArgumentParser(
 		prog='top',
 		description='read ascii file')
 	parser.add_argument('filename', nargs='+')
-	parser.add_argument('-l', '--lines', type=int) # give option to show top number of lines
+	# give option to show top number of lines
+	parser.add_argument('-l', '--lines', type=int)
 	args = parser.parse_args()
-	#print(args)
-	#print(f"Entered file is: {args.filename}")
-	#check_file = os.path.exists(args.filename)
-	#print(args.filename[0], args.lines)
 	return args.filename[0], args.lines
 
-def readfile(filename):
+def read_file(filename):
 	f = open(filename, 'r')  # 'r' = read
 	linesRaw = f.read()
-
-	lines = re.sub(r'(\W+)', lambda x: ' '+x.group(0)+' ', linesRaw).split() # separate punctuation
-	lines = [i.lower() for i in lines] #force all strings to be lowercase
-	lines = [x for x in lines if len(x)>4] #words longer than 4 characters
+	# separate punctuation
+	lines = re.sub(r'(\W+)', lambda x: ' '+x.group(0)+' ', linesRaw).split()
+	#force all strings to be lowercase
+	lines = [i.lower() for i in lines]
+	# words longer than 4 characters
+	lines = [x for x in lines if len(x)>4]
 	f.close()
 	return lines
 
-def getuniquewords(lines):
+def get_unique_words(lines):
 	values, counts = np.unique(lines, return_counts=True)
 	return values, counts
 
 def main():
 	# Ask for filename from user
-	filename, numlines = getfilename()
+	filename, numlines = get_user_arguments()
 	# Check if file exists
 	try:
-		lines = readfile(filename)
+		lines = read_file(filename)
 	except FileNotFoundError:
 		print("File not found, please check file!")
 		exit()
 		# Cant find the file so exit the code
 
 	# Sort the words by their frequency in the file
-	values, counts = getuniquewords(lines)
+	values, counts = get_unique_words(lines)
 	sortedValuesCounts = [x for x in sorted(zip(counts,values),reverse=True)]
 
 	# print out words in descending order of frequency
 	print('Word    Usage')
-	for i in sortedValuesCounts[0:numlines]:
-		print(f"{i[1]}	{i[0]}")
+	for usage, word in sortedValuesCounts[0:numlines]:
+		print(word, usage)
 	pass
 
 
