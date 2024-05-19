@@ -1,6 +1,7 @@
 /**
  * Skeleton main routine
  */
+<<<<<<< HEAD
 
 #include <iostream>
 #include <fstream>
@@ -104,3 +105,16 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
+=======
+#include <iostream>
+
+int main(int argc, char *argv[])
+{
+    std::cout << "Hello, World!" << std::endl;
+    if (argc > 1) {
+        // This will print the first argument passed to your program
+        std::cout << argv[1] << std::endl;
+    }
+    return 0;
+}
+>>>>>>> e139231 (completed exercise2 -read a sample text, clean the data, count the number of words and write to file)

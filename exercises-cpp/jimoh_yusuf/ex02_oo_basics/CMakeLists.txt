@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 cmake_minimum_required ( VERSION 3.5 )
+=======
+cmake_minimum_required ( VERSION 2.8.5 )
+>>>>>>> e139231 (completed exercise2 -read a sample text, clean the data, count the number of words and write to file)
 
 ###############################################################################
 # Setup
@@ -6,9 +10,12 @@ cmake_minimum_required ( VERSION 3.5 )
 # Name
 project ( Shapes )
 
+<<<<<<< HEAD
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+=======
+>>>>>>> e139231 (completed exercise2 -read a sample text, clean the data, count the number of words and write to file)
 # Find custom cmake modules
 set ( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../CMake")
 
@@ -25,6 +32,7 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
+<<<<<<< HEAD
         src/ShapeSorter.cpp
         src/ShapeSorter.h
         src/Shape.h
@@ -40,4 +48,9 @@ set ( HDR_FILES
 )
 
 
+=======
+  # add any additional header files here
+)
+
+>>>>>>> e139231 (completed exercise2 -read a sample text, clean the data, count the number of words and write to file)
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )
