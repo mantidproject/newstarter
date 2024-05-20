@@ -26,8 +26,9 @@ std::map<std::string, int> countWordOccurrences(const std::string& inputFilePath
     // create a map with integer keys and string values
     std::map<std::string, int> wordCount;
 
-    if (!openFile.is_open()) {
-        std::cerr << "Error: Unable to open the input file." << std::endl;
+    // check the file for errors
+    if(!openFile.good()) {
+        std::cout << "Error: Unable to open the path of the input file." << inputFilePath << std::endl;
         return wordCount; // Return empty map if file cannot be opened
     }
 
@@ -62,6 +63,7 @@ bool writeResultsToFile(const std::vector<std::pair<std::string, int>>& wordCoun
     outputFile << "----------------" << std::endl;
 
     for (const auto& pair : wordCount) {
+        std::cout << pair.first << "\t" << pair.second << std::endl;
         outputFile << pair.first << "\t" << pair.second << std::endl;
     }
 
@@ -77,13 +79,6 @@ int main(int argc, char* argv[]) {
 
     const std::string inputFilePath = argv[1];
 
-    std::ifstream openFile(inputFilePath);
-
-    // check the file for errors
-    if(!openFile.good()) {
-        std::cout << "Error: Unable to open the path of the input file." << inputFilePath << std::endl;
-        return 1;
-    }
     std::map<std::string, int> wordCount = countWordOccurrences(inputFilePath);
 
     if (wordCount.empty()) {
