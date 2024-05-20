@@ -86,5 +86,23 @@ int main(int argc, char* argv[]) {
     }
     std::map<std::string, int> wordCount = countWordOccurrences(inputFilePath);
 
+    if (wordCount.empty()) {
+        std::cerr << "Error: No valid words found in the file" << std::endl;
+        return 1;
+    }
+
+    // Sort word-count pairs in descending order of usage
+    std::vector<std::pair<std::string, int> > sortedWordCount(wordCount.begin(), wordCount.end());
+    std::sort(sortedWordCount.begin(), sortedWordCount.end(), [](const auto& a, const auto& b) {
+        return a.second > b.second; // Sort by count in descending order
+    });
+
+    const std::string outputFilePath = "results.txt";
+    if (!writeResultsToFile(sortedWordCount, outputFilePath)) {
+        return 1; // Return error code if writing to file fails
+    }
+
+    std::cout << "Results written to " << outputFilePath << std::endl;
+    return 0;
 }
 
