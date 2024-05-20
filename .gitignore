@@ -22,3 +22,5 @@ builds/*
 *.exe
 *.out
 *.app
+
+.vs/
