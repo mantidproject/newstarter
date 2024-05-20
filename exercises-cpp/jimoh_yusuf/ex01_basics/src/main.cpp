@@ -50,6 +50,25 @@ std::map<std::string, int> countWordOccurrences(const std::string& inputFilePath
     return wordCount;
 }
 
+// Function to write word-count pairs to a results file
+bool writeResultsToFile(const std::vector<std::pair<std::string, int>>& wordCount, const std::string& outputFilePath) {
+    std::ofstream outputFile(outputFilePath);
+    if (!outputFile.is_open()) {
+        std::cerr << "Error: Failed to create the results file" << std::endl;
+        return false;
+    }
+
+    outputFile << "Word\tUsage" << std::endl;
+    outputFile << "----------------" << std::endl;
+
+    for (const auto& pair : wordCount) {
+        outputFile << pair.first << "\t" << pair.second << std::endl;
+    }
+
+    outputFile.close();
+    return true;
+}
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
