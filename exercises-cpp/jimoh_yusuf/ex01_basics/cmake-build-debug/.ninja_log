@@ -1,0 +1,13 @@
+# ninja log v5
+9	668	7386885019584488	CMakeFiles/WordCounter.dir/src/main.cpp.obj	86154237dcb42254
+19	626	7386876566971174	CMakeFiles/WordCounter.dir/src/Square.cpp.obj	e0094a043ca25abe
+669	926	7386885022132876	bin/WordCounter.exe	7d65be3730c2ab60
+66	391	7386796154549875	CMakeFiles/WordCounter.dir/src/ShapeSorter.cpp.obj	8076f12ae963f28
+31	176	7386876562470803	CMakeFiles/WordCounter.dir/src/Triangle.cpp.obj	303ff5c4e45d54e5
+7	514	7386887213038788	CMakeFiles/WordCounter.dir/C_/Users/gfl56326/Documents/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/main.cpp.obj	7ee5aa959a31254b
+6	450	7386887401389712	build.ninja	2f1fe48deb7834c8
+17	157	7386860660992988	CMakeFiles/WordCounter.dir/src/Squaree.cpp.obj	ca12d5043527a49d
+4	440	7386887401389712	build.ninja	2f1fe48deb7834c8
+13	277	7386887404871757	bin/WordCounter.exe	7d65be3730c2ab60
+8	681	7386887759332499	CMakeFiles/WordCounter.dir/src/main.cpp.obj	86154237dcb42254
+683	953	7386887762029526	bin/WordCounter.exe	7d65be3730c2ab60

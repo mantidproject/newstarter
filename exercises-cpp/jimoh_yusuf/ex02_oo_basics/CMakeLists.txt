@@ -22,7 +22,15 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
-  # add any additional header files here
+        ../ex02_oo_basics/ShapeSorter.cpp
+        ../ex02_oo_basics/ShapeSorter.h
+        ../ex02_oo_basics/Shape.h
+        ../ex02_oo_basics/Square.cpp
+        ../ex02_oo_basics/Square.h
+        ../ex02_oo_basics/Triangle.cpp
+        ../ex02_oo_basics/Triangle.h
+        # add any additional header files here
 )
+
 
 add_executable ( Shapes ${SRC_FILES} ${HDR_FILES} )

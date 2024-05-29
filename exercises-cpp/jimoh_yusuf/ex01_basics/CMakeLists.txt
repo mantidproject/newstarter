@@ -22,7 +22,7 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
-  # add any additional header files here
+        # add any additional header files here
 )
 
 add_executable ( WordCounter ${SRC_FILES} ${HDR_FILES} )
