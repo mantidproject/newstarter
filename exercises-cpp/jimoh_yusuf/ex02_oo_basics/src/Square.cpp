@@ -18,7 +18,7 @@ double Square::calculatePerimeter() {
     return perimeter;
 }
 
-double Square::calculateArea() {
+double Square::calculateAreaa() {
     double area = side1 * side1;
     std::cout << "The area of the square is " << area << std::endl;
     return area;

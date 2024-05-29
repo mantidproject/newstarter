@@ -149,10 +149,6 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "C:/Program Files/JetBrains/CLion 2024.1.1/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
-		},
-		{
-			"isExternal" : true,
-			"path" : "C:/Users/gfl56326/Documents/newstarter/CMake/CommonSetup.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",

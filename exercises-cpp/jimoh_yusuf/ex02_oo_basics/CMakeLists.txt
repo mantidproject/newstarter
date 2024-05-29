@@ -22,13 +22,13 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
-        ../ex02_oo_basics/ShapeSorter.cpp
-        ../ex02_oo_basics/ShapeSorter.h
-        ../ex02_oo_basics/Shape.h
-        ../ex02_oo_basics/Square.cpp
-        ../ex02_oo_basics/Square.h
-        ../ex02_oo_basics/Triangle.cpp
-        ../ex02_oo_basics/Triangle.h
+        src/ShapeSorter.cpp
+        src/ShapeSorter.h
+        src/Shape.h
+        src/Square.cpp
+        src/Square.h
+        src/Triangle.cpp
+        src/Triangle.h
         # add any additional header files here
 )
 

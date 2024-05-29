@@ -4,27 +4,37 @@
 #include <iostream>
 using namespace std;
 
-int main(int, char **)
 
-{
-    std::cout << "kolala" << std::endl;
-    //Square square(6);
-    //unique_ptr<Shape> square = make_unique<Square>(6.0);
-    //shared_ptr<Shape> square2 = make_shared<Square>(7.0);
-    //square->calculateArea();
-    //square.calculatePerimeter();
+#include "Square.h"
+#include "Rectangle.h"
+#include "Circle.h"
+#include "Triangle.h"
+#include "ShapeSorter.h"
+#include <vector>
 
-    //std::vector<shared_ptr<Shape>> shapes;
-    //shapes.push_back(square2);
-    //shapes.push_back(square2);
+int main() {
+    // Create shapes
+    Square square(5.0);
+    Rectangle rectangle(4.0, 6.0);
+    Circle circle(3.0);
+    Triangle triangle(4.0, 6.0);
 
-    //v.push_back(10);
+    std::vector<Shape*> shapes = {&square, &rectangle, &circle, &triangle};
 
-    //vector<shared_ptr<Shape>> shapes2;
+    ShapeSorter sorter;
 
-    // Creating a variety of shapes
-    //shapes2.push_back(make_shared<Square>(7.0));
-    //
-    //std::cout << "kolala" << shapes2[1]->getType() << endl;
+    // Print shapes by type
+    std::cout << "Shapes of type 'Square':" << std::endl;
+    sorter.printShapesByType(shapes, "Square");
 
+    // Print shapes by number of sides
+    std::cout << "\nShapes with 4 sides:" << std::endl;
+    sorter.printShapesBySides(shapes, 4);
+
+    // Print shapes by area descending
+    std::cout << "\nShapes sorted by area (descending):" << std::endl;
+    sorter.printShapesByAreaDescending(shapes);
+
+    // Print shapes by perimeter descending
+    std::cout << "\nShapes sorted by perimeter (descending):
 }

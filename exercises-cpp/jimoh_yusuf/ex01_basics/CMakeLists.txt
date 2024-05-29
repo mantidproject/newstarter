@@ -7,22 +7,27 @@ cmake_minimum_required ( VERSION 2.8.5 )
 project ( WordCounter )
 
 # Find custom cmake modules
-set ( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../CMake")
+set ( CMAKE_MODULE_PATH "../../../CMake")
 
 # Common setup
-include ( CommonSetup )
+
 
 ###############################################################################
 # Executable
 ###############################################################################
 
 set ( SRC_FILES
-  src/main.cpp
+        src/main.cpp
   # add any additional source files here
 )
 
 set ( HDR_FILES
+        ../ex02_oo_basics/src/Rectangle.cpp
+        ../ex02_oo_basics/src/Rectangle.h
+        ../ex02_oo_basics/src/Circle.cpp
+        ../ex02_oo_basics/src/Circle.h
+
         # add any additional header files here
 )
 
-add_executable ( WordCounter ${SRC_FILES} ${HDR_FILES} )
+add_executable ( WordCounter ${SRC_FILES} ${HDR_FILES})
