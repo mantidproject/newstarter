@@ -14,13 +14,11 @@ std::string Rectangle::getType() {
 
 double Rectangle::calculatePerimeter() {
     double perimeter = 2 * (side1 + side2);
-    std::cout << "The perimeter of the rectangle is " << perimeter << std::endl;
     return perimeter;
 }
 
 double Rectangle::calculateArea() {
     double area = side1 * side2;
-    std::cout << "The area of the rectangle is " << area << std::endl;
     return area;
 }
 

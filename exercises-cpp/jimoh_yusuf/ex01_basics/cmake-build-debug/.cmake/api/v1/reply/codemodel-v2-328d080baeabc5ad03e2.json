@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "2.8.5"
+						"string" : "3.5"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "WordCounter::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-WordCounter-Debug-6a3497e4d6d5df3c027c.json",
+					"jsonFile" : "target-WordCounter-Debug-1925ff4fe42429d8d089.json",
 					"name" : "WordCounter",
 					"projectIndex" : 0
 				}

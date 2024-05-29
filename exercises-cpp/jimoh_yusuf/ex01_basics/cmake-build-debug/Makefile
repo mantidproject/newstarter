@@ -129,54 +129,6 @@ WordCounter/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/build
 .PHONY : WordCounter/fast
 
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.o: Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.o
-
-# target to build an object file
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o
-
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.i: Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.i
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.i
-
-# target to preprocess a source file
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.i
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.i
-
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.s: Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.s
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.s
-
-# target to generate assembly for a file
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.s
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.s
-
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.o: Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.o
-
-# target to build an object file
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o
-
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.i: Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.i
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.i
-
-# target to preprocess a source file
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.i
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.i
-
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.s: Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.s
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.s
-
-# target to generate assembly for a file
-Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.s
-.PHONY : Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.s
-
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -210,12 +162,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... WordCounter"
-	@echo "... Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.o"
-	@echo "... Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.i"
-	@echo "... Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.s"
-	@echo "... Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.o"
-	@echo "... Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.i"
-	@echo "... Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -52,7 +52,7 @@ std::map<std::string, int> countWordOccurrences(const std::string& inputFilePath
 }
 
 // Function to write word-count pairs to a results file
-bool writeResultsToFile(const std::vector<std::pair<std::string, int>>& wordCount, const std::string& outputFilePath) {
+bool writeResultsToFile(const std::vector<std::pair<std::string, int> >& wordCount, const std::string& outputFilePath) {
     std::ofstream outputFile(outputFilePath);
     if (!outputFile.is_open()) {
         std::cerr << "Error: Failed to create the results file" << std::endl;
@@ -62,13 +62,18 @@ bool writeResultsToFile(const std::vector<std::pair<std::string, int>>& wordCoun
     outputFile << "Word\tUsage" << std::endl;
     outputFile << "----------------" << std::endl;
 
-    for (const auto& pair : wordCount) {
+    for (const std::pair<std::string, int>& pair : wordCount) {
         std::cout << pair.first << "\t" << pair.second << std::endl;
         outputFile << pair.first << "\t" << pair.second << std::endl;
     }
 
     outputFile.close();
     return true;
+}
+
+// Comparison function for sorting
+bool comparePairs(const std::pair<std::string, int>& a, const std::pair<std::string, int>& b) {
+    return a.second > b.second; // Sort by count in descending order
 }
 
 int main(int argc, char* argv[]) {
@@ -88,9 +93,7 @@ int main(int argc, char* argv[]) {
 
     // Sort word-count pairs in descending order of usage
     std::vector<std::pair<std::string, int> > sortedWordCount(wordCount.begin(), wordCount.end());
-    std::sort(sortedWordCount.begin(), sortedWordCount.end(), [](const auto& a, const auto& b) {
-        return a.second > b.second; // Sort by count in descending order
-    });
+    std::sort(sortedWordCount.begin(), sortedWordCount.end(), comparePairs);
 
     const std::string outputFilePath = "results.txt";
     if (!writeResultsToFile(sortedWordCount, outputFilePath)) {

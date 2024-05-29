@@ -83,49 +83,17 @@ CMakeFiles/WordCounter.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WordCounter.dir/src/main.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics/src/main.cpp -o CMakeFiles/WordCounter.dir/src/main.cpp.s
 
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o: CMakeFiles/WordCounter.dir/flags.make
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o: /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o: CMakeFiles/WordCounter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o -MF CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o.d -o CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o -c /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp
-
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp > CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.i
-
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp -o CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.s
-
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o: CMakeFiles/WordCounter.dir/flags.make
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o: /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o: CMakeFiles/WordCounter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o -MF CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o.d -o CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o -c /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp
-
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp > CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.i
-
-CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp -o CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.s
-
 # Object files for target WordCounter
 WordCounter_OBJECTS = \
-"CMakeFiles/WordCounter.dir/src/main.cpp.o" \
-"CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o" \
-"CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o"
+"CMakeFiles/WordCounter.dir/src/main.cpp.o"
 
 # External object files for target WordCounter
 WordCounter_EXTERNAL_OBJECTS =
 
 WordCounter: CMakeFiles/WordCounter.dir/src/main.cpp.o
-WordCounter: CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o
-WordCounter: CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o
 WordCounter: CMakeFiles/WordCounter.dir/build.make
 WordCounter: CMakeFiles/WordCounter.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable WordCounter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable WordCounter"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/WordCounter.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

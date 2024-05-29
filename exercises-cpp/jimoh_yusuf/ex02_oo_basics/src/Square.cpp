@@ -14,13 +14,11 @@ std::string Square::getType() {
 
 double Square::calculatePerimeter() {
     double perimeter = 4 * side1;
-    std::cout << "The perimeter of the square is " << perimeter << std::endl;
     return perimeter;
 }
 
-double Square::calculateAreaa() {
+double Square::calculateArea() {
     double area = side1 * side1;
-    std::cout << "The area of the square is " << area << std::endl;
     return area;
 }
 

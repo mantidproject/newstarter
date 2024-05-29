@@ -2,7 +2,7 @@
  * Skeleton main routine
  */
 #include <iostream>
-<<<<<<< HEAD
+
 using namespace std;
 
 
@@ -16,11 +16,18 @@ using namespace std;
 int main() {
     // Create shapes
     Square square(5.0);
+   square.calculateArea();
+
     Rectangle rectangle(4.0, 6.0);
+    rectangle.calculateArea();
     Circle circle(3.0);
     Triangle triangle(4.0, 6.0);
 
-    std::vector<Shape*> shapes = {&square, &rectangle, &circle, &triangle};
+    std::vector<Shape*> shapes;
+    shapes.push_back(&square);
+    shapes.push_back(&rectangle);
+    shapes.push_back(&circle);
+    shapes.push_back(&triangle);
 
     ShapeSorter sorter;
 
@@ -37,6 +44,7 @@ int main() {
     sorter.printShapesByAreaDescending(shapes);
 
     // Print shapes by perimeter descending
-    std::cout << "\nShapes sorted by perimeter (descending):
+    std::cout << "\nShapes sorted by perimeter (descending):" << std::endl;
+    sorter.printShapesByPerimeterDescending(shapes);
 }
 

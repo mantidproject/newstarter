@@ -8,8 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp" "CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o" "gcc" "CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.o.d"
-  "/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp" "CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o" "gcc" "CMakeFiles/WordCounter.dir/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.o.d"
   "/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics/src/main.cpp" "CMakeFiles/WordCounter.dir/src/main.cpp.o" "gcc" "CMakeFiles/WordCounter.dir/src/main.cpp.o.d"
   )
 

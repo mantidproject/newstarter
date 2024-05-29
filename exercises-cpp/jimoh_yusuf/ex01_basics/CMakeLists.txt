@@ -1,4 +1,4 @@
-cmake_minimum_required ( VERSION 2.8.5 )
+cmake_minimum_required ( VERSION 3.5)
 
 ###############################################################################
 # Setup
@@ -22,10 +22,7 @@ set ( SRC_FILES
 )
 
 set ( HDR_FILES
-        ../ex02_oo_basics/src/Rectangle.cpp
-        ../ex02_oo_basics/src/Rectangle.h
-        ../ex02_oo_basics/src/Circle.cpp
-        ../ex02_oo_basics/src/Circle.h
+
 
         # add any additional header files here
 )

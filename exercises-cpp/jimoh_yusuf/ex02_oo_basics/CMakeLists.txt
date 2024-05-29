@@ -1,10 +1,13 @@
-cmake_minimum_required ( VERSION 2.8.5 )
+cmake_minimum_required ( VERSION 3.5 )
 
 ###############################################################################
 # Setup
 ###############################################################################
 # Name
 project ( Shapes )
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find custom cmake modules
 set ( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../CMake")
@@ -29,6 +32,10 @@ set ( HDR_FILES
         src/Square.h
         src/Triangle.cpp
         src/Triangle.h
+        src/Rectangle.cpp
+        src/Rectangle.h
+        src/Circle.cpp
+        src/Circle.h
         # add any additional header files here
 )
 
