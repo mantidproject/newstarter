@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "2.8.5"
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "WordCounter::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-WordCounter-Debug-38d7e9c602ffcde1e43c.json",
+					"jsonFile" : "target-WordCounter-Debug-6a3497e4d6d5df3c027c.json",
 					"name" : "WordCounter",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/gfl56326/Documents/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics/cmake-build-debug",
-		"source" : "C:/Users/gfl56326/Documents/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics"
+		"build" : "/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics/cmake-build-debug",
+		"source" : "/Users/guruking/Downloads/TrainingCourseData/newstarter/exercises-cpp/jimoh_yusuf/ex01_basics"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 4
 	}
 }
