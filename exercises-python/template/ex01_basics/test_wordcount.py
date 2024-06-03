@@ -10,7 +10,7 @@ class WordCountTest(unittest.TestCase):
         self.filename = 'file.txt'
 
     @patch('builtins.open', new_callable=mock_open, read_data='This is a test data')
-    def test_get_file_name_from_arg(self, mock_file):
+    def test_read_file(self, mock_file):
         content = read_ascii_file(self.filename)
         expected_content = 'This is a test data'
         self.assertEqual(content, expected_content)
