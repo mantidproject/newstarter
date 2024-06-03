@@ -16,5 +16,13 @@ class WordCountTest(unittest.TestCase):
         self.assertEqual(content, expected_content)
         mock_file.assert_called_once_with(self.filename, 'r')
 
+    @patch('builtins.open', side_effect=FileNotFoundError)
+    def test_read_file_raise_file_found_error(self, mock_file):
+        with self.assertRaises(FileNotFoundError):
+            read_ascii_file(self.filename)
+        mock_file.assert_called_once_with(self.filename, 'r')
+
+
+
 
 

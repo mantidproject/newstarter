@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-def read_ascii_file(param):
+def read_ascii_file(filename):
 	try:
-		f = open(param, 'r')
+		f = open(filename, 'r')
 		return f.read()
-	except FileNotFoundError:
-		print("Oops! That was not a valid file. Try again...")
+	except FileNotFoundError as e:
+		raise FileNotFoundError(f"The file {filename} was not found.")
 
 def main():
 	read_ascii_file("file.txt")
