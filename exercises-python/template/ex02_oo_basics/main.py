@@ -98,6 +98,13 @@ class ShapeSorter:
 
 
 def main():
+    shapeSorter = ShapeSorter()
+    container = [Triangle(7, 2), Square(2), Rectangle(4, 12)]
+    shapeSorter.container = container
+    print([item.get_type() for item in shapeSorter.match_chosen_type("Triangle")])
+    print([item.get_type() for item in shapeSorter.match_chosen_number_of_sides(4)])
+    print([item.get_type() for item in shapeSorter.area_descending()])
+    print([item.get_type() for item in shapeSorter.perimeter_descending()])
     pass
 
 
