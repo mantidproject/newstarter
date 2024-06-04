@@ -1,0 +1,13 @@
+# ninja log v5
+15	3081	7386932941009066	CMakeFiles/WordCounter.dir/src/main.cpp.obj	542f860eccc2fb0a
+31	176	7386876562470803	CMakeFiles/WordCounter.dir/src/Triangle.cpp.obj	303ff5c4e45d54e5
+19	626	7386876566971174	CMakeFiles/WordCounter.dir/src/Square.cpp.obj	e0094a043ca25abe
+12	2164	7386906975292033	bin/WordCounter.exe	7d65be3730c2ab60
+66	391	7386796154549875	CMakeFiles/WordCounter.dir/src/ShapeSorter.cpp.obj	8076f12ae963f28
+25	629	7386932916614281	CMakeFiles/WordCounter.dir/C_/Users/gfl56326/Documents/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/main.cpp.obj	383e3fe3ff19198e
+7	420	7386953111981927	build.ninja	2f1fe48deb7834c8
+17	157	7386860660992988	CMakeFiles/WordCounter.dir/src/Squaree.cpp.obj	ca12d5043527a49d
+13	2182	7386935426254388	WordCounter.exe	22ec09b1b0baf071
+7	639	7386957144422552	CMakeFiles/WordCounter.dir/C_/Users/gfl56326/Documents/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Rectangle.cpp.obj	ce1123a11a563de0
+18	807	7386957146118258	CMakeFiles/WordCounter.dir/C_/Users/gfl56326/Documents/newstarter/exercises-cpp/jimoh_yusuf/ex02_oo_basics/src/Circle.cpp.obj	db4d5b735a3d35ab
+808	3002	7386957167970018	WordCounter.exe	b8f99df30967da9a

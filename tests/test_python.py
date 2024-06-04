@@ -9,7 +9,7 @@ import unittest
 if "GITHUB_WORKSPACE" in os.environ:
     WORKSPACE = Path(os.environ["GITHUB_WORKSPACE"])
 else:
-    print("GITHUB_WORKSPACE environment variable not found.\nThe build script assumes that a GITHUB_WORKSPACE environment variable points at the root of the source directory.")
+    print("GITHUB_WORKSPACE environment variable not found.\nThe builds script assumes that a GITHUB_WORKSPACE environment variable points at the root of the source directory.")
     sys.exit(1)
 
 source_dirs = [x for x in (WORKSPACE/"exercises-python").iterdir() if x.is_dir()]

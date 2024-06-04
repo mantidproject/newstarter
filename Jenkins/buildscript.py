@@ -19,7 +19,7 @@ import sys
 try:
     WORKSPACE = os.environ["WORKSPACE"]
 except KeyError:
-    print("WORKSPACE environment variable not found.\nThe build script assumes that a WORKSPACE environment variable points at the root of the source directory.")
+    print("WORKSPACE environment variable not found.\nThe builds script assumes that a WORKSPACE environment variable points at the root of the source directory.")
     sys.exit(1)
 
 PROJECTS_ROOT = os.path.abspath(os.path.join(WORKSPACE, "exercises-cpp"))
@@ -98,7 +98,7 @@ def build(build_root):
     Build the code in the build_root directory
     """
     if is_windows():
-        cmd = ["cmake", "--build", build_root, "--", "/nologo",
+        cmd = ["cmake", "--builds", build_root, "--", "/nologo",
                "/verbosity:minimal", "/p:Configuration=Release"]
     else:
         cmd = make_scl_command(["make", "-C", build_root])
@@ -113,12 +113,12 @@ def check_build_is_sane():
     generate_project(src_dir, dest_dir)
     print("Checking a sample project can be built")
     if build(dest_dir) != 0:
-        raise RuntimeError("Cannot build sample project")
+        raise RuntimeError("Cannot builds sample project")
 
 ################### Main #########################################################
 
 
-# Always perform a clean build
+# Always perform a clean builds
 if os.path.exists(BUILDS_ROOT):
     print(f"Removing {BUILDS_ROOT}")
     shutil.rmtree(BUILDS_ROOT)
@@ -132,7 +132,7 @@ dirnames.remove(HELLO_WORLD_DIR_NAME)
 check_build_is_sane()
 
 if len(dirnames) == 0:
-    raise RuntimeError("No projects found to build")
+    raise RuntimeError("No projects found to builds")
 
 statuses = []
 for dirname in dirnames:

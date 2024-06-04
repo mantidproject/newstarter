@@ -22,3 +22,7 @@ builds/*
 *.exe
 *.out
 *.app
+
+.vs/
+../.idea/
+.idea/

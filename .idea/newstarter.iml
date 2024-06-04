@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<module classpath="CMake" type="CPP_MODULE" version="4" />
+=======
+<module classpath="CIDR" type="CPP_MODULE" version="4" />
+>>>>>>> e139231 (completed exercise2 -read a sample text, clean the data, count the number of words and write to file)
