@@ -74,6 +74,32 @@ public:
 		return output == expectedOutput;
 	}
 
+	bool testIncrementing() {
+		std::map<std::string, int> testInitOccurances = { {"test", 1}, {"this", 3}, {"map", 5}};
+		std::map<std::string, int> testFinalOccurances = { {"test", 2}, {"this", 4}, {"map", 5}, {"adding", 1}};
+		std::vector<std::string> inputLine = { "test", "adding", "this" };
+		testedClass.occurances = testInitOccurances;
+
+		testedClass.incrementOccurances(inputLine);
+
+		return testedClass.occurances == testFinalOccurances;
+		
+	}
+
+	bool testMapToVectorConverter() {
+		std::map<std::string, int> testOccurances = { {"test", 1}, {"this", 3}, {"map", 5} };
+		std::vector<std::pair<std::string, int> > expectedVector = { {"test", 1}, {"this", 3}, {"map", 5} };
+		std::vector<std::pair<std::string, int> > outputVector;
+		testedClass.occurances = testOccurances;
+
+		outputVector = testedClass.convertMapToVector();
+
+		return outputVector == expectedVector;
+
+	
+	
+	}
+
 
 	Tester(WordCounter wordCounter) {
 		testedClass = wordCounter;
@@ -138,6 +164,15 @@ public:
 				occurances[textLine[i]] = 1;
 			}
 		}
+
+	}
+
+	std::vector<std::pair<std::string, int> > convertMapToVector() {
+		std::vector<std::pair<std::string, int> > wordsAndCounts;
+
+		// Do something
+
+		return wordsAndCounts;
 
 	}
 
