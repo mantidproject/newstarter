@@ -66,7 +66,7 @@ public:
 		return textLines;
 	}
 
-	std::vector<std::string> loadTextFile(std::vector<std::string> textLines) {
+	std::vector<std::string> stripPunctuation(std::vector<std::string> textLines) {
 
 		// do something, probably inplace
 
