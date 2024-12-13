@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 class Tester {
 public:
@@ -100,6 +101,19 @@ public:
 	
 	}
 
+	bool testVectorSorter() {
+		std::vector<std::pair<std::string, int> > inputVector = { {"test", 3}, {"this", 1}, {"map", 5} };
+		std::vector<std::pair<std::string, int> > outputVector;
+		std::vector<std::pair<std::string, int> > expectedVector = { {"map", 5}, {"test", 3}, {"this", 1} };
+
+		outputVector = testedClass.sortByCount(inputVector);
+
+		return outputVector == expectedVector;
+
+
+
+	}
+
 
 	Tester(WordCounter wordCounter) {
 		testedClass = wordCounter;
@@ -175,6 +189,18 @@ public:
 		return wordsAndCounts;
 
 	}
+
+	std::vector<std::pair<std::string, int> > sortByCount(std::vector<std::pair<std::string, int> > wordsAndCounts) {
+		
+		std::sort(wordsAndCounts.begin(), wordsAndCounts.end(), [](auto& left, auto& right) {
+			return left.second > right.second;
+			});
+
+		return wordsAndCounts;
+
+	}
+
+
 
 
 
