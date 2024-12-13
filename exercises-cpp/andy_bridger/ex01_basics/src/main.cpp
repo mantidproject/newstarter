@@ -21,6 +21,16 @@ public:
 
 	}
 
+	bool testLoadFile() {
+		std::string filePath = "./test.txt";
+		std::vector<std::string> output;
+		std::vector<std::string> expectedOutput = {"Here", "is", "a", "test", "", "file!"};
+
+		output = testedClass.loadTextFile(filePath);
+
+		return output == expectedOutput;
+	}
+
 	Tester(WordCounter wordCounter) {
 		testedClass = wordCounter;
 	}
@@ -35,6 +45,19 @@ public:
 		return splitWords;
 
 	}
+
+	std::vector<std::string> loadTextFile(std::string filePath) {
+		std::vector<std::string> textLines;
+
+		// do something
+
+		//std::ifstream f(filePath)
+
+		return textLines;
+	}
+
+
+
 
 
 
