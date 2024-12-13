@@ -170,11 +170,13 @@ public:
 	std::vector<std::pair<std::string, int> > convertMapToVector() {
 		std::vector<std::pair<std::string, int> > wordsAndCounts;
 
-		// Do something
+		std::copy(occurances.begin(), occurances.end(), back_inserter(wordsAndCounts));
 
 		return wordsAndCounts;
 
 	}
+
+
 
 
 
