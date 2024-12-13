@@ -17,20 +17,21 @@ public:
 
 	std::vector<std::string> loadTextFile(std::string filePath) {
 		std::vector<std::string> textLines;
-
 		std::ifstream file(filePath);
+		std::string line;
 
+		// check that file opens
 		if (!file.is_open()) {
 			std::cerr << "Error opening file." << std::endl;
 		}
 
-		std::string line;
+		// iterate over lines and add to vector
 		while (std::getline(file, line)) {
 			textLines.push_back(line);
 		}
 
+		//shut file
 		file.close();
-
 
 
 		return textLines;
@@ -41,7 +42,10 @@ public:
 		std::string tmp;
 		std::stringstream ss(inputString);
 
+		// treat the string as a string stream with space as delimiter
 		while (std::getline(ss, tmp, ' ')) {
+
+			// add each string section between spaces to the vector
 			splitWords.push_back(tmp);
 		}
 
@@ -52,9 +56,16 @@ public:
 
 	std::vector<std::string> stripPunctuation(std::vector<std::string> textLine) {
 		std::string text;
+		// iterate over the strings in the line
 		for (int i = 0; i < textLine.size(); i++) {
+
+			//set the temp text to be equal to each string
 			text = textLine[i];
+
+			//inplace alter this temp variable to remove punctuation
 			text.erase(std::remove_if(text.begin(), text.end(), ispunct), text.end());
+			
+			// update the value in the vector
 			textLine[i] = text;
 		}
 		// do something, probably inplace
@@ -67,20 +78,34 @@ public:
 		std::vector<std::string> tmpVec;
 		std::string tmp;
 		
+		// iterate over the strings in the line
 		for (int i = 0; i < textLine.size(); i++) {
+
+			// convert each string to a string stream
 			std::stringstream ss(textLine[i]);
+
+			// treat the - as delimeters to split string
 			while (std::getline(ss, tmp, '-')) {
+
+				// add to a temp vector
 				tmpVec.push_back(tmp);
 			}
+
+			// iterate over the temp vector
 			for (int j = 0; j < tmpVec.size(); j++) {
+
+				// add each string to the final line vector
 				newLine.push_back(tmpVec[j]);
 			}
+
+			// clear the tempory vector between iterations
 			tmpVec.clear();
 		}
 		return newLine;
 	}
 
 	std::string toLower(std::string inputString) {
+		// Iterates over range and applies the to lower transformation
 		std::transform(inputString.cbegin(), inputString.cend(), inputString.begin(), std::tolower);
 		return inputString;
 	}
