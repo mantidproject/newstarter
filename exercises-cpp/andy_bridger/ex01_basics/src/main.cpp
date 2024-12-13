@@ -51,7 +51,12 @@ public:
 
 
 	std::vector<std::string> stripPunctuation(std::vector<std::string> textLine) {
-
+		std::string text;
+		for (int i = 0; i < textLine.size(); i++) {
+			text = textLine[i];
+			text.erase(std::remove_if(text.begin(), text.end(), ispunct), text.end());
+			textLine[i] = text;
+		}
 		// do something, probably inplace
 
 		return textLine;
@@ -59,9 +64,18 @@ public:
 
 	std::vector<std::string> splitHyphens(std::vector<std::string> textLine) {
 		std::vector<std::string> newLine;
-
-		// do something, probably check for hyphen, if present make newLine, otherwise return old line
-
+		std::vector<std::string> tmpVec;
+		std::string tmp;
+		
+		for (int i = 0; i < textLine.size(); i++) {
+			std::stringstream ss(textLine[i]);
+			while (std::getline(ss, tmp, '-')) {
+				tmpVec.push_back(tmp);
+			}
+			for (int j = 0; j < tmpVec.size(); j++) {
+				newLine.push_back(tmpVec[j]);
+			}
+		}
 		return newLine;
 	}
 
