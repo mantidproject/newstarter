@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 
 class Tester {
 public:
@@ -81,6 +82,9 @@ public:
 
 class WordCounter {
 public:
+
+	std::map<std::string, int> occurances;
+
 	std::vector<std::string> splitAtSpace(std::string inputString) {
 		std::vector<std::string> splitWords;
 		//do something
@@ -119,6 +123,22 @@ public:
 		// inplace conversion to lowercase
 
 		return inputString;
+	}
+
+	void incrementOccurances(std::vector<std::string> textLine) {
+		// Look at each word in the line
+		for (int i = 0; i < textLine.size(); i++) {
+			// Check if the word has already been counted in the map
+			if (auto search = occurances.find(textLine[i]); search != occurances.end()) {
+				// If it has, increment
+				occurances[textLine[i]]++;
+			}
+			else {
+				// If it hasn't add a key value pair with a count of 1
+				occurances[textLine[i]] = 1;
+			}
+		}
+
 	}
 
 
