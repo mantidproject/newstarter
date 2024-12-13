@@ -75,14 +75,13 @@ public:
 			for (int j = 0; j < tmpVec.size(); j++) {
 				newLine.push_back(tmpVec[j]);
 			}
+			tmpVec.clear();
 		}
 		return newLine;
 	}
 
 	std::string toLower(std::string inputString) {
-
-		// inplace conversion to lowercase
-
+		std::transform(inputString.cbegin(), inputString.cend(), inputString.begin(), std::tolower);
 		return inputString;
 	}
 
@@ -204,15 +203,19 @@ public:
 	}
 
 	bool testToLower() {
-		std::string inputs[5] = {"Convert", "these", "to", "LOWER"};
-		std::string output[5];
-		std::string expectedOutput[5] = {"convert", "these", "to", "lower"};
+		std::string inputs[4] = {"Convert", "these", "to", "LOWER"};
+		std::string output[4];
+		std::string expectedOutput[4] = {"convert", "these", "to", "lower"};
+		bool pass = true;
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			output[i] = testedClass.toLower(inputs[i]);
+			if (expectedOutput[i] != output[i]) {
+				pass = false;
+			}
 		}
 
-		return output == expectedOutput;
+		return pass;
 	}
 
 	bool testIncrementing() {
