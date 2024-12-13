@@ -41,6 +41,27 @@ public:
 		return output == expectedOutput;
 	}
 
+	bool testSplitHyphensWithHyphens() {
+		std::vector<std::string> input = {"this", "has", "a", "hyphen", "to-split"};
+		std::vector<std::string> output;
+		std::vector<std::string> expectedOutput = { "this", "has", "a", "hyphen", "to", "split" };
+
+		output = testedClass.splitHyphens(input);
+
+		return output == expectedOutput;
+	}
+
+	bool testSplitHyphensWithoutHyphens() {
+		std::vector<std::string> input = { "this", "has", "no", "hyphen"};
+		std::vector<std::string> output;
+		std::vector<std::string> expectedOutput = { "this", "has", "no", "hyphen"};
+
+		output = testedClass.splitHyphens(input);
+
+		return output == expectedOutput;
+	}
+
+
 	Tester(WordCounter wordCounter) {
 		testedClass = wordCounter;
 	}
@@ -66,13 +87,20 @@ public:
 		return textLines;
 	}
 
-	std::vector<std::string> stripPunctuation(std::vector<std::string> textLines) {
+	std::vector<std::string> stripPunctuation(std::vector<std::string> textLine) {
 
 		// do something, probably inplace
 
-		return textLines;
+		return textLine;
 	}
 
+	std::vector<std::string> splitHyphens(std::vector<std::string> textLine) {
+		std::vector<std::string> newLine; 
+
+		// do something, probably check for hyphen, if present make newLine, otherwise return old line
+
+		return newLine;
+	}
 
 
 
