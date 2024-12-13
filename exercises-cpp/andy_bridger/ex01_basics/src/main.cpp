@@ -9,30 +9,148 @@
 #include <fstream>
 #include <string>
 
+class WordCounter {
+public:
+
+	std::map<std::string, int> occurances;
+
+	std::vector<std::string> loadTextFile(std::string filePath) {
+		std::vector<std::string> textLines;
+
+		std::ifstream file(filePath);
+
+		if (!file.is_open()) {
+			std::cerr << "Error opening file." << std::endl;
+		}
+
+		std::string line;
+		while (std::getline(file, line)) {
+			textLines.push_back(line);
+		}
+
+		file.close();
+
+
+
+		return textLines;
+	}
+
+	std::vector<std::string> splitAtSpace(std::string inputString) {
+		std::vector<std::string> splitWords;
+		//do something
+
+		return splitWords;
+
+	}
+
+
+	std::vector<std::string> stripPunctuation(std::vector<std::string> textLine) {
+
+		// do something, probably inplace
+
+		return textLine;
+	}
+
+	std::vector<std::string> splitHyphens(std::vector<std::string> textLine) {
+		std::vector<std::string> newLine;
+
+		// do something, probably check for hyphen, if present make newLine, otherwise return old line
+
+		return newLine;
+	}
+
+	std::string toLower(std::string inputString) {
+
+		// inplace conversion to lowercase
+
+		return inputString;
+	}
+
+	void incrementOccurances(std::vector<std::string> textLine) {
+		// Look at each word in the line
+		for (int i = 0; i < textLine.size(); i++) {
+			// Check if the word has already been counted in the map
+			if (auto search = occurances.find(textLine[i]); search != occurances.end()) {
+				// If it has, increment
+				occurances[textLine[i]]++;
+			}
+			else {
+				// If it hasn't add a key value pair with a count of 1
+				occurances[textLine[i]] = 1;
+			}
+		}
+
+	}
+
+	std::vector<std::pair<std::string, int> > convertMapToVector() {
+		std::vector<std::pair<std::string, int> > wordsAndCounts;
+
+		std::copy(occurances.begin(), occurances.end(), back_inserter(wordsAndCounts));
+
+		return wordsAndCounts;
+
+	}
+
+	std::vector<std::pair<std::string, int> > sortByCount(std::vector<std::pair<std::string, int> > wordsAndCounts) {
+
+		std::sort(wordsAndCounts.begin(), wordsAndCounts.end(), [](auto& left, auto& right) {
+			return left.second > right.second;
+			});
+
+		return wordsAndCounts;
+
+	}
+
+	int writeToFile(std::string filePath, std::vector<std::pair<std::string, int> > wordsAndCounts) {
+
+		std::ofstream outFile(filePath);
+
+		if (!outFile.is_open()) {
+			std::cerr << "Error opening file for writing!" << std::endl;
+			return 1;
+		}
+
+		outFile << "Words      Count     " << std::endl;
+
+		// Write vector of pairs to the file
+		for (const auto& pair : wordsAndCounts) {
+			outFile << pair.first << " " << pair.second << std::endl;
+		}
+
+		outFile.close();
+		return 0;
+	}
+
+
+
+};
+
 class Tester {
 public:
 	WordCounter testedClass;
 
-	bool testSplitAtSpace(){
+
+	bool testLoadFile() {
+		std::string filePath = "C:/Users/kcd17618/Documents/Induction/newstarter/tests/test.txt";
+		std::vector<std::string> output;
+		std::vector<std::string> expectedOutput = {"Here", "is", "a", "test", "", "file!"};
+
+		output = testedClass.loadTextFile(filePath);
+
+
+		return output == expectedOutput;
+	}
+
+	bool testSplitAtSpace() {
 		std::string testString = "here is a test! string with, various? \"incorrect\" applications of: (punctuation)";
 		std::vector<std::string> output;
-		std::vector<std::string> expectedOutput = {"here", "is", "a", "test!", "string", "with,", "various?", "\"incorrect\"", "applications", "of:", "(punctuation)"};
+		std::vector<std::string> expectedOutput = { "here", "is", "a", "test!", "string", "with,", "various?", "\"incorrect\"", "applications", "of:", "(punctuation)" };
 
 		output = testedClass.splitAtSpace(testString);
 
 		return output == expectedOutput;
 
 
-	}
-
-	bool testLoadFile() {
-		std::string filePath = "./test.txt";
-		std::vector<std::string> output;
-		std::vector<std::string> expectedOutput = {"Here", "is", "a", "test", "", "file!"};
-
-		output = testedClass.loadTextFile(filePath);
-
-		return output == expectedOutput;
 	}
 
 	bool testStripPunctuationFromLines() {
@@ -123,7 +241,8 @@ public:
 		std::string tests[10] = {"LoadFile", 
 								"SplitAtSpace",
 								"StripPunctuation", 
-								"SplitHyphens",
+								"SplitHyphensWith",
+								"SplitHyphensWithout",
 								"ToLower",
 								"Increment", 
 								"MapToVector", 
@@ -131,6 +250,7 @@ public:
 		
 		if (testLoadFile()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -139,6 +259,7 @@ public:
 		n++;
 		if (testSplitAtSpace()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -147,6 +268,7 @@ public:
 		n++;
 		if (testStripPunctuationFromLines()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -155,6 +277,7 @@ public:
 		n++;
 		if (testSplitHyphensWithHyphens()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -163,6 +286,7 @@ public:
 		n++;
 		if (testSplitHyphensWithoutHyphens()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -171,6 +295,7 @@ public:
 		n++;
 		if (testToLower()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -179,6 +304,7 @@ public:
 		n++;
 		if (testIncrementing()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -187,6 +313,7 @@ public:
 		n++;
 		if (testMapToVectorConverter()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -195,6 +322,7 @@ public:
 		n++;
 		if (testVectorSorter()) {
 			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
 		}
 		else {
 			fail++;
@@ -202,6 +330,7 @@ public:
 		}
 		n++;
 		
+		std::cout << "Tests passed: " << pass << ". Tests failed: " << fail << "\n";
 
 
 	
@@ -213,129 +342,6 @@ public:
 	}
 };
 
-class WordCounter {
-public:
-
-	std::map<std::string, int> occurances;
-
-	std::vector<std::string> loadTextFile(std::string filePath) {
-		std::vector<std::string> textLines;
-
-		std::ifstream file(filePath);
-		
-		if (!file.is_open()) {
-			std::cerr << "Error opening file." << std::endl;
-		}
-
-		std::string line;
-		while (std::getline(file, line)) {
-			textLines.push_back(line);
-		}
-
-		file.close();
-
-
-
-		return textLines;
-	}
-
-	std::vector<std::string> splitAtSpace(std::string inputString) {
-		std::vector<std::string> splitWords;
-		//do something
-
-		return splitWords;
-
-	}
-
-
-	std::vector<std::string> stripPunctuation(std::vector<std::string> textLine) {
-
-		// do something, probably inplace
-
-		return textLine;
-	}
-
-	std::vector<std::string> splitHyphens(std::vector<std::string> textLine) {
-		std::vector<std::string> newLine; 
-
-		// do something, probably check for hyphen, if present make newLine, otherwise return old line
-
-		return newLine;
-	}
-
-	std::string toLower(std::string inputString) {
-
-		// inplace conversion to lowercase
-
-		return inputString;
-	}
-
-	void incrementOccurances(std::vector<std::string> textLine) {
-		// Look at each word in the line
-		for (int i = 0; i < textLine.size(); i++) {
-			// Check if the word has already been counted in the map
-			if (auto search = occurances.find(textLine[i]); search != occurances.end()) {
-				// If it has, increment
-				occurances[textLine[i]]++;
-			}
-			else {
-				// If it hasn't add a key value pair with a count of 1
-				occurances[textLine[i]] = 1;
-			}
-		}
-
-	}
-
-	std::vector<std::pair<std::string, int> > convertMapToVector() {
-		std::vector<std::pair<std::string, int> > wordsAndCounts;
-
-		std::copy(occurances.begin(), occurances.end(), back_inserter(wordsAndCounts));
-
-		return wordsAndCounts;
-
-	}
-
-	std::vector<std::pair<std::string, int> > sortByCount(std::vector<std::pair<std::string, int> > wordsAndCounts) {
-		
-		std::sort(wordsAndCounts.begin(), wordsAndCounts.end(), [](auto& left, auto& right) {
-			return left.second > right.second;
-			});
-
-		return wordsAndCounts;
-
-	}
-
-	int writeToFile(std::string filePath, std::vector<std::pair<std::string, int> > wordsAndCounts) {
-
-		std::ofstream outFile(filePath);
-
-		if (!outFile.is_open()) {
-			std::cerr << "Error opening file for writing!" << std::endl;
-			return 1;
-		}
-
-		outFile << "Words      Count     " << std::endl;
-		
-		// Write vector of pairs to the file
-		for (const auto& pair : wordsAndCounts) {
-			outFile << pair.first << " " << pair.second << std::endl;
-		}
-
-		outFile.close();
-		return 0;
-	}
-
-
-
-
-
-
-
-
-
-
-};
-
 int main(int, char **)
 {
 	WordCounter wordCounter;
@@ -343,9 +349,7 @@ int main(int, char **)
 	Tester tester(wordCounter);
 
 
-	if (tester.testLoadFile()) {
-		std::cout << 
-	}
+	tester.runAllTests();
 
 
 
