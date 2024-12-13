@@ -31,6 +31,16 @@ public:
 		return output == expectedOutput;
 	}
 
+	bool testStripPunctuationFromLines() {
+		std::vector<std::string> inputs = {"test.", "strings,", "\"for\"", "(striping?)"};
+		std::vector<std::string> output;
+		std::vector<std::string> expectedOutput = {"test", "strings", "for", "striping" };
+
+		output = testedClass.stripPunctuation(inputs);
+
+		return output == expectedOutput;
+	}
+
 	Tester(WordCounter wordCounter) {
 		testedClass = wordCounter;
 	}
@@ -52,6 +62,13 @@ public:
 		// do something
 
 		//std::ifstream f(filePath)
+
+		return textLines;
+	}
+
+	std::vector<std::string> loadTextFile(std::vector<std::string> textLines) {
+
+		// do something, probably inplace
 
 		return textLines;
 	}
