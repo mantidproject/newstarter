@@ -7,6 +7,7 @@
 #include <map>
 #include <algorithm>
 #include <fstream>
+#include <string>
 
 class Tester {
 public:
@@ -126,6 +127,27 @@ public:
 
 	std::map<std::string, int> occurances;
 
+	std::vector<std::string> loadTextFile(std::string filePath) {
+		std::vector<std::string> textLines;
+
+		std::ifstream file(filePath);
+		
+		if (!file.is_open()) {
+			std::cerr << "Error opening file." << std::endl;
+		}
+
+		std::string line;
+		while (std::getline(file, line)) {
+			textLines.push_back(line);
+		}
+
+		file.close();
+
+
+
+		return textLines;
+	}
+
 	std::vector<std::string> splitAtSpace(std::string inputString) {
 		std::vector<std::string> splitWords;
 		//do something
@@ -134,15 +156,6 @@ public:
 
 	}
 
-	std::vector<std::string> loadTextFile(std::string filePath) {
-		std::vector<std::string> textLines;
-
-		// do something
-
-		//std::ifstream f(filePath)
-
-		return textLines;
-	}
 
 	std::vector<std::string> stripPunctuation(std::vector<std::string> textLine) {
 
