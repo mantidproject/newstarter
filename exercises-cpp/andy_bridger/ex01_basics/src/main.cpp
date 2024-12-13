@@ -61,6 +61,18 @@ public:
 		return output == expectedOutput;
 	}
 
+	bool testToLower() {
+		std::string inputs[5] = {"Convert", "these", "to", "LOWER"};
+		std::string output[5];
+		std::string expectedOutput[5] = {"convert", "these", "to", "lower"};
+
+		for (int i = 0; i < 5; i++) {
+			output[i] = testedClass.toLower(inputs[i]);
+		}
+
+		return output == expectedOutput;
+	}
+
 
 	Tester(WordCounter wordCounter) {
 		testedClass = wordCounter;
@@ -100,6 +112,13 @@ public:
 		// do something, probably check for hyphen, if present make newLine, otherwise return old line
 
 		return newLine;
+	}
+
+	std::string toLower(std::string inputString) {
+
+		// inplace conversion to lowercase
+
+		return inputString;
 	}
 
 
