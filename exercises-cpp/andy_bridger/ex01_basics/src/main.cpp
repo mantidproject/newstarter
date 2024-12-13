@@ -116,6 +116,97 @@ public:
 
 	}
 
+	void runAllTests() {
+		int pass = 0;
+		int fail = 0;
+		int n = 0;
+		std::string tests[10] = {"LoadFile", 
+								"SplitAtSpace",
+								"StripPunctuation", 
+								"SplitHyphens",
+								"ToLower",
+								"Increment", 
+								"MapToVector", 
+								"VectorSorter"};
+		
+		if (testLoadFile()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testSplitAtSpace()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testStripPunctuationFromLines()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testSplitHyphensWithHyphens()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testSplitHyphensWithoutHyphens()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testToLower()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testIncrementing()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testMapToVectorConverter()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testVectorSorter()) {
+			pass++;
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		
+
+
+	
+	}
+
 
 	Tester(WordCounter wordCounter) {
 		testedClass = wordCounter;
@@ -247,6 +338,16 @@ public:
 
 int main(int, char **)
 {
-	std::cout << "Hello World!";
+	WordCounter wordCounter;
+
+	Tester tester(wordCounter);
+
+
+	if (tester.testLoadFile()) {
+		std::cout << 
+	}
+
+
+
 	return 0;
 }
