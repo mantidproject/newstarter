@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <fstream>
 
 class Tester {
 public:
@@ -198,6 +199,26 @@ public:
 
 		return wordsAndCounts;
 
+	}
+
+	int writeToFile(std::string filePath, std::vector<std::pair<std::string, int> > wordsAndCounts) {
+
+		std::ofstream outFile(filePath);
+
+		if (!outFile.is_open()) {
+			std::cerr << "Error opening file for writing!" << std::endl;
+			return 1;
+		}
+
+		outFile << "Words      Count     " << std::endl;
+		
+		// Write vector of pairs to the file
+		for (const auto& pair : wordsAndCounts) {
+			outFile << pair.first << " " << pair.second << std::endl;
+		}
+
+		outFile.close();
+		return 0;
 	}
 
 
