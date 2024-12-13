@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <fstream>
 #include <string>
+#include <sstream>
 
 class WordCounter {
 public:
@@ -37,7 +38,12 @@ public:
 
 	std::vector<std::string> splitAtSpace(std::string inputString) {
 		std::vector<std::string> splitWords;
-		//do something
+		std::string tmp;
+		std::stringstream ss(inputString);
+
+		while (std::getline(ss, tmp, ' ')) {
+			splitWords.push_back(tmp);
+		}
 
 		return splitWords;
 
