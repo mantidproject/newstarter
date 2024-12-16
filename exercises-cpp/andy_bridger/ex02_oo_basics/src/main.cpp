@@ -129,6 +129,16 @@ public:
 	
 	}
 
+	void printSides(int nSides) {
+		for (int i = 0; i < shapes.size(); i++) {
+			if (shapes[i]->getSides() == nSides) {
+				std::cout << shapes[i]->getName() << "\n";
+			}
+
+		}
+
+	}
+
 
 };
 
@@ -351,6 +361,7 @@ int main(int, char **)
 	ShapeSorter sorter(shapes);
 
 	sorter.printShape("Square");
+	sorter.printSides(3);
 
 
 
