@@ -1,26 +1,21 @@
-#define _USE_MATH_DEFINES
 #include <iostream>
 #include <vector>
-#include <cmath>
 
 class Shape {
 public:
+	double PI = 3.14159265358979323846;
 	std::string shapeName;
-	int numSides;
-	double area;
-	double perimeter;
+	int numSides = 1;
+	double area = 0.0;
+	double perimeter = 0.0;
 
 };
 
 
 class Rectangle : public Shape {
 public:
-	double side1;
-	double side2;
-	double area;
-	double perimeter;
-
-
+	double side1 = 0.0;
+	double side2 = 0.0;
 
 	Rectangle(double side1, double side2) {
 		this->side1 = side1;
@@ -28,7 +23,18 @@ public:
 		std::string name = "Rectangle";
 		int numSides = 4;
 	}
-	Rectangle() = default;
+	Rectangle() {
+		double side1 = 0.0;
+		double side2 = 0.0;
+	}
+
+	void calcPerimeter() {
+		perimeter = (2 * side1) + (2 * side2);
+	}
+	void calcArea() {
+		area = side1* side2;
+	}
+
 };
 
 
