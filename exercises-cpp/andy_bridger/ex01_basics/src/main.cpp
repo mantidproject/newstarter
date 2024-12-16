@@ -107,12 +107,13 @@ public:
 	}
 
 	std::vector<std::string> cullShortWords(std::vector<std::string> textLine) {
+		std::vector<std::string> newLine;
 		for (int w = 0; w < textLine.size(); w++) {
-			if (textLine[w].length() <= 4) {
-				textLine.erase(textLine.begin() + w);
+			if (textLine[w].length() > 4) {
+				newLine.push_back(textLine[w]);
 			}
 		}
-		return textLine;
+		return newLine;
 	}
 
 	void incrementOccurances(std::vector<std::string> textLine) {
@@ -315,7 +316,7 @@ public:
 	}
 
 	bool testCullShortWords(){
-		std::vector<std::string> input = {"Cull", "the", "words", "shorter", "than", "four", "letters"};
+		std::vector<std::string> input = {"cull", "the", "words", "shorter", "than", "four", "letters"};
 		std::vector<std::string> output;
 		std::vector<std::string> expectedOutput = { "words", "shorter", "letters" };
 
@@ -374,6 +375,7 @@ public:
 								"SplitHyphensWith",
 								"SplitHyphensWithout",
 								"ToLower",
+								"CullShortWords",
 								"Increment", 
 								"MapToVector", 
 								"VectorSorter"};
@@ -424,6 +426,15 @@ public:
 		}
 		n++;
 		if (testToLower()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testCullShortWords()) {
 			pass++;
 			std::cout << "Test: " << tests[n] << " passed \n";
 		}
