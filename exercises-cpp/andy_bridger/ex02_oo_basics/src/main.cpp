@@ -6,6 +6,7 @@ class Shape {
 public:
 	double PI = 3.14159265358979323846;
 	std::string shapeKind;
+	std::string shapeName;
 	int numSides = 1;
 	double area = 0.0;
 	double perimeter = 0.0;
@@ -18,9 +19,10 @@ public:
 	double side1 = 0.0;
 	double side2 = 0.0;
 
-	Rectangle(double side1, double side2) {
+	Rectangle(double side1, double side2, std::string name) {
 		this->side1 = side1;
 		this->side2 = side2;
+		this->shapeName = name;
 		std::string shapeKind = "Rectangle";
 		int numSides = 4;
 		calcPerimeter();
@@ -44,9 +46,10 @@ public:
 class Square : public Rectangle {
 public:
 
-	Square(double side1) {
+	Square(double side1, std::string name) {
 		this->side1 = side1;
 		this->side2 = side1;
+		this->shapeName = name;
 		std::string shapeKind = "Square";
 		int numSides = 4;
 		calcPerimeter();
@@ -58,8 +61,9 @@ class Circle : public Shape {
 public:
 	double radius;
 
-	Circle(double radius) {
+	Circle(double radius, std::string name) {
 		this->radius = radius;
+		this->shapeName = name;
 		std::string shapeKind = "Circle";
 		int numSides = 1;
 		calcPerimeter();
@@ -79,9 +83,10 @@ public:
 	double height; 
 	double base;
 
-	Triangle(double height, double base) {
+	Triangle(double height, double base, std::string name) {
 		this->height = height;
 		this->base = base;
+		this->shapeName = name;
 		std::string shapeKind = "Triangle";
 		int numSides = 3;
 		calcPerimeter();
@@ -105,6 +110,7 @@ public:
 
 	void printShape(std::string shape) {
 		for (int i = 0; i < shapes.size(); i++) {
+			std::cout << shapes[i]->shapeName;
 			if (shapes[i]->shapeKind == shape) {
 				std::cout << shapes[i]->shapeKind;
 			}
@@ -324,10 +330,10 @@ int main(int, char **)
 
 	//tester.runAllTests();
 
-	Square sq1(1);
-	Rectangle rect(2.2, 3.4);
-	Circle circ(1.3);
-	Triangle tri(2.9, 2.3);
+	Square sq1(1, "squaro");
+	Rectangle rect(2.2, 3.4, "recky");
+	Circle circ(1.3, "mr circ");
+	Triangle tri(2.9, 2.3, "points");
 
 	// vector of pointers to account for the different classes
 	std::vector<Shape*> shapes = {&sq1, &rect, &circ, &tri};
