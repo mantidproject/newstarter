@@ -164,6 +164,32 @@ public:
 
 };
 
+class Viewer {
+public:
+	std::string getFilePath() {
+		std::string filePath;
+
+		std::cout << "Input File Path: ";
+		std::cin >> filePath;
+
+		return filePath
+	}
+
+};
+
+class Presenter {
+public:
+	Viewer viewer;
+	WordCounter wordCounter;
+
+
+
+	Presenter(Viewer& viewer, WordCounter& wordCounter) {
+		this->viewer = viewer;
+		this->wordCounter = wordCounter;
+	}
+};
+
 class Tester {
 public:
 	WordCounter testedClass;
@@ -393,6 +419,7 @@ int main(int, char **)
 
 
 	tester.runAllTests();
+
 
 
 
