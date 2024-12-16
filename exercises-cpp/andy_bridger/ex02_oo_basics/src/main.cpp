@@ -28,6 +28,10 @@ public:
 		return area;
 	}
 
+	double getPerimeter() {
+		return perimeter;
+	}
+
 };
 
 
@@ -166,6 +170,27 @@ public:
 			std::cout << shapeAndArea[i].first << ", Area: " << shapeAndArea[i].second << "\n";
 		}
 	
+	}
+
+	void sortByPerimeter() {
+		// create a vector of name area pairs
+		std::vector<std::pair<std::string, double> > shapeAndPerimeter;
+
+		// populate the vector 
+		for (int i = 0; i < shapes.size(); i++) {
+			shapeAndPerimeter.push_back({ shapes[i]->getName(), shapes[i]->getPerimeter() });
+		}
+
+		// sort the vector based on the second value in the pair (the area)
+		std::sort(shapeAndPerimeter.begin(), shapeAndPerimeter.end(), [](std::pair<std::string, double> left, std::pair<std::string, double> right) {
+			return left.second > right.second;
+			});
+
+		// output the information
+		for (int i = 0; i < shapes.size(); i++) {
+			std::cout << shapeAndPerimeter[i].first << ", Perimeter: " << shapeAndPerimeter[i].second << "\n";
+		}
+
 	}
 
 
@@ -393,6 +418,8 @@ int main(int, char **)
 	sorter.printSides(3);
 
 	sorter.sortByArea();
+
+	sorter.sortByPerimeter();
 
 
 
