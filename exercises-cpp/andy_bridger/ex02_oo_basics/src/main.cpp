@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 class Shape {
 public:
@@ -22,6 +23,11 @@ public:
 	int getSides() {
 		return numSides;
 	}
+
+	double getArea() {
+		return area;
+	}
+
 };
 
 
@@ -114,6 +120,8 @@ public:
 class ShapeSorter {
 public:
 	std::vector<Shape*> shapes;
+	std::vector<double> areas;
+	std::vector<double> perimeters;
 
 	ShapeSorter(std::vector<Shape*> shapes) {
 		this->shapes = shapes;
@@ -137,6 +145,27 @@ public:
 
 		}
 
+	}
+
+	void sortByArea() {
+		// create a vector of name area pairs
+		std::vector<std::pair<std::string, double> > shapeAndArea;
+
+		// populate the vector 
+		for (int i = 0; i < shapes.size(); i++) {
+			shapeAndArea.push_back({ shapes[i]->getName(), shapes[i]->getArea()});
+			}
+
+		// sort the vector based on the second value in the pair (the area)
+		std::sort(shapeAndArea.begin(), shapeAndArea.end(), [](std::pair<std::string, double> left, std::pair<std::string, double> right) {
+			return left.second > right.second;
+			});
+
+		// output the information
+		for (int i = 0; i < shapes.size(); i++) {
+			std::cout << shapeAndArea[i].first << ", Area: " << shapeAndArea[i].second << "\n";
+		}
+	
 	}
 
 
@@ -362,6 +391,8 @@ int main(int, char **)
 
 	sorter.printShape("Square");
 	sorter.printSides(3);
+
+	sorter.sortByArea();
 
 
 
