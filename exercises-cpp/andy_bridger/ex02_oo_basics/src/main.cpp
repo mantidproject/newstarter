@@ -110,7 +110,6 @@ public:
 
 	void printShape(std::string shape) {
 		for (int i = 0; i < shapes.size(); i++) {
-			std::cout << shapes[i]->shapeName;
 			if (shapes[i]->shapeKind == shape) {
 				std::cout << shapes[i]->shapeKind;
 			}
@@ -135,7 +134,7 @@ public:
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Rectangle(sides1s[i], sides2s[i]).perimeter, perimeters[i])) {
+			if (!ApproxEquals(Rectangle(sides1s[i], sides2s[i], "testShape").perimeter, perimeters[i])) {
 				all_pass = false;
 			}
 		}
@@ -149,7 +148,7 @@ public:
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Rectangle(sides1s[i], sides2s[i]).area, areas[i])) {
+			if (!ApproxEquals(Rectangle(sides1s[i], sides2s[i], "testShape").area, areas[i])) {
 				all_pass = false;
 			}
 		}
@@ -162,7 +161,7 @@ public:
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Square(sides1s[i]).perimeter, perimeters[i])) {
+			if (!ApproxEquals(Square(sides1s[i], "testShape").perimeter, perimeters[i])) {
 				all_pass = false;
 			}
 		}
@@ -175,7 +174,7 @@ public:
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Square(sides1s[i]).area, areas[i])) {
+			if (!ApproxEquals(Square(sides1s[i], "testShape").area, areas[i])) {
 				all_pass = false;
 			}
 		}
@@ -189,7 +188,7 @@ public:
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Circle(radii[i]).perimeter, perimeters[i])) {
+			if (!ApproxEquals(Circle(radii[i], "testShape").perimeter, perimeters[i])) {
 				all_pass = false;
 			}
 		}
@@ -202,7 +201,7 @@ public:
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Circle(radii[i]).area, areas[i])) {
+			if (!ApproxEquals(Circle(radii[i], "testShape").area, areas[i])) {
 				all_pass = false;
 			}
 		}
@@ -216,8 +215,8 @@ public:
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Triangle(height[i], base[i]).perimeter, perimeters[i])) {
-				std::cout << Triangle(height[i], base[i]).perimeter << " " << perimeters[i] << "\n";
+			if (!ApproxEquals(Triangle(height[i], base[i], "testShape").perimeter, perimeters[i])) {
+				std::cout << Triangle(height[i], base[i], "testShape").perimeter << " " << perimeters[i] << "\n";
 				all_pass = false;
 			}
 		}
@@ -231,7 +230,7 @@ public:
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Triangle(height[i], base[i]).area, areas[i])) {
+			if (!ApproxEquals(Triangle(height[i], base[i], "testShape").area, areas[i])) {
 				all_pass = false;
 			}
 		}
