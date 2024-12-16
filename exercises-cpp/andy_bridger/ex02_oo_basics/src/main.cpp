@@ -134,7 +134,7 @@ public:
 	}
 
 
-	bool testCirclPerimeter() {
+	bool testCirclePerimeter() {
 		double radii[3] = { 1, 2.3, 3 };
 		double perimeters[3] = { 6.28319, 14.451326, 18.849556 };
 		bool all_pass = true;
@@ -154,6 +154,34 @@ public:
 
 		for (int i = 0; i < 3; i++) {
 			if (!ApproxEquals(Circle(radii[i]).area, areas[i])) {
+				all_pass = false;
+			}
+		}
+		return all_pass;
+	}
+
+	bool testTrianglePerimeter() {
+		double height[3] = { 1, 2.3, 3 };
+		double base[3] =   { 1, 1, 2.5 };
+		double perimeters[3] = { 6.28319, 14.451326, 18.849556 };
+		bool all_pass = true;
+
+		for (int i = 0; i < 3; i++) {
+			if (!ApproxEquals(Triangle(height[i], base[i]).perimeter, perimeters[i])) {
+				all_pass = false;
+			}
+		}
+		return all_pass;
+	}
+
+	bool testTriangleArea() {
+		double height[3] = { 1, 2.3, 3 };
+		double base[3] =   { 1, 1, 2.5 };
+		double areas[3] =  { 0.5, 1.15, 3.75 };
+		bool all_pass = true;
+
+		for (int i = 0; i < 3; i++) {
+			if (!ApproxEquals(Triangle(height[i], base[i]).area, areas[i])) {
 				all_pass = false;
 			}
 		}
