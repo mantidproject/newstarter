@@ -163,7 +163,7 @@ public:
 	bool testTrianglePerimeter() {
 		double height[3] = { 1, 2.3, 3 };
 		double base[3] =   { 1, 1, 2.5 };
-		double perimeters[3] = { 6.28319, 14.451326, 18.849556 };
+		double perimeters[3] = { 3.236, 5.707, 9 };
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
