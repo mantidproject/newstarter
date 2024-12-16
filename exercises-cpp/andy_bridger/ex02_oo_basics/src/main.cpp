@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 class Shape {
 public:
@@ -58,6 +59,13 @@ public:
 		std::string name = "Circle";
 		int numSides = 1;
 	}
+
+	void calcPerimeter() {
+		perimeter = 2 * PI * radius;
+	}
+	void calcArea() {
+		area = PI*pow(radius, 2);
+	}
 };
 
 class Triangle : public Shape {
@@ -70,6 +78,12 @@ public:
 		this->base = base;
 		std::string name = "Triangle";
 		int numSides = 3;
+	}
+	void calcPerimeter() {
+		perimeter = 0.5 * base * height;
+	}
+	void calcArea() {
+		area = base + 2*sqrt((pow(height,2) + (pow(base, 2)/4)));
 	}
 };
 
@@ -194,6 +208,87 @@ public:
 		return all_pass;
 	}
 
+	void runAllTests() {
+		int pass = 0;
+		int fail = 0;
+		int n = 0;
+		std::string tests[10] = {   "RectanglePerimeter", "RectangleArea", 
+									"SquarePerimeter", "SquareArea", 
+									"CirclePerimeter", "CircleArea", 
+									"TrianglePerimeter", "TriangleArea" };
+
+		if (testRectanglePerimeter()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testRectangleArea()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testSquarePerimeter()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testSquareArea()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testCirclePerimeter()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testCircleArea()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testTrianglePerimeter()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
+		if (testTriangleArea()) {
+			pass++;
+			std::cout << "Test: " << tests[n] << " passed \n";
+		}
+		else {
+			fail++;
+			std::cout << "Test: " << tests[n] << " failed \n";
+		}
+		n++;
 };
 
 int main(int, char **)
