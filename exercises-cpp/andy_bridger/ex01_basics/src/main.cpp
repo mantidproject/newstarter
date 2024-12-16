@@ -159,11 +159,11 @@ public:
 			return 1;
 		}
 
-		outFile << "Words      Count     " << std::endl;
+		outFile << "Words          Count     " << std::endl;
 
 		// Write vector of pairs to the file
 		for (const auto& pair : wordsAndCounts) {
-			outFile << pair.first << " " << pair.second << std::endl;
+			outFile << pair.first << "       " << pair.second << std::endl;
 		}
 
 		outFile.close();
@@ -216,12 +216,17 @@ public:
 			line = wordCounter.splitHyphens(line);
 
 			// convert each word to lower case
-			for (int w = 0; w < line.size(); w++) {
-				lowerLine[w] = wordCounter.toLower(line[w]);
-			}
+			if (line.size() > 0) {
+				for (int w = 0; w < line.size(); w++) {
+					lowerLine.push_back(wordCounter.toLower(line[w]));
+				}
+				// Cull short words
+				lowerLine = wordCounter.cullShortWords(lowerLine);
 
-			// add line to counter map
-			wordCounter.incrementOccurances(lowerLine);
+
+				// add line to counter map
+				wordCounter.incrementOccurances(lowerLine);
+			}
 		}
 
 		// sort the counted words
@@ -324,7 +329,6 @@ public:
 
 		return output == expectedOutput;
 		}
-
 
 	bool testIncrementing() {
 		std::map<std::string, int> testInitOccurances = { {"test", 1}, {"this", 3}, {"map", 5}};
@@ -486,13 +490,15 @@ public:
 int main(int, char **)
 {
 	WordCounter wordCounter;
+	Viewer viewer;
+	Presenter presenter(viewer, wordCounter);
 
-	Tester tester(wordCounter);
+	presenter.runCounter();
 
+	// Uncomment these two to run the tests
 
-	tester.runAllTests();
-
-
+	// Tester tester(wordCounter);
+	// tester.runAllTests();
 
 
 	return 0;
