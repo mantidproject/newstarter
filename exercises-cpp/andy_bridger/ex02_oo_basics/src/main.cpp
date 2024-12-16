@@ -11,6 +11,17 @@ public:
 	double area = 0.0;
 	double perimeter = 0.0;
 
+	std::string getName() {
+		return shapeName;
+	}
+	
+	std::string getKind() {
+		return shapeKind;
+	}
+
+	int getSides() {
+		return numSides;
+	}
 };
 
 
@@ -23,8 +34,8 @@ public:
 		this->side1 = side1;
 		this->side2 = side2;
 		this->shapeName = name;
-		std::string shapeKind = "Rectangle";
-		int numSides = 4;
+		this->shapeKind = "Rectangle";
+		this->numSides = 4;
 		calcPerimeter();
 		calcArea();
 	}
@@ -50,8 +61,8 @@ public:
 		this->side1 = side1;
 		this->side2 = side1;
 		this->shapeName = name;
-		std::string shapeKind = "Square";
-		int numSides = 4;
+		this->shapeKind = "Square";
+		this->numSides = 4;
 		calcPerimeter();
 		calcArea();
 	}
@@ -64,8 +75,8 @@ public:
 	Circle(double radius, std::string name) {
 		this->radius = radius;
 		this->shapeName = name;
-		std::string shapeKind = "Circle";
-		int numSides = 1;
+		this->shapeKind = "Circle";
+		this->numSides = 1;
 		calcPerimeter();
 		calcArea();
 	}
@@ -87,8 +98,8 @@ public:
 		this->height = height;
 		this->base = base;
 		this->shapeName = name;
-		std::string shapeKind = "Triangle";
-		int numSides = 3;
+		this->shapeKind = "Triangle";
+		this->numSides = 3;
 		calcPerimeter();
 		calcArea();
 	}
@@ -110,8 +121,8 @@ public:
 
 	void printShape(std::string shape) {
 		for (int i = 0; i < shapes.size(); i++) {
-			if (shapes[i]->shapeKind == shape) {
-				std::cout << shapes[i]->shapeKind;
+			if (shapes[i]->getKind().compare(shape) == 0) {
+				std::cout << shapes[i]->getName() << "\n";
 			}
 		
 		}
