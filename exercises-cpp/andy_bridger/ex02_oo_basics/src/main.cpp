@@ -23,6 +23,8 @@ public:
 		this->side2 = side2;
 		std::string name = "Rectangle";
 		int numSides = 4;
+		calcPerimeter();
+		calcArea();
 	}
 	Rectangle() {
 		double side1 = 0.0;
@@ -47,6 +49,8 @@ public:
 		this->side2 = side1;
 		std::string name = "Square";
 		int numSides = 4;
+		calcPerimeter();
+		calcArea();
 	}
 };
 
@@ -58,6 +62,8 @@ public:
 		this->radius = radius;
 		std::string name = "Circle";
 		int numSides = 1;
+		calcPerimeter();
+		calcArea();
 	}
 
 	void calcPerimeter() {
@@ -78,23 +84,20 @@ public:
 		this->base = base;
 		std::string name = "Triangle";
 		int numSides = 3;
-	}
-	void calcPerimeter() {
-		perimeter = 0.5 * base * height;
+		calcPerimeter();
+		calcArea();
 	}
 	void calcArea() {
-		area = base + 2*sqrt((pow(height,2) + (pow(base, 2)/4)));
+		area = 0.5 * base * height;
+	}
+	void calcPerimeter() {
+		perimeter = base + 2*sqrt((pow(height,2) + (pow(base, 2)/4)));
 	}
 };
 
 
 class Tester {
 public:
-	Rectangle rectangle;
-	Square square;
-	Circle circle;
-	Triangle triangle;
-
 	bool ApproxEquals(double a, double b) {
 		return abs(a - b) < 0.0005; // set some sensible precision tolerance
 	}
@@ -188,6 +191,7 @@ public:
 
 		for (int i = 0; i < 3; i++) {
 			if (!ApproxEquals(Triangle(height[i], base[i]).perimeter, perimeters[i])) {
+				std::cout << Triangle(height[i], base[i]).perimeter << " " << perimeters[i] << "\n";
 				all_pass = false;
 			}
 		}
@@ -212,9 +216,9 @@ public:
 		int pass = 0;
 		int fail = 0;
 		int n = 0;
-		std::string tests[10] = {   "RectanglePerimeter", "RectangleArea", 
-									"SquarePerimeter", "SquareArea", 
-									"CirclePerimeter", "CircleArea", 
+		std::string tests[10] = { "RectanglePerimeter", "RectangleArea",
+									"SquarePerimeter", "SquareArea",
+									"CirclePerimeter", "CircleArea",
 									"TrianglePerimeter", "TriangleArea" };
 
 		if (testRectanglePerimeter()) {
@@ -289,8 +293,15 @@ public:
 			std::cout << "Test: " << tests[n] << " failed \n";
 		}
 		n++;
+
+		std::cout << "Tests passed: " << pass << ". Tests failed: " << fail << "\n";
+	}
 };
 
 int main(int, char **)
 {
+	Tester tester;
+
+	tester.runAllTests();
+
 }
