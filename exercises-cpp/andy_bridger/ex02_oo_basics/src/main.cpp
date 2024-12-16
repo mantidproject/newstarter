@@ -3,6 +3,8 @@
 #include <cmath>
 #include <algorithm>
 
+
+// All these classes should be reasonably self explanitory 
 class Shape {
 public:
 	double PI = 3.14159265358979323846;
@@ -400,21 +402,26 @@ public:
 
 int main(int, char **)
 {
-	//Tester tester;
+	// Some tests here, admittedly test coverage is patchy
 
+	//Tester tester;
 	//tester.runAllTests();
 
+	// Under here is the actual program
+
 	Square sq1(1, "squaro");
+	Square sq2(3, "squara");
 	Rectangle rect(2.2, 3.4, "recky");
 	Circle circ(1.3, "mr circ");
 	Triangle tri(2.9, 2.3, "points");
 
 	// vector of pointers to account for the different classes
-	std::vector<Shape*> shapes = {&sq1, &rect, &circ, &tri};
+	std::vector<Shape*> shapes = {&sq1, &sq2, &rect, &circ, &tri};
 
 	ShapeSorter sorter(shapes);
 
 	sorter.printShape("Square");
+	
 	sorter.printSides(3);
 
 	sorter.sortByArea();
