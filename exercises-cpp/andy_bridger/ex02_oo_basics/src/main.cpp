@@ -107,6 +107,31 @@ public:
 		return all_pass;
 	}
 
+	bool testSquarePerimeter() {
+		double sides1s[3] = { 1, 2.3, 3 };
+		double perimeters[3] = { 4, 9.2, 12};
+		bool all_pass = true;
+
+		for (int i = 0; i < 3; i++) {
+			if (!ApproxEquals(Square(sides1s[i]).perimeter, perimeters[i])) {
+				all_pass = false;
+			}
+		}
+		return all_pass;
+	}
+
+	bool testSquareArea() {
+		double sides1s[3] = { 1, 2.3, 3 };
+		double areas[3] = { 1, 5.29, 9 };
+		bool all_pass = true;
+
+		for (int i = 0; i < 3; i++) {
+			if (!ApproxEquals(Square(sides1s[i]).area, areas[i])) {
+				all_pass = false;
+			}
+		}
+		return all_pass;
+	}
 
 
 };
