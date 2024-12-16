@@ -5,7 +5,7 @@
 class Shape {
 public:
 	double PI = 3.14159265358979323846;
-	std::string shapeName;
+	std::string shapeKind;
 	int numSides = 1;
 	double area = 0.0;
 	double perimeter = 0.0;
@@ -21,7 +21,7 @@ public:
 	Rectangle(double side1, double side2) {
 		this->side1 = side1;
 		this->side2 = side2;
-		std::string name = "Rectangle";
+		std::string shapeKind = "Rectangle";
 		int numSides = 4;
 		calcPerimeter();
 		calcArea();
@@ -47,7 +47,7 @@ public:
 	Square(double side1) {
 		this->side1 = side1;
 		this->side2 = side1;
-		std::string name = "Square";
+		std::string shapeKind = "Square";
 		int numSides = 4;
 		calcPerimeter();
 		calcArea();
@@ -60,7 +60,7 @@ public:
 
 	Circle(double radius) {
 		this->radius = radius;
-		std::string name = "Circle";
+		std::string shapeKind = "Circle";
 		int numSides = 1;
 		calcPerimeter();
 		calcArea();
@@ -82,7 +82,7 @@ public:
 	Triangle(double height, double base) {
 		this->height = height;
 		this->base = base;
-		std::string name = "Triangle";
+		std::string shapeKind = "Triangle";
 		int numSides = 3;
 		calcPerimeter();
 		calcArea();
@@ -95,6 +95,26 @@ public:
 	}
 };
 
+class ShapeSorter {
+public:
+	std::vector<Shape*> shapes;
+
+	ShapeSorter(std::vector<Shape*> shapes) {
+		this->shapes = shapes;
+	}
+
+	void printShape(std::string shape) {
+		for (int i = 0; i < shapes.size(); i++) {
+			if (shapes[i]->shapeKind == shape) {
+				std::cout << shapes[i]->shapeKind;
+			}
+		
+		}
+	
+	}
+
+
+};
 
 class Tester {
 public:
@@ -300,8 +320,22 @@ public:
 
 int main(int, char **)
 {
-	Tester tester;
+	//Tester tester;
 
-	tester.runAllTests();
+	//tester.runAllTests();
+
+	Square sq1(1);
+	Rectangle rect(2.2, 3.4);
+	Circle circ(1.3);
+	Triangle tri(2.9, 2.3);
+
+	// vector of pointers to account for the different classes
+	std::vector<Shape*> shapes = {&sq1, &rect, &circ, &tri};
+
+	ShapeSorter sorter(shapes);
+
+	sorter.printShape("Square");
+
+
 
 }
