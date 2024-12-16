@@ -82,16 +82,33 @@ public:
 	bool testRectanglePerimeter() {
 		double sides1s[3] = { 1, 2.3, 3 };
 		double sides2s[3] = { 1, 1, 2.5 };
-		double perimeter[3] = { 4, 6.6, 11 };
+		double perimeters[3] = { 4, 6.6, 11 };
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
-			if (!ApproxEquals(Rectangle(sides1s[i], sides2s[i]).perimeter, perimeter[i])) {
+			if (!ApproxEquals(Rectangle(sides1s[i], sides2s[i]).perimeter, perimeters[i])) {
 				all_pass = false;
 			}
 		}
 		return all_pass;
 	}
+
+	bool testRectangleArea() {
+		double sides1s[3] = { 1, 2.3, 3 };
+		double sides2s[3] = { 1, 1, 2.5 };
+		double areas[3] = { 1, 2.3, 7.5 };
+		bool all_pass = true;
+
+		for (int i = 0; i < 3; i++) {
+			if (!ApproxEquals(Rectangle(sides1s[i], sides2s[i]).area, areas[i])) {
+				all_pass = false;
+			}
+		}
+		return all_pass;
+	}
+
+
+
 };
 
 int main(int, char **)
