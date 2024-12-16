@@ -134,6 +134,32 @@ public:
 	}
 
 
+	bool testCirclPerimeter() {
+		double radii[3] = { 1, 2.3, 3 };
+		double perimeters[3] = { 6.28319, 14.451326, 18.849556 };
+		bool all_pass = true;
+
+		for (int i = 0; i < 3; i++) {
+			if (!ApproxEquals(Circle(radii[i]).perimeter, perimeters[i])) {
+				all_pass = false;
+			}
+		}
+		return all_pass;
+	}
+
+	bool testCircleArea() {
+		double radii[3] = { 1, 2.3, 3 };
+		double areas[3] = { 3.141593, 16.61903, 28.274334 };
+		bool all_pass = true;
+
+		for (int i = 0; i < 3; i++) {
+			if (!ApproxEquals(Circle(radii[i]).area, areas[i])) {
+				all_pass = false;
+			}
+		}
+		return all_pass;
+	}
+
 };
 
 int main(int, char **)
