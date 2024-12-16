@@ -166,14 +166,15 @@ public:
 
 class Viewer {
 public:
-	std::string getFilePath() {
+	std::string askForFilePath(std::string message) {
 		std::string filePath;
 
-		std::cout << "Input File Path: ";
+		std::cout << message;
 		std::cin >> filePath;
 
-		return filePath
+		return filePath;
 	}
+
 
 };
 
@@ -181,6 +182,46 @@ class Presenter {
 public:
 	Viewer viewer;
 	WordCounter wordCounter;
+	std::string inputFilePath;
+	std::string outputFilePath;
+	std::vector<std::string> lines;
+	std::vector<std::string> line;
+	std::vector<std::string> lowerLine;
+	std::vector<std::pair<std::string, int> > wordsAndCounts;
+
+
+	void runCounter() {
+		// ask for input file
+		inputFilePath = viewer.askForFilePath("Input File Path: ");
+
+		// load txt file
+		lines = wordCounter.loadTextFile(inputFilePath);
+
+		// iterate over each line
+		for (int i = 0; i < lines.size(); i++) {
+
+			// process
+			line = wordCounter.splitAtSpace(lines[i]);
+			line = wordCounter.stripPunctuation(line);
+			line = wordCounter.splitHyphens(line);
+
+			// convert each word to lower case
+			for (int w = 0; w < line.size(); w++) {
+				lowerLine[w] = wordCounter.toLower(line[w]);
+			}
+
+			// add line to counter map
+			wordCounter.incrementOccurances(lowerLine);
+		}
+
+		// sort the counted words
+		wordsAndCounts = wordCounter.convertMapToVector();
+		wordsAndCounts = wordCounter.sortByCount(wordsAndCounts);
+
+		// ask for output file
+		outputFilePath = viewer.askForFilePath("Output File Path: ");
+		wordCounter.writeToFile(outputFilePath, wordsAndCounts);
+	}
 
 
 
