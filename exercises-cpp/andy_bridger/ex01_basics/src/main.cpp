@@ -106,6 +106,15 @@ public:
 		return inputString;
 	}
 
+	std::vector<std::string> cullShortWords(std::vector<std::string> textLine) {
+		for (int w = 0; w < textLine.size(); w++) {
+			if (textLine[w].length() <= 4) {
+				textLine.erase(textLine.begin() + w);
+			}
+		}
+		return textLine;
+	}
+
 	void incrementOccurances(std::vector<std::string> textLine) {
 		// Look at each word in the line
 		for (int i = 0; i < textLine.size(); i++) {
@@ -304,6 +313,17 @@ public:
 
 		return pass;
 	}
+
+	bool testCullShortWords(){
+		std::vector<std::string> input = {"Cull", "the", "words", "shorter", "than", "four", "letters"};
+		std::vector<std::string> output;
+		std::vector<std::string> expectedOutput = { "words", "shorter", "letters" };
+
+		output = testedClass.cullShortWords(input);
+
+		return output == expectedOutput;
+		}
+
 
 	bool testIncrementing() {
 		std::map<std::string, int> testInitOccurances = { {"test", 1}, {"this", 3}, {"map", 5}};
