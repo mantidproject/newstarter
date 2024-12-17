@@ -413,26 +413,6 @@ public:
 			std::cout << "Test: " << tests[n] << " failed \n";
 		}
 		n++;
-		/*
-		if (testSplitHyphensWithHyphens()) {
-			pass++;
-			std::cout << "Test: " << tests[n] << " passed \n";
-		}
-		else {
-			fail++;
-			std::cout << "Test: " << tests[n] << " failed \n";
-		}
-		n++;
-		if (testSplitHyphensWithoutHyphens()) {
-			pass++;
-			std::cout << "Test: " << tests[n] << " passed \n";
-		}
-		else {
-			fail++;
-			std::cout << "Test: " << tests[n] << " failed \n";
-		}
-		n++;
-		*/
 		if (testToLower()) {
 			pass++;
 			std::cout << "Test: " << tests[n] << " passed \n";
@@ -497,12 +477,12 @@ int main(int, char **)
 	Viewer viewer;
 	Presenter presenter(viewer, wordCounter);
 
-	// presenter.runCounter();
+	presenter.runCounter();
 
 	// Uncomment these two to run the tests
 
-	Tester tester(wordCounter);
-	tester.runAllTests();
+	// Tester tester(wordCounter);
+	// tester.runAllTests();
 
 
 	return 0;
