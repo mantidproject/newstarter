@@ -2,11 +2,6 @@
 import unittest
 from collections import Counter
 
-
-#class Tester(unittest.TestCase):
-    #def test_on_import_gui_flag_is_set_to_false_here(self):
-        #self.assertEqual(False, mantid.__gui__)
-
 class WordCounter:
 	def __init__(self):
 		self.lines = None
@@ -70,9 +65,25 @@ class WordCounter:
 		self.output_results()
 
 
+class Tester(unittest.TestCase):
+
+	def test_split_lines(self):
+		# setup input
+		test_word_counter = WordCounter()
+		test_word_counter.lines = ['test line one', 'test-line two']
+		# expected outcome
+		expected_output = [['test', 'line', 'one'], ['test', 'line', 'two']]
+
+		# apply the function
+		test_word_counter.split_lines()
+
+		self.assertEqual(test_word_counter.words, expected_output)
+
 def main():
-	word_counter = WordCounter()
-	word_counter.run_all()
+	#word_counter = WordCounter()
+	#word_counter.run_all()
+
+	Tester()
 
 
 if __name__ == "__main__":
