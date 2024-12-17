@@ -79,6 +79,17 @@ class Tester(unittest.TestCase):
 
 		self.assertEqual(test_word_counter.words, expected_output)
 
+	def test_remove_punctuation(self):
+		# setup input
+		test_word_counter = WordCounter()
+		inputs = ['A!', 'set,', 'of?', 'test\"', 'inputs.']
+		# expected outcome
+		expected_output = ['a', 'set', 'of', 'test', 'inputs']
+
+		output = [test_word_counter.remove_punctuation(w) for w in inputs]
+
+		self.assertEqual(output, expected_output)
+
 def main():
 	#word_counter = WordCounter()
 	#word_counter.run_all()
