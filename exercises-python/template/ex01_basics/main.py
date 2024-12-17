@@ -77,7 +77,7 @@ class Tester(unittest.TestCase):
 		# apply the function
 		test_word_counter.split_lines()
 
-		self.assertEqual(test_word_counter.words, expected_output)
+		self.assertEqual(expected_output, test_word_counter.words)
 
 	def test_remove_punctuation(self):
 		# setup input
@@ -88,7 +88,18 @@ class Tester(unittest.TestCase):
 
 		output = [test_word_counter.remove_punctuation(w) for w in inputs]
 
-		self.assertEqual(output, expected_output)
+		self.assertEqual(expected_output, output)
+
+	def test_process_words(self):
+		# setup input
+		test_word_counter = WordCounter()
+		test_word_counter.words =  [['tests', 'line', 'one'], ['tests', 'line', 'two', 'after']]
+		# expected outcome
+		expected_output = ['tests', 'tests', 'after']
+
+		test_word_counter.process_words()
+
+		self.assertEqual(expected_output, test_word_counter.words)
 
 def main():
 	#word_counter = WordCounter()
