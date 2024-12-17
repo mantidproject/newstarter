@@ -8,29 +8,57 @@ from collections import Counter
         #self.assertEqual(False, mantid.__gui__)
 
 class WordCounter:
-	def __init__(self, file_path):
-		self.file_path = file_path
+	def __init__(self):
 		self.lines = None
 		self.words = None
 		self.sorted_words = None
+
+	def request_file(self):
+		return input("Enter file path: ")
+
 	def read_file(self):
-		with open(self.file_path, 'r') as f:
-			self.lines = f.readlines()
+		no_file = True
+		while no_file == True:
+			try:
+				with open(self.request_file(), 'r') as f:
+					self.lines = f.readlines()
+				no_file = False
+			except:
+				print("Invalid File")
+
 	def split_lines(self):
-		self.words = [line.split(' ') for line in self.lines]
+		self.words = [line.replace('-', ' ').split(' ') for line in self.lines]
+
+	def remove_punctuation(self, word):
+		return ''.join([letter.lower() for letter in word if letter.isalpha()])
+
 	def process_words(self):
-		self.words = [[[letter.lower() for letter in word if letter.isalpha()] for word in line if len(word) > 4] for line in self.words]
+		nested_words = [[self.remove_punctuation(word) for word in line if len(self.remove_punctuation(word)) > 4] for line in self.words]
+		self.words = self.flatten_nested_list(nested_words)
+
+	def flatten_nested_list(self, outer_list):
+		return [item for inner_list in outer_list for item in inner_list]
+
 	def count_and_sort(self):
 		counter = Counter(self.words)
-		self.sorted_words = dict(sorted(counter.items(), key=lambda item: item[1]))
+		self.sorted_words = dict(sorted(counter.items(), key=lambda item: -item[1]))
+
 	def output_results(self):
-		print("Word      Usage")
+		print("Word           Usage")
 		for k,v in self.sorted_words.items():
-			print(k + " "*(10 - len(k)) + str(v))
+			print(k + " "*(15 - len(k)) + str(v))
+
+	def run_all(self):
+		self.read_file()
+		self.split_lines()
+		self.process_words()
+		self.count_and_sort()
+		self.output_results()
 
 
 def main():
-	file_path = ""
+	word_counter = WordCounter()
+	word_counter.run_all()
 
 
 if __name__ == "__main__":
