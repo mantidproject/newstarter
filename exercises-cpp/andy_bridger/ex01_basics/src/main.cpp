@@ -33,16 +33,24 @@ public:
 		return textLines;
 	}
 
+	std::string replaceHyphen(std::string inputString) {
+		// replace the hyphens with spaces
+		std::replace(inputString.begin(), inputString.end(), '-', ' ');
+		return inputString;
+	}
+
 	std::vector<std::string> splitAtSpace(std::string inputString) {
 		std::vector<std::string> splitWords;
 		std::string tmp;
-		std::stringstream ss(inputString);
+		std::string inString = replaceHyphen(inputString);
+		std::stringstream ss(inString);
 
 		// treat the string as a string stream with space as delimiter
 		while (std::getline(ss, tmp, ' ')) {
-
 			// add each string section between spaces to the vector
-			splitWords.push_back(tmp);
+			if (tmp.length() > 0) {
+				splitWords.push_back(tmp);
+			}
 		}
 
 		return splitWords;
@@ -256,7 +264,7 @@ public:
 	}
 
 	bool testSplitAtSpace() {
-		std::string testString = "here is a test! string with, various? \"incorrect\" applications of: (punctuation)";
+		std::string testString = "here is a test! string with, various? \"incorrect\" applications --of: (punctuation)";
 		std::vector<std::string> output;
 		std::vector<std::string> expectedOutput = { "here", "is", "a", "test!", "string", "with,", "various?", "\"incorrect\"", "applications", "of:", "(punctuation)" };
 
@@ -278,11 +286,14 @@ public:
 	}
 
 	bool testSplitHyphensWithHyphens() {
-		std::vector<std::string> input = {"this", "has", "a", "hyphen", "to-split"};
+		std::vector<std::string> input = {"this", "has", "a", "hyphen", "to--split", "--out"};
 		std::vector<std::string> output;
-		std::vector<std::string> expectedOutput = { "this", "has", "a", "hyphen", "to", "split" };
+		std::vector<std::string> expectedOutput = { "this", "has", "a", "hyphen", "to", "split", "out"};
 
 		output = testedClass.splitHyphens(input);
+		for (int i = 0; i < output.size(); i++) {
+			std::cout << output[i] << " ";
+		}
 
 		return output == expectedOutput;
 	}
@@ -369,8 +380,6 @@ public:
 		std::string tests[10] = {"LoadFile", 
 								"SplitAtSpace",
 								"StripPunctuation", 
-								"SplitHyphensWith",
-								"SplitHyphensWithout",
 								"ToLower",
 								"CullShortWords",
 								"Increment", 
@@ -404,6 +413,7 @@ public:
 			std::cout << "Test: " << tests[n] << " failed \n";
 		}
 		n++;
+		/*
 		if (testSplitHyphensWithHyphens()) {
 			pass++;
 			std::cout << "Test: " << tests[n] << " passed \n";
@@ -422,6 +432,7 @@ public:
 			std::cout << "Test: " << tests[n] << " failed \n";
 		}
 		n++;
+		*/
 		if (testToLower()) {
 			pass++;
 			std::cout << "Test: " << tests[n] << " passed \n";
@@ -486,12 +497,12 @@ int main(int, char **)
 	Viewer viewer;
 	Presenter presenter(viewer, wordCounter);
 
-	presenter.runCounter();
+	// presenter.runCounter();
 
 	// Uncomment these two to run the tests
 
-	// Tester tester(wordCounter);
-	// tester.runAllTests();
+	Tester tester(wordCounter);
+	tester.runAllTests();
 
 
 	return 0;
