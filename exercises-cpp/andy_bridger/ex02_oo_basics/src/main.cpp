@@ -404,12 +404,12 @@ int main(int, char **)
 {
 	// Some tests here, admittedly test coverage is patchy
 
-	Tester tester;
-	tester.runAllTests();
+	// Tester tester;
+	// tester.runAllTests();
 
 	// Under here is the actual program
 
-	/*
+	
 
 	Square sq1(1, "squaro");
 	Square sq2(3, "squara");
@@ -430,7 +430,6 @@ int main(int, char **)
 
 	sorter.sortByPerimeter();
 
-	*/
 
 
 }
