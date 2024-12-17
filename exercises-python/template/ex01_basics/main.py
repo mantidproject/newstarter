@@ -101,6 +101,17 @@ class Tester(unittest.TestCase):
 
 		self.assertEqual(expected_output, test_word_counter.words)
 
+	def test_count_words(self):
+		# setup input
+		test_word_counter = WordCounter()
+		test_word_counter.words = ['tests', 'tests', 'after']
+		# expected outcome
+		expected_output = {'tests': 2, 'after': 1}
+
+		test_word_counter.count_and_sort()
+
+		self.assertEqual(expected_output, test_word_counter.sorted_words)
+
 def main():
 	#word_counter = WordCounter()
 	#word_counter.run_all()
