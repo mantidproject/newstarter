@@ -8,8 +8,12 @@ class Rectangle:
 		self.name = name
 		self.side1 = s1
 		self.side2 = s2
+		self.calculate_area()
+		self.calculate_perimeter()
+
 	def calculate_area(self):
 		self.area = self.side1 * self.side2
+
 	def calculate_perimeter(self):
 		self.perimeter = 2*(self.side1 + self.side2)
 
@@ -24,8 +28,12 @@ class Circle:
 		self.num_sides = 1
 		self.radius = radius
 		self.name = name
+		self.calculate_area()
+		self.calculate_perimeter()
+
 	def calculate_area(self):
 		self.area = pi*self.radius**2
+
 	def calculate_perimeter(self):
 		self.perimeter = 2*pi*self.radius
 
@@ -36,8 +44,12 @@ class Triangle:
 		self.base = base
 		self.height = height
 		self.name = name
+		self.calculate_area()
+		self.calculate_perimeter()
+
 	def calculate_area(self):
 		self.area = 0.5*self.base*self.height
+
 	def calculate_perimeter(self):
 		self.perimeter = self.base + 2*(self.height**2 + (self.base**2)/4)**0.5
 
@@ -46,28 +58,45 @@ class ShapeSorter:
 		self.shape_list = shape_list
 		self.sort_by_area()
 		self.sort_by_perimeter()
+
 	def sort_by_area(self):
 		self.area_sorted = sorted(self.shape_list, key=lambda item: item.area, reverse= True)
+
 	def sort_by_perimeter(self):
 		self.perimeter_sorted = sorted(self.shape_list, key=lambda item: item.perimeter, reverse= True)
+
 	def print_shape_by_type(self, target_shape):
 		for shape in self.shape_list:
 			if shape.shape == target_shape:
 				print(shape.name)
+
 	def print_shape_by_sides(self, n_sides):
 		for shape in self.shape_list:
 			if shape.num_sides == n_sides:
 				print(shape.name)
+
 	def print_shape_by_area(self):
 		for shape in self.area_sorted:
 			print(f'Shape: {shape.name}, Area: {shape.area}')
+
 	def print_shape_by_perimeter(self):
 		for shape in self.perimeter_sorted:
-			print(f'Shape: {shape.name}, Area: {shape.perimeter}')
+			print(f'Shape: {shape.name}, Perimeter: {shape.perimeter}')
 
 
 def main():
-	pass
+	shapes = [Rectangle(1,2, 'recky'),
+			  Square(1, 'squaro'),
+			  Square(3, 'squara'),
+			  Circle(1.3, 'mr circ'),
+			  Triangle(2.9, 2.3, 'points')]
+
+	shape_sorter = ShapeSorter(shapes)
+
+	shape_sorter.print_shape_by_type('Square')
+	shape_sorter.print_shape_by_sides(4)
+	shape_sorter.print_shape_by_area()
+	shape_sorter.print_shape_by_perimeter()
 
 
 if __name__ == "__main__":
