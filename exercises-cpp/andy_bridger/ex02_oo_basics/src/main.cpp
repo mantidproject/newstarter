@@ -119,7 +119,7 @@ public:
 		area = 0.5 * base * height;
 	}
 	void calcPerimeter() {
-		perimeter = base + 2*sqrt((pow(height,2) + (pow(base, 2)/4)));
+		perimeter = base + 2*(sqrt((pow(height,2) + (pow(base, 2)/4))));
 	}
 };
 
@@ -286,9 +286,9 @@ public:
 	}
 
 	bool testTrianglePerimeter() {
-		double height[3] = { 1, 2.3, 3 };
-		double base[3] =   { 1, 1, 2.5 };
-		double perimeters[3] = { 3.236, 5.707, 9 };
+		double base[3] = { 1, 2.3, 3 };
+		double height[3] =   { 1, 1, 2.5 };
+		double perimeters[3] = { 3.236, 5.348, 8.831 };
 		bool all_pass = true;
 
 		for (int i = 0; i < 3; i++) {
@@ -404,10 +404,12 @@ int main(int, char **)
 {
 	// Some tests here, admittedly test coverage is patchy
 
-	//Tester tester;
-	//tester.runAllTests();
+	Tester tester;
+	tester.runAllTests();
 
 	// Under here is the actual program
+
+	/*
 
 	Square sq1(1, "squaro");
 	Square sq2(3, "squara");
@@ -428,6 +430,7 @@ int main(int, char **)
 
 	sorter.sortByPerimeter();
 
+	*/
 
 
 }
