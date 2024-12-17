@@ -119,17 +119,9 @@ public:
 	void incrementOccurances(std::vector<std::string> textLine) {
 		// Look at each word in the line
 		for (int i = 0; i < textLine.size(); i++) {
-			// Check if the word has already been counted in the map
-			if (auto search = occurances.find(textLine[i]); search != occurances.end()) {
-				// If it has, increment
-				occurances[textLine[i]]++;
+			// occurances should default to 0 for new keys 
+			occurances[textLine[i]]++;
 			}
-			else {
-				// If it hasn't add a key value pair with a count of 1
-				occurances[textLine[i]] = 1;
-			}
-		}
-
 	}
 
 	std::vector<std::pair<std::string, int> > convertMapToVector() {
@@ -223,9 +215,10 @@ public:
 				// Cull short words
 				lowerLine = wordCounter.cullShortWords(lowerLine);
 
-
 				// add line to counter map
 				wordCounter.incrementOccurances(lowerLine);
+
+				lowerLine.clear();
 			}
 		}
 
