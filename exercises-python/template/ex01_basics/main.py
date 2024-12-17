@@ -113,10 +113,11 @@ class Tester(unittest.TestCase):
 		self.assertEqual(expected_output, test_word_counter.sorted_words)
 
 def main():
-	#word_counter = WordCounter()
-	#word_counter.run_all()
+	# Run tests with this:
+	# Tester()
 
-	Tester()
+	word_counter = WordCounter()
+	word_counter.run_all()
 
 
 if __name__ == "__main__":
