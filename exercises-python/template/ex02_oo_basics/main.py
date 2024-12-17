@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from math import pi
+import unittest
 
 class Rectangle:
 	def __init__(self, s1, s2, name = 'rectangle'):
@@ -83,6 +84,32 @@ class ShapeSorter:
 		for shape in self.perimeter_sorted:
 			print(f'Shape: {shape.name}, Perimeter: {shape.perimeter}')
 
+class Tester(unittest.TestCase):
+
+	def test_rectangle_area(self):
+		# setup input
+		sides1s = [ 1, 2.3, 3 ]
+		sides2s = [ 1, 1, 2.5 ]
+		# expected outcome
+		expected_output = [ 1, 2.3, 7.5 ]
+
+		# apply the function
+		output = [Rectangle(sides1s[i], sides2s[i]).area for i in range(len(sides1s))]
+
+		self.assertAlmostEqual(expected_output, output, places=4)
+
+	def test_rectangle_perimeter(self):
+		# setup input
+		sides1s = [ 1, 2.3, 3 ]
+		sides2s = [ 1, 1, 2.5 ]
+		# expected outcome
+		expected_output = [ 4, 6.6, 11 ]
+
+		# apply the function
+		output = [Rectangle(sides1s[i], sides2s[i]).perimeter for i in range(len(sides1s))]
+
+		self.assertAlmostEqual(expected_output, output, places=4)
+
 
 def main():
 	shapes = [Rectangle(1,2, 'recky'),
@@ -100,4 +127,5 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+	Tester()
+	#main()
