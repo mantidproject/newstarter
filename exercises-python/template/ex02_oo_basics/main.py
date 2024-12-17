@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 from math import pi
 import unittest
-from numpy import sqrt
 
 class Rectangle:
 	def __init__(self, s1, s2, name = 'rectangle'):
@@ -198,5 +197,6 @@ def main():
 
 
 if __name__ == "__main__":
-	Tester()
-	#main()
+	#Tester()
+
+	main()
