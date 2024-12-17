@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from math import pi
 import unittest
+from numpy import sqrt
 
 class Rectangle:
 	def __init__(self, s1, s2, name = 'rectangle'):
@@ -52,7 +53,7 @@ class Triangle:
 		self.area = 0.5*self.base*self.height
 
 	def calculate_perimeter(self):
-		self.perimeter = self.base + 2*(self.height**2 + (self.base**2)/4)**0.5
+		self.perimeter = self.base + 2*((self.height**2 + (self.base**2)/4)**0.5)
 
 class ShapeSorter:
 	def __init__(self, shape_list):
@@ -94,9 +95,9 @@ class Tester(unittest.TestCase):
 		expected_output = [ 1, 2.3, 7.5 ]
 
 		# apply the function
-		output = [Rectangle(sides1s[i], sides2s[i]).area for i in range(len(sides1s))]
+		output = [round(Rectangle(sides1s[i], sides2s[i]).area,4) for i in range(len(sides1s))]
 
-		self.assertAlmostEqual(expected_output, output, places=4)
+		self.assertEqual(expected_output, output)
 
 	def test_rectangle_perimeter(self):
 		# setup input
@@ -106,9 +107,79 @@ class Tester(unittest.TestCase):
 		expected_output = [ 4, 6.6, 11 ]
 
 		# apply the function
-		output = [Rectangle(sides1s[i], sides2s[i]).perimeter for i in range(len(sides1s))]
+		output = [round(Rectangle(sides1s[i], sides2s[i]).perimeter, 4) for i in range(len(sides1s))]
 
-		self.assertAlmostEqual(expected_output, output, places=4)
+		self.assertEqual(expected_output, output)
+
+
+	def test_square_perimeter(self):
+		# setup input
+		sides1s = [ 1, 2.3, 3 ]
+		# expected outcome
+		expected_output = [ 4, 9.2, 12 ]
+
+		# apply the function
+		output = [round(Square(sides1s[i]).perimeter, 4) for i in range(len(sides1s))]
+
+		self.assertEqual(expected_output, output)
+
+	def test_square_area(self):
+		# setup input
+		sides1s = [ 1, 2.3, 3 ]
+		# expected outcome
+		expected_output = [  1, 5.29, 9  ]
+
+		# apply the function
+		output = [round(Square(sides1s[i]).area, 4) for i in range(len(sides1s))]
+
+		self.assertEqual(expected_output, output)
+
+	def test_circle_perimeter(self):
+		# setup input
+		radii = [ 1, 2.3, 3 ]
+		# expected outcome
+		expected_output = [ 6.2832, 14.4513, 18.8496 ]
+
+		# apply the function
+		output = [round(Circle(radii[i]).perimeter, 4) for i in range(len(radii))]
+
+		self.assertEqual(expected_output, output)
+
+	def test_circle_area(self):
+		# setup input
+		radii = [ 1, 2.3, 3 ]
+		# expected outcome
+		expected_output = [  3.1416, 16.6190, 28.2743 ]
+
+		# apply the function
+		output = [round(Circle(radii[i]).area, 4) for i in range(len(radii))]
+
+		self.assertEqual(expected_output, output)
+
+
+	def test_triangle_perimeter(self):
+		# setup input
+		bases = [ 1, 2.3, 3 ]
+		heights = [ 1, 1, 2.5 ]
+		# expected outcome
+		expected_output = [ 3.236, 5.348, 8.831 ]
+
+		# apply the function
+		output = [round(Triangle(bases[i], heights[i]).perimeter, 3) for i in range(len(bases))]
+
+		self.assertEqual(expected_output, output)
+
+	def test_triangle_area(self):
+		# setup input
+		bases = [ 1, 2.3, 3 ]
+		heights = [ 1, 1, 2.5 ]
+		# expected outcome
+		expected_output = [  0.5, 1.15, 3.75 ]
+
+		# apply the function
+		output = [round(Triangle(bases[i], heights[i]).area, 4) for i in range(len(bases))]
+
+		self.assertEqual(expected_output, output)
 
 
 def main():
